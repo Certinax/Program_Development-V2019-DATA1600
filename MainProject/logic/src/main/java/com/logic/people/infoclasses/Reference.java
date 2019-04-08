@@ -1,5 +1,16 @@
 package com.logic.people.infoclasses;
 
+/**
+ * <h1>Reference</h1>
+ *
+ * Class for making reference objects
+ *
+ * Use the NameField to get the first- and lastname from the GUI.
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
+
 public class Reference {
 
     private String firstname;

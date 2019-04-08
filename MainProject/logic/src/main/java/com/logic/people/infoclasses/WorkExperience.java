@@ -1,14 +1,27 @@
 package com.logic.people.infoclasses;
 
+import java.time.LocalDate;
+
+/**
+ * <h1>Email</h1>
+ *
+ * Class for making WorkExperience objects
+ *
+ * Use a DatePicker to get the from and to-values
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
+
 public class WorkExperience {
 
     private String workplace;
     private String position;
     private Reference referenceContact;
-    private int from;
-    private int to;
+    private LocalDate from;
+    private LocalDate to;
 
-    public WorkExperience(String workplace, String position, Reference referenceContact, int from, int to) {
+    public WorkExperience(String workplace, String position, Reference referenceContact, LocalDate from, LocalDate to) {
         this.workplace = workplace;
         this.position = position;
         this.referenceContact = referenceContact;
@@ -40,19 +53,19 @@ public class WorkExperience {
         this.referenceContact = referenceContact;
     }
 
-    public int getFrom() {
+    public LocalDate getFrom() {
         return from;
     }
 
-    public void setFrom(int from) {
+    public void setFrom(LocalDate from) {
         this.from = from;
     }
 
-    public int getTo() {
+    public LocalDate getTo() {
         return to;
     }
 
-    public void setTo(int to) {
+    public void setTo(LocalDate to) {
         this.to = to;
     }
 

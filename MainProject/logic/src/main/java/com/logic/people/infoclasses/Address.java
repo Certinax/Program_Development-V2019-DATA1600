@@ -1,9 +1,17 @@
 package com.logic.people.infoclasses;
 
 import com.logic.exceptions.InvalidAddressException;
-import com.logic.exceptions.InvalidPostnumberException;
 import com.logic.validators.accountValidator;
 
+/**
+ * <h1>Address</h1>
+ *
+ * Class for making address objects
+ * Use PostNumberFields for getting the postnumber from the GUI.
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
 public class Address {
 
     private String address;

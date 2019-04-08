@@ -1,5 +1,17 @@
 package com.logic.people.infoclasses;
 
+/**
+ * <h1>Personalia</h1>
+ *
+ * Class for making personalia objects
+ * Use the NameField to get the first- and lastname from the GUI.
+ * Use the AgeField to get the age from the GUI.
+ *
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
+
 public class Personalia {
 
     private String firstname;

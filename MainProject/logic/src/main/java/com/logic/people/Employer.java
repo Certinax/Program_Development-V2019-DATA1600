@@ -4,6 +4,16 @@ import com.logic.people.infoclasses.Personalia;
 
 import java.util.ArrayList;
 
+/**
+ * <h1>Employer</h1>
+ *
+ * Class for making Employer objects
+ *
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
+
 public class Employer extends Person {
 
     private boolean publicSector;

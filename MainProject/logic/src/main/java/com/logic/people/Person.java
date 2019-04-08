@@ -1,6 +1,5 @@
 package com.logic.people;
 
-import com.logic.people.infoclasses.LoginCredentials;
 import com.logic.people.infoclasses.Personalia;
 
 public abstract class Person {

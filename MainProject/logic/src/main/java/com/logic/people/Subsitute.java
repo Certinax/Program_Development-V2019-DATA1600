@@ -4,6 +4,19 @@ import com.logic.people.infoclasses.Education;
 import com.logic.people.infoclasses.Personalia;
 import com.logic.people.infoclasses.WorkExperience;
 
+
+/**
+ * <h1>Substitute</h1>
+ *
+ * Class for making Substitute objects
+ *
+ * Use IntField to get the salaray requirement
+ *
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
+
 public class Subsitute extends Person {
 
     private String category;

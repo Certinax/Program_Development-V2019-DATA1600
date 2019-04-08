@@ -1,6 +1,5 @@
 package com.logic.validators;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,6 +39,8 @@ public class accountValidator {
     }
 
     public static boolean emailChecker(String email) {
+        //This regex mathces any string that has two words consisting of any characters and numbers, separated by an @.
+        //There is also a third set of characters which is separated from the original pair by a punctuation mark.
         Pattern regex = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
         Matcher matcher = regex.matcher(email);
 
