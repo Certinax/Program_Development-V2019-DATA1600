@@ -5,6 +5,6 @@ module logic {
 
     exports com.logic;
     exports com.logic.customTextField;
-    exports com.logic.people.infoclasses;
+    exports com.logic.clients.infoclasses;
     exports com.logic.exceptions;
 }
