@@ -3,23 +3,20 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import com.logic.customNodes.IntField?>
+<?import javafx.scene.control.TextField?>
+<?import com.logic.customNodes.PostNumberField?>
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.WelcomeScreenController">
     <children>
-        <Button layoutX="400.0" layoutY="248.0" text="New employer account" />
-        <Button layoutX="22.0" layoutY="248.0" text="New substitute account" />
-        <Button layoutX="265.0" layoutY="193.0" text="Log in!" />
+        <Button layoutX="265.0" layoutY="193.0" text="Generate address" onAction="#createAddress" />
 
-        <TextField fx:id="username" layoutX="205.0" layoutY="102.0" promptText="Username" />
-        <PasswordField fx:id="password" layoutX="206.0" layoutY="151.0" promptText="Password" />
+        <Label fx:id="label" layoutX="250.0" layoutY="25.0" minHeight="16" minWidth="69" text="FIELDTESTS!" />
+        <Label fx:id="choose" layoutX="186.0" layoutY="46.0" text="This view is for testing custom input-fields" />
 
-        <Label fx:id="label" layoutX="250.0" layoutY="25.0" minHeight="16" minWidth="69" text="WELCOME!" />
-        <Label fx:id="choose" layoutX="186.0" layoutY="46.0" text="Please sign in or create a new user" />
-        <Label fx:id="error" layoutX="110.0" layoutY="81.0" text="Wrong username or password!" textFill="red" visible="false" />
-        <Label fx:id="userCreation" layoutX="110.0" layoutY="81.0" text="User Created Successfully!" textFill="green" visible="false" />
+        <PostNumberField fx:id="postnumberfield" layoutY="250" layoutX="100" promptText="Postnumber e.g 1930" />
+        <TextField fx:id="streetnamefield" layoutY="250" layoutX="400" promptText="Streetname e.g Streetway 19" />
     </children>
 
     <stylesheets>
