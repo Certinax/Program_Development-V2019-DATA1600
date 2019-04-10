@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.WelcomeScreenController">
     <children>
         <Button layoutX="400.0" layoutY="248.0" text="New employer account" />
-        <Button layoutX="22.0" layoutY="248.0" text="New substitute account" />
+        <Button fx:id="subacc" onAction="#confirm" layoutX="22.0" layoutY="248.0" text="New substitute account" />
         <Button layoutX="265.0" layoutY="193.0" text="Log in!" />
 
         <TextField fx:id="username" layoutX="205.0" layoutY="102.0" promptText="Username" />
