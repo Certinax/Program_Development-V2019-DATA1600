@@ -20,7 +20,7 @@ public class GUIMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/WelcomeScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/AvailablePositions.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Woopdidoo");
         stage.setScene(scene);

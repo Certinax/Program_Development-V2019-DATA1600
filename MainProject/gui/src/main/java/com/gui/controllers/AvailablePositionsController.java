@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WelcomeScreenController {
+public class AvailablePositionsController {
 
     /**
      * <h2>goHome</h2>

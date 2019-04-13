@@ -1,0 +1,11 @@
+package com.logic.scene;
+
+public enum SceneName {
+    AVAILABLEPOSITIONS,
+    SUBSTITUTES,
+    TEMPPOSITIONS,
+    REGISTERSUBSTITUTE,
+    REGISTERPOSITION,
+    REGISTEREMPLOYER,
+    POSITIONINFO
+}
