@@ -3,7 +3,7 @@ package com.logic.validators;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class accountValidator {
+public class DataValidator {
 
     public static boolean addressChecker(String address) {
         String[] adrSplit = address.split(" ");

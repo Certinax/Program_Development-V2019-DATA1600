@@ -17,7 +17,7 @@ import com.logic.clients.infoclasses.WorkExperience;
  * @since 04-04-2019
  */
 
-public class Subsitute extends Person {
+public class Subsitute extends Client {
 
     private String category;
     private Education education;

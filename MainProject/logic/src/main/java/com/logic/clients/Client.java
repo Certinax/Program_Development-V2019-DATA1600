@@ -1,12 +1,12 @@
-package com.logic.people;
+package com.logic.clients;
 
-import com.logic.people.infoclasses.Personalia;
+import com.logic.clients.infoclasses.Personalia;
 
-public abstract class Person {
+public abstract class Client {
 
     private Personalia personalia;
 
-    public Person(Personalia personalia) {
+    public Client(Personalia personalia) {
 
         this.personalia = personalia;
     }
@@ -19,6 +19,7 @@ public abstract class Person {
         this.personalia = personalia;
     }
 
+    @Override
     public String toString() {
         return personalia.toString();
     }

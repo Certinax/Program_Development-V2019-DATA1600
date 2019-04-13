@@ -1,7 +1,7 @@
 package com.logic.clients.infoclasses;
 
 import com.logic.exceptions.InvalidMailException;
-import com.logic.validators.accountValidator;
+import com.logic.validators.DataValidator;
 
 /**
  * <h1>Email</h1>
@@ -25,7 +25,7 @@ public class Email {
      */
     public Email(String email) throws InvalidMailException {
 
-        if (accountValidator.emailChecker(email)) {
+        if (DataValidator.emailChecker(email)) {
             throw new InvalidMailException("An email must be given on the form \"address@provider.domain\"");
         }
 

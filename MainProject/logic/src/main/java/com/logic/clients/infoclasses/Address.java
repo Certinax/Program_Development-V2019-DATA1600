@@ -1,7 +1,7 @@
 package com.logic.clients.infoclasses;
 
 import com.logic.exceptions.InvalidAddressException;
-import com.logic.validators.accountValidator;
+import com.logic.validators.DataValidator;
 
 /**
  * <h1>Address</h1>
@@ -19,7 +19,7 @@ public class Address {
 
     public Address(String address, int postnumber) throws InvalidAddressException {
 
-        if (!accountValidator.addressChecker(address)) {
+        if (!DataValidator.addressChecker(address)) {
             throw new InvalidAddressException("An address needs to be on the format \"Streetname 12\"");
         }
 

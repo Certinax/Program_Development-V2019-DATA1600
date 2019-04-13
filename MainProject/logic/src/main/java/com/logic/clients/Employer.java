@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @since 04-04-2019
  */
 
-public class Employer extends Person {
+public class Employer extends Client {
 
     private boolean publicSector;
     private String lineofIndustry;
