@@ -1,4 +1,4 @@
-package com.logic.customTextField;
+package com.logic.customTextFields;
 
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;

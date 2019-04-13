@@ -1,6 +1,6 @@
-package com.logic.clients;
+package com.data.clients;
 
-import com.logic.clients.infoclasses.Personalia;
+import com.data.clients.infoclasses.Personalia;
 
 public abstract class Client {
 

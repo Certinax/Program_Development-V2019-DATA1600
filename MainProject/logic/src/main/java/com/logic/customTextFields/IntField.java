@@ -1,32 +1,29 @@
-package com.logic.customTextField;
+package com.logic.customTextFields;
 
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 
 /**
- * <h1>PhoneField</h1>
- * A custom TextField that only accepts 0 to 8 integers as input value
+ * <h1>IntField</h1>
+ * A custom TextField that only accepts 0 to 100 integers as input value
  *
  * @author Fredrik Pedersen
- * @since 08-04-2019
+ * @since 27-03-2019
  */
 
-
-public class PhoneField extends TextField {
+public class IntField extends TextField {
 
     /**
      * Constructor that inherits everything from the TextField-class, using an eventlistener to make
-     * sure the textfield only accepts 0-8 integers as input value
+     * sure the textfield only accepts 0-100 integers as input value
      */
-    public PhoneField() {
+    public IntField() {
         super();
 
         this.textProperty().addListener((ObservableValue<? extends String> observableValue, String oldValue, String newValue) -> {
-            if (!newValue.matches("[0-9]{0,8}")) {
+            if (!newValue.matches("[0-9]{0,100}")) {
                 this.setText(oldValue);
             }
         });
-
-        this.setPromptText("8-digit phonenumber e.g 99106201");
     }
 }

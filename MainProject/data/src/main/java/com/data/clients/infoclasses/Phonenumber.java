@@ -1,4 +1,4 @@
-package com.logic.clients.infoclasses;
+package com.data.clients.infoclasses;
 
 /**
  * <h1>Email</h1>

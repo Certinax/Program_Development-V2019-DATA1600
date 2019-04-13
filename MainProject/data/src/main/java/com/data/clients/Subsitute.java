@@ -1,8 +1,8 @@
-package com.logic.clients;
+package com.data.clients;
 
-import com.logic.clients.infoclasses.Education;
-import com.logic.clients.infoclasses.Personalia;
-import com.logic.clients.infoclasses.WorkExperience;
+import com.data.clients.infoclasses.Education;
+import com.data.clients.infoclasses.Personalia;
+import com.data.clients.infoclasses.WorkExperience;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.logic.clients.infoclasses;
+package com.data.clients.infoclasses;
 
 import com.logic.exceptions.InvalidMailException;
 import com.logic.validators.DataValidator;

@@ -1,4 +1,4 @@
-package com.logic.clients.infoclasses;
+package com.data.clients.infoclasses;
 
 import java.time.LocalDate;
 
