@@ -3,9 +3,6 @@ package com.gui;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -16,7 +13,6 @@ import javafx.stage.Stage;
  * @author Fredrik Pedersen
  * @since 25-03-2019
  */
-
 
 public class GUIMain extends Application {
 

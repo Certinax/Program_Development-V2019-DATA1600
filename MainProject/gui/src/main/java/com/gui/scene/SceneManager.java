@@ -27,14 +27,16 @@ public enum SceneManager {
     }
 
     private void createSceneInfos() {
-        SceneInfo AvailablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
+        SceneInfo availablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
+        SceneInfo substitutes = new SceneInfo("Substitutes", "/com/gui/fxml/Substitutes.fxml");
 
-        scenes.put(SceneName.AVAILABLEPOSITIONS, AvailablePositions);
+        scenes.put(SceneName.AVAILABLEPOSITIONS, availablePositions);
+        scenes.put(SceneName.SUBSTITUTES, substitutes);
     }
 
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = Objects.requireNonNull(primaryStage, "Primary stage cannot be null, please provide a Stage object");
-
+        this.primaryStage.setTitle("Bad Fantasy");
         primaryStage.setOnCloseRequest(WindowEvent -> {
                 if (activeController != null) {
                     activeController.exit();
@@ -64,6 +66,7 @@ public enum SceneManager {
             activeController = loader.getController();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setTitle(sceneInfo.getSceneName());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -8,6 +8,7 @@
   <children>
     <Label fx:id="label" layoutX="263.0" layoutY="60.0" minHeight="16.0" minWidth="69.0" text="WELCOME!" />
     <Label fx:id="error" layoutX="110.0" layoutY="81.0" text="Wrong username or password!" textFill="RED" visible="false" />
+    <Button layoutX="240.0" layoutY="164.0" mnemonicParsing="false" text="Change Scene" onAction="#goToSubstitutes" />
   </children>
   <stylesheets>
     <URL value="@../css/WelcomeScreen.css" />
