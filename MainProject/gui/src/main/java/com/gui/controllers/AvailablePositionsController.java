@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AvailablePositionsController {
+public class AvailablePositionsController implements Controller {
 
     /**
      * <h2>goHome</h2>
@@ -32,5 +32,10 @@ public class AvailablePositionsController {
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.setScene(home_screen_scene);
         app_stage.show();
+    }
+
+    @Override
+    public void exit() {
+
     }
 }

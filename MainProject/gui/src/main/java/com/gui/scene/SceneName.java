@@ -1,4 +1,4 @@
-package com.logic.scene;
+package com.gui.scene;
 
 public enum SceneName {
     AVAILABLEPOSITIONS,
