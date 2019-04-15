@@ -1,4 +1,19 @@
-package com.logic.accounts.accountinfo;
+package com.data.clients.infoclasses;
+
+import java.time.LocalDate;
+
+/**
+ * <h1>Ecucation</h1>
+ *
+ * Class for making education objects.
+ * The boolean values highSchool, bachelors, masters and phd are meant to indicate the substitute's currently active
+ * studies. Combined with the finnished-value, it means that is their highest completed level of education.
+ *
+ * Use a Date-picker to get to the from and to values
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
 
 public class Education {
 
@@ -9,11 +24,11 @@ public class Education {
     private boolean masters;
     private boolean phd;
     private boolean finnished;
-    private int from;
-    private int to;
+    private LocalDate from;
+    private LocalDate to;
 
     public Education(String nameOfEducation, String institution, boolean highSchool, boolean bachelors, boolean masters,
-                     boolean phd, boolean finnished, int from, int to) {
+                     boolean phd, boolean finnished, LocalDate from, LocalDate to) {
         this.nameOfEducation = nameOfEducation;
         this.institution = institution;
         this.highSchool = highSchool;
@@ -81,22 +96,23 @@ public class Education {
         this.finnished = finnished;
     }
 
-    public int getFrom() {
+    public LocalDate getFrom() {
         return from;
     }
 
-    public void setFrom(int from) {
+    public void setFrom(LocalDate from) {
         this.from = from;
     }
 
-    public int getTo() {
+    public LocalDate getTo() {
         return to;
     }
 
-    public void setTo(int to) {
+    public void setTo(LocalDate to) {
         this.to = to;
     }
 
+    @Override
     public String toString() {
         if (highSchool && !finnished)
             return "No finnished education above middle school";

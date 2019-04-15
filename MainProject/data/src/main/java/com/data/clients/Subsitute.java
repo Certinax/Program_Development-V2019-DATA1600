@@ -1,11 +1,23 @@
-package com.logic.accounts;
+package com.data.clients;
 
-import com.logic.accounts.accountinfo.Education;
-import com.logic.accounts.accountinfo.LoginCredentials;
-import com.logic.accounts.accountinfo.Personalia;
-import com.logic.accounts.accountinfo.WorkExperience;
+import com.data.clients.infoclasses.Education;
+import com.data.clients.infoclasses.Personalia;
+import com.data.clients.infoclasses.WorkExperience;
 
-public class SubstituteAccount extends UserAccount {
+
+/**
+ * <h1>Substitute</h1>
+ *
+ * Class for making Substitute objects
+ *
+ * Use IntField to get the salaray requirement
+ *
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
+
+public class Subsitute extends Client {
 
     private String category;
     private Education education;
@@ -13,17 +25,17 @@ public class SubstituteAccount extends UserAccount {
     private WorkExperience workExperience2;
     private int salaryRequirement;
 
-    public SubstituteAccount(Personalia personalia, LoginCredentials credentials, String category,
-                             Education education, WorkExperience workExperience, WorkExperience workExperience2,
-                             int salaryRequirement) {
+    public Subsitute(Personalia personalia, String category,
+                     Education education, WorkExperience workExperience, WorkExperience workExperience2,
+                     int salaryRequirement) {
 
-        super(personalia, credentials);
+        super(personalia);
         this.category = category;
         this.education = education;
         this.workExperience = workExperience;
         this.workExperience2 = workExperience2;
         this.salaryRequirement = salaryRequirement;
-        
+
     }
 
     public String getCategory() {

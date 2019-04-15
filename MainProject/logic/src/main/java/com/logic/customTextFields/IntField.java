@@ -1,4 +1,4 @@
-package com.logic.customNodes;
+package com.logic.customTextFields;
 
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
@@ -14,10 +14,8 @@ import javafx.scene.control.TextField;
 public class IntField extends TextField {
 
     /**
-     * Public constructor for the class.
-     *
-     * Inherits everything from the TextField-class and makes sure the textfield only accepts between 0-100 integers
-     * as input value
+     * Constructor that inherits everything from the TextField-class, using an eventlistener to make
+     * sure the textfield only accepts 0-100 integers as input value
      */
     public IntField() {
         super();

@@ -1,4 +1,16 @@
-package com.logic.accounts.accountinfo;
+package com.data.clients.infoclasses;
+
+/**
+ * <h1>Personalia</h1>
+ *
+ * Class for making personalia objects
+ * Use the NameField to get the first- and lastname from the GUI.
+ * Use the AgeField to get the age from the GUI.
+ *
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
 
 public class Personalia {
 
@@ -66,6 +78,7 @@ public class Personalia {
         this.phonenumber = phonenumber;
     }
 
+    @Override
     public String toString() {
         return firstname + " " + lastname + ". Age: " + age + " " + "\n"+ address.toString() + "\n" + phonenumber + "\n" + email.toString();
     }

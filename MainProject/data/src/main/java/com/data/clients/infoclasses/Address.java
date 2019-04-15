@@ -1,22 +1,26 @@
-package com.logic.accounts.accountinfo;
+package com.data.clients.infoclasses;
 
 import com.logic.exceptions.InvalidAddressException;
-import com.logic.exceptions.InvalidPostnumberException;
-import com.logic.validators.accountValidator;
+import com.logic.validators.DataValidator;
 
+/**
+ * <h1>Address</h1>
+ *
+ * Class for making address objects
+ * Use PostNumberFields for getting the postnumber from the GUI.
+ *
+ * @author Fredrik Pedersen
+ * @since 04-04-2019
+ */
 public class Address {
 
     private String address;
     private int postnumber;
 
-    public Address(String address, int postnumber) throws InvalidAddressException, InvalidPostnumberException {
+    public Address(String address, int postnumber) throws InvalidAddressException {
 
-        if (!accountValidator.addressChecker(address)) {
+        if (!DataValidator.addressChecker(address)) {
             throw new InvalidAddressException("An address needs to be on the format \"Streetname 12\"");
-        }
-
-        if (!accountValidator.intLengthChecker(postnumber, 4)) {
-            throw new InvalidPostnumberException("A postnumber needs to be four integers e.g \"1930\"");
         }
 
         this.address = address;

@@ -1,0 +1,4 @@
+module data {
+
+    requires logic;
+}
