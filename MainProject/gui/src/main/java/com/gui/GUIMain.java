@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 public class GUIMain extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         SceneManager sceneManager = SceneManager.INSTANCE;
         sceneManager.setPrimaryStage(stage);
         sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);

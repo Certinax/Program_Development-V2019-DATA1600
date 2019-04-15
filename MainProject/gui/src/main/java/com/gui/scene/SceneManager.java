@@ -12,6 +12,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * <h1>SceneManager</h1>
+ *
+ * Enum singleton class used to switch scenes in the application
+ *
+ *@author Fredrik Pedersen
+ *@since 15-04-2019
+ */
+
 public enum SceneManager {
     INSTANCE;
 
@@ -26,6 +35,9 @@ public enum SceneManager {
         createSceneInfos();
     }
 
+    /**
+     * Private method used to create SceneInfo objects and link them with the SceneName-enums in a hashmap
+     */
     private void createSceneInfos() {
         SceneInfo availablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
         SceneInfo substitutes = new SceneInfo("Substitutes", "/com/gui/fxml/Substitutes.fxml");
@@ -34,6 +46,11 @@ public enum SceneManager {
         scenes.put(SceneName.SUBSTITUTES, substitutes);
     }
 
+    /**
+     * Method used in the applications main method to set the primary stage
+     *
+     * @param primaryStage - the programs primary stage
+     */
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = Objects.requireNonNull(primaryStage, "Primary stage cannot be null, please provide a Stage object");
         this.primaryStage.setTitle("Bad Fantasy");
@@ -46,6 +63,11 @@ public enum SceneManager {
         initialized = true;
     }
 
+    /**
+     * Method used for navigating scenes
+     *
+     * @param sceneName - the scene you move to
+     */
     public void changeScene(SceneName sceneName) {
         Objects.requireNonNull(sceneName);
 
