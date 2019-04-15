@@ -9,11 +9,6 @@ public class GUITesting extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        SceneManager sceneManager = SceneManager.INSTANCE;
-        sceneManager.setPrimaryStage(stage);
-        sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
-        stage.show();
-
     }
 
     public static void main(String[] args) {

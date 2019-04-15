@@ -1,5 +1,7 @@
 package com.gui;
 
+import com.gui.scene.SceneManager;
+import com.gui.scene.SceneName;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,10 +22,9 @@ public class GUIMain extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/AvailablePositions.fxml"));
-        Scene scene = new Scene(root);
-        stage.setTitle("Woopdidoo");
-        stage.setScene(scene);
+        SceneManager sceneManager = SceneManager.INSTANCE;
+        sceneManager.setPrimaryStage(stage);
+        sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
         stage.show();
     }
 
