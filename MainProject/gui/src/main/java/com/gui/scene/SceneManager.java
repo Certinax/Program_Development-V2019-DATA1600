@@ -40,10 +40,20 @@ public enum SceneManager {
      */
     private void createSceneInfos() {
         SceneInfo availablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
+        SceneInfo positionInfo = new SceneInfo("Position Info", "/com/gui/fxml/PositionInfo.fxml");
+        SceneInfo registerEmployer = new SceneInfo("Register Employer", "/com/gui/fxml/RegisterEmployer.fxml");
+        SceneInfo registerPosition = new SceneInfo("Register Position", "/com/gui/fxml/RegisterPosition.fxml");
+        SceneInfo registerSubstitute = new SceneInfo("Register Substitute", "/com/gui/fxml/RegisterSubstitute.fxml");
         SceneInfo substitutes = new SceneInfo("Substitutes", "/com/gui/fxml/Substitutes.fxml");
+        SceneInfo takenPositions = new SceneInfo("Taken Positions", "/com/gui/fxml/TakenPositions.fxml");
 
         scenes.put(SceneName.AVAILABLEPOSITIONS, availablePositions);
+        scenes.put(SceneName.POSITIONINFO, positionInfo);
+        scenes.put(SceneName.REGISTEREMPLOYER, registerEmployer);
+        scenes.put(SceneName.REGISTERPOSITION, registerPosition);
+        scenes.put(SceneName.REGISTERSUBSTITUTE, registerSubstitute);
         scenes.put(SceneName.SUBSTITUTES, substitutes);
+        scenes.put(SceneName.TAKENPOSITIONS, takenPositions);
     }
 
     /**

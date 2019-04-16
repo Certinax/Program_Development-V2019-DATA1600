@@ -5,7 +5,7 @@ import com.gui.scene.SceneName;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class SubstitutesController implements Controller {
+public class RegisterPositionController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
 
@@ -14,6 +14,8 @@ public class SubstitutesController implements Controller {
         sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
     }
 
+    @Override
     public void exit() {
+
     }
 }
