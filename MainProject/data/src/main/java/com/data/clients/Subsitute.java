@@ -1,5 +1,6 @@
 package com.data.clients;
 
+import com.data.clients.infoclasses.Clientinfo;
 import com.data.clients.infoclasses.Education;
 import com.data.clients.infoclasses.Personalia;
 import com.data.clients.infoclasses.WorkExperience;
@@ -25,11 +26,11 @@ public class Subsitute extends Client {
     private WorkExperience workExperience2;
     private int salaryRequirement;
 
-    public Subsitute(Personalia personalia, String category,
+    public Subsitute(Clientinfo clientinfo, String category,
                      Education education, WorkExperience workExperience, WorkExperience workExperience2,
                      int salaryRequirement) {
 
-        super(personalia);
+        super(clientinfo);
         this.category = category;
         this.education = education;
         this.workExperience = workExperience;

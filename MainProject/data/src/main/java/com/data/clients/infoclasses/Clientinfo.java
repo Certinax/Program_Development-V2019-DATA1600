@@ -15,13 +15,16 @@ import java.util.UUID;
  */
 public class Clientinfo {
 
+    // Required information
     private Email email;
     private Phonenumber phonenumber;
-    private final static UUID client_ID = UUID.randomUUID();
+    private UUID client_ID;
+
 
     public Clientinfo(Email email, Phonenumber phonenumber) {
         this.email = email;
         this.phonenumber = phonenumber;
+        client_ID = UUID.randomUUID();
     }
 
     @Override

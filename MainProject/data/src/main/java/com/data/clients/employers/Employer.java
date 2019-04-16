@@ -1,6 +1,8 @@
 package com.data.clients.employers;
 
 import com.data.clients.Client;
+import com.data.clients.infoclasses.Address;
+import com.data.clients.infoclasses.Clientinfo;
 import com.data.clients.infoclasses.Personalia;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 
 public class Employer extends Client {
 
-    private boolean publicSector;
+    /*private boolean publicSector;
     private String lineofIndustry;
     private Personalia personalia;
     private ArrayList<String> temporaryPositions;
@@ -29,5 +31,44 @@ public class Employer extends Client {
         this.lineofIndustry = lineofIndustry;
         this.personalia = personalia1;
         this.temporaryPositions = temporaryPositions;
+    }*/
+
+    private boolean publicSector;
+    private String industry;
+
+    public Employer(Clientinfo clientinfo, boolean publicSector, String industry) {
+        super(clientinfo);
+        this.publicSector = publicSector;
+        this.industry = industry;
+    }
+
+    @Override
+    public String toString() {
+        return "Employer{" +
+                "publicSector=" + publicSector +
+                ", industry='" + industry + '\'' +
+                ", clientinfo=" + super.toString() +
+                '}';
+    }
+
+    public boolean isPublicSector() {
+        return publicSector;
+    }
+
+    public void setPublicSector(boolean publicSector) {
+        this.publicSector = publicSector;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+    @Override
+    public Clientinfo getClientinfo() {
+        return super.getClientinfo();
     }
 }
