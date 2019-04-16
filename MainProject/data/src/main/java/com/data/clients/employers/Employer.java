@@ -1,5 +1,6 @@
-package com.data.clients;
+package com.data.clients.employers;
 
+import com.data.clients.Client;
 import com.data.clients.infoclasses.Personalia;
 
 import java.util.ArrayList;
@@ -20,7 +21,6 @@ public class Employer extends Client {
     private String lineofIndustry;
     private Personalia personalia;
     private ArrayList<String> temporaryPositions;
-
     public Employer(Personalia personalia, boolean publicSector,
                     String lineofIndustry, Personalia personalia1, ArrayList<String> temporaryPositions) {
 
