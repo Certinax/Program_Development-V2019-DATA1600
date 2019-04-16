@@ -61,13 +61,13 @@ public class DataTesting {
         /*System.out.println(emp1.getClientinfo().getPhonenumber());
         System.out.println(emp1.getClientinfo().getClient_ID());*/
 
-        if(emp1.getClientinfo().getClient_ID().equals(emp2.getClientinfo().getClient_ID())) {
+        if(emp1.getClientinfo().getClientID().equals(emp2.getClientinfo().getClientID())) {
             System.out.println("ID'ene er like");
         } else {
             System.out.println("Unike ID'er");
         }
 
-        System.out.println(emp1.getClientinfo().getClient_ID());
+        System.out.println(emp1.getClientinfo().getClientID());
 
     }
 }

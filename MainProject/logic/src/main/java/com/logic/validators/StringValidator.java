@@ -18,4 +18,8 @@ public class StringValidator {
 
         return input;
     }
+
+    public static boolean stringLengthIsValid(String input, int maxLength) {
+        return input.length() < maxLength;
+    }
 }

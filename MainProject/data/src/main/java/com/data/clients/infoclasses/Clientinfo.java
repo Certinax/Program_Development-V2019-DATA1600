@@ -18,13 +18,13 @@ public class Clientinfo {
     // Required information
     private Email email;
     private Phonenumber phonenumber;
-    private UUID client_ID;
+    private UUID clientID;
 
 
     public Clientinfo(Email email, Phonenumber phonenumber) {
         this.email = email;
         this.phonenumber = phonenumber;
-        client_ID = UUID.randomUUID();
+        clientID = UUID.randomUUID();
     }
 
     @Override
@@ -32,12 +32,12 @@ public class Clientinfo {
         return "Clientinfo{" +
                 "email=" + email +
                 ", phonenumber=" + phonenumber +
-                ", clientID=" + client_ID +
+                ", clientID=" + clientID +
                 '}';
     }
 
-    public UUID getClient_ID(){
-        return client_ID;
+    public UUID getClientID(){
+        return clientID;
     }
 
     public Email getEmail() {
