@@ -1,7 +1,5 @@
 package com.gui;
 
-import com.gui.scene.SceneManager;
-import com.gui.scene.SceneName;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

@@ -22,8 +22,7 @@ public class Education {
     private LocalDate from;
     private LocalDate to;
 
-    public Education(String nameOfEducation, String institution, boolean highSchool, boolean bachelors, boolean masters,
-                     boolean phd, boolean finnished, LocalDate from, LocalDate to) {
+    public Education(String nameOfEducation, String institution, LocalDate from, LocalDate to) {
         this.nameOfEducation = nameOfEducation;
         this.institution = institution;
         this.from = from;
