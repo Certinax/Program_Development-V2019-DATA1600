@@ -20,6 +20,7 @@ tomcat
 *.ear
 *.sar
 *.class
+*.csv
 
 # Maven 
 target/
@@ -59,4 +60,3 @@ pom.xml.tag
 !lib/*.jar
 !extract-me-first.zip
 !pom.xml
-*.csv

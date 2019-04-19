@@ -2,6 +2,15 @@ package com.logic.validators;
 
 import com.logic.exceptions.EmptyStringException;
 
+/**
+ * <h1>String Validator</h1>
+ *
+ * Class with static methods to valide Strings in the application
+ *
+ * @author Fredrik Pedersen
+ * @since 15-04-2019
+ */
+
 public class StringValidator {
 
     private StringValidator() { //Private constructor to deter initialization

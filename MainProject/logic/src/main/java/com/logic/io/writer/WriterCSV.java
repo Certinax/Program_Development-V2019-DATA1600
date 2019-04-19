@@ -8,11 +8,14 @@ import java.util.Arrays;
 
 public class WriterCSV {
 
-    public static boolean writeClient(Object client) {
+    private WriterCSV() { //Private constructor to deter initialization
+    }
+
+    public static boolean writeObject(Object object, String path, boolean append) {
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter("clients.csv");
-            fileWriter.write(createCSVInfo(client));
+            fileWriter = new FileWriter(path, append);
+            fileWriter.write(createCSVInfo(object));
             fileWriter.flush();
         } catch (Exception e) {
             e.printStackTrace();
