@@ -24,7 +24,7 @@ public class CombinedTesting {
         Employer emp1 = new Employer("DNB", "Bjørvika 12", 0166, "Oslo", "Private", "Bank", jobs);
         //System.out.println(emp1);
 
-        WriterCSV.writeClient(emp1);
+        WriterCSV.writeClient(emp1, "clients.csv");
     }
 
     public static void employerReader() {
