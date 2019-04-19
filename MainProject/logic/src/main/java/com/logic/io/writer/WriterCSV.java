@@ -89,12 +89,13 @@ public class WriterCSV {
             sb.append(writingCSVInfo(clazz,obj));
 
             // Følgende utkommentert kode er under utvikling
-            /*
+
             sa = writingCSVInfo(clazz, obj).split("\n");
             //structure.addAll(Arrays.asList(sa));
             for(String s : sa) {
-                structure.add(s);
+                System.out.println("CSV" + s + "----");
             }
+            /*
             System.out.println("Printer ut fra arrayList" + structure.toString());
             */
 
