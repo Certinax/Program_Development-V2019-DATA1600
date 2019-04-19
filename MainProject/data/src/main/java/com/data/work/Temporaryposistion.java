@@ -14,7 +14,7 @@ import java.util.UUID;
  *      - What type of job
  *      - Duration for the position
  *      - Which substitutes
- *      - 
+ *      -
  */
 
 public class Temporaryposistion {
