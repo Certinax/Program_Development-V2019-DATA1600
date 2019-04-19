@@ -1,7 +1,7 @@
 package com.data.clients.infoclasses;
 
-import com.logic.exceptions.InvalidMailException;
-import com.logic.validators.DataValidator;
+import com.logic.utilities.exceptions.InvalidMailException;
+import com.logic.utilities.validators.DataValidator;
 
 /**
  * <h1>Email</h1>

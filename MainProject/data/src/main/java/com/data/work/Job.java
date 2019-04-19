@@ -2,7 +2,7 @@ package com.data.work;
 
 import java.util.UUID;
 
-import static com.logic.validators.StringValidator.stringLengthIsValid;
+import static com.logic.utilities.validators.StringValidator.stringLengthIsValid;
 
 /**
  * <h1>Job</h1>

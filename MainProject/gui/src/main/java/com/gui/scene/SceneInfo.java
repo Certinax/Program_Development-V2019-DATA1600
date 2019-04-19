@@ -1,6 +1,6 @@
 package com.gui.scene;
 
-import com.logic.validators.StringValidator;
+import com.logic.utilities.validators.StringValidator;
 
 /**
  * <h1>SceneInfo</h1>

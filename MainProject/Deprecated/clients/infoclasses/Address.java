@@ -1,7 +1,7 @@
 package com.data.clients.infoclasses;
 
-import com.logic.exceptions.InvalidAddressException;
-import com.logic.validators.DataValidator;
+import com.logic.utilities.exceptions.InvalidAddressException;
+import com.logic.utilities.validators.DataValidator;
 
 /**
  * <h1>Address</h1>
