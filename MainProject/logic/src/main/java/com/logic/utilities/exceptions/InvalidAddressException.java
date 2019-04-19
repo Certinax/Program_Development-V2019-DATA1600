@@ -1,4 +1,4 @@
-package com.logic.exceptions;
+package com.logic.utilities.exceptions;
 
 public class InvalidAddressException extends Exception {
     public InvalidAddressException(String msg) {

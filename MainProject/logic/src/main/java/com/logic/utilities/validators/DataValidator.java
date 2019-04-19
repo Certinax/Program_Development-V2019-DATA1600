@@ -1,4 +1,4 @@
-package com.logic.validators;
+package com.logic.utilities.validators;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

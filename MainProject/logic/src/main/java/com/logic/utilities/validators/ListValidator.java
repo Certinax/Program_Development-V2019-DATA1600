@@ -1,8 +1,6 @@
-package com.logic.validators;
+package com.logic.utilities.validators;
 
 import javafx.collections.ObservableList;
-
-import java.util.List;
 
 /**
  * <h1>List Validator</h1>
@@ -23,21 +21,12 @@ public class ListValidator {
     private ListValidator() { //Private constructor to deter initialization
     }
 
-    public static <T> boolean requireNonNullGeneric(List<T> list) {
+    public static <T extends Object> ObservableList<T> requireNonNullObservable(ObservableList<T> list) {
         for (T element : list) {
             if (element == null) {
                 throw new NullPointerException();
             }
         }
-        return true;
-    }
-
-    public static boolean requireNonNullObject(List<Object> list) {
-        for (Object element : list) {
-            if (element == null) {
-                throw new NullPointerException();
-            }
-        }
-        return true;
+        return list;
     }
 }

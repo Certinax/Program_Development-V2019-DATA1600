@@ -1,6 +1,6 @@
-package com.logic.validators;
+package com.logic.utilities.validators;
 
-import com.logic.exceptions.EmptyStringException;
+import com.logic.utilities.exceptions.EmptyStringException;
 
 /**
  * <h1>String Validator</h1>
