@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gui.controllers.RegisterSubstituteController" prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Button layoutX="260.0" layoutY="187.0" mnemonicParsing="false" text="Go Back" onAction="#goToAvailablePositions" />
-    </children>
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
+  <children>
+    <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#goToAvailablePositions" text="Go Back" />
+    <Label layoutX="417.0" layoutY="31.0" text="Register Substitute">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+    <TextField layoutX="17.0" layoutY="400.0" prefWidth="200.0" promptText="example@sample.com" />
+    <TextField layoutX="17.0" layoutY="435.0" prefWidth="200.0" promptText="99106201" />
+    <TextField layoutX="17.0" layoutY="469.0" prefWidth="200.0" promptText="Streetway 10" />
+    <TextField layoutX="17.0" layoutY="502.0" prefWidth="200.0" promptText="1930" />
+    <TextField layoutX="17.0" layoutY="536.0" prefWidth="200.0" promptText="OsloMet" />
+    <TextField layoutX="390.0" layoutY="457.0" prefWidth="200.0" promptText="Software Engineering" />
+      <DatePicker layoutX="17.0" layoutY="319.0" promptText="From" />
+      <DatePicker layoutX="17.0" layoutY="355.0" promptText="To" />
+      <ComboBox layoutX="271.0" layoutY="76.0" prefWidth="150.0" promptText="Industry" />
+      <TextField layoutX="17.0" layoutY="101.0" promptText="Firstname" />
+      <TextField layoutX="17.0" layoutY="152.0" promptText="Lastname" />
+      <TextField layoutX="17.0" layoutY="201.0" prefHeight="25.0" prefWidth="45.0" promptText="Age" />
+      <TextField layoutX="17.0" layoutY="249.0" promptText="Salary" />
+      <Label layoutX="18.0" layoutY="80.0" text="Firstname" />
+      <Label layoutX="18.0" layoutY="135.0" text="Lastname" />
+      <Label layoutX="19.0" layoutY="184.0" text="Age" />
+      <AnchorPane layoutX="19.0" layoutY="232.0">
+         <children>
+            <Label text="Annual Salary Requirement" />
+         </children>
+      </AnchorPane>
+  </children>
 </AnchorPane>

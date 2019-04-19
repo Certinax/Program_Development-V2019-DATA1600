@@ -18,20 +18,20 @@ import com.data.clients.infoclasses.WorkExperience;
  * @since 04-04-2019
  */
 
-public class Subsitute extends Client {
+public class Substitute extends Client {
 
-    private String category;
+    private String industry;
     private Education education;
     private WorkExperience workExperience;
     private WorkExperience workExperience2;
     private int salaryRequirement;
 
-    public Subsitute(Clientinfo clientinfo, String category,
-                     Education education, WorkExperience workExperience, WorkExperience workExperience2,
-                     int salaryRequirement) {
+    public Substitute(Clientinfo clientinfo, String industry,
+                      Education education, WorkExperience workExperience, WorkExperience workExperience2,
+                      int salaryRequirement) {
 
         super(clientinfo);
-        this.category = category;
+        this.industry = industry;
         this.education = education;
         this.workExperience = workExperience;
         this.workExperience2 = workExperience2;
@@ -40,11 +40,11 @@ public class Subsitute extends Client {
     }
 
     public String getCategory() {
-        return category;
+        return industry;
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        this.industry = category;
     }
 
     public Education getEducation() {
@@ -81,7 +81,7 @@ public class Subsitute extends Client {
 
     @Override
     public String toString() {
-        String out = super.toString() + "\nCategory: " + category + "\n" + education.toString() + "\n" + workExperience.toString();
+        String out = super.toString() + "\nCategory: " + industry + "\n" + education.toString() + "\n" + workExperience.toString();
 
         if (workExperience2 != null) {
             out += "\n" + workExperience2.toString();

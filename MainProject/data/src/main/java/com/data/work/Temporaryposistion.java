@@ -1,6 +1,6 @@
 package com.data.work;
 
-import com.data.clients.Subsitute;
+import com.data.clients.Substitute;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,16 +21,16 @@ public class Temporaryposistion {
 
     private Job job;
     private LocalDate[] duration;
-    private ArrayList<Subsitute> subsitutes;
+    private ArrayList<Substitute> substitutes;
     private int numberOfPositions;
     private boolean staffed = false;
     private UUID temporaryPositionID;
 
 
-    public Temporaryposistion(Job job, LocalDate[] duration, ArrayList<Subsitute> subsitutes, int numberOfPositions, boolean staffed) {
+    public Temporaryposistion(Job job, LocalDate[] duration, ArrayList<Substitute> substitutes, int numberOfPositions, boolean staffed) {
         this.job = job;
         this.duration = duration;
-        this.subsitutes = subsitutes;
+        this.substitutes = substitutes;
         this.numberOfPositions = numberOfPositions;
         this.staffed = staffed;
         this.temporaryPositionID = UUID.randomUUID();
@@ -46,12 +46,12 @@ public class Temporaryposistion {
                 '}';
     }
 
-    public ArrayList<Subsitute> getSubsitutes() {
-        return subsitutes;
+    public ArrayList<Substitute> getSubstitutes() {
+        return substitutes;
     }
 
-    public void setSubsitutes(ArrayList<Subsitute> subsitutes) {
-        this.subsitutes = subsitutes;
+    public void setSubstitutes(ArrayList<Substitute> substitutes) {
+        this.substitutes = substitutes;
     }
 
     public UUID getTemporaryPositionID() {

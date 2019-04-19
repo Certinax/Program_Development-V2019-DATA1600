@@ -1,6 +1,7 @@
 module gui {
 
     requires logic;
+    requires data;
     requires javafx.controls;
     requires javafx.fxml;
 

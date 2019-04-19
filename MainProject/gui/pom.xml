@@ -29,6 +29,11 @@
             <artifactId>logic</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>MainGroup</groupId>
+            <artifactId>data</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 
