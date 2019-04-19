@@ -1,22 +1,23 @@
 package com.logic.concurrency;
-
 import com.logic.io.writer.WriterCSV;
-import com.logic.validators.ListValidator;
-import com.logic.validators.StringValidator;
+import com.logic.utilities.validators.ListValidator;
+import com.logic.utilities.validators.StringValidator;
 import javafx.collections.ObservableList;
-
 import java.util.Objects;
 
 /**
  * <h1>CSV Writer Thread</h1>
  *
- * Class for
+ * Class for using the CSV-writer in it's own thread with any object in an ObservableList
+ *
+ * @author Fredrik Pedersen
+ * @since 19-04-2019
  */
 
 public class CSVWriterThread implements Runnable {
 
     private Object objectToWrite = null;
-    private ObservableList<Object> data = null;
+    private ObservableList data = null;
     private String path;
     private boolean append;
 
@@ -26,11 +27,8 @@ public class CSVWriterThread implements Runnable {
         this.append = append;
     }
 
-    public CSVWriterThread(ObservableList<Object> data, String path, boolean append) { //constructor for writing several objects to file
-        if (ListValidator.requireNonNullObject(data)) {
-            this.data = data;
-        }
-
+    public <T extends Object> CSVWriterThread(ObservableList<T> data, String path, boolean append) { //constructor for writing several objects to file
+        this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
     }
@@ -38,6 +36,7 @@ public class CSVWriterThread implements Runnable {
     @Override
     public void run() {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
+        writeObject();
 
     }
 
@@ -45,9 +44,9 @@ public class CSVWriterThread implements Runnable {
         if (objectToWrite != null) {
             WriterCSV.writeObject(objectToWrite, path, append);
         } else {
-            for (int i = 0; i < data.size(); i++) {
-                WriterCSV.writeObject(data.get(i), path, append);
-                if (i == 0) { //
+            for (Object aData : data) {
+                WriterCSV.writeObject(aData, path, append);
+                if (!append) {
                     append = true;
                 }
             }
