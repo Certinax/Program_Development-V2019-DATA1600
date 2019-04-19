@@ -1,9 +1,5 @@
 package com.data;
 
-import com.data.io.reader.ReaderCSV;
-import com.data.io.writer.WriterCSV;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class EmployeeTester {
@@ -56,10 +52,10 @@ public class EmployeeTester {
 
         WriterCSV.writeClient(employee1);*/
 
-        try {
+       /* try {
             System.out.println(ReaderCSV.readClient("clients.csv").toString());
         } catch (IOException ioe) {
             ioe.printStackTrace();
-        }
+        } */
     }
 }
