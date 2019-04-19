@@ -1,7 +1,8 @@
-package com.logic;
+package com.gui;
 
-public class LogicTesting{
+public class CombinedTesting {
 
     public static void main(String[] args) {
+
     }
 }

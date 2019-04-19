@@ -1,6 +1,5 @@
 package com.data;
 
-import com.data.client.Employer;
 import com.data.io.reader.ReaderCSV;
 import com.data.io.writer.WriterCSV;
 

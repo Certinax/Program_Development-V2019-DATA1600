@@ -25,9 +25,6 @@ public class EmployerTester {
         //System.out.println(emp1);
 
         WriterCSV.writeClient(emp1);
-
-
-        //employerReader();
     }
 
     public static void employerReader() {

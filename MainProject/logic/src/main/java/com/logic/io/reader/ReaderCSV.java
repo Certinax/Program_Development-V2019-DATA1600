@@ -1,4 +1,4 @@
-package com.data.io.reader;
+package com.logic.io.reader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
