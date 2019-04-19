@@ -1,7 +1,5 @@
 package com.data.work;
 
-import com.data.clients.Substitute;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +17,7 @@ import java.util.UUID;
 
 public class Temporaryposistion {
 
-    private Job job;
+/*    private Job job;
     private LocalDate[] duration;
     private ArrayList<Substitute> substitutes;
     private int numberOfPositions;
@@ -92,5 +90,5 @@ public class Temporaryposistion {
 
     public void setStaffed(boolean staffed) {
         this.staffed = staffed;
-    }
+    } */
 }

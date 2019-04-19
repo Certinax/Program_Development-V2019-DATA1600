@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /*
 public class Employee extends Client {
 
-    // SSN = Social security number
+    SSN = Social security number
     private int ssn;
     private int age;
     private int salaryRequirement;

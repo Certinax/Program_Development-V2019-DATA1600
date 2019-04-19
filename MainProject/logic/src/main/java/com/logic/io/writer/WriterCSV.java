@@ -1,16 +1,9 @@
-package com.data.io.writer;
+package com.logic.io.writer;
 
-
-import com.data.client.Client;
-
-import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class WriterCSV {
 
