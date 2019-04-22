@@ -1,11 +1,16 @@
 package com.gui;
 
 import com.data.client.Employer;
+import com.data.client.Template;
 import com.logic.io.reader.ReaderCSV;
 import com.logic.io.writer.WriterCSV;
 
 import java.io.IOException;
+import java.security.Key;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CombinedTesting {
 
@@ -21,10 +26,30 @@ public class CombinedTesting {
         jobs.add(job2);
         jobs.add(job3);
         jobs.add(job4);
-        Employer emp1 = new Employer("DNB", "Bjørvika 12", 0166, "Oslo", "Private", "Bank", jobs);
+        Employer emp1 = new Employer("DNB", "Bjørvika 12", 1166, "Oslo", "Private", "Bank", jobs);
         //System.out.println(emp1);
 
         WriterCSV.writeObject(emp1, "clients.csv", false);
+        List<List<String>> clientList = new ArrayList<>();
+        try {
+            clientList = ReaderCSV.readClient("clients.csv");
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        //System.out.println(clientList.toString());
+
+        Map<String,String> template = Template.EMPLOYER.template();
+
+
+        List<String> header = clientList.get(0);
+        for(String s : header) {
+            System.out.println(s);
+        }
+
+        System.out.println(template.keySet());
+
+
+
     }
 
     public static void employerReader() {

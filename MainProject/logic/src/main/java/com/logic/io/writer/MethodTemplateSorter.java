@@ -2,8 +2,7 @@ package com.logic.io.writer;
 
 public final class MethodTemplateSorter {
 
-/*
-    public static String[] template(Object obj) {
+    /*public static String[] template(Object obj) {
         String[] template;
         switch (obj.getClass().getName()) {
             case "com.data.client.Employer":
