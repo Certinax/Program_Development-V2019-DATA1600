@@ -6,6 +6,7 @@ import com.logic.io.reader.ReaderCSV;
 import com.logic.io.writer.WriterCSV;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,8 +48,6 @@ public class CombinedTesting {
         }
 
         System.out.println(template.keySet());
-
-
 
     }
 
