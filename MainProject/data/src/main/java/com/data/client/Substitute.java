@@ -1,9 +1,10 @@
 package com.data.client;
 
-/*
-public class Employee extends Client {
 
-    SSN = Social security number
+import java.util.ArrayList;
+
+public class Substitute extends Client {
+
     private int ssn;
     private int age;
     private int salaryRequirement;
@@ -12,9 +13,9 @@ public class Employee extends Client {
     private ArrayList<String> jobRequirements;
     private ArrayList<String> references;
 
-    public Employee(String firstname, String lastname, String address, int zipcode,
-                    String city, int ssn, int age, int salaryRequirement, ArrayList<String> education,
-                    ArrayList<String> jobExperience, ArrayList<String> jobRequirements, ArrayList<String> references) {
+    public Substitute(String firstname, String lastname, String address, int zipcode,
+                      String city, int ssn, int age, int salaryRequirement, ArrayList<String> education,
+                      ArrayList<String> jobExperience, ArrayList<String> jobRequirements, ArrayList<String> references) {
         super(firstname, lastname, address, zipcode, city);
         this.ssn = ssn;
         this.age = age;
@@ -28,7 +29,7 @@ public class Employee extends Client {
     @Override
     public String toString() {
         return super.toString() +
-                "Employee{" +
+                "Substitute{" +
                 "ssn=" + ssn +
                 ", age=" + age +
                 ", salaryRequirement=" + salaryRequirement +
@@ -94,4 +95,4 @@ public class Employee extends Client {
     public void setReferences(ArrayList<String> references) {
         this.references = references;
     }
-} */
+}

@@ -39,11 +39,6 @@ public class WriterCSV {
         StringBuilder sb = new StringBuilder();
 
         Method[] methods = clazz.getDeclaredMethods();
-        /*Method[] template;
-        if(isSortable(clazz)) {
-            methods = templateSort(MethodTemplateSorter.template(obj), clazz.getDeclaredMethods());
-        }*/
-
 
         // TODO
         //  DENNE BLOKKEN SKAL I EGEN METODE
@@ -57,14 +52,12 @@ public class WriterCSV {
         }*/
 
         String[] template = null;
-        if(obj.getClass().getName().equals("com.data.client.Employee")) {
+        if(obj.getClass().getName().equals("com.data.client.Substitute")) {
             template = employeeTemplate(clazz);
         } else if(obj.getClass().getName().equals("com.data.client.Employer")) {
             template = employerTemplate(clazz);
         }
 
-        // Array to keep track of all methods of the client
-        //Method[] methods = clazz.getDeclaredMethods();
 
         methods = templateSort(template, clazz.getDeclaredMethods());
 
@@ -131,7 +124,7 @@ public class WriterCSV {
     private static String[] employeeTemplate(Class clazz) {
         String[] template;
         switch(clazz.getName()) {
-            case "com.data.client.Employee":
+            case "com.data.client.Substitute":
                 template = new String[] {"getSsn", "getAge", "getSalaryRequirement",
                         "getEducation", "getJobExperience", "getJobRequirements", "getReferences"};
                 break;
@@ -190,16 +183,14 @@ public class WriterCSV {
         try {
             Class<?> clazz = obj.getClass();
 
-            //sb.append(writingCSVInfo(clazz,obj));
-
-            // Følgende utkommentert kode er under utvikling
-
             sa = writingCSVInfo(clazz, obj).split("\n");
             structure.addAll(Arrays.asList(sa));
 
-
-            // Making sure to get all parent classes
-            Class parent = clazz.getSuperclass();
+            // Making sure to get all parent classes if any
+            Class parent = null;
+            if(clazz.getSuperclass() != null) {
+                parent = clazz.getSuperclass();
+            }
             while (parent != null && parent != Object.class) {
                 sa = writingCSVInfo(parent, obj).split("\n");
                 structure.addAll(Arrays.asList(sa));

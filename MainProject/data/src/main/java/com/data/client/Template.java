@@ -4,6 +4,8 @@ import java.util.Map;
 
 import static java.util.Map.entry;
 
+// TODO THIS ENUM IS TEMPORARILY NOT IN USE, REMOVE UPON DELIVERY UNLESS IT BECOMES USEFUL
+
 public enum Template {
 
     SUBSTITUTE() {
