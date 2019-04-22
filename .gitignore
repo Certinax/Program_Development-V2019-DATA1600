@@ -60,3 +60,6 @@ pom.xml.tag
 !lib/*.jar
 !extract-me-first.zip
 !pom.xml
+
+# Specific javaclasses
+CombinedTesting.java
