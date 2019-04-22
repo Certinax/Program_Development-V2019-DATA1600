@@ -59,17 +59,9 @@ public class WriterCSV {
         }
 
 
+
+
         methods = templateSort(template, clazz.getDeclaredMethods());
-
-
-
-        // TODO This block is for debugging purposes, delete upon delivery
-        /*if(clazz.toString().equals("class com.data.client.Client")) {
-            for (Method m : methods) {
-                    System.out.println(m.toString());
-            }
-        }*/
-
 
 
         // Writing headers for the following data
@@ -89,6 +81,7 @@ public class WriterCSV {
         sb.deleteCharAt(sb.length()-1);
         sb.append("\n");
 
+        // Writing info from getters
         for (Method m : methods) {
             if (m.getParameterTypes().length == 0) {
                 if (m.getName().startsWith("get") || m.getName().startsWith("is")) {
@@ -162,22 +155,14 @@ public class WriterCSV {
         return false;
     }
 
-    private static boolean isEmpty(Method m) {
-        return m.getName() != null;
-    }
-
     private static String createCSVInfo(Object obj, String[]... sortingTemplate) throws IllegalArgumentException, IllegalAccessException,
             InvocationTargetException {
         if(obj == null) {
             throw new IllegalArgumentException("No object to write");
         }
 
-
         StringBuilder sb = new StringBuilder();
-
         ArrayList<String> structure = new ArrayList<String>();
-
-
         String[] sa = null;
 
         try {
@@ -186,7 +171,7 @@ public class WriterCSV {
             sa = writingCSVInfo(clazz, obj).split("\n");
             structure.addAll(Arrays.asList(sa));
 
-            // Making sure to get all parent classes if any
+            // Making sure to get parent classes if any
             Class parent = null;
             if(clazz.getSuperclass() != null) {
                 parent = clazz.getSuperclass();
@@ -200,13 +185,19 @@ public class WriterCSV {
             e.printStackTrace();
         }
 
-        // TODO sortertingsløkkene nedenfor skal i egne private metoder
+        sb.append(inheritanceDataSorter(structure));
+
+        return sb.toString();
+    }
+
+    private static String inheritanceDataSorter(ArrayList<String> classData) {
+        StringBuilder sb = new StringBuilder();
 
         // This code sort the data from an object so all the titles comes in order based on
         // the class hierarchy (Class A, B. B extends A. A params before B params)
-        for(int i = structure.size()-1; i >= 0; i--) {
+        for(int i = classData.size()-1; i >= 0; i--) {
             if(i%2 == 0) {
-                sb.append(structure.get(i));
+                sb.append(classData.get(i));
                 sb.append(";");
             }
             if(i == 0) {
@@ -217,9 +208,9 @@ public class WriterCSV {
 
         // This code sort the data from an object so all the information comes in order
         // based on the class hierarchy
-        for(int i = structure.size()-1; i >= 0; i--) {
+        for(int i = classData.size()-1; i >= 0; i--) {
             if(i%2 != 0) {
-                sb.append(structure.get(i));
+                sb.append(classData.get(i));
                 sb.append(";");
             }
             if(i == 0) {
@@ -230,18 +221,4 @@ public class WriterCSV {
 
         return sb.toString();
     }
-
-
-    private static String[] trimStringEnd(String[] sa) {
-        String[] saNew = new String[sa.length];
-        for(int i = 0; i < sa.length; i++) {
-            saNew[i] = sa[i].substring(sa[i].length()).replace(",","");
-        }
-        for(String s : saNew) {
-            System.out.println(s);
-        }
-        return saNew;
-    }
-
-
 }
