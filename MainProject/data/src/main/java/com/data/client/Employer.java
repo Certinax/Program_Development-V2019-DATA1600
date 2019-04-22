@@ -2,7 +2,7 @@ package com.data.client;
 
 import java.util.ArrayList;
 
-public class Employer extends Client {
+public class Employer extends Client implements TemplateSort {
 
     private String sector;
     private String industry;
@@ -13,6 +13,10 @@ public class Employer extends Client {
         this.sector = sector;
         this.industry = industry;
         this.joblist = joblist;
+    }
+
+    public String[] template() {
+        return new String[] {"getSector","getIndustry","getJoblist"};
     }
 
     @Override

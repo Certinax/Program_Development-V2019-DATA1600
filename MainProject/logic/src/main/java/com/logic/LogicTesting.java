@@ -15,6 +15,6 @@ public class LogicTesting{
         list1.add(person);
         //list1.add(person2);
 
-        ListValidator.requireNonNull(list1);
+        //ListValidator.requireNonNull(list1);
     }
 }

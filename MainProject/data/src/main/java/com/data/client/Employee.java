@@ -1,10 +1,9 @@
 package com.data.client;
 
 import java.util.ArrayList;
-/*
-public class Employee extends Client {
+public class Employee extends Client implements TemplateSort{
 
-    SSN = Social security number
+    // SSN = Social security number
     private int ssn;
     private int age;
     private int salaryRequirement;
@@ -96,4 +95,3 @@ public class Employee extends Client {
         this.references = references;
     }
 }
-*/

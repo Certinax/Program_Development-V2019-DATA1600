@@ -1,5 +1,8 @@
 package com.data;
 
+import com.data.client.Employee;
+import com.logic.io.writer.WriterCSV;
+
 import java.util.ArrayList;
 
 public class EmployeeTester {
@@ -40,7 +43,7 @@ public class EmployeeTester {
         references.add(ref1);
         references.add(ref2);
         references.add(ref3);
-        /*
+
 
         Employee employee1 = new Employee("Mathias", "Lund Ahrn",
                 "Fjellstadvegen 31", 2009, "Nordby",
@@ -50,7 +53,7 @@ public class EmployeeTester {
 
         //System.out.println(employee1.getEducation());
 
-        WriterCSV.writeClient(employee1);*/
+        WriterCSV.writeObject(employee1, "employees.csv", false);
 
        /* try {
             System.out.println(ReaderCSV.readClient("clients.csv").toString());
