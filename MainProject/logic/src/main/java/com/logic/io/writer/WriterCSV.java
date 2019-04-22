@@ -58,10 +58,9 @@ public class WriterCSV {
             template = employerTemplate(clazz);
         }
 
-
-
-
-        methods = templateSort(template, clazz.getDeclaredMethods());
+        if(template != null) {
+            methods = templateSort(template, clazz.getDeclaredMethods());
+        }
 
 
         // Writing headers for the following data
@@ -182,6 +181,7 @@ public class WriterCSV {
                 parent = parent.getSuperclass();
             }
         } catch (Exception e) {
+            // TODO - SJEKK HVA SLAGS EXCEPTION SOM SKAL KASTES HER
             e.printStackTrace();
         }
 
