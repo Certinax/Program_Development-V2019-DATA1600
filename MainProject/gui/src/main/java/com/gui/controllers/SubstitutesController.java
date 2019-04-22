@@ -12,6 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 
+import java.util.ArrayList;
+
 public class SubstitutesController implements Controller {
 
     @FXML
@@ -31,14 +33,33 @@ public class SubstitutesController implements Controller {
     private void initialize() {
 
         //TODO DISSE KAN UTKOMMENTERES NÅR FILLESEREN ER FERDIG IMPLEMENTERT
-       // ArrayList<Substitute> dataFromFile = ReaderCaller.readCSVSubstitutesInThread();
+        //ArrayList<Substitute> dataFromFile = ReaderCaller.readCSVSubstitutesInThread();
+
+        //TODO DISSE KONSTRUKTØRNE OG EKSTRA ARRAYLISTENE FJERNES NÅR LESEREN ER KLAR!
+        ArrayList<String> job = new ArrayList<>();
+        job.add("asdaasd");
+        ArrayList<String> education = new ArrayList<>();
+        education.add("asd");
+        ArrayList<String> jobxp = new ArrayList<>();
+        jobxp.add("aisd");
+        ArrayList<String> ref = new ArrayList<>();
+        ref.add("asdasd");
+
+        Substitute sub1 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
+                1232123, 22, 22, education, jobxp, job,  ref);
+
+        Substitute sub2 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
+                1232123, 22, 22, education, jobxp, job,  ref);
+
+        ArrayList<Substitute> dataFromFile = new ArrayList<>();
+        dataFromFile.add(sub1);
+        dataFromFile.add(sub2);
+
+        /* --------------------------------------------------- */
+
         data = tableView.getItems();
 
-
-        //TODO DISSE KAN UTKOMMENTERES NÅR FILLESEREN ER FERDIG IMPLEMENTERT
-      /*  for (Substitute substituteFromFile : dataFromFile) {
-            data.add(new Substitute(substituteFromFile.getUsername(), substituteFromFile.getLastname(), subtsituteFromFile.getEmail()));
-        } */
+        data.addAll(dataFromFile);
 
         setFiltering();
         tableView.setEditable(true);
@@ -55,13 +76,13 @@ public class SubstitutesController implements Controller {
 
     @FXML
     private void save(ActionEvent event) {
-        CSVWriterThreadStarter.startWriter(data, "substitutes.csv", false);
+        CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false);
     }
 
 
     @Override
     public void exit() {
-        CSVWriterThreadStarter.startWriter(data, "substitutes.csv", false);
+        CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false);
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
