@@ -9,4 +9,5 @@ module logic {
     exports com.logic.customTextFields;
     exports com.logic.utilities.exceptions;
     exports com.logic.utilities.validators;
+    exports com.logic.concurrency;
 }
