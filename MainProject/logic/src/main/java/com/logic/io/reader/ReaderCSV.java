@@ -30,6 +30,5 @@ public class ReaderCSV {
         }
         return clients;
     }
-
 }
 

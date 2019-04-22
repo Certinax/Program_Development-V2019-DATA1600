@@ -84,10 +84,10 @@ public class WriterCSV {
             if (m.getParameterTypes().length == 0) {
                 if (m.getName().startsWith("get")) {
                     if (m.invoke(obj) != null) {
-                        sb.append(m.getName().substring(3)).append(",");
+                        sb.append(m.getName().substring(3)).append(";");
                     }
                 } else if (m.getName().startsWith("is")) {
-                    sb.append(m.getName().substring(2)).append(",");
+                    sb.append(m.getName().substring(2)).append(";");
                 }
             }
         }
@@ -102,7 +102,7 @@ public class WriterCSV {
                     if (m.invoke(obj) != null) {
                         System.out.println(m.invoke(obj).toString());
                         sb.append(m.invoke(obj).toString());
-                        sb.append(",");
+                        sb.append(";");
                     }
                 }
             }
@@ -216,7 +216,7 @@ public class WriterCSV {
         for(int i = structure.size()-1; i >= 0; i--) {
             if(i%2 == 0) {
                 sb.append(structure.get(i));
-                sb.append(",");
+                sb.append(";");
             }
             if(i == 0) {
                 sb.deleteCharAt(sb.length()-1);
@@ -229,7 +229,7 @@ public class WriterCSV {
         for(int i = structure.size()-1; i >= 0; i--) {
             if(i%2 != 0) {
                 sb.append(structure.get(i));
-                sb.append(",");
+                sb.append(";");
             }
             if(i == 0) {
                 sb.deleteCharAt(sb.length()-1);
