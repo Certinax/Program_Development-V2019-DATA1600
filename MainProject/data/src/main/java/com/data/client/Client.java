@@ -1,10 +1,10 @@
 package com.data.client;
 
-public abstract class Client {
+public abstract class Client implements TemplateSort {
 
     private String name;
-    //private String firstname;
-    //private String lastname;
+    private String firstname;
+    private String lastname;
     private String address;
     private int zipcode;
     private String city;
@@ -20,20 +20,20 @@ public abstract class Client {
     }
 
     // Constructor for Employees with first and lastname
-    /*public Client(String firstname, String lastname, String address, int zipcode, String city) {
+    public Client(String firstname, String lastname, String address, int zipcode, String city) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
         this.zipcode = zipcode;
         this.city = city;
-    }*/
+    }
 
     @Override
     public String toString() {
         if(!employer) {
             return "Client{" +
-                    //"firstname='" + firstname + '\'' +
-                    //", lastname='" + lastname + '\'' +
+                    "firstname='" + firstname + '\'' +
+                    ", lastname='" + lastname + '\'' +
                     ", address='" + address + '\'' +
                     ", zipcode=" + zipcode +
                     ", city='" + city + '\'' +
@@ -44,46 +44,32 @@ public abstract class Client {
                     ", address='" + address + '\'' +
                     ", zipcode=" + zipcode +
                     ", city='" + city + '\'' +
-                    ", employer=" + employer +
                     '}';
         }
     }
 
-    public String getName() {
-        return name;
-    }
+
+    public String getFirstname() { return firstname; }
+
+    public void setFirstname(String firstname) { this.firstname = firstname; }
+
+    public String getLastname() { return lastname; }
+
+    public void setLastname(String lastname) { this.lastname = lastname; }
+
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
     }
-    /*
-    public String getFirstname() {
-        return firstname;
-    }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }*/
-
-    public String getAddress() {
-        return address;
-    }
+    public String getAddress() { return address; }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public int getZipcode() {
-        return zipcode;
-    }
+    public int getZipcode() { return zipcode; }
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
@@ -98,18 +84,5 @@ public abstract class Client {
     }
 
 
-    /*public static class Builder {
-        // Required parameters
-        private final String address;
-        private final int zipcode;
-        private final String City;
-
-        // Optional parameters
-        private final String name = "";
-        private final String firstname = "";
-        private final String lastname = "";
-
-        public builder()
-    }*/
 }
 
