@@ -1,9 +1,12 @@
 package com.gui;
 
+import com.data.client.SortingTemplates;
 import com.data.client.Substitute;
 import com.logic.io.writer.WriterCSV;
+import com.logic.io.writer.WriterCSV2;
 
-import java.util.ArrayList;
+import java.lang.reflect.Method;
+import java.util.*;
 
 public class CombinedTesting {
 
@@ -11,18 +14,28 @@ public class CombinedTesting {
 
 
         ArrayList<String> job = new ArrayList<>();
-        job.add("asdaasd");
+        job.add("Job");
         ArrayList<String> education = new ArrayList<>();
-        education.add("asd");
+        education.add("Education");
         ArrayList<String> jobxp = new ArrayList<>();
-        jobxp.add("aisd");
+        jobxp.add("JobXp");
         ArrayList<String> ref = new ArrayList<>();
-        ref.add("asdasd");
+        ref.add("References");
 
         Substitute sub1 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
-                1232123, 22, 22, education, jobxp, job,  ref);
+                1232123, 22, 30, education, jobxp, job,  ref);
 
-        WriterCSV.writeObject(sub1, "employees.csv", true);
+        //WriterCSV.writeObject(sub1, "employees.csv", true);
+
+       try {
+            WriterCSV2.writeObject(sub1, "test.csv", true, SortingTemplates.substituteTemplate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+        //Method[] methods = sub1.getClass().getDeclaredMethods();
+        //System.out.println(methods[1].getName());
     }
-
 }
