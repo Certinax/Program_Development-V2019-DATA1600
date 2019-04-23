@@ -9,11 +9,6 @@ import javafx.collections.ObservableList;
  *
  * @author Fredrik Pedersen
  * @since 15-04-2019
- *
- * NB! NB! MB! NB! NB! NB! NB!
- * Tried to make the return type of these a list so the methods could be used in the same
- * way as i.e the StringValidator-methods. Couldn't get that to work, so revise these before
- * hand-in!
  */
 
 public class ListValidator {

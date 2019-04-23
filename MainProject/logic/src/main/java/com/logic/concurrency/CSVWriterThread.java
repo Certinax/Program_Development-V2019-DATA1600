@@ -33,7 +33,7 @@ public class CSVWriterThread implements Runnable {
         this.template = template;
     }
 
-    protected  <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { //constructor for writing several objects to file
+    protected <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { //constructor for writing several objects to file
         this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
@@ -45,7 +45,7 @@ public class CSVWriterThread implements Runnable {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
         try {
             writeObject();
-        } catch (Exception e) { //TODO THIS EXCEPTION HANDLING IS NOT SUFFICIENT! FIX LATER
+        } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { //Exceptions thrown to run must be handled here
             e.printStackTrace();
         }
     }
