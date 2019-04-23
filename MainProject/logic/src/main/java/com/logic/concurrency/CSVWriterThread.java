@@ -1,8 +1,12 @@
 package com.logic.concurrency;
 import com.logic.io.writer.WriterCSV;
+import com.logic.io.writer.WriterCSV2;
 import com.logic.utilities.validators.ListValidator;
 import com.logic.utilities.validators.StringValidator;
 import javafx.collections.ObservableList;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
 /**
@@ -20,14 +24,15 @@ public class CSVWriterThread implements Runnable {
     private ObservableList data = null;
     private String path;
     private boolean append;
+    private String[] template;
 
-    public CSVWriterThread(Object objectToWrite, String path, boolean append) { //contructor for writing only one object to file
+    public CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { //contructor for writing only one object to file
         this.objectToWrite = Objects.requireNonNull(objectToWrite);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
     }
 
-    public <T extends Object> CSVWriterThread(ObservableList<T> data, String path, boolean append) { //constructor for writing several objects to file
+    public <T extends Object> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { //constructor for writing several objects to file
         this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
@@ -36,16 +41,19 @@ public class CSVWriterThread implements Runnable {
     @Override
     public void run() {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
-        writeObject();
-
+        try {
+            writeObject();
+        } catch (Exception e) { //TODO THIS EXCEPTION HANDLING IS NOT SUFFICIENT! FIX LATER
+            e.printStackTrace();
+        }
     }
 
-    private void writeObject() {
+    private void writeObject() throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
         if (objectToWrite != null) {
-            WriterCSV.writeObject(objectToWrite, path, append);
+            WriterCSV2.writeObject(objectToWrite, path, append, template);
         } else {
             for (Object aData : data) {
-                WriterCSV.writeObject(aData, path, append);
+                WriterCSV2.writeObject(aData, path, append, template);
                 if (!append) {
                     append = true;
                 }

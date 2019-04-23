@@ -1,5 +1,6 @@
 package com.gui.controllers;
 
+import com.data.client.SortingTemplates;
 import com.data.client.Substitute;
 import com.logic.concurrency.CSVWriterThreadStarter;
 import javafx.collections.ObservableList;
@@ -76,13 +77,13 @@ public class SubstitutesController implements Controller {
 
     @FXML
     private void save(ActionEvent event) {
-        CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false);
+        CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
     }
 
 
     @Override
     public void exit() {
-        CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false);
+        CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/

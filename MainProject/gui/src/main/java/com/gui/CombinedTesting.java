@@ -28,7 +28,7 @@ public class CombinedTesting {
         //WriterCSV.writeObject(sub1, "employees.csv", true);
 
        try {
-            WriterCSV2.writeObject(sub1, "test.csv", true, SortingTemplates.substituteTemplate());
+            WriterCSV2.writeObject(sub1, "resources/substitutes.csv", true, SortingTemplates.substituteTemplate());
         } catch (Exception e) {
             e.printStackTrace();
         }

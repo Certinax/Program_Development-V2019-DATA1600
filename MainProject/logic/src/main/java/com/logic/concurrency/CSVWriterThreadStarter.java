@@ -13,8 +13,8 @@ public class CSVWriterThreadStarter {
     private CSVWriterThreadStarter() { //Private constructor to deter initialization
     }
 
-    public static <T extends Object> void startWriter(Object objectToWrite, String path, boolean append) {
-        Thread writerThread = new Thread(new CSVWriterThread(objectToWrite, path, append));
+    public static <T extends Object> void startWriter(Object objectToWrite, String path, boolean append, String[] template) {
+        Thread writerThread = new Thread(new CSVWriterThread(objectToWrite, path, append, template));
         writerThread.start();
 
         try {
@@ -24,8 +24,8 @@ public class CSVWriterThreadStarter {
         }
     }
 
-    public static <T extends Object> void startWriter(ObservableList<T> data, String path, boolean append) {
-        Thread writerThread = new Thread(new CSVWriterThread(data, path, append));
+    public static <T extends Object> void startWriter(ObservableList<T> data, String path, boolean append, String[] template) {
+        Thread writerThread = new Thread(new CSVWriterThread(data, path, append, template));
         writerThread.start();
 
         try {
