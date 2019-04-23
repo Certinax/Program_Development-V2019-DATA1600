@@ -32,9 +32,12 @@ public class SubstitutesController implements Controller {
 
     @FXML
     private void initialize() {
+        data = tableView.getItems();
 
         //TODO DISSE KAN UTKOMMENTERES NÅR FILLESEREN ER FERDIG IMPLEMENTERT
-        //ArrayList<Substitute> dataFromFile = ReaderCaller.readCSVSubstitutesInThread();
+        //data.addAll(ReaderCaller.readCSVSubstitutesInThread());
+
+        /* ------------------------------ Testing Code - TO BE REMOVED ------------------------------------------- */
 
         //TODO DISSE KONSTRUKTØRNE OG EKSTRA ARRAYLISTENE FJERNES NÅR LESEREN ER KLAR!
         ArrayList<String> job = new ArrayList<>();
@@ -55,15 +58,12 @@ public class SubstitutesController implements Controller {
         ArrayList<Substitute> dataFromFile = new ArrayList<>();
         dataFromFile.add(sub1);
         dataFromFile.add(sub2);
+        data.addAll(dataFromFile);
 
         /* --------------------------------------------------- */
 
-        data = tableView.getItems();
-
-        data.addAll(dataFromFile);
-
-        setFiltering();
         tableView.setEditable(true);
+        setFiltering();
         setAddressColumnEditable();
         setLnameColumnEditable();
         setUnameColumnEditable();
@@ -77,13 +77,22 @@ public class SubstitutesController implements Controller {
 
     @FXML
     private void save(ActionEvent event) {
-        CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+        try {
+            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+        } catch (InterruptedException e) {
+        e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+    }
     }
 
 
     @Override
     public void exit() {
-        CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+
+        try {
+            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+        } catch (InterruptedException e) {
+            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+        }
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
