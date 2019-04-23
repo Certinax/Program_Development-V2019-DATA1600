@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class WriterCSV2 {
 
-    public static void writeObject(Object obj, String path, boolean append, Object... sortingTemplate) throws Exception, IOException {
+    public static void writeObject(Object obj, String path, boolean append, Object... sortingTemplate) throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
         FileWriter filewriter = null;
 
         File file = new File(path);
