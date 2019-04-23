@@ -26,16 +26,18 @@ public class CSVWriterThread implements Runnable {
     private boolean append;
     private String[] template;
 
-    public CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { //contructor for writing only one object to file
+    protected CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { //contructor for writing only one object to file
         this.objectToWrite = Objects.requireNonNull(objectToWrite);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
+        this.template = template;
     }
 
-    public <T extends Object> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { //constructor for writing several objects to file
+    protected  <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { //constructor for writing several objects to file
         this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
+        this.template = template;
     }
 
     @Override
