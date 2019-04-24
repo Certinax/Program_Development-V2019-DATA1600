@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
-public class WriterCSV2 {
+public class WriterCSV {
 
     // TODO Hvorfor tar denne inn Object sortingTemplate og ikke String[]
     // sortingTemplate når template-klassen returnerer String[]?

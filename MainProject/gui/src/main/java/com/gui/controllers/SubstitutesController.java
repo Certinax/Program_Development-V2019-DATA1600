@@ -40,8 +40,6 @@ public class SubstitutesController implements Controller {
         /* ------------------------------ Testing Code - TO BE REMOVED ------------------------------------------- */
 
         //TODO DISSE KONSTRUKTØRNE OG EKSTRA ARRAYLISTENE FJERNES NÅR LESEREN ER KLAR!
-        ArrayList<String> job = new ArrayList<>();
-        job.add("asdaasd");
         ArrayList<String> education = new ArrayList<>();
         education.add("asd");
         ArrayList<String> jobxp = new ArrayList<>();
@@ -50,10 +48,11 @@ public class SubstitutesController implements Controller {
         ref.add("asdasd");
 
         Substitute sub1 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
-                1232123, 22, 22, education, jobxp, job,  ref);
+                12, 221324, "IT", education, jobxp,  ref);
 
         Substitute sub2 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
-                1232123, 22, 22, education, jobxp, job,  ref);
+                12, 221324, "IT", education, jobxp,  ref);
+
 
         ArrayList<Substitute> dataFromFile = new ArrayList<>();
         dataFromFile.add(sub1);

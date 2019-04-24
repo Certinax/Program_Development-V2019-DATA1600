@@ -8,33 +8,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="444.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
   <children>
     <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#goToAvailablePositions" text="Go Back" />
-    <Label layoutX="417.0" layoutY="31.0" text="Register Substitute">
+    <Label layoutX="211.0" layoutY="18.0" text="Register Substitute">
          <font>
             <Font size="20.0" />
          </font></Label>
-    <TextField layoutX="17.0" layoutY="400.0" prefWidth="200.0" promptText="example@sample.com" />
-    <TextField layoutX="17.0" layoutY="435.0" prefWidth="200.0" promptText="99106201" />
-    <TextField layoutX="17.0" layoutY="469.0" prefWidth="200.0" promptText="Streetway 10" />
-    <TextField layoutX="17.0" layoutY="502.0" prefWidth="200.0" promptText="1930" />
-    <TextField layoutX="17.0" layoutY="536.0" prefWidth="200.0" promptText="OsloMet" />
-    <TextField layoutX="390.0" layoutY="457.0" prefWidth="200.0" promptText="Software Engineering" />
-      <DatePicker layoutX="17.0" layoutY="319.0" promptText="From" />
-      <DatePicker layoutX="17.0" layoutY="355.0" promptText="To" />
-      <ComboBox layoutX="271.0" layoutY="76.0" prefWidth="150.0" promptText="Industry" />
-      <TextField layoutX="17.0" layoutY="101.0" promptText="Firstname" />
-      <TextField layoutX="17.0" layoutY="152.0" promptText="Lastname" />
-      <TextField layoutX="17.0" layoutY="201.0" prefHeight="25.0" prefWidth="45.0" promptText="Age" />
-      <TextField layoutX="17.0" layoutY="249.0" promptText="Salary" />
-      <Label layoutX="18.0" layoutY="80.0" text="Firstname" />
-      <Label layoutX="18.0" layoutY="135.0" text="Lastname" />
-      <Label layoutX="19.0" layoutY="184.0" text="Age" />
-      <AnchorPane layoutX="19.0" layoutY="232.0">
-         <children>
-            <Label text="Annual Salary Requirement" />
-         </children>
-      </AnchorPane>
+    <TextField layoutX="228.0" layoutY="132.0" prefHeight="26.0" prefWidth="128.0" promptText="example@sample.com" />
+    <TextField layoutX="228.0" layoutY="184.0" prefHeight="26.0" prefWidth="128.0" promptText="99106201" />
+    <TextField layoutX="396.0" layoutY="132.0" prefHeight="26.0" prefWidth="128.0" promptText="Streetway 10" />
+    <TextField layoutX="396.0" layoutY="184.0" prefHeight="26.0" prefWidth="128.0" promptText="1930" />
+    <TextField layoutX="15.0" layoutY="345.0" prefHeight="26.0" prefWidth="128.0" promptText="OsloMet" />
+    <TextField layoutX="154.0" layoutY="345.0" prefHeight="26.0" prefWidth="128.0" promptText="Software Engineering" />
+      <DatePicker layoutX="426.0" layoutY="345.0" prefHeight="26.0" prefWidth="103.0" promptText="From" />
+      <DatePicker layoutX="304.0" layoutY="345.0" prefHeight="26.0" prefWidth="103.0" promptText="To" />
+      <ComboBox layoutX="205.0" layoutY="418.0" prefWidth="150.0" promptText="Industry" />
+      <TextField layoutX="51.0" layoutY="132.0" prefHeight="26.0" prefWidth="128.0" promptText="Firstname" />
+      <TextField layoutX="51.0" layoutY="184.0" prefHeight="26.0" prefWidth="128.0" promptText="Lastname" />
+      <TextField layoutX="51.0" layoutY="236.0" prefHeight="26.0" prefWidth="128.0" promptText="Age" />
+      <TextField layoutX="228.0" layoutY="236.0" prefHeight="26.0" prefWidth="128.0" promptText="Salary" />
+      <Label layoutX="53.0" layoutY="115.0" text="Firstname" />
+      <Label layoutX="53.0" layoutY="167.0" text="Lastname" />
+      <Label layoutX="53.0" layoutY="219.0" text="Age" />
+      <Label layoutX="230.0" layoutY="219.0" text="Salary Requirement" />
+      <Label layoutX="230.0" layoutY="115.0" text="Email Address" />
+      <Label layoutX="230.0" layoutY="167.0" text="Phonenumber" />
+      <Label layoutX="398.0" layoutY="115.0" text="Stretname" />
+      <Label layoutX="398.0" layoutY="167.0" text="Zip Code" />
+      <TextField layoutX="396.0" layoutY="236.0" prefHeight="26.0" prefWidth="128.0" promptText="City" />
+      <Label layoutX="398.0" layoutY="219.0" text="City" />
+      <Label layoutX="236.0" layoutY="72.0" text="Personalia">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="236.0" layoutY="287.0" text="Education">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="327.0" text="Schoolname" />
+      <Label layoutX="155.0" layoutY="327.0" text="Line of Education" />
+      <Label layoutX="305.0" layoutY="327.0" text="Started" />
+      <Label layoutX="427.0" layoutY="327.0" text="Finnished" />
   </children>
 </AnchorPane>
