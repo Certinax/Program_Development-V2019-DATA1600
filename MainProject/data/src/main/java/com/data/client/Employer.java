@@ -2,47 +2,68 @@ package com.data.client;
 
 import java.util.ArrayList;
 
+/**
+ * <h1>Employer</h1>
+ *
+ * Class for representing employers
+ * Utilizes the Builder-pattern to create objects
+ *
+ * @author Mathias Lund Ahrn, Fredrik Pedersen
+ * @since 24-04-2019
+ */
+
 public class Employer extends Client {
 
-    private String sector;
-    private String industry;
+    private String name;
+    private boolean privateSector;
     private ArrayList<String> joblist;
 
-    public Employer(String name, String address, int zipcode, String city, String sector, String industry, ArrayList<String> joblist) {
-        super(name, address, zipcode, city);
-        this.sector = sector;
-        this.industry = industry;
-        this.joblist = joblist;
+
+    private Employer(Builder builder) {
+        super(builder);
+        name = builder.name;
+        privateSector = builder.privateSector;
+        joblist = builder.joblist;
     }
 
-    public String[] template() {
-        return new String[] {"getSector","getIndustry","getJoblist"};
+    public static class Builder extends Client.Builder<Builder> {
+        // Required parameters
+        private final String name;
+        private final boolean privateSector;
+
+        // Optional parameters
+        private ArrayList<String> joblist = null;
+
+        // Builder for required parameters
+        public Builder(String name, String address, int zipcode, String city, Boolean privateSector, String industry) {
+            super(address, zipcode, city, industry);
+            this.name = name;
+            this.privateSector = privateSector;
+        }
+
+        // Builders for optional parameters
+        public Builder joblist(ArrayList<String> joblist) {
+            this.joblist = joblist;
+            return self();
+        }
+
+        @Override
+        public Builder self() {
+            return this;
+        }
+
+        @Override
+        public Employer build() {
+            return new Employer(this);
+        }
     }
 
-    @Override
-    public String toString() {
-        return super.toString() +
-                "Employer{" +
-                "sector='" + sector + '\'' +
-                ", industry='" + industry + '\'' +
-                ", joblist=" + joblist +
-                '}';
+    public Boolean getPrivateSector() {
+        return privateSector;
     }
 
-    public String getSector() {
-        return sector;
-    }
-
-    public void setSector(String sector) {
-        this.sector = sector;
-    }
-
-    public String getIndustry() {
-        return industry;
-    }
-
-    public void setIndustry(String industry) {
-        this.industry = industry;
+    public void setPrivateSector(Boolean privateSector) {
+        this.privateSector = privateSector;
     }
 
     public ArrayList<String> getJoblist() {
@@ -52,5 +73,15 @@ public class Employer extends Client {
     public void setJoblist(ArrayList<String> joblist) {
         this.joblist = joblist;
     }
-}
 
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Employer{" +
+                "name='" + name + '\'' +
+                "sector='" + privateSector + '\'' +
+                ", joblist=" + joblist +
+                '}';
+    }
+}

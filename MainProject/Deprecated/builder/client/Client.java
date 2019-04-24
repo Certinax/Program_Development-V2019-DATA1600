@@ -10,25 +10,6 @@ public abstract class Client {
     private String city;
     private boolean employer = false;
 
-    /*
-    // Constructor for Employers with only one name
-    public Client(String name, String address, int zipcode, String city) {
-        this.name = name;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.city = city;
-        employer = true;
-    }
-
-    // Constructor for Employees with first and lastname
-    public Client(String firstname, String lastname, String address, int zipcode, String city) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.city = city;
-    }*/
-
     abstract static class Builder<T extends Builder<T>> {
         private String name;
         private String firstname;
@@ -134,19 +115,4 @@ public abstract class Client {
     public void setCity(String city) {
         this.city = city;
     }
-
-
-    /*public static class Builder {
-        // Required parameters
-        private final String address;
-        private final int zipcode;
-        private final String City;
-
-        // Optional parameters
-        private final String name = "";
-        private final String firstname = "";
-        private final String lastname = "";
-
-        public builder()
-    }*/
 }

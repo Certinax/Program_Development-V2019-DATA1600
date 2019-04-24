@@ -1,10 +1,10 @@
 package client;
 
 import java.util.ArrayList;
-/*
+
 public class Employee extends Client {
 
-    // SSN = Social security number
+    SSN = Social security number
     private int ssn;
     private int age;
     private int salaryRequirement;
@@ -13,7 +13,6 @@ public class Employee extends Client {
     private ArrayList<String> jobRequirements;
     private ArrayList<String> references;
 
-    /*
     public Employee(String firstname, String lastname, String address, int zipcode,
                     String city, int ssn, int age, int salaryRequirement, ArrayList<String> education,
                     ArrayList<String> jobExperience, ArrayList<String> jobRequirements, ArrayList<String> references) {
@@ -25,8 +24,8 @@ public class Employee extends Client {
         this.jobExperience = jobExperience;
         this.jobRequirements = jobRequirements;
         this.references = references;
-    }*/
-/*
+    }
+
     @Override
     public String toString() {
         return super.toString() +
@@ -97,4 +96,3 @@ public class Employee extends Client {
         this.references = references;
     }
 }
-*/

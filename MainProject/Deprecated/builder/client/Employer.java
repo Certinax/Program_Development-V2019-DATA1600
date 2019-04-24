@@ -8,14 +8,8 @@ public class Employer extends Client {
     private String industry;
     private ArrayList<String> joblist;
 
-    /*public Employer(String name, String address, int zipcode, String city, String sector, String industry, ArrayList<String> joblist) {
-        super(name, address, zipcode, city);
-        this.sector = sector;
-        this.industry = industry;
-        this.joblist = joblist;
-    }*/
 
-        public static class Builder extends Client.Builder<Builder> {
+    public static class Builder extends Client.Builder<Builder> {
             // Required parameters
             private final String sector;
             private final String industry;
