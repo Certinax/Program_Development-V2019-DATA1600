@@ -1,5 +1,4 @@
 package com.logic.concurrency;
-import com.logic.io.writer.WriterCSV;
 import com.logic.utilities.validators.ListValidator;
 import com.logic.utilities.validators.StringValidator;
 import javafx.collections.ObservableList;
@@ -36,11 +35,11 @@ public class CSVWriterThread implements Runnable {
     @Override
     public void run() {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
-        writeObject();
+        //writeObject();
 
     }
 
-    private void writeObject() {
+    /*private void writeObject() {
         if (objectToWrite != null) {
             WriterCSV.writeObject(objectToWrite, path, append);
         } else {
@@ -51,7 +50,7 @@ public class CSVWriterThread implements Runnable {
                 }
             }
         }
-    }
+    }*/
 
 
 }

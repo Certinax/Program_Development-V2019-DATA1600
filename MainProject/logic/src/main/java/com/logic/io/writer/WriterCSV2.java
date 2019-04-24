@@ -5,15 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class WriterCSV2 {
 
     public static void writeObject(Object obj, String path, boolean append, Object... sortingTemplate) throws Exception, IOException {
-        FileWriter filewriter = null;
+        FileWriter filewriter;
 
         File file = new File(path);
 
@@ -40,6 +37,13 @@ public class WriterCSV2 {
         Class clazz = obj.getClass();
         Map<String, String> objectInfo = new HashMap<>();
 
+        // TODO This can be handled in a seperate method
+        boolean sorting = false;
+        if(sortingTemplate.length > 0) {
+            sorting = true;
+        }
+
+        // TODO Check for parameterized constructor call
         objectInfo.putAll(generateClassMethodsAndData(clazz, obj));
         while (hasParent(clazz)) {
             clazz = clazz.getSuperclass();
@@ -51,7 +55,7 @@ public class WriterCSV2 {
         // Ideen er nå at jeg har et map med alle metoder og verdiene deres
         // Neste steg er å sortere keysettet etter sortingTemplate
         if(header) {
-            if (sortingTemplate != null) {
+            if (sorting) {
                 preparedObjectInfo = templateSort(objectInfo, sortingTemplate);
                 csvInfo.append(generateCSVStringHeader(preparedObjectInfo));
                 csvInfo.append(generateCSVStringData(preparedObjectInfo));
@@ -59,14 +63,16 @@ public class WriterCSV2 {
                 System.out.println(csvInfo.toString());
             } else {
                 csvInfo.append(generateCSVStringData(objectInfo));
+                csvInfo.append("\n");
             }
-        } else if(!header) {
-            if(sortingTemplate != null) {
+        } else if(!header) { // TODO Evaluate this later
+            if(sorting) {
                 preparedObjectInfo = templateSort(objectInfo,sortingTemplate);
                 csvInfo.append(generateCSVStringData(preparedObjectInfo));
                 csvInfo.append("\n");
             } else {
                 csvInfo.append(generateCSVStringData(objectInfo));
+                csvInfo.append("\n");
             }
         }
         csvInfo.deleteCharAt(csvInfo.length()-1);
@@ -100,6 +106,7 @@ public class WriterCSV2 {
     }
 
     private static boolean hasParent(Class clazz) {
+        // TODO Refactor to simpler version
         if (clazz.getSuperclass() != null && clazz.getSuperclass() != Object.class) {
             return true;
         }
@@ -129,7 +136,7 @@ public class WriterCSV2 {
 
     private static Map<String, String> templateSort(Map<String, String> objectinfo, Object... sortingTemplate) {
         LinkedHashMap<String, String> sortedData = new LinkedHashMap<>();
-        for(int i = 0; i < sortingTemplate.length; i++) {
+        for(int i = 0; i < sortingTemplate.length; i++) { // TODO Evaluate if a foreach loop is more convenient
             for (Map.Entry<String,String> entry : objectinfo.entrySet()) {
                 if(sortingTemplate[i].equals(entry.getKey())) {
                     sortedData.put(entry.getKey(), entry.getValue());

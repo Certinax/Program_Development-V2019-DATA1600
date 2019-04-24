@@ -1,5 +1,8 @@
 package com.data.client;
 
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public abstract class Client implements TemplateSort {
 
     private String name;
@@ -10,8 +13,13 @@ public abstract class Client implements TemplateSort {
     private String city;
     private boolean employer = false;
 
+    // Id generator
+    private UUID id;
+    //private static final AtomicInteger idGenerator = new AtomicInteger(1000);
+
     // Constructor for Employers with only one name
     public Client(String name, String address, int zipcode, String city) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
@@ -21,6 +29,7 @@ public abstract class Client implements TemplateSort {
 
     // Constructor for Employees with first and lastname
     public Client(String firstname, String lastname, String address, int zipcode, String city) {
+        this.id = UUID.randomUUID();
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
@@ -48,6 +57,9 @@ public abstract class Client implements TemplateSort {
         }
     }
 
+    public UUID getId() {
+        return id;
+    }
 
     public String getFirstname() { return firstname; }
 
