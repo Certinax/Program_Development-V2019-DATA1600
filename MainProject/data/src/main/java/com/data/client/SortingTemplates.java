@@ -4,8 +4,8 @@ package com.data.client;
 public final class SortingTemplates {
 
     public static String[] substituteTemplate() {
-        return new String[] {"getId", "getFirstname", "getLastname", "getAddress", "getZipcode", "getCity", "getSsn", "getSalaryRequirement",
-        "getEducation", "getJobExperience", "getJobRquirements", "getReferences"};
+        return new String[] {"getId", "getFirstname", "getLastname", "getAddress", "getZipcode", "getCity", "getAge", "getSalaryRequirement",
+        "getIndustry", "getEducation", "getJobExperience", "getReferences"};
     }
 
     public static String[] testTemplate() {
