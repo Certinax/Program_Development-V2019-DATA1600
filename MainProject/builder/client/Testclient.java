@@ -1,8 +1,8 @@
-package com.data.client;
+package client;
 
-import java.util.UUID;
+import java.io.Serializable;
 
-public abstract class Client {
+public class Testclient implements Serializable {
 
     private String name;
     private String firstname;
@@ -12,13 +12,8 @@ public abstract class Client {
     private String city;
     private boolean employer = false;
 
-    // Id generator
-    private UUID id;
-    //private static final AtomicInteger idGenerator = new AtomicInteger(1000);
-
     // Constructor for Employers with only one name
-    public Client(String name, String address, int zipcode, String city) {
-        this.id = UUID.randomUUID();
+    public Testclient(String name, String address, int zipcode, String city) {
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
@@ -27,8 +22,7 @@ public abstract class Client {
     }
 
     // Constructor for Employees with first and lastname
-    public Client(String firstname, String lastname, String address, int zipcode, String city) {
-        this.id = UUID.randomUUID();
+    public Testclient(String firstname, String lastname, String address, int zipcode, String city) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
@@ -52,35 +46,46 @@ public abstract class Client {
                     ", address='" + address + '\'' +
                     ", zipcode=" + zipcode +
                     ", city='" + city + '\'' +
+                    ", employer=" + employer +
                     '}';
         }
     }
 
-    public UUID getId() {
-        return id;
+    public String getName() {
+        return name;
     }
-
-    public String getFirstname() { return firstname; }
-
-    public void setFirstname(String firstname) { this.firstname = firstname; }
-
-    public String getLastname() { return lastname; }
-
-    public void setLastname(String lastname) { this.lastname = lastname; }
-
-    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getAddress() { return address; }
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public int getZipcode() { return zipcode; }
+    public int getZipcode() {
+        return zipcode;
+    }
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
@@ -93,7 +98,4 @@ public abstract class Client {
     public void setCity(String city) {
         this.city = city;
     }
-
-
 }
-
