@@ -13,7 +13,12 @@ public class WriterCSV2 {
     // sortingTemplate når template-klassen returnerer String[]?
     // TODO Får masse feilmeldinger når jeg prøver å skrive objekter til fil uten en
     // template. Fikse dette, eller bare gjøre template påkrevd?
-    public static void writeObject(Object obj, String path, boolean append, Object... sortingTemplate)
+    public static void writeObject(Object obj, String path, boolean append) throws IllegalAccessException,
+            InvocationTargetException, ClassNotFoundException, IOException {
+        writeObject(obj, path, append, new String[0]);
+    }
+
+    public static void writeObject(Object obj, String path, boolean append, String[] sortingTemplate)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
         FileWriter filewriter = null;
 
@@ -35,7 +40,7 @@ public class WriterCSV2 {
 
     }
 
-    private static String generateCSVInfo(Object obj, boolean header, Object... sortingTemplate)
+    private static String generateCSVInfo(Object obj, boolean header, String[] sortingTemplate)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException {
 
         Objects.requireNonNull(obj);
@@ -139,7 +144,7 @@ public class WriterCSV2 {
         return classData;
     }
 
-    private static Map<String, String> templateSort(Map<String, String> objectinfo, Object... sortingTemplate) {
+    private static Map<String, String> templateSort(Map<String, String> objectinfo, String[] sortingTemplate) {
         LinkedHashMap<String, String> sortedData = new LinkedHashMap<>();
         for (int i = 0; i < sortingTemplate.length; i++) { // TODO Evaluate if a foreach loop is more convenient
             for (Map.Entry<String, String> entry : objectinfo.entrySet()) {
