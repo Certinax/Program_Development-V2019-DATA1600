@@ -2,8 +2,10 @@ package com.gui.scene;
 
 import com.gui.controllers.Controller;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,7 +29,8 @@ public enum SceneManager {
     private Stage primaryStage = null;
     private final Map<SceneName, SceneInfo> scenes;
     private boolean initialized;
-
+    private Screen screen = Screen.getPrimary();
+    private Rectangle2D bounds = screen.getVisualBounds();
     private Controller activeController;
 
     SceneManager() {
@@ -73,6 +76,19 @@ public enum SceneManager {
         initialized = true;
     }
 
+    public void setFullscreen() {
+        primaryStage.setMaximized(true);
+        primaryStage.setFullScreen(true);
+    }
+
+    public void setWindowed() {
+        primaryStage.setFullScreen(false);
+        primaryStage.setX(bounds.getMinX());
+        primaryStage.setY(bounds.getMinY());
+        primaryStage.setWidth((bounds.getWidth())/1.5);
+        primaryStage.setHeight((bounds.getHeight())/1.2);
+    }
+
     /**
      * Method used for navigating scenes
      *
@@ -99,6 +115,8 @@ public enum SceneManager {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle(sceneInfo.getSceneName());
+            primaryStage.setWidth((Screen.getPrimary().getBounds().getWidth())/1.5);
+            primaryStage.setHeight((Screen.getPrimary().getBounds().getHeight())/1.2);
         } catch (IOException e) {
             e.printStackTrace();
         }

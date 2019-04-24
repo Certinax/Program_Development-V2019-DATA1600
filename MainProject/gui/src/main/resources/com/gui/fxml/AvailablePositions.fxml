@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.AvailablePositionsController">
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.AvailablePositionsController">
   <children>
       <Label fx:id="label" layoutX="263.0" layoutY="60.0" minHeight="16.0" minWidth="69.0" text="WELCOME!" />
       <Label fx:id="error" layoutX="110.0" layoutY="81.0" text="Wrong username or password!" textFill="RED" visible="false" />
@@ -15,6 +15,8 @@
       <Button layoutX="240.0" layoutY="269.0" mnemonicParsing="false" onAction="#goToRegisterSubstitute" text="Register substitutes!" />
       <Button layoutX="25.0" layoutY="269.0" mnemonicParsing="false" onAction="#goToSubstitutes" text="To substitutes!" />
       <Button layoutX="25.0" layoutY="164.0" mnemonicParsing="false" onAction="#goToTakenPositions" text="To Taken positions!" />
+      <Button layoutX="11.0" layoutY="45.0" mnemonicParsing="false" onAction="#setFullscreenMode" text="Fullscreen" />
+      <Button layoutX="14.0" layoutY="87.0" mnemonicParsing="false" onAction="#setWindowedMode" text="Windowed" />
   </children>
   <stylesheets>
     <URL value="@../css/WelcomeScreen.css" />

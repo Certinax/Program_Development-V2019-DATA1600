@@ -39,6 +39,16 @@ public class AvailablePositionsController implements Controller {
         sceneManager.changeScene(SceneName.TAKENPOSITIONS);
     }
 
+    @FXML
+    private void setFullscreenMode(ActionEvent event) {
+        sceneManager.setFullscreen();
+    }
+
+    @FXML
+    private void setWindowedMode() {
+        sceneManager.setWindowed();
+    }
+
     @Override
     public void exit() {
 
