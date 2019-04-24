@@ -1,4 +1,5 @@
 package com.logic.concurrency;
+
 import com.logic.io.writer.WriterCSV;
 import com.logic.io.writer.WriterCSV2;
 import com.logic.utilities.validators.ListValidator;
@@ -12,7 +13,8 @@ import java.util.Objects;
 /**
  * <h1>CSV Writer Thread</h1>
  *
- * Class for using the CSV-writer in it's own thread with any object in an ObservableList
+ * Class for using the CSV-writer in it's own thread with any object in an
+ * ObservableList
  *
  * @author Fredrik Pedersen
  * @since 19-04-2019
@@ -26,14 +28,22 @@ public class CSVWriterThread implements Runnable {
     private boolean append;
     private String[] template;
 
-    protected CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { //contructor for writing only one object to file
+    protected CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { // contructor for
+                                                                                                      // writing only
+                                                                                                      // one object to
+                                                                                                      // file
         this.objectToWrite = Objects.requireNonNull(objectToWrite);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
         this.template = template;
     }
 
-    protected <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { //constructor for writing several objects to file
+    protected <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { // constructor
+                                                                                                            // for
+                                                                                                            // writing
+                                                                                                            // several
+                                                                                                            // objects
+                                                                                                            // to file
         this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
@@ -45,7 +55,14 @@ public class CSVWriterThread implements Runnable {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
         try {
             writeObject();
-        } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { //Exceptions thrown to run must be handled here
+        } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { // Exceptions
+                                                                                                                // thrown
+                                                                                                                // to
+                                                                                                                // run
+                                                                                                                // must
+                                                                                                                // be
+                                                                                                                // handled
+                                                                                                                // here
             e.printStackTrace();
         }
     }
@@ -61,7 +78,6 @@ public class CSVWriterThread implements Runnable {
                 }
             }
         }
-    }
-
+    }*/
 
 }

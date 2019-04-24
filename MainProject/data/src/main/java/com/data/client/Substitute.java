@@ -13,10 +13,27 @@ public class Substitute extends Client {
     private ArrayList<String> jobRequirements;
     private ArrayList<String> references;
 
-    public Substitute(String firstname, String lastname, String address, int zipcode,
-                      String city, int ssn, int age, int salaryRequirement, ArrayList<String> education,
-                      ArrayList<String> jobExperience, ArrayList<String> jobRequirements, ArrayList<String> references) {
-        super(firstname, lastname, address, zipcode, city);
+    public Substitute(
+            String firstname,
+            String lastname,
+            String address,
+            int zipcode,
+            String city,
+            int ssn,
+            int age,
+            int salaryRequirement,
+            ArrayList<String> education,
+            ArrayList<String> jobExperience,
+            ArrayList<String> jobRequirements,
+            ArrayList<String> references)
+    {
+        super(
+            firstname,
+            lastname,
+            address,
+            zipcode,
+            city
+        );
         this.ssn = ssn;
         this.age = age;
         this.salaryRequirement = salaryRequirement;
