@@ -67,6 +67,8 @@ public enum SceneManager {
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = Objects.requireNonNull(primaryStage, "Primary stage cannot be null, please provide a Stage object");
         this.primaryStage.setTitle("Bad Fantasy");
+        this.primaryStage.setWidth((Screen.getPrimary().getBounds().getWidth())/1.5);
+        this.primaryStage.setHeight((Screen.getPrimary().getBounds().getHeight())/1.2);
         primaryStage.setOnCloseRequest(WindowEvent -> {
                 if (activeController != null) {
                     activeController.exit();
@@ -115,8 +117,6 @@ public enum SceneManager {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle(sceneInfo.getSceneName());
-            primaryStage.setWidth((Screen.getPrimary().getBounds().getWidth())/1.5);
-            primaryStage.setHeight((Screen.getPrimary().getBounds().getHeight())/1.2);
         } catch (IOException e) {
             e.printStackTrace();
         }

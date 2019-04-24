@@ -1,7 +1,6 @@
 package com.data.client;
 
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Client implements TemplateSort {
 

@@ -1,7 +1,6 @@
 package com.logic.concurrency;
 
 import com.logic.io.writer.WriterCSV;
-import com.logic.io.writer.WriterCSV2;
 import com.logic.utilities.validators.ListValidator;
 import com.logic.utilities.validators.StringValidator;
 import javafx.collections.ObservableList;
@@ -28,22 +27,14 @@ public class CSVWriterThread implements Runnable {
     private boolean append;
     private String[] template;
 
-    protected CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { // contructor for
-                                                                                                      // writing only
-                                                                                                      // one object to
-                                                                                                      // file
+    protected CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { // contructor for writing only one object to file
         this.objectToWrite = Objects.requireNonNull(objectToWrite);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
         this.template = template;
     }
 
-    protected <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { // constructor
-                                                                                                            // for
-                                                                                                            // writing
-                                                                                                            // several
-                                                                                                            // objects
-                                                                                                            // to file
+    protected <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { // constructor for writing several objects to file
         this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
@@ -55,29 +46,22 @@ public class CSVWriterThread implements Runnable {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
         try {
             writeObject();
-        } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { // Exceptions
-                                                                                                                // thrown
-                                                                                                                // to
-                                                                                                                // run
-                                                                                                                // must
-                                                                                                                // be
-                                                                                                                // handled
-                                                                                                                // here
+        } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { // Exceptions thrown to run must be handled here
             e.printStackTrace();
         }
     }
 
     private void writeObject() throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
         if (objectToWrite != null) {
-            WriterCSV2.writeObject(objectToWrite, path, append, template);
+            WriterCSV.writeObject(objectToWrite, path, append, template);
         } else {
             for (Object aData : data) {
-                WriterCSV2.writeObject(aData, path, append, template);
+                WriterCSV.writeObject(aData, path, append, template);
                 if (!append) {
                     append = true;
                 }
             }
         }
-    }*/
+    }
 
 }

@@ -2,7 +2,7 @@ package com.data.client;
 
 import java.util.ArrayList;
 
-public class Employer extends Client implements TemplateSort {
+public class Employer extends Client {
 
     private String sector;
     private String industry;

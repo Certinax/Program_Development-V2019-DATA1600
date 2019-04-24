@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Substitute extends Client {
 
-    private int ssn;
     private int age;
     private int salaryRequirement;
     private String industry;
@@ -19,7 +18,6 @@ public class Substitute extends Client {
             String address,
             int zipcode,
             String city,
-            int ssn,
             int age,
             int salaryRequirement,
             String industry,
@@ -34,7 +32,6 @@ public class Substitute extends Client {
             zipcode,
             city
         );
-        this.ssn = ssn;
         this.age = age;
         this.industry = industry;
         this.salaryRequirement = salaryRequirement;
@@ -47,7 +44,6 @@ public class Substitute extends Client {
     public String toString() {
         return super.toString() +
                 "Substitute{" +
-                "ssn=" + ssn +
                 ", age=" + age +
                 ", salaryRequirement=" + salaryRequirement +
                 ", industry=" + industry +
@@ -55,14 +51,6 @@ public class Substitute extends Client {
                 ", jobExperience=" + jobExperience +
                 ", references=" + references +
                 '}';
-    }
-
-    public int getSsn() {
-        return ssn;
-    }
-
-    public void setSsn(int ssn) {
-        this.ssn = ssn;
     }
 
     public int getAge() {
