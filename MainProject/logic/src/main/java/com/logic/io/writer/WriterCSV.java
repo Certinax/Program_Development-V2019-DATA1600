@@ -29,11 +29,10 @@ public class WriterCSV implements Writer {
         FileWriter filewriter = null;
 
         File file = new File(path);
-
-        System.out.println(file.length());
+        System.out.println(file);
 
         boolean header = false;
-        if (file.length() == 0) {
+        if (file.length() == 0 || !append && file.length() > 0) {
             header = true;
         }
 
@@ -76,7 +75,6 @@ public class WriterCSV implements Writer {
                 csvInfo.append(generateCSVStringHeader(preparedObjectInfo));
                 csvInfo.append(generateCSVStringData(preparedObjectInfo));
                 csvInfo.append("\n");
-                System.out.println(csvInfo.toString());
             } else {
                 csvInfo.append(generateCSVStringHeader(objectInfo));
                 csvInfo.append(generateCSVStringData(objectInfo));
