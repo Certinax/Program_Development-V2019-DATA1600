@@ -28,8 +28,8 @@ public class CSVWriterThreadStarter {
      *
      */
 
-    public static void startWriter(Object objectToWrite, String path, boolean append) throws InterruptedException {
-        Thread writerThread = new Thread(new CSVWriterThread(objectToWrite, path, append));
+    public static void startWriter(Object objectToWrite, String path, boolean append, String[] template) throws InterruptedException {
+        Thread writerThread = new Thread(new CSVWriterThread(objectToWrite, path, append, template));
         writerThread.start();
         writerThread.join();
     }
@@ -47,8 +47,8 @@ public class CSVWriterThreadStarter {
      *                              cleared when this exception is thrown.
      */
 
-    public static <T> void startWriter(ObservableList<T> data, String path, boolean append) throws InterruptedException {
-        Thread writerThread = new Thread(new CSVWriterThread(data, path, append));
+    public static <T> void startWriter(ObservableList<T> data, String path, boolean append, String[] template) throws InterruptedException {
+        Thread writerThread = new Thread(new CSVWriterThread(data, path, append, template));
         writerThread.start();
         writerThread.join();
     }

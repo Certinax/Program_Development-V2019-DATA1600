@@ -83,10 +83,10 @@ public class SubstitutesController implements Controller {
     @FXML
     private void save(ActionEvent event) {
         try {
-            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false);
+            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
         } catch (InterruptedException e) {
-        e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
-    }
+            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+        }
     }
 
 
@@ -94,7 +94,7 @@ public class SubstitutesController implements Controller {
     public void exit() {
 
         try {
-            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false);
+            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
         } catch (InterruptedException e) {
             e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
         }

@@ -17,11 +17,8 @@ import java.util.*;
 
 public class WriterCSV {
 
-    // TODO Hvorfor tar denne inn Object sortingTemplate og ikke String[]
-    // sortingTemplate når template-klassen returnerer String[]?
-    // TODO Får masse feilmeldinger når jeg prøver å skrive objekter til fil uten en
-    // template. Fikse dette, eller bare gjøre template påkrevd?
-
+    // TODO Hvorfor tar denne inn Object sortingTemplate og ikke String[] sortingTemplate når template-klassen returnerer String[]?
+    // TODO Får masse feilmeldinger når jeg prøver å skrive objekter til fil uten en template. Fikse dette, eller bare gjøre template påkrevd?
     public static void writeObject(Object obj, String path, boolean append) throws IllegalAccessException,
             InvocationTargetException, ClassNotFoundException, IOException {
         writeObject(obj, path, append, new String[0]);
