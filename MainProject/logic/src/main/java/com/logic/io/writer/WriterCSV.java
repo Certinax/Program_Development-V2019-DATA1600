@@ -1,8 +1,6 @@
 package com.logic.io.writer;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -29,7 +27,6 @@ public class WriterCSV implements Writer {
         FileWriter filewriter = null;
 
         File file = new File(path);
-        System.out.println(file);
 
         boolean header = false;
         if (file.length() == 0 || !append && file.length() > 0) {
@@ -37,11 +34,17 @@ public class WriterCSV implements Writer {
         }
 
         String objInStringFormat = generateCSVInfo(obj, header, sortingTemplate);
-
-        filewriter = new FileWriter(path, append);
-        filewriter.write(objInStringFormat);
-        filewriter.flush();
-        filewriter.close();
+        try {
+            filewriter = new FileWriter(file, append);
+            filewriter.write(objInStringFormat);
+        } catch (IOException e) {
+            throw new IOException("Failed to write to file");
+        } finally {
+            if(filewriter != null) {
+                filewriter.flush();
+                filewriter.close();
+            }
+        }
 
     }
 
