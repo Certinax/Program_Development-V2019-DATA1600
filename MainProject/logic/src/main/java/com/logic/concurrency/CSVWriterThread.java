@@ -25,28 +25,17 @@ public class CSVWriterThread implements Runnable {
     private ObservableList data = null;
     private String path;
     private boolean append;
-    private String[] template;
 
-    protected CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { // contructor for
-                                                                                                      // writing only
-                                                                                                      // one object to
-                                                                                                      // file
+    protected CSVWriterThread(Object objectToWrite, String path, boolean append) { // contructor for writing only one object to file
         this.objectToWrite = Objects.requireNonNull(objectToWrite);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
-        this.template = template;
     }
 
-    protected <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { // constructor
-                                                                                                            // for
-                                                                                                            // writing
-                                                                                                            // several
-                                                                                                            // objects
-                                                                                                            // to file
+    protected <T> CSVWriterThread(ObservableList<T> data, String path, boolean append) { // constructor for writing several objects to file
         this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
         this.append = append;
-        this.template = template;
     }
 
     @Override
@@ -54,14 +43,7 @@ public class CSVWriterThread implements Runnable {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
         try {
             writeObject();
-        } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { // Exceptions
-                                                                                                                // thrown
-                                                                                                                // to
-                                                                                                                // run
-                                                                                                                // must
-                                                                                                                // be
-                                                                                                                // handled
-                                                                                                                // here
+        } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { // Exceptions thrown to run must be handled here
             e.printStackTrace();
         }
     }
@@ -69,10 +51,10 @@ public class CSVWriterThread implements Runnable {
     private void writeObject()
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
         if (objectToWrite != null) {
-            WriterCSV.writeObject(objectToWrite, path, append, template);
+            WriterCSV.writeObject(objectToWrite, path, append);
         } else {
             for (Object aData : data) {
-                WriterCSV.writeObject(aData, path, append, template);
+                WriterCSV.writeObject(aData, path, append);
                 if (!append) {
                     append = true;
                 }

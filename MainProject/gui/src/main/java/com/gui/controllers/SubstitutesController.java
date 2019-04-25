@@ -39,25 +39,31 @@ public class SubstitutesController implements Controller {
 
         /* ------------------------------ Testing Code - TO BE REMOVED ------------------------------------------- */
 
-        //TODO DISSE KONSTRUKTØRNE OG EKSTRA ARRAYLISTENE FJERNES NÅR LESEREN ER KLAR!
+
         ArrayList<String> education = new ArrayList<>();
-        education.add("asd");
+        education.add("OsloMet");
+        education.add("Software Engineering");
+        education.add("2017");
         ArrayList<String> jobxp = new ArrayList<>();
-        jobxp.add("aisd");
+        jobxp.add("WikborgRein");
+        jobxp.add("2017");
+        jobxp.add("2019");
         ArrayList<String> ref = new ArrayList<>();
-        ref.add("asdasd");
+        ref.add("Kim Knudsen");
+        ref.add("kimmelim@mail.com");
+        ref.add("99106201");
 
-        /*Substitute sub1 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
-                12, 221324, "IT", education, jobxp,  ref);
+        Substitute sub1 = new Substitute.Builder("Petter", "Olsen", "Sveitsrupveien 20", 24,
+                1212, "Oslo", "Banking").salaryRequirement(220000).education(education).workExperience(jobxp).workReference(ref).build();
 
-        Substitute sub2 = new Substitute.("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
-                12, 221324, "IT", education, jobxp,  ref);
+        Substitute sub2 = new Substitute.Builder("Victor", "Pishva", "Sveitsrupveien 20", 25,
+                2007, "Oslo", "Banking").salaryRequirement(200000).education(education).workExperience(jobxp).workReference(ref).build();
 
 
         ArrayList<Substitute> dataFromFile = new ArrayList<>();
         dataFromFile.add(sub1);
         dataFromFile.add(sub2);
-        data.addAll(dataFromFile);*/
+        data.addAll(dataFromFile);
 
         /* --------------------------------------------------- */
 
@@ -77,7 +83,7 @@ public class SubstitutesController implements Controller {
     @FXML
     private void save(ActionEvent event) {
         try {
-            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false);
         } catch (InterruptedException e) {
         e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
     }
@@ -88,7 +94,7 @@ public class SubstitutesController implements Controller {
     public void exit() {
 
         try {
-            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false);
         } catch (InterruptedException e) {
             e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
         }
