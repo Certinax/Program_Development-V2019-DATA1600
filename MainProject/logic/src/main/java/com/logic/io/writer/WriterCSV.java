@@ -7,6 +7,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 
+/**
+ * This class writes objects to csv file.
+ * It can take an template input as an string array for sorting the data in desired order
+ *
+ * @Author Mathias Lund Ahrn
+ * @since  18-04-2019
+ */
+
 public class WriterCSV {
 
     // TODO Hvorfor tar denne inn Object sortingTemplate og ikke String[]
