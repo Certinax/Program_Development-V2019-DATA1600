@@ -47,17 +47,17 @@ public class SubstitutesController implements Controller {
         ArrayList<String> ref = new ArrayList<>();
         ref.add("asdasd");
 
-        Substitute sub1 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
+        /*Substitute sub1 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
                 12, 221324, "IT", education, jobxp,  ref);
 
-        Substitute sub2 = new Substitute("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
+        Substitute sub2 = new Substitute.("Ole", "Kristiansen", "Hovligata 12", 1121, "Oslo",
                 12, 221324, "IT", education, jobxp,  ref);
 
 
         ArrayList<Substitute> dataFromFile = new ArrayList<>();
         dataFromFile.add(sub1);
         dataFromFile.add(sub2);
-        data.addAll(dataFromFile);
+        data.addAll(dataFromFile);*/
 
         /* --------------------------------------------------- */
 

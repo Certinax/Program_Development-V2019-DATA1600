@@ -72,6 +72,7 @@ public class WriterCSV {
                 csvInfo.append("\n");
                 System.out.println(csvInfo.toString());
             } else {
+                csvInfo.append(generateCSVStringHeader(objectInfo));
                 csvInfo.append(generateCSVStringData(objectInfo));
                 csvInfo.append("\n");
             }
@@ -138,6 +139,8 @@ public class WriterCSV {
             if (method.getParameterTypes().length == 0 && method.getName().startsWith("get")) {
                 if (method.invoke(obj) != null) {
                     classData.put(method.getName(), method.invoke(obj).toString());
+                } else {
+                    classData.put(method.getName(), "");
                 }
             }
         }
