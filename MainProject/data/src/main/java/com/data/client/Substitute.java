@@ -1,5 +1,6 @@
 package com.data.client;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @since 24-04-2019
  */
 
-public class Substitute extends Client {
+public class Substitute extends Client implements Serializable {
 
     private String firstname;
     private String lastname;

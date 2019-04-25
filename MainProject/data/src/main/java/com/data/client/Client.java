@@ -1,5 +1,7 @@
 package com.data.client;
 
+import java.io.Serializable;
+
 /**
  * <h1>Client</h1>
  *
@@ -10,7 +12,7 @@ package com.data.client;
  * @since 24-04-2019
  */
 
-public abstract class Client {
+public abstract class Client implements Serializable {
 
     private String address;
     private int zipcode;

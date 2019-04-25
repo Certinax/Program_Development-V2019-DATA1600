@@ -1,30 +1,65 @@
 package com.gui;
 
+import com.data.client.SortingTemplates;
 import com.data.client.Substitute;
+import com.logic.io.reader.Reader;
+import com.logic.io.reader.ReaderJOBJ;
 import com.logic.io.writer.WriterCSV;
+import com.logic.io.writer.Writer;
+import com.logic.io.writer.WriterJOBJ;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class CombinedTesting {
 
     public static void main(String[] args) {
 
+        ArrayList<String> education = new ArrayList<>();
+        education.add("OsloMet");
+        education.add("Software Engineering");
+        education.add("2017");
         ArrayList<String> jobxp = new ArrayList<>();
-        jobxp.add("Bane Nor");
-        jobxp.add("Deloitte");
-        jobxp.add("DNB");
+        jobxp.add("WikborgRein");
+        jobxp.add("2017");
+        jobxp.add("2019");
+        ArrayList<String> ref = new ArrayList<>();
+        ref.add("Kim Knudsen");
+        ref.add("kimmelim@mail.com");
+        ref.add("99106201");
 
-        Substitute sub1 = new Substitute.Builder("Petter", "Olsen", "Frogner Alle 20", 24,
-                1212, "Oslo", "Banking").salaryRequirement(22).workExperience(jobxp).build();
+        Substitute sub1 = new Substitute.Builder("Petter", "Olsen", "Sveitsrupveien 20", 24,
+                1212, "Oslo", "Banking").salaryRequirement(220000).education(education).workExperience(jobxp).workReference(ref).build();
+
+        Substitute sub2 = new Substitute.Builder("Victor", "Pishva", "Sveitsrupveien 20", 25,
+                2007, "Oslo", "Banking").salaryRequirement(200000).education(education).workExperience(jobxp).workReference(ref).build();
+
 
         System.out.println(sub1);
 
+
+        write(new WriterCSV(), sub1, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+        write(new WriterJOBJ(), sub1, "resources/substitutes.jobj", false);
+        //System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));
+
+    }
+
+    private static void write(Writer writer, Object obj, String path, boolean append, String[] template) {
         try {
-            WriterCSV.writeObject(sub1, "test.csv", true);
-        } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) {
+            writer.writeObject(obj, path, append, template);
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static void write(Writer writer, Object obj, String path, boolean append) {
+        try {
+            writer.writeObject(obj, path, append);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static ArrayList<Object> read(Reader reader, String path) {
+        return reader.readObjects(path);
     }
 }

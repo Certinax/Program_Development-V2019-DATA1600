@@ -44,6 +44,7 @@ public class CSVWriterThread implements Runnable {
     @Override
     public void run() {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
+
         try {
             writeObject();
         } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { // Exceptions thrown to run must be handled here
@@ -51,13 +52,14 @@ public class CSVWriterThread implements Runnable {
         }
     }
 
-    private void writeObject()
-            throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
+    private void writeObject() throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
+        WriterCSV writer = new WriterCSV();
+
         if (objectToWrite != null) {
-            WriterCSV.writeObject(objectToWrite, path, append, template);
+            writer.writeObject(objectToWrite, path, append, template);
         } else {
             for (Object aData : data) {
-                WriterCSV.writeObject(aData, path, append, template);
+                writer.writeObject(aData, path, append, template);
                 if (!append) {
                     append = true;
                 }
