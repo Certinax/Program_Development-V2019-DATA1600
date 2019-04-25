@@ -15,16 +15,16 @@ import java.util.*;
  * @since  18-04-2019
  */
 
-public class WriterCSV {
+public class WriterCSV implements Writer {
 
-    // TODO Hvorfor tar denne inn Object sortingTemplate og ikke String[] sortingTemplate når template-klassen returnerer String[]?
-    // TODO Får masse feilmeldinger når jeg prøver å skrive objekter til fil uten en template. Fikse dette, eller bare gjøre template påkrevd?
-    public static void writeObject(Object obj, String path, boolean append) throws IllegalAccessException,
+    @Override
+    public void writeObject(Object obj, String path, boolean append) throws IllegalAccessException,
             InvocationTargetException, ClassNotFoundException, IOException {
         writeObject(obj, path, append, new String[0]);
     }
 
-    public static void writeObject(Object obj, String path, boolean append, String[] sortingTemplate)
+    @Override
+    public void writeObject(Object obj, String path, boolean append, String[] sortingTemplate)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
         FileWriter filewriter = null;
 
@@ -46,7 +46,7 @@ public class WriterCSV {
 
     }
 
-    private static String generateCSVInfo(Object obj, boolean header, String[] sortingTemplate)
+    private String generateCSVInfo(Object obj, boolean header, String[] sortingTemplate)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException {
 
         Objects.requireNonNull(obj);
@@ -96,7 +96,7 @@ public class WriterCSV {
         return csvInfo.toString();
     }
 
-    private static String generateCSVStringData(Map<String, String> preparedObjectInfo) {
+    private String generateCSVStringData(Map<String, String> preparedObjectInfo) {
         StringBuilder sb = new StringBuilder();
 
         for (Map.Entry<String, String> entry : preparedObjectInfo.entrySet()) {
@@ -109,7 +109,7 @@ public class WriterCSV {
         return sb.toString();
     }
 
-    private static String generateCSVStringHeader(Map<String, String> preparedObjectInfo) {
+    private String generateCSVStringHeader(Map<String, String> preparedObjectInfo) {
         StringBuilder sb = new StringBuilder();
 
         for (Map.Entry<String, String> entry : preparedObjectInfo.entrySet()) {
@@ -122,15 +122,11 @@ public class WriterCSV {
         return sb.toString();
     }
 
-    private static boolean hasParent(Class clazz) {
-        // TODO Refactor to simpler version
-        if (clazz.getSuperclass() != null && clazz.getSuperclass() != Object.class) {
-            return true;
-        }
-        return false;
+    private boolean hasParent(Class clazz) {
+        return clazz.getSuperclass() != null && clazz.getSuperclass() != Object.class;
     }
 
-    private static Map<String, String> generateClassMethodsAndData(Class clazz, Object obj)
+    private Map<String, String> generateClassMethodsAndData(Class clazz, Object obj)
             throws ClassNotFoundException, IllegalArgumentException, InvocationTargetException, IllegalAccessException {
 
         if (clazz == null)
