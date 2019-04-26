@@ -3,6 +3,7 @@ package com.logic.io.reader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class ReaderJOBJ implements Reader {

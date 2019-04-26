@@ -19,6 +19,8 @@ public abstract class Client implements Serializable {
     private String city;
     private String industry;
 
+    protected Client() {};
+
 
     protected Client(Builder<?> builder) {
         this.address = builder.address;

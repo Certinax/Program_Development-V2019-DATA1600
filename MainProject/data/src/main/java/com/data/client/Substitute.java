@@ -23,6 +23,10 @@ public class Substitute extends Client implements Serializable {
     private ArrayList<String> workExperience;
     private ArrayList<String> workReference;
 
+    public Substitute() {
+        super();
+    };
+
     private Substitute(Builder builder) {
         super(builder);
         firstname = builder.firstname;

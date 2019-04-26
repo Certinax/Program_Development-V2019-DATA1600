@@ -36,8 +36,7 @@ public class CombinedTesting {
 
         System.out.println(sub1);
 
-
-        write(new WriterCSV(), sub1, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+        write(new WriterCSV(), sub1, "resources/substitutes.csv", true, SortingTemplates.substituteTemplate());
         write(new WriterJOBJ(), sub1, "resources/substitutes.jobj", false);
         //System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));
 
