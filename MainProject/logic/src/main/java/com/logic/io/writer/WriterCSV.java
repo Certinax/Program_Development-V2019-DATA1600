@@ -1,5 +1,8 @@
 package com.logic.io.writer;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -9,38 +12,45 @@ import java.util.*;
  * This class writes objects to csv file.
  * It can take an template input as an string array for sorting the data in desired order
  *
- * @Author Mathias Lund Ahrn
- * @since  18-04-2019
+ * @Author Mathias Lund Ahrn, Fredrik Pedersen
+ * @since 18-04-2019
  */
 
 public class WriterCSV implements Writer {
 
-    @Override
-    public void writeObject(Object obj, String path, boolean append) throws IllegalAccessException,
+    public void writeObject(Object obj, String path) throws IllegalAccessException,
             InvocationTargetException, ClassNotFoundException, IOException {
-        writeObject(obj, path, append, new String[0]);
+        ObservableList<Object> object = FXCollections.observableArrayList();
+        object.add(obj);
+
+        writeObjects(object, path);
     }
 
-    @Override
-    public void writeObject(Object obj, String path, boolean append, String[] sortingTemplate)
+    public void writeObjects(ObservableList objects, String path)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
+
+
         FileWriter filewriter = null;
-
         File file = new File(path);
+        ArrayList<String> infoToWrite = new ArrayList<>();
+        boolean header = true;
 
-        boolean header = false;
-        if (file.length() == 0 || !append && file.length() > 0) {
-            header = true;
+        for (Object object : objects) {
+            infoToWrite.add(generateCSVInfo(object, header));
+            if (header) {
+                header = false;
+            }
         }
 
-        String objInStringFormat = generateCSVInfo(obj, header, sortingTemplate);
         try {
-            filewriter = new FileWriter(file, append);
-            filewriter.write(objInStringFormat);
+            filewriter = new FileWriter(file);
+            for (String anInfoToWrite : infoToWrite) {
+                filewriter.write(anInfoToWrite);
+            }
         } catch (IOException e) {
             throw new IOException("Failed to write to file");
         } finally {
-            if(filewriter != null) {
+            if (filewriter != null) {
                 filewriter.flush();
                 filewriter.close();
             }
@@ -48,12 +58,14 @@ public class WriterCSV implements Writer {
 
     }
 
-    private String generateCSVInfo(Object obj, boolean header, String[] sortingTemplate)
+    private String generateCSVInfo(Object obj, boolean header)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException {
 
         Objects.requireNonNull(obj);
         Class clazz = obj.getClass();
         Map<String, String> objectInfo = new HashMap<>();
+        String[] sortingTemplate = findTemplate(obj);
+
 
         // TODO This can be handled in a seperate method
         boolean sorting = false;
@@ -150,7 +162,7 @@ public class WriterCSV implements Writer {
         return classData;
     }
 
-    private static Map<String, String> templateSort(Map<String, String> objectinfo, String[] sortingTemplate) {
+    private Map<String, String> templateSort(Map<String, String> objectinfo, String[] sortingTemplate) {
         LinkedHashMap<String, String> sortedData = new LinkedHashMap<>();
         for (int i = 0; i < sortingTemplate.length; i++) { // TODO Evaluate if a foreach loop is more convenient
             for (Map.Entry<String, String> entry : objectinfo.entrySet()) {
@@ -162,4 +174,16 @@ public class WriterCSV implements Writer {
         return sortedData;
     }
 
+    private String[] findTemplate(Object obj) throws InvocationTargetException, IllegalAccessException {
+        Method[] methods = obj.getClass().getDeclaredMethods();
+        String[] template = null;
+
+        for (Method method : methods) {
+            if (method.getName().startsWith("template")) {
+                template = (String[]) method.invoke(obj);
+            }
+        }
+        return template;
+    }
 }
+

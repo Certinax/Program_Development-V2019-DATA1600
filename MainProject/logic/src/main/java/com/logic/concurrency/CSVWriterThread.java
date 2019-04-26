@@ -24,21 +24,15 @@ public class CSVWriterThread implements Runnable {
     private Object objectToWrite = null;
     private ObservableList data = null;
     private String path;
-    private boolean append;
-    private String[] template;
 
-    protected CSVWriterThread(Object objectToWrite, String path, boolean append, String[] template) { // contructor for writing only one object to file
+    protected CSVWriterThread(Object objectToWrite, String path) { // contructor for writing only one object to file
         this.objectToWrite = Objects.requireNonNull(objectToWrite);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
-        this.append = append;
-        this.template = template;
     }
 
-    protected <T> CSVWriterThread(ObservableList<T> data, String path, boolean append, String[] template) { // constructor for writing several objects to file
+    protected <T> CSVWriterThread(ObservableList<T> data, String path) { // constructor for writing several objects to file
         this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
-        this.append = append;
-        this.template = template;
     }
 
     @Override
@@ -46,24 +40,19 @@ public class CSVWriterThread implements Runnable {
         System.out.println("Writing to file with thread " + Thread.currentThread().getId());
 
         try {
-            writeObject();
+            writeObjects();
         } catch (IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { // Exceptions thrown to run must be handled here
             e.printStackTrace();
         }
     }
 
-    private void writeObject() throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
+    private void writeObjects() throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
         WriterCSV writer = new WriterCSV();
 
         if (objectToWrite != null) {
-            writer.writeObject(objectToWrite, path, append, template);
+            writer.writeObject(objectToWrite, path);
         } else {
-            for (Object aData : data) {
-                writer.writeObject(aData, path, append, template);
-                if (!append) {
-                    append = true;
-                }
-            }
+            writer.writeObjects(data, path);
         }
     }
 

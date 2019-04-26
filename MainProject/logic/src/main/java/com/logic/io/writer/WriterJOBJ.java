@@ -1,8 +1,12 @@
 package com.logic.io.writer;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  * <h1>Writer JOBJ</h1>
@@ -15,16 +19,16 @@ import java.io.ObjectOutputStream;
 
 public class WriterJOBJ implements Writer {
 
-    @Override
-    public void writeObject(Object obj, String path, boolean append) throws IOException {
-            FileOutputStream fos = new FileOutputStream(path, append);
-            ObjectOutputStream out = new ObjectOutputStream(fos);
-            out.writeObject(obj);
+    public void writeObject(Object obj, String path) throws IOException {
+        ObservableList<Object> object = FXCollections.observableArrayList();
+        object.add(obj);
+
+        writeObjects(object, path);
     }
 
-    //TODO find out how to serialize an object and write it to a file with a custom header/template
-    @Override
-    public void writeObject(Object obj, String path, boolean append, String[] template) {
-        throw new UnsupportedOperationException("This method haven't been implemented yet!");
+    public <T> void writeObjects(ObservableList<T> objectList, String path) throws IOException {
+        ArrayList<T> serializeableList = new ArrayList<>(objectList);
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(path));
+        out.writeObject(serializeableList);
     }
 }

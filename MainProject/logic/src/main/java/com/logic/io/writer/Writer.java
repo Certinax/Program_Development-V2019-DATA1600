@@ -1,7 +1,5 @@
 package com.logic.io.writer;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * <h1>Writer</h1>
@@ -14,9 +12,4 @@ import java.lang.reflect.InvocationTargetException;
 
 public interface Writer {
 
-    void writeObject(Object obj, String path, boolean append) throws IllegalAccessException,
-    InvocationTargetException, ClassNotFoundException, IOException;
-
-    void writeObject(Object obj, String path, boolean append, String[] sortingTemplate)
-            throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException;
 }

@@ -143,6 +143,11 @@ public class Substitute extends Client implements Serializable {
         this.workReference = workReference;
     }
 
+    public String[] template() {
+        return new String[] {"getFirstname", "getLastname", "getAddress", "getZipcode", "getCity", "getAge", "getSalaryRequirement",
+                "getIndustry", "getEducation", "getWorkExperience", "getWorkReference"};
+    }
+
     @Override
     public String toString() {
         return "Substitute{" +

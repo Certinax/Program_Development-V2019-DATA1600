@@ -1,7 +1,4 @@
-package com.data.client;
-
-
-import java.util.ArrayList;
+package com.logic.io.sorting;
 
 public final class SortingTemplates {
 
