@@ -101,7 +101,9 @@ public class WriterCSV implements Writer {
         StringBuilder sb = new StringBuilder();
 
         for (Map.Entry<String, String> entry : preparedObjectInfo.entrySet()) {
-            sb.append(entry.getValue());
+            String info = entry.getValue();
+            info = info.replaceAll("\\[\\}", "");
+            sb.append(info);
             sb.append(";");
         }
         sb.deleteCharAt(sb.length() - 1);

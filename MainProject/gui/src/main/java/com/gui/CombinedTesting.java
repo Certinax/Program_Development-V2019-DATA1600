@@ -3,11 +3,14 @@ package com.gui;
 import com.data.client.SortingTemplates;
 import com.data.client.Substitute;
 import com.logic.io.reader.Reader;
+import com.logic.io.reader.ReaderCSV;
 import com.logic.io.reader.ReaderJOBJ;
 import com.logic.io.writer.WriterCSV;
 import com.logic.io.writer.Writer;
 import com.logic.io.writer.WriterJOBJ;
+import com.logic.utilities.exceptions.CSVParseException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CombinedTesting {
@@ -40,6 +43,23 @@ public class CombinedTesting {
         write(new WriterJOBJ(), sub1, "resources/substitutes.jobj", false);
         //System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));
 
+        ReaderCSV reader = new ReaderCSV();
+
+        ArrayList<Substitute> sub = new ArrayList<>();
+
+        try {
+            Class clazz = Class.forName("com.data.client.Substitute");
+            sub = reader.read("resources/substitutes.csv", clazz);
+        } catch (ClassNotFoundException | CSVParseException e) {
+            e.printStackTrace();
+        }
+
+        for (Substitute s : sub) {
+            System.out.println(s.toString());
+        }
+        Substitute s = sub.get(2);
+
+        System.out.println(s.getEducation().get(0));
     }
 
     private static void write(Writer writer, Object obj, String path, boolean append, String[] template) {

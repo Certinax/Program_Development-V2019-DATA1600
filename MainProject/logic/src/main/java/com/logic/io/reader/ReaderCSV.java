@@ -30,21 +30,17 @@ public class ReaderCSV {
         return null;
     }
 
-    public <T> T read(String path, Class clazz) throws IOException, CSVParseException {
+    public <T> ArrayList<T> read(String path, Class clazz) throws CSVParseException {
         CSVParser parser = new CSVParser();
-        //System.out.println(parser.getInfo(path).size());
 
         List<List<String>> fileInfo = parser.getInfo(path);
-        System.out.println("Header: " + fileInfo.get(0));
 
-        generateObject(clazz, fileInfo);
-
-        return null;
+        return generateObject(clazz, fileInfo);
 
     }
 
     @SuppressWarnings("unchecked")
-    private <T> T generateObject(Class clazz, List<List<String>> info) {
+    private <T> ArrayList<T> generateObject(Class clazz, List<List<String>> info) {
 
         try {
             Constructor<?> defaultConstructor = getDefaultConstructor(clazz);
@@ -58,20 +54,55 @@ public class ReaderCSV {
 
             // Getting all fields from instance
             Field[] fields = getFields(instance);
+
             // Getting the header list
             List<String> header = info.get(0);
 
-            System.out.println(listComparing(header, fields));
+            // Creating a new lists with only objects
+            List<List<String>> objects = new ArrayList<>();
+            for (int i = 1; i < info.size(); i++) {
+                objects.add(info.get(i));
+            }
 
+            // TODO Use this validation (listcompating()) below to do the objectList part later -
+            //  do not uncomment the line below
+            //System.out.println(listComparing(header, fields));
 
-            for (int i=1; i < info.size(); i++) {
-                List<String> obj = info.get(i);
-                for (int j = 0; j < obj.size(); j++) {
-                    System.out.println(header.get(j) + ": " + obj.get(j));
-                    // TODO ER FRA HER Objektene skal bygges med setPrimitive, setList, setString
-
+            LinkedHashMap<String, Field> boilerPlate = new LinkedHashMap<>();
+            for (String headerItem : header) {
+                for (int i = 0; i < fields.length; i++) {
+                    if (headerItem.equals(fields[i].getName())) {
+                        boilerPlate.put(headerItem, fields[i]);
+                    }
                 }
             }
+
+
+            // TODO logic below should be outsourced to seperate methods
+            ArrayList<T> objectList = new ArrayList<>();
+            int column = 0;
+            for (int i = 0; i < objects.size(); i++) {
+                instance = (T)defaultConstructor.newInstance();
+                for (Map.Entry<String, Field> entry : boilerPlate.entrySet()) {
+                    if(entry.getValue().getType().isPrimitive()) {
+                        entry.getValue().setAccessible(true);
+                        setPrimitive(objects.get(i).get(column), instance, entry.getValue());
+                    } else if (entry.getValue().getType().equals(String.class)) {
+                        entry.getValue().setAccessible(true);
+                        setString(objects.get(i).get(column), instance, entry.getValue());
+                    } else {
+                        entry.getValue().setAccessible(true);
+                        setList(objects.get(i).get(column), instance, entry.getValue());
+                    }
+                    column++;
+                    if (column == boilerPlate.size()) {
+                        column = 0;
+                    }
+                }
+                objectList.add(instance);
+            }
+
+            return objectList;
 
         } catch (SerializationException
                 | InstantiationException
@@ -126,13 +157,29 @@ public class ReaderCSV {
         return fieldOfAllClasses;
     }
 
+
+    // TODO The setField methods below could be outsourced to a seperate class?
     private <T> void setList(String info, T instance, Field field) throws IllegalAccessException {
         String type = field.getType().getName();
         String[] infoList = info.split(",");
+        String[] formattedInfoList = new String[infoList.length];
+
+        // TODO This should do
+        for (int i = 0; i < infoList.length; i++) {
+            formattedInfoList[i] = infoList[i].trim();
+        }
+
         List<String> list = new ArrayList<>();
-        list.addAll(Arrays.asList(infoList));
+        list.addAll(Arrays.asList(formattedInfoList));
         if(type.equals(ArrayList.class.getName())) {
             field.set(instance, list);
+        }
+    }
+
+    private <T> void setString(String info, T instance, Field field) throws IllegalAccessException {
+        String type = field.getType().getName();
+        if(type.equals(String.class.getName())) {
+            field.set(instance, info);
         }
     }
 
@@ -159,40 +206,5 @@ public class ReaderCSV {
         }
     }
 
-
-    public static List<List<String>> readObject(String path, Class clazz) throws IOException {
-        ArrayList<List<String>> clients = new ArrayList<List<String>>();
-        BufferedReader reader = null;
-
-        Constructor[] constructor = clazz.getDeclaredConstructors();
-        for (Constructor c : constructor) {
-            System.out.println(Arrays.toString(c.getParameterTypes()));
-        }
-
-
-        try {
-            reader = new BufferedReader(new FileReader(path));
-            String line;
-
-            while((line=reader.readLine()) != null) {
-                String[] values = line.split(";");
-                clients.add(Arrays.asList(values));
-            }
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } finally {
-            if(reader != null) {
-                reader.close();
-            }
-        }
-        return clients;
-    }
-
-    private static List<Object> parseObject(ArrayList<List<String>> objects, Class clazz) {
-        ArrayList<Object>  objList = new ArrayList<>();
-
-
-        return objList;
-    }
 }
 
