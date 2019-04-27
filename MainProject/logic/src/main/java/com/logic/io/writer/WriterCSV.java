@@ -20,6 +20,7 @@ public class WriterCSV implements Writer {
 
     public void writeObject(Object obj, String path) throws IllegalAccessException,
             InvocationTargetException, ClassNotFoundException, IOException {
+
         ObservableList<Object> object = FXCollections.observableArrayList();
         object.add(obj);
 

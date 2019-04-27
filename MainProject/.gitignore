@@ -21,6 +21,7 @@ tomcat
 *.sar
 *.class
 *.csv
+*.jobj
 
 # Maven 
 target/

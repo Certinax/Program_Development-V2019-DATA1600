@@ -2,14 +2,13 @@ package com.gui;
 
 import com.data.client.Substitute;
 import com.logic.io.reader.Reader;
-import com.logic.io.sorting.SortingTemplates;
+import com.logic.io.reader.ReaderJOBJ;
+import com.logic.io.writer.Writer;
 import com.logic.io.writer.WriterCSV;
+import com.logic.io.writer.WriterJOBJ;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class CombinedTesting {
@@ -39,33 +38,28 @@ public class CombinedTesting {
         ObservableList<Substitute> list = FXCollections.observableArrayList();
         list.add(sub1);
         list.add(sub2);
-        //WriterJOBJ writer = new WriterJOBJ();
-        //writer.writeObjects(list, "resources/substitutes.jobj");
 
-        WriterCSV writerCSV = new WriterCSV();
-        writerCSV.writeObjects(list, "resources/substitutes.csv");
-
-        //write(new WriterCSV(), sub1, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
-        //write(new WriterJOBJ(), sub1, "resources/substitutes.jobj", false);
-        //System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));
+        write(new WriterCSV(), sub1, "resources/substitutes.csv");
+        write(new WriterJOBJ(), sub1, "resources/substitutes.jobj");
+        System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));
 
     }
 
-   /* private static void write(Writer writer, Object obj, String path, boolean append, String[] template) {
+    private static void write(Writer writer, Object obj, String path) {
         try {
-            writer.writeObjects(obj, path, append, template);
+            writer.writeObject(obj, path);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void write(Writer writer, Object obj, String path, boolean append) {
+    private static <T> void write(Writer writer, ObservableList<T> list, String path) {
         try {
-            writer.writeObjects(obj, path, append);
+            writer.writeObjects(list, path);
         } catch (Exception e) {
             e.printStackTrace();
         }
-    } */
+    }
 
     private static ArrayList<Object> read(Reader reader, String path) {
         try {
@@ -74,17 +68,5 @@ public class CombinedTesting {
             e.printStackTrace();
             return null;
         }
-    }
-
-    private static String[] findTemplate(Object obj) throws InvocationTargetException, IllegalAccessException {
-        Method[] methods = obj.getClass().getDeclaredMethods();
-        String[] template = null;
-
-        for (int i = 0; i < methods.length; i++) {
-            if(methods[i].getName().startsWith("template")) {
-                template = (String[])methods[i].invoke(obj);
-            }
-        }
-        return template;
     }
 }
