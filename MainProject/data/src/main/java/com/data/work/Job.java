@@ -2,8 +2,6 @@ package com.data.work;
 
 import java.util.UUID;
 
-import static com.logic.utilities.validators.StringValidator.stringLengthIsValid;
-
 /**
  * <h1>Job</h1>
  *
@@ -21,9 +19,6 @@ public class Job {
     private final static int MAX_LENGTH = 200;
 
     public Job(String title, String description) {
-        if(!stringLengthIsValid(description, MAX_LENGTH)) {
-            throw new IllegalStateException("Description section exceeds max limit of " + MAX_LENGTH + " characters");
-        }
         this.title = title;
         this.description = description;
         this.jobID = UUID.randomUUID();
