@@ -11,9 +11,9 @@ import javafx.collections.ObservableList;
  * @since 19-04-2019
  */
 
-public class CSVWriterThreadStarter {
+public class WriterThreadStarter {
 
-    private CSVWriterThreadStarter() { //Private constructor to deter initialization
+    private WriterThreadStarter() { //Private constructor to deter initialization
     }
 
     /**
@@ -28,7 +28,7 @@ public class CSVWriterThreadStarter {
      */
 
     public static void startWriter(Object objectToWrite, String path) throws InterruptedException {
-        Thread writerThread = new Thread(new CSVWriterThread(objectToWrite, path));
+        Thread writerThread = new Thread(new WriterThread(objectToWrite, path));
         writerThread.start();
         writerThread.join();
     }
@@ -46,7 +46,7 @@ public class CSVWriterThreadStarter {
      */
 
    public static <T> void startWriter(ObservableList<T> data, String path) throws InterruptedException {
-        Thread writerThread = new Thread(new CSVWriterThread(data, path));
+        Thread writerThread = new Thread(new WriterThread(data, path));
         writerThread.start();
         writerThread.join();
     }
