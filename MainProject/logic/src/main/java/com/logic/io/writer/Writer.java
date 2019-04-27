@@ -1,6 +1,11 @@
 package com.logic.io.writer;
 
 
+import javafx.collections.ObservableList;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * <h1>Writer</h1>
  *
@@ -11,5 +16,11 @@ package com.logic.io.writer;
  */
 
 public interface Writer {
+
+    void writeObject(Object obj, String path)
+            throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException;
+
+    <T> void writeObjects(ObservableList<T> list, String path)
+            throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException;
 
 }

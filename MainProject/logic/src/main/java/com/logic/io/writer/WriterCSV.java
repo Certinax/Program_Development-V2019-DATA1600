@@ -26,7 +26,7 @@ public class WriterCSV implements Writer {
         writeObjects(object, path);
     }
 
-    public void writeObjects(ObservableList objects, String path)
+    public <T> void writeObjects(ObservableList<T> objects, String path)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
 
 
