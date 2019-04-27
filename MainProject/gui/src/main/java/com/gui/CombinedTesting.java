@@ -1,13 +1,9 @@
 package com.gui;
 
-import com.data.client.Substitute;
+import com.data.clients.Substitute;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.io.reader.Reader;
 import com.logic.io.reader.ReaderJOBJ;
-import com.logic.io.writer.Writer;
-import com.logic.io.writer.WriterCSV;
-import com.logic.io.writer.WriterJOBJ;
-import com.logic.utilities.exceptions.UnsupportedFileFormatException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.IOException;

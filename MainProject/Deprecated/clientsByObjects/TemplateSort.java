@@ -1,4 +1,4 @@
-package com.data.client;
+package com.data.clients;
 
 /**
  * This interface marks classes so it's classes get-methods are sorted

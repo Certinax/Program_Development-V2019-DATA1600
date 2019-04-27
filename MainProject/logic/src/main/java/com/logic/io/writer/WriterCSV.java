@@ -12,7 +12,7 @@ import java.util.*;
  * This class writes objects to csv file.
  * It can take an template input as an string array for sorting the data in desired order
  *
- * @Author Mathias Lund Ahrn, Fredrik Pedersen
+ * @author Mathias Lund Ahrn, Fredrik Pedersen
  * @since 18-04-2019
  */
 

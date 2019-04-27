@@ -1,4 +1,4 @@
-package com.data.client;
+package com.data.clients;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public class Employer extends Client implements Serializable {
         }
 
         @Override
-        public Builder self() {
+        protected Builder self() {
             return this;
         }
 

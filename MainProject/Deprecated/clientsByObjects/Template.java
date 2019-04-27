@@ -1,4 +1,4 @@
-package com.data.client;
+package com.data.clients;
 
 import java.util.Map;
 

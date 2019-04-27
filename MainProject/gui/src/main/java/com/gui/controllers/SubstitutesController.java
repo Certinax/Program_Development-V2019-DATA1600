@@ -1,6 +1,6 @@
 package com.gui.controllers;
 
-import com.data.client.Substitute;
+import com.data.clients.Substitute;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
