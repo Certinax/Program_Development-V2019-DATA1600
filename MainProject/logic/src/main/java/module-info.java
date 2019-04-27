@@ -2,7 +2,6 @@ module logic {
 
     requires javafx.controls;
     requires javafx.fxml;
-    requires data;
 
     exports com.logic;
     exports com.logic.io.reader;
