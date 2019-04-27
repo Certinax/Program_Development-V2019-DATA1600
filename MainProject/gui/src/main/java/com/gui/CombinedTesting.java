@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class CombinedTesting {
 
     public static void main(String[] args) {
-
+/*
         ArrayList<String> education = new ArrayList<>();
         education.add("OsloMet");
         education.add("Software Engineering");
@@ -41,7 +41,7 @@ public class CombinedTesting {
 
         write(new WriterCSV(), sub1, "resources/substitutes.csv", true, SortingTemplates.substituteTemplate());
         write(new WriterJOBJ(), sub1, "resources/substitutes.jobj", false);
-        //System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));
+        //System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));*/
 
         ReaderCSV reader = new ReaderCSV();
 

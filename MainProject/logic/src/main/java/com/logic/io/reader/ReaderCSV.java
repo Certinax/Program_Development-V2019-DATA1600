@@ -3,6 +3,7 @@ package com.logic.io.reader;
 import com.logic.io.parser.CSVParser;
 import com.logic.utilities.exceptions.CSVParseException;
 import com.logic.utilities.exceptions.SerializationException;
+import javafx.util.Builder;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -50,7 +51,6 @@ public class ReaderCSV {
             }
 
             T instance = (T)defaultConstructor.newInstance();
-
 
             // Getting all fields from instance
             Field[] fields = getFields(instance);
