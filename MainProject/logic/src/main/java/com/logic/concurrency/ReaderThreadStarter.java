@@ -16,9 +16,9 @@ import java.util.concurrent.Future;
  */
 
 //TODO EXAMPLE IMPLEMENTATION. ACTUAL IMPLEMENTATION INCOMING WHEN READER IS READY
-public class CSVReaderThreadStarter {
+public class ReaderThreadStarter {
 
-    private CSVReaderThreadStarter() { //Private constructor to deter initialization
+    private ReaderThreadStarter() { //Private constructor to deter initialization
     }
 
     public static <T> ObservableList<T> startReader(String path) throws ExecutionException, InterruptedException {

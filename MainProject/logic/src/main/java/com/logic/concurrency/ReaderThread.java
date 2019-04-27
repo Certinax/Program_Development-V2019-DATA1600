@@ -14,11 +14,11 @@ import java.util.concurrent.Callable;
  */
 
 //TODO EXAMPLE IMPLEMENTATION. ACTUAL IMPLEMENTATION INCOMING WHEN READER IS READY
-public class CSVReaderThread<T> implements Callable<ObservableList<T>> {
+public class ReaderThread<T> implements Callable<ObservableList<T>> {
 
     String path;
 
-    protected CSVReaderThread(String path) {
+    protected ReaderThread(String path) {
         this.path = path;
     }
 

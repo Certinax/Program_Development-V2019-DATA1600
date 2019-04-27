@@ -26,7 +26,6 @@ public class WriterThreadStarter {
      *                              cleared when this exception is thrown.
      *
      */
-
     public static void startWriter(Object objectToWrite, String path) throws InterruptedException {
         Thread writerThread = new Thread(new WriterThread(objectToWrite, path));
         writerThread.start();
@@ -44,7 +43,6 @@ public class WriterThreadStarter {
      *                              <i>interrupted status</i> of the current thread is
      *                              cleared when this exception is thrown.
      */
-
    public static <T> void startWriter(ObservableList<T> data, String path) throws InterruptedException {
         Thread writerThread = new Thread(new WriterThread(data, path));
         writerThread.start();

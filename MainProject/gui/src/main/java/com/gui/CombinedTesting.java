@@ -1,6 +1,7 @@
 package com.gui;
 
 import com.data.client.Substitute;
+import com.logic.concurrency.WriterThreadStarter;
 import com.logic.io.reader.Reader;
 import com.logic.io.reader.ReaderJOBJ;
 import com.logic.io.writer.Writer;
@@ -15,6 +16,9 @@ import java.util.ArrayList;
 public class CombinedTesting {
 
     public static void main(String[] args) throws Exception {
+
+        final String SUBCSV_PATH = "resources/substitutes.csv";
+        final String SUBJOBJ_PATH = "resources/substitutes.jobj";
 
         ArrayList<String> education = new ArrayList<>();
         education.add("OsloMet");
@@ -40,54 +44,10 @@ public class CombinedTesting {
         list.add(sub1);
         list.add(sub2);
 
-        write(list, "resources/substitutes.csv");
-        write(list, "resources/substitutes.jobj");
+        WriterThreadStarter.startWriter(list, SUBCSV_PATH);
+        WriterThreadStarter.startWriter(list, SUBJOBJ_PATH);
         System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));
 
-    }
-
-    private static void write(Object obj, String path) throws UnsupportedFileFormatException {
-        String[] separator = path.split("\\.");
-        Writer writer = null;
-
-        switch (separator[separator.length - 1]) {
-            case "jobj":
-                writer = new WriterJOBJ();
-                break;
-            case "csv":
-                writer = new WriterCSV();
-                break;
-            default:
-                throw new UnsupportedFileFormatException("Wrong file format selected. Please select a .csv or .jobj-file. No data was saved");
-        }
-
-        try {
-            writer.writeObject(obj, path);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static <T> void write(ObservableList<T> list, String path) throws UnsupportedFileFormatException {
-        String[] separator = path.split("\\.");
-        Writer writer = null;
-
-        switch (separator[separator.length - 1]) {
-            case "jobj":
-                writer = new WriterJOBJ();
-                break;
-            case "csv":
-                writer = new WriterCSV();
-                break;
-            default:
-                throw new UnsupportedFileFormatException("Wrong file format selected. Please select a .csv or .jobj-file. No data was saved");
-        }
-
-        try {
-            writer.writeObjects(list, path);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private static ArrayList<Object> read(Reader reader, String path) {
