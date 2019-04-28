@@ -3,19 +3,16 @@ package com.gui.controllers;
 import com.data.clients.Substitute;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
+import com.logic.utilities.FilePaths;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-
-import java.io.IOException;
-import java.util.ArrayList;
+import javafx.util.converter.IntegerStringConverter;
 import java.util.concurrent.ExecutionException;
 
 public class SubstitutesController implements Controller {
@@ -27,7 +24,11 @@ public class SubstitutesController implements Controller {
     private ObservableList<Substitute> data;
 
     @FXML
-    private TableColumn<Substitute, String> fnameColumn, lnameColumn, addressColumn;
+    private TableColumn<Substitute, String> fnameColumn, lnameColumn, addressColumn, cityColumn,
+            industryColumn;
+
+    @FXML
+    private TableColumn<Substitute, Integer> zipcodeColumn, ageColumn, salaryColumn;
 
     @FXML
     private TextField filterField;
@@ -41,16 +42,20 @@ public class SubstitutesController implements Controller {
         data = tableView.getItems();
 
         try {
-            data.addAll(ReaderThreadStarter.startReader("resources/substitutes.csv"));
+            data.addAll(ReaderThreadStarter.startReader(FilePaths.SUBSTITUTESCSV.toString()));
+            System.out.println(data);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
 
-        tableView.setEditable(true);
         setFiltering();
         setAddressColumnEditable();
         setLnameColumnEditable();
-        setUnameColumnEditable();
+        setFnameColumnEditable();
+        setZipCodeColumnEditable();
+        setCityColumnEditable();
+        setAgeColumnEditable();
+        setSalaryColumnEditable();
     }
 
     @FXML
@@ -106,7 +111,7 @@ public class SubstitutesController implements Controller {
         tableView.setItems(sortedData);
     }
 
-    private void setUnameColumnEditable() {
+    private void setFnameColumnEditable() {
         fnameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         fnameColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Substitute, String> t) -> t.getTableView().getItems().get(
@@ -126,4 +131,33 @@ public class SubstitutesController implements Controller {
                 (TableColumn.CellEditEvent<Substitute, String> t) -> t.getTableView().getItems().get(
                         t.getTablePosition().getRow()).setAddress(t.getNewValue()));
     }
+
+    private void setZipCodeColumnEditable() { //TODO Kolonner som er definert med Integers kræsjer dersom man prøver å skrive inn andre tegn. Trenger korrekt feilhåndtering.
+        zipcodeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        zipcodeColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<Substitute, Integer> t) -> t.getTableView().getItems().get(
+                        t.getTablePosition().getRow()).setZipcode(t.getNewValue()));
+    }
+
+    private void setCityColumnEditable() {
+        cityColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        cityColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<Substitute, String> t) -> t.getTableView().getItems().get(
+                        t.getTablePosition().getRow()).setCity(t.getNewValue()));
+    }
+
+    private void setAgeColumnEditable() {
+        ageColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        ageColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<Substitute, Integer> t) -> t.getTableView().getItems().get(
+                        t.getTablePosition().getRow()).setAge(t.getNewValue()));
+    }
+
+    private void setSalaryColumnEditable() {
+        salaryColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        salaryColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<Substitute, Integer> t) -> t.getTableView().getItems().get(
+                        t.getTablePosition().getRow()).setAge(t.getNewValue()));
+    }
+
 }

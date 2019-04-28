@@ -18,7 +18,7 @@
     </padding>
 
     <Label style="-fx-font: NORMAL 20 Tahoma;" text="Substitutes" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-    <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="1">
+    <TableView editable="true" fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <columns>
 
             <TableColumn fx:id="fnameColumn" prefWidth="100" text="First Name">
@@ -31,8 +31,28 @@
                 </cellValueFactory>
             </TableColumn>
 
-            <TableColumn fx:id="addressColumn" prefWidth="200" text="Address">
+            <TableColumn fx:id="addressColumn" prefWidth="150" text="Address">
                 <cellValueFactory><PropertyValueFactory property="address" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="zipcodeColumn" prefWidth="50" text="Zip Code">
+                <cellValueFactory><PropertyValueFactory property="zipcode" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="cityColumn" prefWidth="100" text="City">
+                <cellValueFactory><PropertyValueFactory property="city" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="ageColumn" prefWidth="100" text="Age">
+                <cellValueFactory><PropertyValueFactory property="age" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn fx:id="salaryColumn" prefWidth="100" text="Salary Requirement">
+                <cellValueFactory><PropertyValueFactory property="salaryRequirement" />
                 </cellValueFactory>
             </TableColumn>
 
