@@ -93,7 +93,7 @@
                 <TextField prefHeight="26.0" prefWidth="128.0" promptText="1930" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                 <Label text="Employer" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Employer" GridPane.rowIndex="1" />
+            <ComboBox prefWidth="150.0" promptText="List" GridPane.rowIndex="1" />
             </children>
             <opaqueInsets>
                 <Insets />
