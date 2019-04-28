@@ -37,7 +37,7 @@ public class Employer extends Client implements Serializable {
         private ArrayList<String> joblist = null;
 
         // Builder for required parameters
-        public Builder(String name, String address, int zipcode, String city, Boolean privateSector, String industry) {
+        public Builder(String name, String address, int zipcode, String city, boolean privateSector, String industry) {
             super(address, zipcode, city, industry);
             this.name = name;
             this.privateSector = privateSector;

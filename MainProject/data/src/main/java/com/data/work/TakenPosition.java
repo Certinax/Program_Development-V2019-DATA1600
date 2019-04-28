@@ -14,7 +14,7 @@ public class TakenPosition extends AvailablePosition {
         setApplicants(null);
     }
 
-    public static class Builder extends AvailablePosition.Builder {
+    public static class Builder extends AvailablePosition.Builder<Builder> {
         //Required parameters
         private final int substituteID;
 

@@ -50,9 +50,14 @@ public class CombinedTesting {
 
         ArrayList<Substitute> subs = readerCSV.read(SUBCSV_PATH);
 
-        for (Substitute s : subs) {
+
+
+        ObservableList<Substitute> obsSubs = FXCollections.observableArrayList(subs);
+
+        for (Substitute s : obsSubs) {
             System.out.println(s);
         }
+
 
 
 

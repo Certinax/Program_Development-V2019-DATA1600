@@ -87,7 +87,7 @@ public class AvailablePosition {
             return self();
         }
 
-        public Builder self() {
+        public Builder<T> self() {
             return this;
         }
 
