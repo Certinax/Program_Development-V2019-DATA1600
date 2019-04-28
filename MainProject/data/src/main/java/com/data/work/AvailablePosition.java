@@ -1,7 +1,5 @@
 package com.data.work;
 
-import com.data.clients.Employer;
-
 import java.util.ArrayList;
 
 public class AvailablePosition {
@@ -10,6 +8,7 @@ public class AvailablePosition {
     private Boolean publicSector; //Is it public or private sector?
     private String workplace; //Where is it?
     private int employer; //ID of the employer
+    private String positionType; //What kind of position is it? Consulent? Manager? Crewmember etc...
     private String industry; //What industry is it? IT? Economics? etc
     private int duration; //For how long do they need a substitute
     private int startingTime; //When does the workday start
@@ -20,8 +19,19 @@ public class AvailablePosition {
     private String description; //A description of the position
     private ArrayList<Integer> applicants; //A list of applicants for the position
 
-    private AvailablePosition(Builder<?> builder) {
+    public AvailablePosition() {} //Default constructor used by the CSV Reader to create objects
 
+    protected AvailablePosition(Builder<?> builder) {
+        this.positionsID = builder.positionsID;
+        this.publicSector = builder.publicSector;
+        this.workplace = builder.workplace;
+        this.employer = builder.employer;
+        this.positionType = builder.positionType;
+        this.industry = builder.industry;
+        this.duration = builder.duration;
+        this.salary = builder.salary;
+        this.contactInfo = builder.contactInfo;
+        this.applicants = builder.applicants;
     }
 
     static class Builder<T extends Builder<T>> {
@@ -30,6 +40,7 @@ public class AvailablePosition {
         private Boolean publicSector; //Is it public or private sector?
         private String workplace; //Where is it?
         private int employer; //ID of the employer
+        private String positionType; //What kind of position is it? Consulent? Manager? Crewmember etc...
         private String industry; //What industry is it? IT? Economics? etc
         private int duration; //For how long do they need a substitute
         private int startingTime; //When does the workday start
@@ -41,12 +52,13 @@ public class AvailablePosition {
         private ArrayList<Integer> applicants; //A list of IDs of applicants for the position
 
         //Builder for required parameters
-        public Builder(int positionsID, Boolean publicSector, String workplace, int employer, String industry, int duration,
+        public Builder(int positionsID, Boolean publicSector, String workplace, int employer, String positionType, String industry, int duration,
                        int salary, String contactInfo, ArrayList<Integer> applicants) {
             this.positionsID = positionsID;
             this.publicSector = publicSector;
             this.workplace = workplace;
             this.employer = employer;
+            this.positionType = positionType;
             this.industry = industry;
             this.duration = duration;
             this.salary = salary;
@@ -75,7 +87,7 @@ public class AvailablePosition {
             return self();
         }
 
-        private Builder self() {
+        public Builder self() {
             return this;
         }
 
