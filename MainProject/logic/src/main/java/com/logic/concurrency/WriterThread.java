@@ -53,7 +53,7 @@ public class WriterThread implements Runnable {
             InvocationTargetException, ClassNotFoundException, IOException {
 
         Writer writer;
-        String[] separator = path.split("\\.");
+        String[] separator = path.split("\\."); //TODO Hva hvis filen heter f.eks fredrik.pedersen.txt?
 
         switch (separator[separator.length - 1]) {
             case "jobj":

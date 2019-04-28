@@ -21,7 +21,6 @@ public abstract class Client implements Serializable {
 
     public Client() {} //Default constructor used by the CSV Reader to create objects
 
-
     protected Client(Builder<?> builder) {
         this.address = builder.address;
         this.zipcode = builder.zipcode;

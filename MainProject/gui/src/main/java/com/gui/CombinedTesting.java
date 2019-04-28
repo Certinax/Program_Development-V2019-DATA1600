@@ -41,9 +41,9 @@ public class CombinedTesting {
         list.add(sub1);
         list.add(sub2);
 
-        //WriterThreadStarter.startWriter(list, SUBCSV_PATH);
-        //WriterThreadStarter.startWriter(list, SUBJOBJ_PATH);
-        //System.out.println(read(new ReaderJOBJ(), SUBJOBJ_PATH));
+        WriterThreadStarter.startWriter(list, SUBCSV_PATH);
+        WriterThreadStarter.startWriter(list, SUBJOBJ_PATH);
+        System.out.println(read(new ReaderJOBJ(), SUBJOBJ_PATH));
         ReaderCSV readerCSV = new ReaderCSV();
         System.out.println(readerCSV.read(SUBCSV_PATH, Substitute.class));
 

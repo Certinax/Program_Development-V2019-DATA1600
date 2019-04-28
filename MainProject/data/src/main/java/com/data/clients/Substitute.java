@@ -152,7 +152,8 @@ public class Substitute extends Client implements Serializable {
 
     @Override
     public String toString() {
-        return "Substitute{" +
+        return super.toString() +
+                "Substitute{" +
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", age=" + age +
