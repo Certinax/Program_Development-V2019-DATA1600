@@ -1,6 +1,8 @@
 package com.logic.concurrency;
 
 import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,14 +23,14 @@ public class ReaderThreadStarter {
     private ReaderThreadStarter() { //Private constructor to deter initialization
     }
 
-    public static <T> ObservableList<T> startReader(String path) throws ExecutionException, InterruptedException {
-      /*  ExecutorService service = Executors.newFixedThreadPool(1);
-        ObservableList<T> result = null;
-        Future<ObservableList<T>> returnedList = service.submit(new CSVReaderThread(path));
+    @SuppressWarnings("unchecked")
+    public static <T> ArrayList<T> startReader(String path) throws ExecutionException, InterruptedException {
+        ExecutorService service = Executors.newFixedThreadPool(1);
+        ArrayList<T> result = null;
+        Future<ArrayList<T>> returnedList = service.submit(new ReaderThread(path));
 
         result = returnedList.get();
         service.shutdown();
-        return result; */
-      return null;
+        return result;
     }
 }

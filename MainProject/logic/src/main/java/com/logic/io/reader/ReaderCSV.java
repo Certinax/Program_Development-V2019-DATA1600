@@ -3,12 +3,14 @@ package com.logic.io.reader;
 import com.logic.io.parser.CSVParser;
 import com.logic.utilities.exceptions.CSVParseException;
 import com.logic.utilities.exceptions.SerializationException;
+import javafx.collections.FXCollections;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-public class ReaderCSV {
+public class ReaderCSV implements Reader {
 
     public ReaderCSV() {}
 
@@ -22,7 +24,8 @@ public class ReaderCSV {
         return null;
     }
 
-    public <T> ArrayList<T> read(String path) throws CSVParseException {
+    @Override
+    public <T> ArrayList<T> readObjects(String path) throws CSVParseException {
         CSVParser parser = new CSVParser();
 
         List<List<String>> fileInfo = parser.getInfo(path);

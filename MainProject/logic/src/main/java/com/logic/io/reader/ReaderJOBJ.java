@@ -1,5 +1,7 @@
 package com.logic.io.reader;
 
+import javafx.collections.ObservableList;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;

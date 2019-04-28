@@ -49,6 +49,7 @@ public class WriterThread implements Runnable {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void writeObjects() throws UnsupportedFileFormatException, IllegalAccessException,
             InvocationTargetException, ClassNotFoundException, IOException {
 
