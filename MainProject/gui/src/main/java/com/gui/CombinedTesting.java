@@ -8,6 +8,7 @@ import com.logic.io.reader.ReaderJOBJ;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CombinedTesting {
@@ -41,11 +42,28 @@ public class CombinedTesting {
         list.add(sub1);
         list.add(sub2);
 
-        //WriterThreadStarter.startWriter(list, SUBCSV_PATH);
+        WriterThreadStarter.startWriter(list, SUBCSV_PATH);
         //WriterThreadStarter.startWriter(list, SUBJOBJ_PATH);
-        //System.out.println(read(new ReaderJOBJ(), SUBJOBJ_PATH));
+        // System.out.println(read(new ReaderJOBJ(), SUBJOBJ_PATH));
         ReaderCSV readerCSV = new ReaderCSV();
-        System.out.println(readerCSV.read(SUBCSV_PATH, Substitute.class));
+        //readerCSV.read(SUBCSV_PATH);
+
+        ArrayList<Substitute> subs = readerCSV.read(SUBCSV_PATH);
+
+        for (Substitute s : subs) {
+            System.out.println(s);
+        }
+
+
+
+        /*System.out.println(readerCSV.read(SUBCSV_PATH, Substitute.class));
+
+        ArrayList<Substitute> subs = readerCSV.read(SUBCSV_PATH, Substitute.class);
+
+        for(Substitute s : subs) {
+            System.out.println(s.getFirstname());
+        }*/
+
 
     }
 
