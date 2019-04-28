@@ -1,17 +1,22 @@
 package com.gui.controllers;
 
 import com.data.clients.Substitute;
+import com.logic.concurrency.ReaderThreadStarter;
+import com.logic.concurrency.WriterThreadStarter;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class SubstitutesController implements Controller {
 
@@ -27,43 +32,19 @@ public class SubstitutesController implements Controller {
     @FXML
     private TextField filterField;
 
+    @FXML
+    private Button overwrite;
+
 
     @FXML
     private void initialize() {
         data = tableView.getItems();
 
-        //TODO DISSE KAN UTKOMMENTERES NÅR FILLESEREN ER FERDIG IMPLEMENTERT
-        //data.addAll(ReaderCaller.readCSVSubstitutesInThread());
-
-        /* ------------------------------ Testing Code - TO BE REMOVED ------------------------------------------- */
-
-
-        ArrayList<String> education = new ArrayList<>();
-        education.add("OsloMet");
-        education.add("Software Engineering");
-        education.add("2017");
-        ArrayList<String> jobxp = new ArrayList<>();
-        jobxp.add("WikborgRein");
-        jobxp.add("2017");
-        jobxp.add("2019");
-        ArrayList<String> ref = new ArrayList<>();
-        ref.add("Kim Knudsen");
-        ref.add("kimmelim@mail.com");
-        ref.add("99106201");
-
-        Substitute sub1 = new Substitute.Builder("Petter", "Olsen", "Sveitsrupveien 20", 24,
-                1212, "Oslo", "Banking").salaryRequirement(220000).education(education).workExperience(jobxp).workReference(ref).build();
-
-        Substitute sub2 = new Substitute.Builder("Victor", "Pishva", "Sveitsrupveien 20", 25,
-                2007, "Oslo", "Banking").salaryRequirement(200000).education(education).workExperience(jobxp).workReference(ref).build();
-
-
-        ArrayList<Substitute> dataFromFile = new ArrayList<>();
-        dataFromFile.add(sub1);
-        dataFromFile.add(sub2);
-        data.addAll(dataFromFile);
-
-        /* --------------------------------------------------- */
+        try {
+            data.addAll(ReaderThreadStarter.startReader("resources/substitutes.csv"));
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
         tableView.setEditable(true);
         setFiltering();
@@ -80,11 +61,11 @@ public class SubstitutesController implements Controller {
 
     @FXML
     private void save(ActionEvent event) {
-      /*  try {
-            CSVWriterThreadStarter.startWriter(data, "resources/substitutes.csv", false, SortingTemplates.substituteTemplate());
+      try {
+          WriterThreadStarter.startWriter(data,"resources/substitutes.csv");
         } catch (InterruptedException e) {
             e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
-        } */
+        }
     }
 
 
