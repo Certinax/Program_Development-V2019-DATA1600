@@ -3,6 +3,7 @@ package com.gui;
 import com.data.clients.Substitute;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.io.reader.Reader;
+import com.logic.io.reader.ReaderCSV;
 import com.logic.io.reader.ReaderJOBJ;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,9 +41,11 @@ public class CombinedTesting {
         list.add(sub1);
         list.add(sub2);
 
-        WriterThreadStarter.startWriter(list, SUBCSV_PATH);
-        WriterThreadStarter.startWriter(list, SUBJOBJ_PATH);
-        System.out.println(read(new ReaderJOBJ(), "resources/substitutes.jobj"));
+        //WriterThreadStarter.startWriter(list, SUBCSV_PATH);
+        //WriterThreadStarter.startWriter(list, SUBJOBJ_PATH);
+        //System.out.println(read(new ReaderJOBJ(), SUBJOBJ_PATH));
+        ReaderCSV readerCSV = new ReaderCSV();
+        System.out.println(readerCSV.read(SUBCSV_PATH, Substitute.class));
 
     }
 

@@ -34,6 +34,8 @@ public class Substitute extends Client implements Serializable {
         workReference = builder.workReference;
     }
 
+    public Substitute() {} //Default constructor used by the CSV Reader to create objects
+
     public static class Builder extends Client.Builder<Builder> {
         // Required parameters
         private final String firstname;

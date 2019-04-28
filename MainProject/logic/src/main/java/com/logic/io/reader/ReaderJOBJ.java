@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class ReaderJOBJ implements Reader {
 
     @Override
+    @SuppressWarnings("unchecked")
     public ArrayList<Object> readObjects(String path) throws IOException, ClassNotFoundException {
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
 
