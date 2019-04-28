@@ -8,12 +8,19 @@ import javafx.util.Builder;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.*;
 import java.util.*;
 import java.util.stream.Collectors;
+
+/**
+ * This class is used for reading CSV files. It currently supports data-classes with a public
+ * default constructor and fields of primitive types, Strings and Lists.
+ *
+ * Currently working on support for classes containing builder. (Static nested class)
+ *
+ * @Author Mathias Lund Ahrn
+ * @Since 12-04-2019
+ */
 
 public class ReaderCSV {
 
@@ -36,8 +43,48 @@ public class ReaderCSV {
 
         List<List<String>> fileInfo = parser.getInfo(path);
 
-        return generateObject(clazz, fileInfo);
+        return generateObjectsBuilder(clazz, fileInfo);
 
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> ArrayList<T> generateObjectsBuilder(Class clazz, List<List<String>> info) {
+
+        try {
+            // Generate internal classes to access builder
+
+            System.out.println(Arrays.toString(clazz.getNestMembers()));
+
+            Class[] builder = clazz.getNestMembers();
+
+            for (Class nc : builder) {
+                System.out.println(nc);
+            }
+
+            Constructor[] constructors = builder[1].getConstructors();
+
+            for (Constructor c : constructors) {
+                System.out.println(c.toString());
+            }
+
+            Parameter[] requiredParams = constructors[0].getParameters();
+
+
+            System.out.println(Arrays.toString(requiredParams));
+            System.out.println(requiredParams[0].getName());
+
+            System.out.println(requiredParams[0].isNamePresent());
+
+            /*Optional<Parameter> parameter = Arrays.asList(requiredParams).stream()
+                    .filter(Parameter::isNamePresent)
+                    .findFirst();
+*/
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     @SuppressWarnings("unchecked")

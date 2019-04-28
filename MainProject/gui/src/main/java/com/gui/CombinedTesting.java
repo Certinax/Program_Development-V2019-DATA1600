@@ -53,13 +53,13 @@ public class CombinedTesting {
         } catch (ClassNotFoundException | CSVParseException e) {
             e.printStackTrace();
         }
-
+/*
         for (Substitute s : sub) {
             System.out.println(s.toString());
         }
         Substitute s = sub.get(2);
 
-        System.out.println(s.getEducation().get(0));
+        System.out.println(s.getEducation().get(0));*/
     }
 
     private static void write(Writer writer, Object obj, String path, boolean append, String[] template) {
