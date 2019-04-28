@@ -41,7 +41,7 @@ public enum SceneManager {
     /**
      * Private method used to create SceneInfo objects and link them with the SceneName-enums in a hashmap
      */
-    private void createSceneInfos() {
+    private void createSceneInfos() { //TODO MAKE SURE ALL VIEW ARE REPRESENTED HERE
         SceneInfo availablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
         SceneInfo positionInfo = new SceneInfo("Position Info", "/com/gui/fxml/PositionInfo.fxml");
         SceneInfo registerEmployer = new SceneInfo("Register Employer", "/com/gui/fxml/RegisterEmployer.fxml");

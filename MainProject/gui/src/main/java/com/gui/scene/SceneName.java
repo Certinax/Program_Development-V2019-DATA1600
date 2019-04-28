@@ -12,7 +12,7 @@ package com.gui.scene;
  * @since 15-04-2019
  */
 
-public enum SceneName {
+public enum SceneName { //TODO MAKE SURE ALL VIEWS ARE REPRESENTED HERE
     AVAILABLEPOSITIONS,
     POSITIONINFO,
     REGISTEREMPLOYER,
