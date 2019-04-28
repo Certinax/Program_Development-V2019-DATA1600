@@ -83,7 +83,7 @@ public abstract class Client implements Serializable {
     @Override
     public String toString() {
         return "Client{" +
-                ", address='" + address + '\'' +
+                "address='" + address + '\'' +
                 ", zipcode=" + zipcode +
                 ", city='" + city + '\'' +
                 ", industry='" + industry + '\'' +

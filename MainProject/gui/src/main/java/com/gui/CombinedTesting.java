@@ -1,6 +1,7 @@
 package com.gui;
 
 import com.data.clients.Substitute;
+import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.io.reader.Reader;
 import com.logic.io.reader.ReaderCSV;
@@ -48,7 +49,7 @@ public class CombinedTesting {
         ReaderCSV readerCSV = new ReaderCSV();
         //readerCSV.read(SUBCSV_PATH);
 
-        ArrayList<Substitute> subs = readerCSV.read(SUBCSV_PATH);
+        ArrayList<Substitute> subs = ReaderThreadStarter.startReader(SUBCSV_PATH);
 
 
 
@@ -60,24 +61,11 @@ public class CombinedTesting {
 
 
 
-
-        /*System.out.println(readerCSV.read(SUBCSV_PATH, Substitute.class));
-
-        ArrayList<Substitute> subs = readerCSV.read(SUBCSV_PATH, Substitute.class);
-
         for(Substitute s : subs) {
             System.out.println(s.getFirstname());
-        }*/
-
-
-    }
-
-    private static ArrayList<Object> read(Reader reader, String path) {
-        try {
-            return reader.readObjects(path);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
         }
+
+
     }
+
 }
