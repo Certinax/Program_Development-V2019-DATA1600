@@ -86,6 +86,10 @@ public class WriterCSV implements Writer {
         // Ideen er nå at jeg har et map med alle metoder og verdiene deres
         // Neste steg er å sortere keysettet etter sortingTemplate
         if (header) {
+            csvInfo.append("Class");
+            csvInfo.append(";");
+            csvInfo.append(obj.getClass().getName());
+            csvInfo.append("\n");
             if (sorting) {
                 preparedObjectInfo = templateSort(objectInfo, sortingTemplate);
                 csvInfo.append(generateCSVStringHeader(preparedObjectInfo));

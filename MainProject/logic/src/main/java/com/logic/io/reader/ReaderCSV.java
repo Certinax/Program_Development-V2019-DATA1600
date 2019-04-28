@@ -22,13 +22,24 @@ public class ReaderCSV {
         return null;
     }
 
-    public <T> ArrayList<T> read(String path, Class clazz) throws CSVParseException {
+    public <T> ArrayList<T> read(String path) throws CSVParseException {
         CSVParser parser = new CSVParser();
 
         List<List<String>> fileInfo = parser.getInfo(path);
+        ArrayList<T> objects = null;
+        try {
+            Class clazz = Class.forName(fileInfo.get(0).get(1));
+            objects = generateObject(clazz, fileInfo);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        return generateObject(clazz, fileInfo);
-
+        if(objects != null) {
+            return objects;
+        } else {
+            return null;
+        }
+        //return generateObject(clazz, fileInfo);
     }
 
     @SuppressWarnings("unchecked")
@@ -48,11 +59,11 @@ public class ReaderCSV {
             Field[] fields = getFields(instance);
 
             // Getting the header list
-            List<String> header = info.get(0);
+            List<String> header = info.get(1);
 
             // Creating a new lists with only objects
             List<List<String>> objects = new ArrayList<>();
-            for (int i = 1; i < info.size(); i++) {
+            for (int i = 2; i < info.size(); i++) {
                 objects.add(info.get(i));
             }
 

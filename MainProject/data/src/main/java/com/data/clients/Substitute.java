@@ -147,7 +147,7 @@ public class Substitute extends Client implements Serializable {
 
     public String[] template() {
         return new String[] {"getFirstname", "getLastname", "getAddress", "getZipcode", "getCity", "getAge", "getSalaryRequirement",
-                "getIndustry", "getEducation", "getWorkExperience", "getWorkReference"};
+                "getIndustry", "getEducation", "getWorkExperience", "getWorkReference", this.getClass().getName()};
     }
 
     @Override

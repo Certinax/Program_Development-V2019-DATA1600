@@ -20,12 +20,16 @@ public class CSVParser {
             String line;
 
             String firstLine = reader.readLine();
+            String[] classInfo = firstLine.split(";");
+            fileInfo.add(Arrays.asList(classInfo));
+
+            String secondLine = reader.readLine();
 
             if(firstLine.isEmpty()) {
                 throw new CSVParseException("The document is empty");
             }
 
-            String[] header = firstLine.split(";");
+            String[] header = secondLine.split(";");
             for (int i = 0; i < header.length; i++) {
                 char[] c = header[i].toCharArray();
                 c[0] = Character.toLowerCase(c[0]);
