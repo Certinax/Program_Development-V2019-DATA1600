@@ -5,14 +5,16 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="677.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="677.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
     <children>
         <Button layoutX="29.0" layoutY="22.0" mnemonicParsing="false" onAction="#goToAvailablePositions" text="Go Back" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="22.0" />
         <Label alignment="CENTER" layoutX="301.0" layoutY="19.0" text="Register Position" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0">
@@ -25,12 +27,12 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="100.0" layoutY="295.0" text="Contact information" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="295.0">
+        <Label alignment="CENTER" layoutX="100.0" layoutY="231.0" text="Contact information" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="231.0">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="100.0" layoutY="541.0" text="Desired skills" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="541.0">
+        <Label alignment="CENTER" layoutX="89.0" layoutY="404.0" text="Extra info" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="404.0">
             <font>
                 <Font size="20.0" />
             </font>
@@ -48,17 +50,26 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label text="Employer" />
                 <Label text="Industry" GridPane.columnIndex="1" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Employer" GridPane.rowIndex="1" />
                 <Label text="Position type" GridPane.columnIndex="2" />
                 <TextField prefHeight="26.0" prefWidth="128.0" promptText="Secretary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Public / Private" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField promptText="Public" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="Public / Private" />
+            <TextField promptText="Public" GridPane.rowIndex="1" />
+                <Label text="Working time" GridPane.rowIndex="2" />
+                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Part time" GridPane.rowIndex="3" />
+                <Label text="Start / Finish" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <HBox prefHeight="26.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                      <DatePicker prefHeight="26.0" prefWidth="87.0" promptText="From" />
+                      <DatePicker prefHeight="26.0" prefWidth="87.0" promptText="To" />
+               </children>
+            </HBox>
+            <Label text="Salary" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
             </children>
         </GridPane>
-        <GridPane alignment="CENTER" hgap="20.0" layoutX="100.0" layoutY="325.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="325.0">
+        <GridPane alignment="CENTER" hgap="20.0" layoutX="100.0" layoutY="269.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="269.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -71,9 +82,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label text="Email Address" />
+                <Label text="Email Address" GridPane.columnIndex="1" />
                 <Label text="Phonenumber" GridPane.columnIndex="2" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="example@sample.com" GridPane.rowIndex="1" />
+                <TextField prefHeight="26.0" prefWidth="128.0" promptText="example@sample.com" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField prefHeight="26.0" prefWidth="128.0" promptText="99106201" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <Label text="Stretname" GridPane.rowIndex="2" />
                 <Label text="Zip Code" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -81,47 +92,28 @@
                 <TextField prefHeight="26.0" prefWidth="128.0" promptText="Streetway 10" GridPane.rowIndex="3" />
                 <TextField prefHeight="26.0" prefWidth="128.0" promptText="1930" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                <Label text="Employer" />
+                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Employer" GridPane.rowIndex="1" />
             </children>
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
         </GridPane>
-        <GridPane hgap="20.0" layoutX="100.0" layoutY="475.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="475.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <Label text="Working time" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Part time" GridPane.rowIndex="1" />
-                <Label text="Start" GridPane.columnIndex="1" />
-                <DatePicker prefHeight="26.0" prefWidth="103.0" promptText="From" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label text="Finish" GridPane.columnIndex="2" />
-                <DatePicker prefHeight="26.0" prefWidth="103.0" promptText="To" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            </children>
-        </GridPane>
-        <GridPane hgap="20.0" layoutX="100.0" layoutY="571.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="571.0">
+        <GridPane hgap="20.0" layoutX="100.0" layoutY="441.0" prefHeight="186.0" prefWidth="527.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="441.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="161.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label text="Salary Requirement" GridPane.columnIndex="1" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Salary" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label prefHeight="17.0" prefWidth="84.0" text="Industry" />
+                <Label text="Position description" GridPane.columnIndex="1" />
+                <Label prefHeight="17.0" prefWidth="84.0" text="Sesired skills" />
+            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
-            <padding>
-                <Insets left="120.0" right="120.0" />
-            </padding>
         </GridPane>
     </children>
 </AnchorPane>
