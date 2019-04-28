@@ -51,39 +51,115 @@ public class ReaderCSV {
     private <T> ArrayList<T> generateObjectsBuilder(Class clazz, List<List<String>> info) {
 
         try {
+
+            // Getting the header list
+            List<String> header = info.get(0);
+
+            // Creating a new lists with only objects
+            List<List<String>> objects = new ArrayList<>();
+            for (int i = 1; i < info.size(); i++) {
+                objects.add(info.get(i));
+            }
+
+
             // Generate internal classes to access builder
-
             System.out.println(Arrays.toString(clazz.getNestMembers()));
-
+            // Getting nested static builder class
             Class[] builder = clazz.getNestMembers();
 
-            for (Class nc : builder) {
-                System.out.println(nc);
-            }
-
+            // Getting builder constructor
             Constructor[] constructors = builder[1].getConstructors();
 
-            for (Constructor c : constructors) {
-                System.out.println(c.toString());
-            }
-
+            // Getting the required parameters from builder constructor
             Parameter[] requiredParams = constructors[0].getParameters();
 
+            System.out.println(requiredParams[0]);
 
-            System.out.println(Arrays.toString(requiredParams));
-            System.out.println(requiredParams[0].getName());
+            // The following part has to go through each object in the object-list
+            // and combine header with value. This should be stored in a map.
+            for (int i = 0; i < objects.size(); i++) {
+                // Create new constructor of current class
+                //T instance = (T)constructors[0].newInstance();
+                T instance = (T)createInstance(constructors[0], getInfoFromIndex(header, objects.get(i)));
+                // Build correct constructor
+                // Send in requiredParams[] + getInfoFromIndex and build it
 
-            System.out.println(requiredParams[0].isNamePresent());
+                // This is a linkedHashMap with header and info (<String, String>)
+                getInfoFromIndex(header, objects.get(i));
+            }
 
-            /*Optional<Parameter> parameter = Arrays.asList(requiredParams).stream()
-                    .filter(Parameter::isNamePresent)
-                    .findFirst();
-*/
+
+
+            LinkedHashMap<Parameter, String> requiredFields = new LinkedHashMap<>();
+
+            for (Parameter param : requiredParams) {
+                requiredFields.put(param, param.getName());
+            }
+
+
+            //System.out.println(requiredFields.toString());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        return null;
+    }
+
+    private <T> T createInstance(Constructor<T> constructor, LinkedHashMap<String, String> info) {
+        Object[] paramList = new Object[constructor.getParameterCount()];
+        for (Parameter param : constructor.getParameters()) {
+            for(Map.Entry<String, String> entry : info.entrySet()) {
+                if(param.getName().equals(entry.getKey())) {
+                    generateParamObject(param, entry.getValue());
+                    break;
+                }
+            }
+        }
+        return null;
+    }
+
+    private Object generateParamObject(Parameter param, String value) {
+
+        System.out.println(param.getType() + ": " + param.getName() + ": " + value);
+
+        Class<?> classType = param.getType();
+        System.out.println(classType);
+
+        try {
+            //System.out.println(classType.cast(value));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+
+    }
+
+    private LinkedHashMap<String, String> getInfoFromIndex(List<String> header, List<String> object) {
+        LinkedHashMap<String, String> info = new LinkedHashMap<>();
+        for (int i = 0; i < header.size(); i++) {
+            info.put(header.get(i), object.get(i));
+        }
+        return info;
+    }
+
+    private <T> Constructor<T> buildConstructor(Parameter[] requiredParams, LinkedHashMap<String, String> info) {
+        Constructor<T> builderConstructor;
+        for (Parameter param : requiredParams) {
+
+        }
+        return null;
+    }
+
+    private LinkedHashMap<Parameter, String> generateConstructInfo(List<String> info, Parameter[] requiredParams) {
+        LinkedHashMap<Parameter, String> requiredFields = new LinkedHashMap<>();
+
+        for (Parameter param : requiredParams) {
+
+        }
         return null;
     }
 
