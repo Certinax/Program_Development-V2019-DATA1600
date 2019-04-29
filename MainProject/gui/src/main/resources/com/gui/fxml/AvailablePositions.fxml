@@ -5,6 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
 <AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.AvailablePositionsController">
   <children>
       <Label fx:id="label" layoutX="263.0" layoutY="60.0" minHeight="16.0" minWidth="69.0" text="WELCOME!" />
@@ -17,7 +23,59 @@
       <Button layoutX="12.0" layoutY="77.0" mnemonicParsing="false" onAction="#goToTakenPositions" text="To Taken positions!" />
       <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#setFullscreenMode" text="Fullscreen" />
       <Button layoutX="13.0" layoutY="47.0" mnemonicParsing="false" onAction="#setWindowedMode" text="Windowed" />
+
+      <TableView fx:id="tableView" editable="true" layoutX="210.0" layoutY="45.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
+          <columns>
+
+              <TableColumn fx:id="placeColumn" prefWidth="100" text="Workplace">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="workplace" />
+                  </cellValueFactory>
+              </TableColumn>
+
+              <TableColumn fx:id="positionTypeColumn" prefWidth="100" text="Position Type">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="positionType" />
+                  </cellValueFactory>
+              </TableColumn>
+
+              <TableColumn fx:id="industryColumn" prefWidth="150" text="Industry">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="industry" />
+                  </cellValueFactory>
+              </TableColumn>
+
+              <TableColumn fx:id="employerColumn" prefWidth="59.0" text="Employer">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="employer" />
+                  </cellValueFactory>
+              </TableColumn>
+
+              <TableColumn fx:id="durationColumn" prefWidth="91.0" text="Duaration (weeks)">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="duration" />
+                  </cellValueFactory>
+              </TableColumn>
+
+              <TableColumn fx:id="salaryColumn" prefWidth="154.0" text="Salary pr hour">
+                  <cellValueFactory>
+                      <PropertyValueFactory property="salary" />
+                  </cellValueFactory>
+              </TableColumn>
+
+          </columns>
+          <items>
+              <FXCollections fx:factory="observableArrayList" />
+          </items>
+      </TableView>
+
+      <HBox layoutX="210.0" layoutY="455.0" prefHeight="25.0" prefWidth="219.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="220.0">
+          <Button fx:id="overwrite" onAction="#save" text="Save" />
+          <TextField fx:id="filterField" promptText="Filter..." />
+      </HBox>
+
   </children>
+
   <stylesheets>
     <URL value="@../css/WelcomeScreen.css" />
   </stylesheets>
