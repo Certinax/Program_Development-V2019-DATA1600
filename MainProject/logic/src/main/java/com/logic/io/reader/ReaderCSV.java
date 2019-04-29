@@ -5,6 +5,7 @@ import com.logic.utilities.exceptions.CSVParseException;
 import com.logic.utilities.exceptions.SerializationException;
 import javafx.collections.FXCollections;
 
+import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -27,6 +28,11 @@ public class ReaderCSV implements Reader {
 
     @Override
     public <T> ArrayList<T> readObjects(String path) throws CSVParseException {
+        File file = new File(path);
+        if (file.length() == 0) {
+            return new ArrayList<>();
+        }
+
         CSVParser parser = new CSVParser();
 
         List<List<String>> fileInfo = parser.getInfo(path);
