@@ -1,5 +1,7 @@
 package com.data.clients;
 
+import com.data.handlers.IdManager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 public class Employer extends Client implements Serializable {
 
+    private int employerId;
     private String name;
     private boolean privateSector;
     private ArrayList<String> joblist;
@@ -23,6 +26,7 @@ public class Employer extends Client implements Serializable {
 
     private Employer(Builder builder) {
         super(builder);
+        employerId = builder.employerId;
         name = builder.name;
         privateSector = builder.privateSector;
         joblist = builder.joblist;
@@ -30,6 +34,7 @@ public class Employer extends Client implements Serializable {
 
     public static class Builder extends Client.Builder<Builder> {
         // Required parameters
+        private final int employerId;
         private final String name;
         private final boolean privateSector;
 
@@ -41,6 +46,8 @@ public class Employer extends Client implements Serializable {
             super(address, zipcode, city, industry);
             this.name = name;
             this.privateSector = privateSector;
+            this.employerId = IdManager.INSTANCE.getEmployerIdAndIncrement();
+            //this.employerId = 1;
         }
 
         // Builders for optional parameters
@@ -64,6 +71,16 @@ public class Employer extends Client implements Serializable {
         return privateSector;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isPrivateSector() {
+        return privateSector;
+    }
+
+    public int getEmployerId() { return employerId; }
+
     public void setPrivateSector(Boolean privateSector) {
         this.privateSector = privateSector;
     }
@@ -76,13 +93,19 @@ public class Employer extends Client implements Serializable {
         this.joblist = joblist;
     }
 
+    public String[] template() {
+        return new String[] {"getEmployerId", "getName", "getAddress", "getZipcode", "getCity", "isPrivateSector", "getIndustry",
+                "getJoblist", this.getClass().getName()};
+    }
+
 
     @Override
     public String toString() {
         return super.toString() +
                 "Employer{" +
-                "name='" + name + '\'' +
-                "sector='" + privateSector + '\'' +
+                "employerId'" + employerId + '\'' +
+                ", name='" + name + '\'' +
+                ", sector='" + privateSector + '\'' +
                 ", joblist=" + joblist +
                 '}';
     }

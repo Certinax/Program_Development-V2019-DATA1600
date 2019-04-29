@@ -1,7 +1,13 @@
 package com.data.clients;
 
+import com.data.handlers.IdHandler;
+import com.data.handlers.IdManager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
+
+import static java.util.UUID.randomUUID;
 
 /**
  * <h1>Substitute</h1>
@@ -15,6 +21,7 @@ import java.util.ArrayList;
 
 public class Substitute extends Client implements Serializable {
 
+    private int substituteId;
     private String firstname;
     private String lastname;
     private int age;
@@ -25,6 +32,7 @@ public class Substitute extends Client implements Serializable {
 
     private Substitute(Builder builder) {
         super(builder);
+        substituteId = builder.substituteId;
         firstname = builder.firstname;
         lastname = builder.lastname;
         age = builder.age;
@@ -38,6 +46,7 @@ public class Substitute extends Client implements Serializable {
 
     public static class Builder extends Client.Builder<Builder> {
         // Required parameters
+        private final int substituteId;
         private final String firstname;
         private final String lastname;
         private final int age;
@@ -55,6 +64,7 @@ public class Substitute extends Client implements Serializable {
             this.firstname = firstname;
             this.lastname = lastname;
             this.age = age;
+            this.substituteId = IdManager.INSTANCE.getSubstituteIdAndIncrement();
         }
 
         // Builders for optional parameters
@@ -92,6 +102,8 @@ public class Substitute extends Client implements Serializable {
     public String getFirstname() {
         return firstname;
     }
+
+    public int getSubstituteId() { return  substituteId; }
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
@@ -146,7 +158,7 @@ public class Substitute extends Client implements Serializable {
     }
 
     public String[] template() {
-        return new String[] {"getFirstname", "getLastname", "getAddress", "getZipcode", "getCity", "getAge", "getSalaryRequirement",
+        return new String[] {"getSubstituteId", "getFirstname", "getLastname", "getAddress", "getZipcode", "getCity", "getAge", "getSalaryRequirement",
                 "getIndustry", "getEducation", "getWorkExperience", "getWorkReference", this.getClass().getName()};
     }
 
@@ -154,7 +166,8 @@ public class Substitute extends Client implements Serializable {
     public String toString() {
         return super.toString() +
                 "Substitute{" +
-                "firstname='" + firstname + '\'' +
+                "substituteId'" + substituteId + '\'' +
+                ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", age=" + age +
                 ", salaryRequirement=" + salaryRequirement +
