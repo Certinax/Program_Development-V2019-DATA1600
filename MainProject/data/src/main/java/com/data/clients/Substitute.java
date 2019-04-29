@@ -1,15 +1,20 @@
 package com.data.clients;
 
 import com.data.Writeable;
+import com.data.handlers.IdHandler;
+import com.data.handlers.IdManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
+
+import static java.util.UUID.randomUUID;
 
 /**
  * <h1>Substitute</h1>
  *
- * Class for representing substitutes
- * Utilizes the Builder-pattern to create objects
+ * Class for representing substitutes Utilizes the Builder-pattern to create
+ * objects
  *
  * @author Mathias Lund Ahrn, Fredrik Pedersen
  * @since 24-04-2019
@@ -17,6 +22,7 @@ import java.util.ArrayList;
 
 public class Substitute extends Client implements Serializable, Writeable {
 
+    private int substituteId;
     private String firstname;
     private String lastname;
     private int age;
@@ -27,6 +33,7 @@ public class Substitute extends Client implements Serializable, Writeable {
 
     private Substitute(Builder builder) {
         super(builder);
+        substituteId = builder.substituteId;
         firstname = builder.firstname;
         lastname = builder.lastname;
         age = builder.age;
@@ -36,14 +43,15 @@ public class Substitute extends Client implements Serializable, Writeable {
         workReference = builder.workReference;
     }
 
-    public Substitute() {} //Default constructor used by the CSV Reader to create objects
+    public Substitute() {
+    } // Default constructor used by the CSV Reader to create objects
 
     public static class Builder extends Client.Builder<Builder> {
         // Required parameters
+        private final int substituteId;
         private final String firstname;
         private final String lastname;
         private final int age;
-
 
         // Optional parameters
         private int salaryRequirement;
@@ -52,11 +60,13 @@ public class Substitute extends Client implements Serializable, Writeable {
         private ArrayList<String> workReference = null;
 
         // Builder for required parameters
-        public Builder(String firstname, String lastname, String address, int age, int zipcode, String city, String industry) {
+        public Builder(String firstname, String lastname, String address, int age, int zipcode, String city,
+                String industry) {
             super(address, zipcode, city, industry);
             this.firstname = firstname;
             this.lastname = lastname;
             this.age = age;
+            this.substituteId = IdManager.INSTANCE.getSubstituteIdAndIncrement();
         }
 
         // Builders for optional parameters
@@ -93,6 +103,10 @@ public class Substitute extends Client implements Serializable, Writeable {
 
     public String getFirstname() {
         return firstname;
+    }
+
+    public int getSubstituteId() {
+        return substituteId;
     }
 
     public void setFirstname(String firstname) {
@@ -148,21 +162,16 @@ public class Substitute extends Client implements Serializable, Writeable {
     }
 
     public String[] template() {
-        return new String[] {"getFirstname", "getLastname", "getAddress", "getZipcode", "getCity", "getAge", "getSalaryRequirement",
-                "getIndustry", "getEducation", "getWorkExperience", "getWorkReference", this.getClass().getName()};
+        return new String[] { "getSubstituteId", "getFirstname", "getLastname", "getAddress", "getZipcode", "getCity",
+                "getAge", "getSalaryRequirement", "getIndustry", "getEducation", "getWorkExperience",
+                "getWorkReference", this.getClass().getName() };
     }
 
     @Override
     public String toString() {
-        return super.toString() +
-                "Substitute{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", age=" + age +
-                ", salaryRequirement=" + salaryRequirement +
-                ", education=" + education +
-                ", workExperience=" + workExperience +
-                ", workReference=" + workReference +
-                '}';
+        return super.toString() + "Substitute{" + "substituteId'" + substituteId + '\'' + ", firstname='" + firstname
+                + '\'' + ", lastname='" + lastname + '\'' + ", age=" + age + ", salaryRequirement=" + salaryRequirement
+                + ", education=" + education + ", workExperience=" + workExperience + ", workReference=" + workReference
+                + '}';
     }
 }

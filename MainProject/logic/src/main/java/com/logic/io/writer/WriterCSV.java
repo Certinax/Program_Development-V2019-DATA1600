@@ -131,7 +131,11 @@ public class WriterCSV implements Writer {
         StringBuilder sb = new StringBuilder();
 
         for (Map.Entry<String, String> entry : preparedObjectInfo.entrySet()) {
-            sb.append(entry.getKey().substring(3));
+            if(entry.getKey().startsWith("get")) {
+                sb.append(entry.getKey().substring(3));
+            } else if (entry.getKey().startsWith("is")) {
+                sb.append(entry.getKey().substring(2));
+            }
             sb.append(";");
         }
         sb.deleteCharAt(sb.length() - 1);
@@ -156,11 +160,11 @@ public class WriterCSV implements Writer {
 
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
-            if (method.getParameterTypes().length == 0 && method.getName().startsWith("get")) {
+            if (method.getParameterTypes().length == 0 && method.getName().startsWith("get") || method.getName().startsWith("is")) {
                 if (method.invoke(obj) != null) {
                     classData.put(method.getName(), method.invoke(obj).toString());
                 } else {
-                    classData.put(method.getName(), "");
+                    classData.put(method.getName(), "N/A");
                 }
             }
         }

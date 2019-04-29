@@ -1,6 +1,7 @@
 package com.data.clients;
 
 import com.data.Writeable;
+import com.data.handlers.IdManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,8 +9,8 @@ import java.util.ArrayList;
 /**
  * <h1>Employer</h1>
  *
- * Class for representing employers
- * Utilizes the Builder-pattern to create objects
+ * Class for representing employers Utilizes the Builder-pattern to create
+ * objects
  *
  * @author Mathias Lund Ahrn, Fredrik Pedersen
  * @since 24-04-2019
@@ -17,14 +18,17 @@ import java.util.ArrayList;
 
 public class Employer extends Client implements Serializable, Writeable {
 
+    private int employerId;
     private String name;
     private boolean privateSector;
     private ArrayList<String> joblist;
 
-    public Employer() {} //Default constructor used by the CSV Reader to create objects
+    public Employer() {
+    } // Default constructor used by the CSV Reader to create objects
 
     private Employer(Builder builder) {
         super(builder);
+        employerId = builder.employerId;
         name = builder.name;
         privateSector = builder.privateSector;
         joblist = builder.joblist;
@@ -32,6 +36,7 @@ public class Employer extends Client implements Serializable, Writeable {
 
     public static class Builder extends Client.Builder<Builder> {
         // Required parameters
+        private final int employerId;
         private final String name;
         private final boolean privateSector;
 
@@ -43,6 +48,8 @@ public class Employer extends Client implements Serializable, Writeable {
             super(address, zipcode, city, industry);
             this.name = name;
             this.privateSector = privateSector;
+            this.employerId = IdManager.INSTANCE.getEmployerIdAndIncrement();
+            // this.employerId = 1;
         }
 
         // Builders for optional parameters
@@ -66,6 +73,18 @@ public class Employer extends Client implements Serializable, Writeable {
         return privateSector;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isPrivateSector() {
+        return privateSector;
+    }
+
+    public int getEmployerId() {
+        return employerId;
+    }
+
     public void setPrivateSector(Boolean privateSector) {
         this.privateSector = privateSector;
     }
@@ -79,17 +98,13 @@ public class Employer extends Client implements Serializable, Writeable {
     }
 
     public String[] template() {
-        return new String[] {""}; //TODO Fix the template
+        return new String[] { "getEmployerId", "getName", "getAddress", "getZipcode", "getCity", "isPrivateSector",
+                "getIndustry", "getJoblist", this.getClass().getName() };
     }
-
 
     @Override
     public String toString() {
-        return super.toString() +
-                "Employer{" +
-                "name='" + name + '\'' +
-                "sector='" + privateSector + '\'' +
-                ", joblist=" + joblist +
-                '}';
+        return super.toString() + "Employer{" + "employerId'" + employerId + '\'' + ", name='" + name + '\''
+                + ", sector='" + privateSector + '\'' + ", joblist=" + joblist + '}';
     }
 }
