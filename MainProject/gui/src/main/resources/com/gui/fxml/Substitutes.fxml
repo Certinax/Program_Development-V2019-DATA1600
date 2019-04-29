@@ -18,6 +18,32 @@
 <AnchorPane prefHeight="499.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.SubstitutesController">
    <children>
       <Pane maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ddd;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label alignment="CENTER" layoutX="85.0" layoutY="27.0" maxWidth="200.0" minWidth="200.0" prefHeight="17.0" prefWidth="200.0" text="MENU" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <GridPane alignment="CENTER" layoutX="63.0" layoutY="78.0" maxWidth="200.0" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="221.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Available Positions" textAlignment="CENTER" />
+            <Button alignment="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Taken Positions" GridPane.rowIndex="1" />
+            <Button alignment="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Substitutes" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Register Substitute" GridPane.rowIndex="3" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="4" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Register Position" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
    
           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" style="-fx-font: NORMAL 20 Tahoma;" text="Substitutes" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
        <TableView fx:id="tableView" editable="true" layoutX="210.0" layoutY="45.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
@@ -75,31 +101,5 @@
             <TextField fx:id="filterField" promptText="Filter..." />
         </HBox>
          <Button layoutX="840.0" layoutY="455.0" onAction="#delete" text="Delete" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="20.0" />
-      <Label alignment="CENTER" layoutX="85.0" layoutY="27.0" maxWidth="200.0" minWidth="200.0" prefHeight="17.0" prefWidth="200.0" text="MENU" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <GridPane alignment="CENTER" layoutX="63.0" layoutY="78.0" maxWidth="200.0" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="221.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Available Positions" textAlignment="CENTER" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Taken Positions" GridPane.rowIndex="1" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Substitutes" GridPane.rowIndex="2" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Register Substitute" GridPane.rowIndex="3" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="4" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="160.0" text="Register Position" GridPane.rowIndex="5" />
-         </children>
-      </GridPane>
    </children>
 </AnchorPane>
