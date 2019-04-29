@@ -201,6 +201,11 @@ public class AvailablePositionsController implements Controller {
     }
 
     @FXML
+    private void goToAvailablePositions(ActionEvent event) {
+        sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
+    }
+
+    @FXML
     private void setFullscreenMode(ActionEvent event) {
         sceneManager.setFullscreen();
     }
