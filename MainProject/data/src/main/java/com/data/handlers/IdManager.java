@@ -3,6 +3,7 @@ package com.data.handlers;
 import com.data.clients.Employer;
 import com.data.clients.Substitute;
 import com.logic.concurrency.ReaderThreadStarter;
+import com.logic.utilities.FilePaths;
 import com.logic.utilities.exceptions.IdGenerationException;
 
 import java.util.ArrayList;
@@ -34,8 +35,12 @@ public enum IdManager {
 
     private void generateSubstituteId() throws IdGenerationException{
         try {
-            ArrayList<Substitute> substitutes = ReaderThreadStarter.startReader("resources/substitutes.csv");
-            this.substituteId = substitutes.get(substitutes.size()-1).getSubstituteId();
+            ArrayList<Substitute> substitutes = ReaderThreadStarter.startReader(FilePaths.SUBSTITUTESCSV.toString());
+            if (substitutes.size() == 0) {
+                this.substituteId = 1;
+            } else {
+                this.substituteId = substitutes.get(substitutes.size() - 1).getSubstituteId();
+            }
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
             throw new IdGenerationException("Couldn't find or load file");
@@ -44,8 +49,12 @@ public enum IdManager {
 
     private void generateEmployerId() throws IdGenerationException{
         try {
-            ArrayList<Employer> employers = ReaderThreadStarter.startReader("resources/employers.csv");
-            this.employerId = employers.get(employers.size()-1).getEmployerId();
+            ArrayList<Employer> employers = ReaderThreadStarter.startReader(FilePaths.EMPLOYERCSV.toString());
+            if (employers.size() == 0) {
+                this.employerId = 1;
+            } else {
+                this.employerId = employers.get(employers.size()-1).getEmployerId();
+            }
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
             throw new IdGenerationException("Couldn't find or load file");
