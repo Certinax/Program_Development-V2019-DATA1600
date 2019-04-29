@@ -43,7 +43,7 @@ public class SubstitutesController implements Controller {
         data = tableView.getItems();
 
         try {
-            data.addAll(ReaderThreadStarter.startReader(FilePaths.SUBSTITUTESCSV.toString()));
+            data.addAll(ReaderThreadStarter.startReader(FilePaths.SUBSTITUTESCSV.toString())); //TODO Should this read from CSV or JOBJ?
             System.out.println(data);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
@@ -91,18 +91,27 @@ public class SubstitutesController implements Controller {
         FilteredList<Substitute> filteredData = new FilteredList<>(data, p -> true);
 
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(substituteUser -> {
+            filteredData.setPredicate(aSubstitute -> {
                 if(newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();
+                int intFilter = -1; //set to a negative value as we don't allow negative values in the datafields. Won't give a match.
 
-                if (substituteUser.getFirstname().toLowerCase().contains(lowerCaseFilter)) {
+                try {
+                    intFilter = Integer.parseInt(lowerCaseFilter);
+                } catch (NumberFormatException e) {
+                    //If the String can't  be parsed to an int, don't change the intFilter.
+                } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
+
+                if (aSubstitute.getFirstname().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (substituteUser.getLastname().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (aSubstitute.getLastname().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else return substituteUser.getAddress().toLowerCase().contains(lowerCaseFilter);
+                } else if (aSubstitute.getZipcode() == intFilter) {
+                    return true;
+                } else return aSubstitute.getAddress().toLowerCase().contains(lowerCaseFilter);
             });
         });
 

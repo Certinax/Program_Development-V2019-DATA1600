@@ -21,6 +21,14 @@ public enum FilePaths { //TODO Make sure all paths are included here
         public String toString() {
             return "resources/substitutes.jobj";
         }
+    },
+
+    AVAILABLEPOSITIONCSV { //The CSV-file for available positions
+        public String toString() { return "resources/availablepositions.csv";}
+    },
+
+    AVAILABLEPOSITIONJOBJ { //The JOBJ-file for available positions
+        public String toString() { return "resources/availablepositions.jobj";}
     }
 
 
