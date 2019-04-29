@@ -1,20 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="402.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.EmployerInfoController">
    <children>
-      <Label alignment="CENTER" layoutX="100.0" layoutY="29.0" text="Employer" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="29.0">
+
+      <Pane maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ddd;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label alignment="CENTER" layoutX="85.0" layoutY="27.0" maxWidth="200.0" minWidth="200.0" prefHeight="17.0" prefWidth="200.0" text="MENU" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <GridPane alignment="CENTER" layoutX="63.0" layoutY="78.0" maxWidth="200.0" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="221.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToAvailablePositions" prefWidth="160.0" text="Available Positions" textAlignment="CENTER" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToTakenPositions" prefWidth="160.0" text="Taken Positions" GridPane.rowIndex="1" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToSubstitutes" prefWidth="160.0" text="Substitutes" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterSubstitute" prefWidth="160.0" text="Register Substitute" GridPane.rowIndex="3" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="4" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+
+      <Label alignment="CENTER" layoutX="100.0" layoutY="29.0" text="Employer" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <GridPane layoutX="100.0" layoutY="116.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="116.0">
+      <GridPane layoutX="100.0" layoutY="116.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="116.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="347.0" minWidth="10.0" prefWidth="292.0" />
@@ -77,7 +108,7 @@
             <Label text="Oslo" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <GridPane layoutX="100.0" layoutY="311.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="311.0">
+      <GridPane layoutX="100.0" layoutY="311.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="311.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="347.0" minWidth="10.0" prefWidth="291.0" />
@@ -101,12 +132,12 @@
             <Label text="99106201" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Label alignment="CENTER" layoutX="286.0" layoutY="88.0" text="Personalia" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="88.0">
+      <Label alignment="CENTER" layoutX="286.0" layoutY="88.0" text="Personalia" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="88.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="100.0" layoutY="274.0" text="Contact information" textAlignment="CENTER" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="274.0">
+      <Label alignment="CENTER" layoutX="100.0" layoutY="274.0" text="Contact information" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="274.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
