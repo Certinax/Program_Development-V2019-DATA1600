@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="677.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="741.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
     <children>
 
         <Pane maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ddd;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -47,7 +47,7 @@
         </GridPane>
         <Label alignment="CENTER" layoutX="301.0" layoutY="19.0" text="Register Position" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
             <font>
-                <Font size="20.0" />
+                <Font name="System Bold" size="20.0" />
             </font>
         </Label>
         <Label alignment="CENTER" layoutX="100.0" layoutY="59.0" text="General info" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="59.0">
@@ -139,5 +139,6 @@
             <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
+      <Button layoutX="462.0" layoutY="671.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="671.0" />
     </children>
 </AnchorPane>
