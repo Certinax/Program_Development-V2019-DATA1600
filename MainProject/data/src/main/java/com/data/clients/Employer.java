@@ -1,5 +1,7 @@
 package com.data.clients;
 
+import com.data.Writeable;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -13,7 +15,7 @@ import java.util.ArrayList;
  * @since 24-04-2019
  */
 
-public class Employer extends Client implements Serializable {
+public class Employer extends Client implements Serializable, Writeable {
 
     private String name;
     private boolean privateSector;
@@ -74,6 +76,10 @@ public class Employer extends Client implements Serializable {
 
     public void setJoblist(ArrayList<String> joblist) {
         this.joblist = joblist;
+    }
+
+    public String[] template() {
+        return new String[] {""}; //TODO Fix the template
     }
 
 

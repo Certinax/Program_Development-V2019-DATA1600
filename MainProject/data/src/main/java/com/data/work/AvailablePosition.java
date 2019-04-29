@@ -1,9 +1,12 @@
 package com.data.work;
 
+import com.data.Writeable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //TODO Write JavaDocs!
-public class AvailablePosition {
+public class AvailablePosition implements Serializable, Writeable {
 
     private int positionsID; //An internal ID for the position
     private Boolean publicSector; //Is it public or private sector?
@@ -35,7 +38,7 @@ public class AvailablePosition {
         this.applicants = builder.applicants;
     }
 
-    static class Builder<T extends Builder<T>> {
+    public static class Builder<T extends Builder<T>> {
 
         private int positionsID; //An internal ID for the position
         private Boolean publicSector; //Is it public or private sector?
@@ -97,6 +100,13 @@ public class AvailablePosition {
         }
     }
 
+    @Override
+    public String[] template() {
+        return new String[] {"getPublicSector", "getWorkplace", "getEmployer", "getPositionType", "getIndustry", "getDuration",
+                "getStartingTime", "getEndingTime", "getRequiredQualifications", "getSalary", "getContactInfo", "getDescription",
+                "getApplicants", this.getClass().getName()};
+    }
+
     public int getPositionsID() {
         return positionsID;
     }
@@ -128,6 +138,10 @@ public class AvailablePosition {
     public void setEmployer(int employer) {
         this.employer = employer;
     }
+
+    public String getPositionType() { return positionType; }
+
+    public void setPositionType(String positionType) {this.positionType = positionType;}
 
     public String getIndustry() {
         return industry;

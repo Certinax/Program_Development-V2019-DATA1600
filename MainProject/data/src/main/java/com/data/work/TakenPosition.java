@@ -1,9 +1,12 @@
 package com.data.work;
 
+import com.data.Writeable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //TODO Write JavaDocs!
-public class TakenPosition extends AvailablePosition {
+public class TakenPosition extends AvailablePosition implements Serializable, Writeable {
 
     private int substituteID;
 
@@ -42,12 +45,18 @@ public class TakenPosition extends AvailablePosition {
             return substituteID;
         }
 
-        @Override
-        public String toString() {
-            return super.toString() +
-                    "Builder{" +
-                    "substituteID=" + substituteID +
-                    '}';
-        }
+    }
+
+    @Override
+    public String[] template() {
+        return new String[] {""}; //TODO Correctly implement this
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Builder{" +
+                "substituteID=" + substituteID +
+                '}';
     }
 }
