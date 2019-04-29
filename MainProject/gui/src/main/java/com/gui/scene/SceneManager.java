@@ -69,6 +69,9 @@ public enum SceneManager {
         this.primaryStage.setTitle("Bad Fantasy");
         this.primaryStage.setWidth((Screen.getPrimary().getBounds().getWidth())/1.5);
         this.primaryStage.setHeight((Screen.getPrimary().getBounds().getHeight())/1.2);
+        this.primaryStage.setMinWidth(530);
+        this.primaryStage.setMinHeight(315);
+
         primaryStage.setOnCloseRequest(WindowEvent -> {
                 if (activeController != null) {
                     activeController.exit();
