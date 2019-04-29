@@ -2,6 +2,7 @@ package com.data.work;
 
 import java.util.ArrayList;
 
+//TODO Write JavaDocs!
 public class AvailablePosition {
 
     private int positionsID; //An internal ID for the position

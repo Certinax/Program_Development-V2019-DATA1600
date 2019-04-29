@@ -10,11 +10,14 @@ import javafx.scene.control.TextField;
  * @author Fredrik Pedersen
  * @since 08-04-2019
  */
+
 public class PostNumberField extends TextField {
+
     /**
      * Constructor that inherits everything from the TextField-class, using an eventlistener to make
      * sure the textfield only accepts 0-4 integers as input value
      */
+
     public PostNumberField() {
         super();
 

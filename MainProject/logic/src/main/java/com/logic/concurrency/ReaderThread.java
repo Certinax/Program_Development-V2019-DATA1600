@@ -3,12 +3,8 @@ package com.logic.concurrency;
 import com.logic.io.reader.Reader;
 import com.logic.io.reader.ReaderCSV;
 import com.logic.io.reader.ReaderJOBJ;
-import com.logic.io.writer.Writer;
-import com.logic.io.writer.WriterCSV;
-import com.logic.io.writer.WriterJOBJ;
 import com.logic.utilities.exceptions.CSVParseException;
 import com.logic.utilities.exceptions.UnsupportedFileFormatException;
-import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.util.ArrayList;

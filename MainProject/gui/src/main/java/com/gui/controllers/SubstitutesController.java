@@ -15,6 +15,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 import java.util.concurrent.ExecutionException;
 
+//TODO Write JavaDocs!
 public class SubstitutesController implements Controller {
 
     @FXML

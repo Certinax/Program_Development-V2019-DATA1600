@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
+//TODO Write JavaDocs
 public class ReaderCSV implements Reader {
 
     public ReaderCSV() {}

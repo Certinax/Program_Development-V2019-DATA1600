@@ -1,14 +1,23 @@
 package com.logic.utilities;
 
+/**
+ * <h1>FilePaths</h1>
+ *
+ * Enum clas representing all the default files for the program
+ *
+ * @author Fredrik Pedersen
+ * @since 28-04-2019
+ */
+
 public enum FilePaths { //TODO Make sure all paths are included here
 
-    SUBSTITUTESCSV {
+    SUBSTITUTESCSV { //The CSV-file for substitutes
         public String toString() {
             return "resources/substitutes.csv";
         }
     },
 
-    SUBSTITUTESJOBJ {
+    SUBSTITUTESJOBJ { //The JOBJ-file for substitutes
         public String toString() {
             return "resources/substitutes.jobj";
         }

@@ -7,7 +7,6 @@ import com.logic.utilities.exceptions.UnsupportedFileFormatException;
 import com.logic.utilities.validators.ListValidator;
 import com.logic.utilities.validators.StringValidator;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;

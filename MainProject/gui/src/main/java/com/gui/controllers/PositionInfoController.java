@@ -5,6 +5,7 @@ import com.gui.scene.SceneName;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+//TODO Write JavaDocs!
 public class PositionInfoController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;

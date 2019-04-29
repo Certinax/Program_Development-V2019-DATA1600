@@ -17,6 +17,7 @@ public class WriterThreadStarter {
     }
 
     /**
+     * <h2>startWriter</h2>
      * Method for writing a single object to file.
      *
      * @param objectToWrite the object that shal be written
@@ -26,6 +27,7 @@ public class WriterThreadStarter {
      *                              cleared when this exception is thrown.
      *
      */
+
     public static void startWriter(Object objectToWrite, String path) throws InterruptedException {
         Thread writerThread = new Thread(new WriterThread(objectToWrite, path));
         writerThread.start();
@@ -33,7 +35,7 @@ public class WriterThreadStarter {
     }
 
     /**
-     *
+     * <h2>startWriter</h2>
      * Method for writing a list of objects to file.
      *
      * @param data an ObservableList containing all the objects to be written to file
@@ -43,6 +45,7 @@ public class WriterThreadStarter {
      *                              <i>interrupted status</i> of the current thread is
      *                              cleared when this exception is thrown.
      */
+
    public static <T> void startWriter(ObservableList<T> data, String path) throws InterruptedException {
         Thread writerThread = new Thread(new WriterThread(data, path));
         writerThread.start();

@@ -2,6 +2,7 @@ package com.data.work;
 
 import java.util.ArrayList;
 
+//TODO Write JavaDocs!
 public class TakenPosition extends AvailablePosition {
 
     private int substituteID;

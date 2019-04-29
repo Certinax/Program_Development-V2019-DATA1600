@@ -3,8 +3,6 @@ package com.logic.customTextFields;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 
-
-
 /**
  * <h1>NameField</h1>
  * A custom TextField that only accepts 0 to 100 characters as input value
@@ -12,8 +10,8 @@ import javafx.scene.control.TextField;
  * @author Fredrik Pedersen
  * @since 08-04-2019
  */
-public class NameField extends TextField {
 
+public class NameField extends TextField {
 
     /**
      * Constructor that inherits everything from the TextField-class, using an eventlistener to make

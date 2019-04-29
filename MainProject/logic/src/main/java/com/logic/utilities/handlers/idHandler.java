@@ -2,6 +2,7 @@ package com.logic.utilities.handlers;
 
 import java.util.HashMap;
 
+//TODO skriv JavaDocs!
 public class idHandler {
 
     HashMap<String, Integer> id;

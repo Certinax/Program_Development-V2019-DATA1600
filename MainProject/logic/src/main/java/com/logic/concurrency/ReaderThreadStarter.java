@@ -1,7 +1,4 @@
 package com.logic.concurrency;
-
-import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -17,7 +14,6 @@ import java.util.concurrent.Future;
  * @since 23-04-2019
  */
 
-//TODO EXAMPLE IMPLEMENTATION. ACTUAL IMPLEMENTATION INCOMING WHEN READER IS READY
 public class ReaderThreadStarter {
 
     private ReaderThreadStarter() { //Private constructor to deter initialization

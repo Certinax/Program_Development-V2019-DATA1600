@@ -1,5 +1,14 @@
 module logic {
 
+    /**
+     * <h1>Module - Logic</h1>
+     *
+     * The Logic module contains program logic that is non-dependent on other modules.
+     * This module SHAL NOT require any modules or libraries that cannot be easily integrated
+     * through Maven (or similar applications).
+     *
+     */
+
     requires javafx.controls;
     requires javafx.fxml;
 
