@@ -11,14 +11,14 @@ import javafx.scene.control.TextField;
  * @since 08-04-2019
  */
 
-public class PostNumberField extends TextField {
+public class ZipCodeField extends TextField {
 
     /**
      * Constructor that inherits everything from the TextField-class, using an eventlistener to make
      * sure the textfield only accepts 0-4 integers as input value
      */
 
-    public PostNumberField() {
+    public ZipCodeField() {
         super();
 
         this.textProperty().addListener((ObservableValue<? extends String> observableValue, String oldValue, String newValue) -> {

@@ -2,13 +2,56 @@ package com.gui.controllers;
 
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.customTextFields.NameField;
+import com.logic.customTextFields.PhoneField;
+import com.logic.customTextFields.SalaryField;
+import com.logic.customTextFields.ZipCodeField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 //TODO Write JavaDocs!
 public class RegisterSubstituteController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
+
+    @FXML
+    Label firstnamelbl, lastnamelbl, birthdaylbl, streetnamelbl, zipcodelbl, citylbl, emaillbl, phonenumberlbl,
+            schoolnamelbl, educationlbl, startedlbl, finnishedlbl, workplacelbl, positionlbl, fromlbl, tolbl,
+            referenceNamelbl, referenceLastnamelbl, referencePhonelbl, referenceMaillbl, industrylbl, salarylbl;
+
+    @FXML
+    TextField streetnameField, emailField, educationField, workplaceField, positionField, referenceMailField;
+
+    @FXML
+    NameField firstnameField, lastnameField, cityField,schoolnameField, referenceNameField, referenceLastnameField;
+
+    @FXML
+    PhoneField phoneField, referencePhoneField;
+
+    @FXML
+    ZipCodeField zipCodeField;
+
+    @FXML
+    SalaryField salaryField;
+
+    @FXML
+    DatePicker birthdayField, educationStartField, educationEndField, workStartField, workEndField;
+
+    @FXML
+    ComboBox<String> industryList;
+
+
+
+    @Override
+    public void exit() {
+
+    }
+
+    /* -------------------- Menu Methods -------------------------*/
 
     @FXML
     private void goToPositionInfo(ActionEvent event) {
@@ -53,10 +96,5 @@ public class RegisterSubstituteController implements Controller {
     @FXML
     private void setWindowedMode() {
         sceneManager.setWindowed();
-    }
-
-    @Override
-    public void exit() {
-
     }
 }

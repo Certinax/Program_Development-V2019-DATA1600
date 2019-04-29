@@ -19,7 +19,6 @@ import java.util.concurrent.Callable;
  * @since 23-04-2019
  */
 
-//TODO EXAMPLE IMPLEMENTATION. ACTUAL IMPLEMENTATION INCOMING WHEN READER IS READY
 public class ReaderThread<T> implements Callable<ArrayList<T>> {
 
     private String path;
