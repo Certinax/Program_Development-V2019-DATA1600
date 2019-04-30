@@ -6,102 +6,104 @@ import com.logic.filePaths.UserDefinedPaths;
 import com.logic.utilities.exceptions.UnsupportedFileFormatException;
 import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
 import java.io.File;
 
 public class OptionsController implements Controller {
 
-    FileChooser fileChooser = new FileChooser();
-    Stage chooserStage = new Stage();
-    File selectedFile;
-    String header = "Wrong File Format";
+    private FileChooser fileChooser = new FileChooser();
+    private File selectedFile;
+    private String header = "Wrong File Format";
+    private ErrorBox error;
+    private AlertBox alert;
 
     public void setSubstituteCSVPath(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(chooserStage);
+        selectedFile = fileChooser.showOpenDialog(null);
         try {
             UserDefinedPaths.setSubstituteCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
-            ErrorBox alert = new ErrorBox(e.getMessage(), header);
-            alert.show();
+            error = new ErrorBox(e.getMessage(), header);
+            error.show();
         }
     }
 
     public void setSubstituteJOBJPath(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(chooserStage);
+        selectedFile = fileChooser.showOpenDialog(null);
         try {
             UserDefinedPaths.setSubstituteJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
-            ErrorBox alert = new ErrorBox(e.getMessage(), header);
-            alert.show();
+            error = new ErrorBox(e.getMessage(), header);
+            error.show();
         }
     }
 
     public void setEmployersCSV(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(chooserStage);
+        selectedFile = fileChooser.showOpenDialog(null);
         try {
             UserDefinedPaths.setEmployerCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
-            ErrorBox alert = new ErrorBox(e.getMessage(), header);
-            alert.show();
+            error = new ErrorBox(e.getMessage(), header);
+            error.show();
         }
 
     }
 
     public void setEmployersJOBJ(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(chooserStage);
+        selectedFile = fileChooser.showOpenDialog(null);
         try {
             UserDefinedPaths.setEmployerJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
-            ErrorBox alert = new ErrorBox(e.getMessage(), header);
-            alert.show();
+            error = new ErrorBox(e.getMessage(), header);
+            error.show();
         }
     }
 
     public void setAvailablePositionsCSV(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(chooserStage);
+        selectedFile = fileChooser.showOpenDialog(null);
         try {
             UserDefinedPaths.setAvailablePositionCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
-            ErrorBox alert = new ErrorBox(e.getMessage(), header);
-            alert.show();
+            error = new ErrorBox(e.getMessage(), header);
+            error.show();
         }
     }
 
     public void setAvailablePositionsJOBJ(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(chooserStage);
+        selectedFile = fileChooser.showOpenDialog(null);
         try {
             UserDefinedPaths.setAvailablePositionJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
-            ErrorBox alert = new ErrorBox(e.getMessage(), header);
-            alert.show();
+            error = new ErrorBox(e.getMessage(), header);
+            error.show();
         }
     }
 
     public void setActivePositionsCSV(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(chooserStage);
+        selectedFile = fileChooser.showOpenDialog(null);
         try {
             UserDefinedPaths.setActivePositionCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
-            ErrorBox alert = new ErrorBox(e.getMessage(), header);
-            alert.show();
+            error = new ErrorBox(e.getMessage(), header);
+            error.show();
         }
     }
 
     public void setActivePositionsJOBJ(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(chooserStage);
+        selectedFile = fileChooser.showOpenDialog(null);
         try {
             UserDefinedPaths.setActivePositionJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
-            ErrorBox alert = new ErrorBox(e.getMessage(), header);
-            alert.show();
+            error = new ErrorBox(e.getMessage(), header);
+            error.show();
         }
     }
 
     public void setDefaultPaths(ActionEvent event) {
         UserDefinedPaths.setDefaultPaths();
-        AlertBox alert = new AlertBox("All info files have been set to their default values", "All filepaths set to default");
+        alert = new AlertBox("All info files have been set to their default values", "All filepaths set to default");
+        alert.show();
     }
+
+    @Override
     public void exit() {
 
     }
