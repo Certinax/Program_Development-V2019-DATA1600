@@ -18,6 +18,7 @@
 <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="741.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
     <children>
 
+        <!-- MENU -->
         <Pane maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ddd;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <Label alignment="CENTER" layoutX="85.0" layoutY="27.0" maxWidth="200.0" minWidth="200.0" prefHeight="17.0" prefWidth="200.0" text="MENU" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
             <font>
@@ -45,6 +46,9 @@
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="5" />
             </children>
         </GridPane>
+        <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
+
+        <!-- MAIN SECTION -->
         <Label alignment="CENTER" layoutX="301.0" layoutY="19.0" text="Register Position" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
             <font>
                 <Font name="System Bold" size="20.0" />

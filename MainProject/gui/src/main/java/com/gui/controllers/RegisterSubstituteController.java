@@ -6,12 +6,14 @@ import com.logic.customTextFields.NameField;
 import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.SalaryField;
 import com.logic.customTextFields.ZipCodeField;
+import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 //TODO Write JavaDocs!
 public class RegisterSubstituteController implements Controller {
@@ -86,6 +88,15 @@ public class RegisterSubstituteController implements Controller {
     @FXML
     private void goToAvailablePositions(ActionEvent event) {
         sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
+    }
+
+    @FXML
+    private void openOptions(ActionEvent event) {
+        try {
+            sceneManager.createNewStageWithScene(new Stage(), SceneName.OPTIONS);
+        } catch (NoPrimaryStageException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
