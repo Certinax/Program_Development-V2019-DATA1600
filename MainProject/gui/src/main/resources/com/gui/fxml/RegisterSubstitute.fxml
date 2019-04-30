@@ -223,7 +223,7 @@
                      </rowConstraints>
                      <children>
                         <NameField fx:id="referenceNameField" layoutX="110.0" layoutY="43.0" promptText="Ref Firstname" />
-                        <NameField fx:id="referenceNameField" layoutX="210.0" layoutY="43.0" promptText="Ref Lastname" GridPane.columnIndex="1" />
+                        <NameField fx:id="referenceLastnameField" layoutX="210.0" layoutY="43.0" promptText="Ref Lastname" GridPane.columnIndex="1" />
                         <PhoneField fx:id="referencePhoneField" layoutX="110.0" layoutY="43.0" promptText="Ref Phone" GridPane.columnIndex="2" />
                         <TextField fx:id="referenceMailField" layoutX="10.0" layoutY="43.0" promptText="Ref E-mail" GridPane.columnIndex="3" />
                         <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="4" />
