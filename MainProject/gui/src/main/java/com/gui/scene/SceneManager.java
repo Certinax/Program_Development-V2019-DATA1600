@@ -1,6 +1,7 @@
 package com.gui.scene;
 
 import com.gui.controllers.Controller;
+import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -41,20 +42,26 @@ public enum SceneManager {
     /**
      * Private method used to create SceneInfo objects and link them with the SceneName-enums in a hashmap
      */
-    private void createSceneInfos() { //TODO MAKE SURE ALL VIEW ARE REPRESENTED HERE
+    private void createSceneInfos() { //TODO MAKE SURE ALL VIEWS ARE REPRESENTED HERE
         SceneInfo availablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
+        SceneInfo employerInfo = new SceneInfo("Employer Info", "/com/gui/fxml/EmployerInfo.fxml");
+        SceneInfo options = new SceneInfo("Options", "/com/gui/fxml/Options.fxml");
         SceneInfo positionInfo = new SceneInfo("Position Info", "/com/gui/fxml/PositionInfo.fxml");
         SceneInfo registerEmployer = new SceneInfo("Register Employer", "/com/gui/fxml/RegisterEmployer.fxml");
         SceneInfo registerPosition = new SceneInfo("Register Position", "/com/gui/fxml/RegisterPosition.fxml");
         SceneInfo registerSubstitute = new SceneInfo("Register Substitute", "/com/gui/fxml/RegisterSubstitute.fxml");
+        SceneInfo substituteInfo = new SceneInfo("Substitute Info", "/com/gui/fxml/SubstituteInfo.fxml");
         SceneInfo substitutes = new SceneInfo("Substitutes", "/com/gui/fxml/Substitutes.fxml");
         SceneInfo takenPositions = new SceneInfo("Taken Positions", "/com/gui/fxml/TakenPositions.fxml");
 
         scenes.put(SceneName.AVAILABLEPOSITIONS, availablePositions);
+        scenes.put(SceneName.EMPLOYERINFO, employerInfo);
+        scenes.put(SceneName.OPTIONS, options);
         scenes.put(SceneName.POSITIONINFO, positionInfo);
         scenes.put(SceneName.REGISTEREMPLOYER, registerEmployer);
         scenes.put(SceneName.REGISTERPOSITION, registerPosition);
         scenes.put(SceneName.REGISTERSUBSTITUTE, registerSubstitute);
+        scenes.put(SceneName.SUBSTITUTEINFO, substituteInfo);
         scenes.put(SceneName.SUBSTITUTES, substitutes);
         scenes.put(SceneName.TAKENPOSITIONS, takenPositions);
     }
@@ -66,7 +73,6 @@ public enum SceneManager {
      */
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = Objects.requireNonNull(primaryStage, "Primary stage cannot be null, please provide a Stage object");
-        this.primaryStage.setTitle("Bad Fantasy");
         this.primaryStage.setWidth((Screen.getPrimary().getBounds().getWidth())/1.5);
         this.primaryStage.setHeight((Screen.getPrimary().getBounds().getHeight())/1.2);
         this.primaryStage.setMinWidth(530);
@@ -79,6 +85,32 @@ public enum SceneManager {
         });
 
         initialized = true;
+    }
+
+    public void createNewStageWithScene(Stage popUpStage, SceneName sceneName) throws NoPrimaryStageException {
+        if (this.primaryStage == null) {
+            throw new NoPrimaryStageException("No primary stage. Do not call this method before a Primary Stage has been defined");
+        }
+
+        Objects.requireNonNull(popUpStage, "The new stage can't be null, please provide a Stage object");
+        popUpStage.setWidth(this.primaryStage.getWidth()/3);
+        popUpStage.setHeight(this.primaryStage.getHeight()/2);
+
+        SceneInfo sceneInfo = scenes.get(sceneName);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneInfo.getViewPath()));
+        Pane root;
+
+        try {
+            root = loader.load();
+            Scene scene = new Scene(root);
+            popUpStage.setScene(scene);
+            popUpStage.setTitle(sceneInfo.getSceneName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        popUpStage.show();
+
     }
 
     public void setFullscreen() {

@@ -6,6 +6,7 @@ import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.utilities.FilePaths;
+import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -16,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.util.concurrent.ExecutionException;
@@ -211,7 +213,17 @@ public class AvailablePositionsController implements Controller {
     }
 
     @FXML
+    private void openOptions(ActionEvent event) {
+        try {
+            sceneManager.createNewStageWithScene(new Stage(), SceneName.OPTIONS);
+        } catch (NoPrimaryStageException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
     private void setWindowedMode() {
         sceneManager.setWindowed();
     }
+
 }
