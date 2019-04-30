@@ -5,6 +5,7 @@ import com.data.handlers.IdManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * <h1>Employer</h1>
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 
 public class Employer extends Client implements Serializable, Writeable {
 
-    private int employerId;
+    private int employerNumber;
+    private String employerId;
     private String name;
     private boolean privateSector;
     private ArrayList<String> joblist;
@@ -29,6 +31,7 @@ public class Employer extends Client implements Serializable, Writeable {
     private Employer(Builder builder) {
         super(builder);
         employerId = builder.employerId;
+        employerNumber = builder.employerNumber;
         name = builder.name;
         privateSector = builder.privateSector;
         joblist = builder.joblist;
@@ -36,7 +39,8 @@ public class Employer extends Client implements Serializable, Writeable {
 
     public static class Builder extends Client.Builder<Builder> {
         // Required parameters
-        private final int employerId;
+        private final String employerId;
+        private final int employerNumber;
         private final String name;
         private final boolean privateSector;
 
@@ -48,8 +52,9 @@ public class Employer extends Client implements Serializable, Writeable {
             super(address, zipcode, city, industry);
             this.name = name;
             this.privateSector = privateSector;
-            this.employerId = IdManager.INSTANCE.getEmployerIdAndIncrement();
-            // this.employerId = 1;
+            this.employerNumber = IdManager.INSTANCE.getEmployerIdAndIncrement();
+            UUID uuid = UUID.randomUUID();
+            this.employerId = uuid.toString();
         }
 
         // Builders for optional parameters
@@ -81,9 +86,11 @@ public class Employer extends Client implements Serializable, Writeable {
         return privateSector;
     }
 
-    public int getEmployerId() {
+    public String getEmployerId() {
         return employerId;
     }
+
+    public int getEmployerNumber() { return  employerNumber; }
 
     public void setPrivateSector(Boolean privateSector) {
         this.privateSector = privateSector;
@@ -98,13 +105,15 @@ public class Employer extends Client implements Serializable, Writeable {
     }
 
     public String[] template() {
-        return new String[] { "getEmployerId", "getName", "getAddress", "getZipcode", "getCity", "isPrivateSector",
-                "getIndustry", "getJoblist", this.getClass().getName() };
+        return new String[] { "getEmployerNumber", "getName", "getAddress", "getZipcode", "getCity", "isPrivateSector",
+                "getIndustry", "getJoblist", "getEmployerId", this.getClass().getName() };
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Employer{" + "employerId'" + employerId + '\'' + ", name='" + name + '\''
+        return super.toString() + "Employer{" + "employerNumber'" + employerNumber
+                + '\'' + ", employerId" + employerId
+                + '\'' + ", name='" + name + '\''
                 + ", sector='" + privateSector + '\'' + ", joblist=" + joblist + '}';
     }
 }

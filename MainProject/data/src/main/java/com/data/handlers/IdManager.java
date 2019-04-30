@@ -15,7 +15,7 @@ public enum IdManager {
 
 
     private int substituteNumber = 0;
-    private int employerId = 0;
+    private int employerNumber = 0;
     private int availablePositionId = 0;
 
     IdManager() {
@@ -29,7 +29,7 @@ public enum IdManager {
             generateEmployerId();
         } catch (IdGenerationException e) {
             e.getMessage();
-            employerId = 1;
+            employerNumber = 1;
         }
     }
 
@@ -51,9 +51,9 @@ public enum IdManager {
         try {
             ArrayList<Employer> employers = ReaderThreadStarter.startReader(FilePaths.EMPLOYERCSV.toString());
             if (employers.size() == 0) {
-                this.employerId = 1;
+                this.employerNumber = 1;
             } else {
-                this.employerId = employers.get(employers.size()-1).getEmployerId();
+                this.employerNumber = employers.get(employers.size()-1).getEmployerNumber();
             }
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
@@ -68,8 +68,8 @@ public enum IdManager {
     }
 
     public int getEmployerIdAndIncrement() {
-        int current = employerId;
-        this.employerId = employerId + 1;
+        int current = employerNumber;
+        this.employerNumber = employerNumber + 1;
         return current;
     }
 
