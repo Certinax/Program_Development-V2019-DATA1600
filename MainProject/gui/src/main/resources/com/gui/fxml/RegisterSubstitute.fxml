@@ -17,6 +17,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<?import com.logic.customTextFields.PhoneField?>
+<?import com.logic.customTextFields.SalaryField?>
 <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="2000.0" prefWidth="1014.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
   <children>
 
@@ -81,8 +83,8 @@
                     </rowConstraints>
                      <children>
                         <Label text="Name" />
-                        <NameField promptText="Firstname" GridPane.rowIndex="1" />
-                        <NameField promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <NameField fx:id="firstnameField" promptText="Firstname" GridPane.rowIndex="1" />
+                        <NameField fx:id="lastnameField" promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane hgap="20.0" layoutX="20.0" layoutY="498.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="498.0">
@@ -97,9 +99,9 @@
                     </rowConstraints>
                      <children>
                         <Label text="Adress" />
-                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="Streetname and number" GridPane.rowIndex="1" />
+                      <TextField fx:id="streetnameField" prefHeight="26.0" prefWidth="128.0" promptText="Streetname and number" GridPane.rowIndex="1" />
                         <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <ZipCodeField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ZipCodeField fx:id="zipCodeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="591.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -113,8 +115,8 @@
                     </rowConstraints>
                      <children>
                         <Label text="Contact information" />
-                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="E-mail" GridPane.rowIndex="1" />
-                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="Phone number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                      <TextField fx:id="emailField" prefHeight="26.0" prefWidth="128.0" promptText="E-mail" GridPane.rowIndex="1" />
+                      <PhoneField fx:id="phoneField" prefHeight="26.0" prefWidth="128.0" promptText="Phonenumber" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -132,8 +134,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="School name" />
-                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="Line of education" GridPane.columnIndex="1" />
+                      <NameField fx:id="schoolnameField" prefHeight="26.0" prefWidth="128.0" promptText="School name" />
+                      <TextField fx:id="educationField" prefHeight="26.0" prefWidth="128.0" promptText="Line of education" GridPane.columnIndex="1" />
                         <DatePicker prefHeight="26.0" promptText="Started" GridPane.columnIndex="2" />
                         <DatePicker prefHeight="26.0" promptText="Ended" GridPane.columnIndex="3" />
                         <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="4" />
@@ -149,10 +151,10 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="industryList" prefWidth="150.0" promptText="List" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Industry" GridPane.columnIndex="1" />
                         <Label prefHeight="17.0" text="Salary requirements" />
-                        <TextField prefHeight="26.0" prefWidth="128.0" promptText="Salary" GridPane.rowIndex="1" />
+                        <SalaryField fx:id="salaryField" prefHeight="26.0" prefWidth="128.0" promptText="Salary" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane hgap="10.0" layoutX="20.0" layoutY="1352.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="1352.0">
@@ -166,10 +168,10 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <TextField promptText="Workplace" />
-                        <TextField prefWidth="128.0" promptText="Position" GridPane.columnIndex="1" />
-                        <DatePicker promptText="Hiredate" GridPane.columnIndex="2" />
-                        <DatePicker layoutX="210.0" layoutY="43.0" promptText="Last day" GridPane.columnIndex="3" />
+                        <TextField fx:id="workplaceField" promptText="Workplace" />
+                        <TextField fx:id="positionField" prefWidth="128.0" promptText="Position" GridPane.columnIndex="1" />
+                        <DatePicker fx:id="workStartField" promptText="Hiredate" GridPane.columnIndex="2" />
+                        <DatePicker fx:id="workEndField" layoutX="210.0" layoutY="43.0" promptText="Last day" GridPane.columnIndex="3" />
                      </children>
                   </GridPane>
                   <Label alignment="CENTER" layoutX="20.0" layoutY="1588.0" prefWidth="485.0" text="Desired job information" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="1588.0">
@@ -188,7 +190,7 @@
                     </rowConstraints>
                      <children>
                         <Label text="Birthday" />
-                        <DatePicker promptText="Date of Birth" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="birthdayField" promptText="Date of Birth" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane layoutX="20.0" layoutY="888.0" prefHeight="159.0" prefWidth="485.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -229,10 +231,10 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <TextField layoutX="110.0" layoutY="43.0" promptText="Ref Firstname" />
-                        <TextField layoutX="210.0" layoutY="43.0" promptText="Ref Lastname" GridPane.columnIndex="1" />
-                        <TextField layoutX="110.0" layoutY="43.0" promptText="Ref Phone" GridPane.columnIndex="2" />
-                        <TextField layoutX="10.0" layoutY="43.0" promptText="Ref E-mail" GridPane.columnIndex="3" />
+                        <NameField fx:id="referenceNameField" layoutX="110.0" layoutY="43.0" promptText="Ref Firstname" />
+                        <NameField fx:id="referenceNameField" layoutX="210.0" layoutY="43.0" promptText="Ref Lastname" GridPane.columnIndex="1" />
+                        <PhoneField fx:id="referencePhoneField" layoutX="110.0" layoutY="43.0" promptText="Ref Phone" GridPane.columnIndex="2" />
+                        <TextField fx:id="referenceMailField" layoutX="10.0" layoutY="43.0" promptText="Ref E-mail" GridPane.columnIndex="3" />
                         <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="4" />
                      </children>
                   </GridPane>
