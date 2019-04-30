@@ -1,14 +1,17 @@
 package com.data.work;
 
 import com.data.CSVWriteable;
+import com.data.handlers.NumberManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 //TODO Write JavaDocs!
 public class AvailablePosition implements Serializable, CSVWriteable {
 
-    private int positionsID; //An internal ID for the position
+    private int availablePositionNumber; //An internal ID for the position
+    private String availablePositionId; // Unique UUID
     private Boolean publicSector; //Is it public or private sector?
     private String workplace; //Where is it?
     private int employer; //ID of the employer
@@ -21,12 +24,13 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     private int salary; //Hourly salary
     private String contactInfo; //An email for contacting them
     private String description; //A description of the position
-    private ArrayList<Integer> applicants; //A list of applicants for the position
+    private ArrayList<String> applicants; //A list of applicants for the position
 
     protected AvailablePosition() {} //Default constructor used by the CSV Reader to create objects
 
     protected AvailablePosition(Builder<?> builder) {
-        this.positionsID = builder.positionsID;
+        this.availablePositionNumber = builder.availablePositionNumber;
+        this.availablePositionId = builder.availablePositionId;
         this.publicSector = builder.publicSector;
         this.workplace = builder.workplace;
         this.employer = builder.employer;
@@ -40,7 +44,8 @@ public class AvailablePosition implements Serializable, CSVWriteable {
 
     public static class Builder<T extends Builder<T>> {
         // Required parameters
-        private int positionsID; //An internal ID for the position
+        private int availablePositionNumber; //An internal ID for the position
+        private String availablePositionId;
         private Boolean publicSector; //Is it public or private sector?
         private String workplace; //Where is it?
         private int employer; //ID of the employer
@@ -55,14 +60,11 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         private int endingTime = 0; //When does the workday end
         private String requiredQualifications = "";
         private String description = ""; //A description of the position
-
-        // TODO Denne bør vel være optional?
-        private ArrayList<Integer> applicants; //A list of IDs of applicants for the position
+        private ArrayList<String> applicants = new ArrayList<>(); //A list of IDs of applicants for the position
 
         //Builder for required parameters
-        public Builder(int positionsID, Boolean publicSector, String workplace, int employer, String positionType, String industry, int duration,
-                       int salary, String contactInfo, ArrayList<Integer> applicants) {
-            this.positionsID = positionsID;
+        public Builder(boolean publicSector, String workplace, int employer, String positionType, String industry, int duration,
+                       int salary, String contactInfo) {
             this.publicSector = publicSector;
             this.workplace = workplace;
             this.employer = employer;
@@ -71,12 +73,19 @@ public class AvailablePosition implements Serializable, CSVWriteable {
             this.duration = duration;
             this.salary = salary;
             this.contactInfo = contactInfo;
-            this.applicants = applicants;
+            this.availablePositionNumber = NumberManager.INSTANCE.getAvailablePositionNumberAndIncrement();
+            UUID uuid = UUID.randomUUID();
+            this.availablePositionId = uuid.toString();
         }
 
         //Builders for optional parameters
         public Builder startingTime(int startingTime) {
             this.startingTime = startingTime;
+            return self();
+        }
+
+        public Builder applicants(ArrayList<String> applicants) {
+            this.applicants = applicants;
             return self();
         }
 
@@ -111,12 +120,12 @@ public class AvailablePosition implements Serializable, CSVWriteable {
                 "getApplicants", this.getClass().getName()};
     }
 
-    public int getPositionsID() {
-        return positionsID;
+    public int getAvailablePositionNumber() {
+        return availablePositionNumber;
     }
 
-    public void setPositionsID(int positionsID) {
-        this.positionsID = positionsID;
+    public String getAvailablePositionId() {
+        return availablePositionId;
     }
 
     public Boolean getPublicSector() {
@@ -211,18 +220,19 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         this.description = description;
     }
 
-    public ArrayList<Integer> getApplicants() {
+    public ArrayList<String> getApplicants() {
         return applicants;
     }
 
-    public void setApplicants(ArrayList<Integer> applicants) {
+    public void setApplicants(ArrayList<String> applicants) {
         this.applicants = applicants;
     }
 
     @Override
     public String toString() {
         return "AvailablePosition{" +
-                "positionsID=" + positionsID +
+                "availablePositionNumber=" + availablePositionNumber +
+                ", availablePositionId='" + availablePositionId + '\'' +
                 ", publicSector=" + publicSector +
                 ", workplace='" + workplace + '\'' +
                 ", employer=" + employer +

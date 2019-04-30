@@ -15,18 +15,18 @@ public class TakenPosition extends AvailablePosition implements Serializable, CS
     private TakenPosition(Builder builder) {
         super(builder);
         substituteID = builder.substituteID;
-        setApplicants(null);
+        setApplicants(new ArrayList<>());
     }
 
     public static class Builder extends AvailablePosition.Builder<Builder> {
         //Required parameters
         private final int substituteID;
 
-        public Builder(int positionsID, Boolean publicSector, String workplace, int employer, String positionType,
-                       String industry, int duration, int salary, String contactInfo, ArrayList<Integer> applicants,
+        public Builder(boolean publicSector, String workplace, int employer, String positionType,
+                       String industry, int duration, int salary, String contactInfo, ArrayList<String> applicants,
                        int substituteID) {
 
-            super(positionsID, publicSector, workplace, employer, positionType , industry , duration, salary, contactInfo, applicants);
+            super(publicSector, workplace, employer, positionType , industry , duration, salary, contactInfo);
             this.substituteID = substituteID;
 
         }

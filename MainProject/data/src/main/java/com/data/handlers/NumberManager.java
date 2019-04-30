@@ -74,7 +74,7 @@ public enum NumberManager {
             if (positions.size() == 0) {
                 this.availablePositionNumber = 1;
             } else {
-                this.availablePositionNumber = positions.get(positions.size() - 1).getPositionsID();
+                this.availablePositionNumber = positions.get(positions.size() - 1).getAvailablePositionNumber();
             }
         } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
