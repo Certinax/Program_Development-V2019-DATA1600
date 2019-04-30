@@ -17,6 +17,11 @@ public class UserDefinedPaths {
     private static String activePositionJOBJPath;
 
     public static void setSubstituteCSVPath(String path) throws UnsupportedFileFormatException {
+        if (path == null) {
+            substituteCSVPath = null;
+            return;
+        }
+
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("csv")) {
             substituteCSVPath = path;
@@ -26,6 +31,11 @@ public class UserDefinedPaths {
     }
 
     public static void setSubstituteJOBJPath(String path) throws UnsupportedFileFormatException {
+        if (path == null) {
+            substituteJOBJPath = null;
+            return;
+        }
+
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("jobj")) {
             substituteJOBJPath = path;
@@ -35,6 +45,11 @@ public class UserDefinedPaths {
     }
 
     public static void setEmployerCSVPath(String path) throws UnsupportedFileFormatException {
+        if (path == null) {
+            employerCSVPath = null;
+            return;
+        }
+
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("csv")) {
             employerCSVPath = path;
@@ -44,6 +59,11 @@ public class UserDefinedPaths {
     }
 
     public static void setEmployerJOBJPath(String path) throws UnsupportedFileFormatException {
+        if (path == null) {
+            employerJOBJPath = null;
+            return;
+        }
+
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("jobj")) {
             employerJOBJPath = path;
@@ -53,6 +73,11 @@ public class UserDefinedPaths {
     }
 
     public static void setAvailablePositionCSVPath(String path) throws UnsupportedFileFormatException {
+        if (path == null) {
+            availablePositionCSVPath = null;
+            return;
+        }
+
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("csv")) {
             availablePositionCSVPath = path;
@@ -62,6 +87,11 @@ public class UserDefinedPaths {
     }
 
     public static void setAvailablePositionJOBJPath(String path) throws UnsupportedFileFormatException {
+        if (path == null) {
+            availablePositionJOBJPath = null;
+            return;
+        }
+
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("jobj")) {
             availablePositionJOBJPath = path;
@@ -70,7 +100,12 @@ public class UserDefinedPaths {
         }
     }
 
-    public static void setactivePositionCSVPath(String path) throws UnsupportedFileFormatException {
+    public static void setActivePositionCSVPath(String path) throws UnsupportedFileFormatException {
+        if (path == null) {
+            activePositionCSVPath = null;
+            return;
+        }
+
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("csv")) {
             activePositionCSVPath = path;
@@ -80,11 +115,31 @@ public class UserDefinedPaths {
     }
 
     public static void setActivePositionJOBJPath(String path) throws UnsupportedFileFormatException {
+        if (path == null) {
+            activePositionJOBJPath = null;
+            return;
+        }
+
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("jobj")) {
             activePositionJOBJPath = path;
         } else {
             throw new UnsupportedFileFormatException("You need to select a .jobj-file!");
+        }
+    }
+
+    public static void setDefaultPaths() {
+        try {
+            setSubstituteCSVPath(null);
+            setSubstituteJOBJPath(null);
+            setEmployerCSVPath(null);
+            setEmployerJOBJPath(null);
+            setAvailablePositionCSVPath(null);
+            setAvailablePositionJOBJPath(null);
+            setActivePositionCSVPath(null);
+            setActivePositionJOBJPath(null);
+        } catch (UnsupportedFileFormatException e) {
+            // No need to do anything...
         }
     }
 
