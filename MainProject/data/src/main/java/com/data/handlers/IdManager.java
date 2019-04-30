@@ -14,7 +14,7 @@ public enum IdManager {
     INSTANCE;
 
 
-    private int substituteId = 0;
+    private int substituteNumber = 0;
     private int employerId = 0;
     private int availablePositionId = 0;
 
@@ -23,7 +23,7 @@ public enum IdManager {
             generateSubstituteId();
         } catch (IdGenerationException e) {
             e.getMessage();
-            substituteId = 1;
+            substituteNumber = 1;
         }
         try {
             generateEmployerId();
@@ -37,9 +37,9 @@ public enum IdManager {
         try {
             ArrayList<Substitute> substitutes = ReaderThreadStarter.startReader(FilePaths.SUBSTITUTESCSV.toString());
             if (substitutes.size() == 0) {
-                this.substituteId = 1;
+                this.substituteNumber = 1;
             } else {
-                this.substituteId = substitutes.get(substitutes.size() - 1).getSubstituteId();
+                this.substituteNumber = substitutes.get(substitutes.size() - 1).getSubstituteNumber();
             }
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
@@ -62,8 +62,8 @@ public enum IdManager {
     }
 
     public int getSubstituteIdAndIncrement() {
-        int current = substituteId;
-        this.substituteId = substituteId + 1;
+        int current = substituteNumber;
+        this.substituteNumber = substituteNumber + 1;
         return current;
     }
 

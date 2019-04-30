@@ -22,7 +22,8 @@ import static java.util.UUID.randomUUID;
 
 public class Substitute extends Client implements Serializable, Writeable {
 
-    private int substituteId;
+    private int substituteNumber;
+    private String substituteId;
     private String firstname;
     private String lastname;
     private int age;
@@ -33,6 +34,7 @@ public class Substitute extends Client implements Serializable, Writeable {
 
     private Substitute(Builder builder) {
         super(builder);
+        substituteNumber = builder.substituteNumber;
         substituteId = builder.substituteId;
         firstname = builder.firstname;
         lastname = builder.lastname;
@@ -48,7 +50,8 @@ public class Substitute extends Client implements Serializable, Writeable {
 
     public static class Builder extends Client.Builder<Builder> {
         // Required parameters
-        private final int substituteId;
+        private final int substituteNumber;
+        private final String substituteId;
         private final String firstname;
         private final String lastname;
         private final int age;
@@ -66,7 +69,9 @@ public class Substitute extends Client implements Serializable, Writeable {
             this.firstname = firstname;
             this.lastname = lastname;
             this.age = age;
-            this.substituteId = IdManager.INSTANCE.getSubstituteIdAndIncrement();
+            this.substituteNumber = IdManager.INSTANCE.getSubstituteIdAndIncrement();
+            UUID uuid = UUID.randomUUID();
+            this.substituteId = uuid.toString();
         }
 
         // Builders for optional parameters
@@ -105,9 +110,11 @@ public class Substitute extends Client implements Serializable, Writeable {
         return firstname;
     }
 
-    public int getSubstituteId() {
+    public String getSubstituteId() {
         return substituteId;
     }
+
+    public int getSubstituteNumber() { return  substituteNumber; }
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
@@ -162,14 +169,16 @@ public class Substitute extends Client implements Serializable, Writeable {
     }
 
     public String[] template() {
-        return new String[] { "getSubstituteId", "getFirstname", "getLastname", "getAddress", "getZipcode", "getCity",
+        return new String[] {"getSubstituteNumber", "getFirstname", "getLastname", "getAddress", "getZipcode", "getCity",
                 "getAge", "getSalaryRequirement", "getIndustry", "getEducation", "getWorkExperience",
-                "getWorkReference", this.getClass().getName() };
+                "getWorkReference", "getSubstituteId", this.getClass().getName() };
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Substitute{" + "substituteId'" + substituteId + '\'' + ", firstname='" + firstname
+        return super.toString() + "Substitute{" + "substituteNumber'" + substituteNumber
+                + '\'' + ", substituteId" + substituteId
+                + '\'' + ", firstname='" + firstname
                 + '\'' + ", lastname='" + lastname + '\'' + ", age=" + age + ", salaryRequirement=" + salaryRequirement
                 + ", education=" + education + ", workExperience=" + workExperience + ", workReference=" + workReference
                 + '}';
