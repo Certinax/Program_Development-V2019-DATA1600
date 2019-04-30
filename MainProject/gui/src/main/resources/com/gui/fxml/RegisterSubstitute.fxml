@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.logic.customTextFields.NameField?>
+<?import com.logic.customTextFields.ZipCodeField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="756.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
   <children>
 
       <!-- MENU -->
@@ -45,160 +49,184 @@
           </children>
       </GridPane>
       <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
-
-      <!-- MAIN SECTION -->
-    <Label alignment="CENTER" layoutX="220.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Register Substitute" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="220.0" layoutY="48.0" text="Personalia" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="48.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="220.0" layoutY="294.0" text="Education" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="294.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="220.0" layoutY="197.0" text="Contact information" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="197.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="390.0" layoutY="392.0" text="Work Experience" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="392.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <GridPane hgap="20.0" layoutX="220.0" layoutY="75.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Firstname" />
-            <Label text="Lastname" GridPane.columnIndex="1" />
-            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Firstname" GridPane.rowIndex="1" />
-            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Birthday" GridPane.columnIndex="2" />
-            <Label text="Stretname" GridPane.rowIndex="2" />
-            <Label text="Zip Code" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="City" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-          <TextField prefHeight="26.0" prefWidth="128.0" promptText="Streetway 10" GridPane.rowIndex="3" />
-          <TextField prefHeight="26.0" prefWidth="128.0" promptText="1930" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <DatePicker promptText="Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <GridPane alignment="CENTER" hgap="20.0" layoutX="220.0" layoutY="224.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Email Address" />
-            <Label text="Phonenumber" GridPane.columnIndex="1" />
-          <TextField prefHeight="26.0" prefWidth="128.0" promptText="sample@mail.com" GridPane.rowIndex="1" />
-          <TextField prefHeight="26.0" prefWidth="128.0" promptText="99106201" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets left="50.0" right="50.0" />
-         </padding>
-      </GridPane>
-      <GridPane hgap="20.0" layoutX="220.0" layoutY="322.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="322.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="School Name" />
-            <Label text="Line of Education" GridPane.columnIndex="1" />
-          <TextField prefHeight="26.0" prefWidth="128.0" promptText="OsloMet" GridPane.rowIndex="1" />
-          <TextField prefHeight="26.0" prefWidth="128.0" promptText="Software Engineering" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Started" GridPane.columnIndex="2" />
-            <DatePicker prefHeight="26.0" prefWidth="103.0" promptText="To" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label text="Finnished" GridPane.columnIndex="3" />
-            <DatePicker prefHeight="26.0" prefWidth="103.0" promptText="From" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <GridPane hgap="20.0" layoutX="212.0" layoutY="579.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="579.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ComboBox prefWidth="150.0" promptText="List" GridPane.rowIndex="1" />
-            <Label text="Salary Requirement" GridPane.columnIndex="1" />
-            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Salary" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label prefHeight="17.0" prefWidth="84.0" text="Industry" />
-         </children>
-         <padding>
-            <Insets left="100.0" right="100.0" />
-         </padding>
-      </GridPane>
-      <GridPane hgap="20.0" layoutX="220.0" layoutY="420.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="420.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label text="Workplace" />
-            <Label text="Position" GridPane.columnIndex="1" />
-            <Label text="From" GridPane.columnIndex="2" />
-            <Label text="To" GridPane.columnIndex="3" />
-            <Label text="Reference Name" GridPane.rowIndex="2" />
-            <Label text="Reference Lastname" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label layoutX="110.0" layoutY="77.0" text="Reference Phone" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label layoutX="210.0" layoutY="77.0" text="Reference Mail" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField promptText="E.g McDonald's" GridPane.rowIndex="1" />
-            <TextField prefWidth="128.0" promptText="E.g Crew" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField layoutX="110.0" layoutY="43.0" promptText="Firstname" GridPane.rowIndex="3" />
-            <TextField layoutX="210.0" layoutY="43.0" promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField layoutX="110.0" layoutY="43.0" promptText="12345678" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField layoutX="10.0" layoutY="43.0" promptText="sample@mail.com" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <DatePicker promptText="Hiredate" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <DatePicker layoutX="210.0" layoutY="43.0" promptText="Last day" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <Label alignment="CENTER" layoutX="212.0" layoutY="549.0" text="Desired job information" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="549.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Button layoutX="220.0" layoutY="657.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="657.0" />
+      <ScrollPane fitToWidth="true" layoutX="212.0" layoutY="14.0" prefHeight="1224.0" prefWidth="527.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane prefHeight="1196.0" prefWidth="525.0">
+               <children>
+            
+                  <!-- MAIN SECTION -->
+                <Label alignment="CENTER" layoutX="20.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Register Substitute" textAlignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="64.0" text="Personalia" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="64.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="440.0" text="Experience" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="440.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <GridPane hgap="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Name" />
+                        <NameField promptText="Firstname" GridPane.rowIndex="1" />
+                        <NameField promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="20.0" layoutX="20.0" layoutY="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="149.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="148.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Adress" />
+                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="Streetname and number" GridPane.rowIndex="1" />
+                        <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ZipCodeField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="327.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Contact information" />
+                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="E-mail" GridPane.rowIndex="1" />
+                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="Phone number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </GridPane>
+                  <GridPane hgap="10.0" layoutX="20.0" layoutY="636.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="48.0" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="School name" />
+                      <TextField prefHeight="26.0" prefWidth="128.0" promptText="Line of education" GridPane.columnIndex="1" />
+                        <DatePicker prefHeight="26.0" prefWidth="103.0" promptText="Started" GridPane.columnIndex="2" />
+                        <DatePicker prefHeight="26.0" prefWidth="103.0" promptText="Ended" GridPane.columnIndex="3" />
+                        <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="4" />
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="20.0" layoutX="20.0" layoutY="1004.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="1004.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Industry" GridPane.columnIndex="1" />
+                        <Label prefHeight="17.0" text="Salary requirements" />
+                        <TextField prefHeight="26.0" prefWidth="128.0" promptText="Salary" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="10.0" layoutX="20.0" layoutY="852.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="852.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="48.0" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <TextField promptText="Workplace" />
+                        <TextField prefWidth="128.0" promptText="Position" GridPane.columnIndex="1" />
+                        <TextField layoutX="110.0" layoutY="43.0" promptText="Ref Firstname" GridPane.rowIndex="1" />
+                        <TextField layoutX="210.0" layoutY="43.0" promptText="Ref Lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField layoutX="110.0" layoutY="43.0" promptText="Ref Phone" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField layoutX="10.0" layoutY="43.0" promptText="Ref E-mail" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <DatePicker promptText="Hiredate" GridPane.columnIndex="2" />
+                        <DatePicker layoutX="210.0" layoutY="43.0" promptText="Last day" GridPane.columnIndex="3" />
+                        <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="959.0" prefWidth="485.0" text="Desired job information" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="959.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="20.0" layoutY="1115.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="1115.0" />
+                  <GridPane layoutX="20.0" layoutY="169.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Birthday" />
+                        <DatePicker promptText="Date of Birth" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="20.0" layoutY="470.0" prefHeight="159.0" prefWidth="485.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="30.0" minHeight="3.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="132.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ListView prefHeight="135.0" prefWidth="449.0" GridPane.rowIndex="1" />
+                        <Label text="Education" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="20.0" layoutY="687.0" prefHeight="159.0" prefWidth="485.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="3.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="132.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <ListView prefHeight="135.0" prefWidth="449.0" GridPane.rowIndex="1" />
+                        <Label text="Work experience" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
   </children>
 </AnchorPane>
