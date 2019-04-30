@@ -1,12 +1,16 @@
 package com.data.work;
 
 import com.data.CSVWriteable;
+import com.data.clients.Employer;
 import com.data.handlers.NumberManager;
+import com.logic.concurrency.ReaderThreadStarter;
+import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.AvailablePositionException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 //TODO Write JavaDocs!
 public class AvailablePosition implements Serializable, CSVWriteable {
@@ -303,5 +307,23 @@ public class AvailablePosition implements Serializable, CSVWriteable {
 
     public ArrayList<String> getApplicants() {
         return applicants;
+    }
+
+    public String getEmployerName() {
+        ArrayList<Employer> employers;
+
+        try {
+           employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerJOBJPath());
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace(); //TODO Figure out where to properly do with this error message
+            return null;
+        }
+
+        for (Employer employer : employers) {
+            if (this.employerId.equals(employer.getEmployerId())) {
+                return employer.getName();
+            }
+        }
+        return null;
     }
 }
