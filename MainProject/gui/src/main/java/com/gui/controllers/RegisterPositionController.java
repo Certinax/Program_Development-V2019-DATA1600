@@ -2,8 +2,10 @@ package com.gui.controllers;
 
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
 public class RegisterPositionController implements Controller {
 
@@ -52,6 +54,15 @@ public class RegisterPositionController implements Controller {
     @FXML
     private void setWindowedMode() {
         sceneManager.setWindowed();
+    }
+
+    @FXML
+    private void openOptions(ActionEvent event) {
+        try {
+            sceneManager.createNewStageWithScene(new Stage(), SceneName.OPTIONS);
+        } catch (NoPrimaryStageException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @Override

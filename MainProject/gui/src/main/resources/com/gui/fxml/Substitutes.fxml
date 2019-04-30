@@ -17,6 +17,7 @@
 <AnchorPane prefHeight="499.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.SubstitutesController">
    <children>
 
+       <!-- MENU -->
        <Pane maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ddd;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
        <Label alignment="CENTER" layoutX="85.0" layoutY="27.0" maxWidth="200.0" minWidth="200.0" prefHeight="17.0" prefWidth="200.0" text="MENU" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
            <font>
@@ -44,7 +45,9 @@
                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="5" />
            </children>
        </GridPane>
-   
+       <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
+
+       <!-- MAIN SECTION -->
           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" style="-fx-font: NORMAL 20 Tahoma;" text="Substitutes" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
        <TableView fx:id="tableView" editable="true" layoutX="210.0" layoutY="45.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
            <columns>
