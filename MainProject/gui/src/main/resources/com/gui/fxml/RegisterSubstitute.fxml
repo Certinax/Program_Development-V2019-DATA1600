@@ -179,7 +179,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="20.0" layoutY="1854.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="1854.0" />
+                  <Button layoutX="20.0" layoutY="1854.0" minWidth="200.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="1854.0" />
                   <GridPane layoutX="20.0" layoutY="406.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
