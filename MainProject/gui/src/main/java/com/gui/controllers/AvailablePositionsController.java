@@ -57,13 +57,13 @@ public class AvailablePositionsController implements Controller {
             e.printStackTrace();
         }
 
-        setFiltering();
+        /*setFiltering();
         setPlaceColumnEditable();
         setSalaryColumnEditable();
         setPositionColumnEditable();
         setIndustryColumnEditable();
         setEmployerColumnEditable();
-        setDurationColumnEditable();
+        setDurationColumnEditable();*/
     }
 
     @FXML
@@ -88,8 +88,7 @@ public class AvailablePositionsController implements Controller {
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
-
-    private void setFiltering() {
+   /* private void setFiltering() {
         FilteredList<AvailablePosition> filteredData = new FilteredList<>(data, p -> true);
 
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -163,7 +162,7 @@ public class AvailablePositionsController implements Controller {
                         t.getTablePosition().getRow()).setIndustry(t.getNewValue()));
     }
 
-    /* ----------------------------------- Navigation Buttons - To Be Removed ------------------------------------- */
+     ----------------------------------- Navigation Buttons - To Be Removed -------------------------------------
 
 
     @FXML
@@ -218,6 +217,5 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private void setWindowedMode() {
         sceneManager.setWindowed();
-    }
-
+    }*/
 }

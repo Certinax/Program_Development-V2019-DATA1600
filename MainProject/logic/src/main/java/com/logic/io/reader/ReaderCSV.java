@@ -3,7 +3,6 @@ package com.logic.io.reader;
 import com.logic.io.parser.CSVParser;
 import com.logic.utilities.exceptions.CSVParseException;
 import com.logic.utilities.exceptions.SerializationException;
-import javafx.collections.FXCollections;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
@@ -36,7 +35,7 @@ public class ReaderCSV implements Reader {
         CSVParser parser = new CSVParser();
 
         List<List<String>> fileInfo = parser.getInfo(path);
-        ArrayList<T> objects = null;
+        ArrayList<T> objects = new ArrayList<>();
         try {
             Class clazz = Class.forName(fileInfo.get(0).get(1));
             objects = generateObject(clazz, fileInfo);
@@ -44,11 +43,7 @@ public class ReaderCSV implements Reader {
             e.printStackTrace();
         }
 
-        if(objects != null) {
-            return objects;
-        } else {
-            return null;
-        }
+        return objects;
         //return generateObject(clazz, fileInfo);
     }
 
@@ -65,7 +60,6 @@ public class ReaderCSV implements Reader {
             defaultConstructor.setAccessible(true);
 
             T instance = (T)defaultConstructor.newInstance();
-
 
             // Getting all fields from instance
             Field[] fields = getFields(instance);
@@ -88,10 +82,10 @@ public class ReaderCSV implements Reader {
                 for (int i = 0; i < fields.length; i++) {
                     if (headerItem.equals(fields[i].getName())) {
                         boilerPlate.put(headerItem, fields[i]);
+                        break;
                     }
                 }
             }
-
 
             // TODO logic below should be outsourced to seperate methods
             ArrayList<T> objectList = new ArrayList<>();
