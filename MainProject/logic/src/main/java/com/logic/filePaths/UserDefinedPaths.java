@@ -13,6 +13,9 @@ public class UserDefinedPaths {
     private static String availablePositionCSVPath;
     private static String availablePositionJOBJPath;
 
+    private static String activePositionCSVPath;
+    private static String activePositionJOBJPath;
+
     public static void setSubstituteCSVPath(String path) throws UnsupportedFileFormatException {
         String[] separator = path.split("\\.");
         if (separator[separator.length-1].equals("csv")) {
@@ -42,7 +45,7 @@ public class UserDefinedPaths {
 
     public static void setEmployerJOBJPath(String path) throws UnsupportedFileFormatException {
         String[] separator = path.split("\\.");
-        if (separator[separator.length-1].equals("csv")) {
+        if (separator[separator.length-1].equals("jobj")) {
             employerJOBJPath = path;
         } else {
             throw new UnsupportedFileFormatException("You need to select a .jobj-file!");
@@ -60,34 +63,60 @@ public class UserDefinedPaths {
 
     public static void setAvailablePositionJOBJPath(String path) throws UnsupportedFileFormatException {
         String[] separator = path.split("\\.");
-        if (separator[separator.length-1].equals("csv")) {
+        if (separator[separator.length-1].equals("jobj")) {
             availablePositionJOBJPath = path;
         } else {
             throw new UnsupportedFileFormatException("You need to select a .jobj-file!");
         }
     }
 
-    public static String getSubstituteCSVPath() {
+    public static void setactivePositionCSVPath(String path) throws UnsupportedFileFormatException {
+        String[] separator = path.split("\\.");
+        if (separator[separator.length-1].equals("csv")) {
+            activePositionCSVPath = path;
+        } else {
+            throw new UnsupportedFileFormatException("You need to select a .csv-file!");
+        }
+    }
+
+    public static void setActivePositionJOBJPath(String path) throws UnsupportedFileFormatException {
+        String[] separator = path.split("\\.");
+        if (separator[separator.length-1].equals("jobj")) {
+            activePositionJOBJPath = path;
+        } else {
+            throw new UnsupportedFileFormatException("You need to select a .jobj-file!");
+        }
+    }
+
+    protected static String getSubstituteCSVPath() {
         return substituteCSVPath;
     }
 
-    public static String getSubstituteJOBJPath() {
+    protected static String getSubstituteJOBJPath() {
         return substituteJOBJPath;
     }
 
-    public static String getEmployerCSVPath() {
+    protected static String getEmployerCSVPath() {
         return employerCSVPath;
     }
 
-    public static String getEmployerJOBJPath() {
+    protected static String getEmployerJOBJPath() {
         return employerJOBJPath;
     }
 
-    public static String getAvailablePositionCSVPath() {
+    protected static String getAvailablePositionCSVPath() {
         return availablePositionCSVPath;
     }
 
-    public static String getAvailablePositionJOBJPath() {
+    protected static String getAvailablePositionJOBJPath() {
         return availablePositionJOBJPath;
+    }
+
+    protected static String getActivePositionCSVPath() {
+        return activePositionCSVPath;
+    }
+
+    protected static String getActivePositionJOBJPath() {
+        return activePositionJOBJPath;
     }
 }
