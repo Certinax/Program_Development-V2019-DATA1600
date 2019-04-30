@@ -23,7 +23,7 @@ public class AvailablePosition implements Serializable, Writeable {
     private String description; //A description of the position
     private ArrayList<Integer> applicants; //A list of applicants for the position
 
-    public AvailablePosition() {} //Default constructor used by the CSV Reader to create objects
+    protected AvailablePosition() {} //Default constructor used by the CSV Reader to create objects
 
     protected AvailablePosition(Builder<?> builder) {
         this.positionsID = builder.positionsID;

@@ -10,7 +10,7 @@ public class TakenPosition extends AvailablePosition implements Serializable, Wr
 
     private int substituteID;
 
-    public TakenPosition() {}
+    private TakenPosition() {}
 
     private TakenPosition(Builder builder) {
         super(builder);

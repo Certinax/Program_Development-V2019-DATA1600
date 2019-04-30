@@ -23,7 +23,7 @@ public class Employer extends Client implements Serializable, Writeable {
     private boolean privateSector;
     private ArrayList<String> joblist;
 
-    public Employer() {
+    private Employer() {
     } // Default constructor used by the CSV Reader to create objects
 
     private Employer(Builder builder) {

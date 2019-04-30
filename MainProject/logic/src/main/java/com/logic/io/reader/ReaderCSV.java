@@ -17,7 +17,7 @@ public class ReaderCSV implements Reader {
     public ReaderCSV() {}
 
     private Constructor<?> getDefaultConstructor(Class<?> clazz) {
-        Constructor<?>[] constructors = clazz.getConstructors();
+        Constructor<?>[] constructors = clazz.getDeclaredConstructors();
         for(Constructor<?> constructor : constructors) {
             if(constructor.getParameterCount() == 0) {
                 return constructor;
@@ -61,6 +61,8 @@ public class ReaderCSV implements Reader {
             if(defaultConstructor == null) {
                 throw new SerializationException("The class provided is not supported");
             }
+
+            defaultConstructor.setAccessible(true);
 
             T instance = (T)defaultConstructor.newInstance();
 
