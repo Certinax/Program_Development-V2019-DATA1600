@@ -4,7 +4,7 @@ import com.data.clients.Employer;
 import com.data.clients.Substitute;
 import com.data.work.AvailablePosition;
 import com.logic.concurrency.ReaderThreadStarter;
-import com.logic.utilities.FilePaths;
+import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.NumberGenerationException;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public enum NumberManager {
 
     private void generateSubstituteNumber() throws NumberGenerationException {
         try {
-            ArrayList<Substitute> substitutes = ReaderThreadStarter.startReader(FilePaths.SUBSTITUTESCSV.toString());
+            ArrayList<Substitute> substitutes = ReaderThreadStarter.startReader(ActivePaths.getSubstituteCSVPath());
             if (substitutes.size() == 0) {
                 this.substituteNumber = 1;
             } else {
@@ -56,7 +56,7 @@ public enum NumberManager {
 
     private void generateEmployerNumber() throws NumberGenerationException {
         try {
-            ArrayList<Employer> employers = ReaderThreadStarter.startReader(FilePaths.EMPLOYERCSV.toString());
+            ArrayList<Employer> employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerCSVPath());
             if (employers.size() == 0) {
                 this.employerNumber = 1;
             } else {
@@ -70,7 +70,7 @@ public enum NumberManager {
 
     private void generateAvailablePositionNumber() throws NumberGenerationException {
         try {
-            ArrayList<AvailablePosition> positions = ReaderThreadStarter.startReader(FilePaths.AVAILABLEPOSITIONCSV.toString());
+            ArrayList<AvailablePosition> positions = ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionCSVPath());
             if (positions.size() == 0) {
                 this.availablePositionNumber = 1;
             } else {

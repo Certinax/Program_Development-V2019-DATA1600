@@ -13,4 +13,5 @@ module data {
     exports com.data.work;
 
     opens com.data.clients to logic;
+    opens com.data.work to logic;
 }

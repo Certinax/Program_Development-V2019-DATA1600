@@ -5,7 +5,7 @@ import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
-import com.logic.utilities.FilePaths;
+import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -51,7 +51,7 @@ public class AvailablePositionsController implements Controller {
         data = tableView.getItems();
 
         try {
-            data.addAll(ReaderThreadStarter.startReader(FilePaths.AVAILABLEPOSITIONJOBJ.toString())); //TODO Should this read from CSV or JOBJ?
+            data.addAll(ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionJOBJPath())); //TODO Should this read from CSV or JOBJ?
             System.out.println(data);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
@@ -75,8 +75,8 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private void save(ActionEvent event) {
         try {
-            WriterThreadStarter.startWriter(data,FilePaths.AVAILABLEPOSITIONCSV.toString());
-            WriterThreadStarter.startWriter(data, FilePaths.AVAILABLEPOSITIONJOBJ.toString());
+            WriterThreadStarter.startWriter(data, ActivePaths.getAvailablePositionJOBJPath());
+            WriterThreadStarter.startWriter(data, ActivePaths.getAvailablePositionCSVPath());
         } catch (InterruptedException e) {
             e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
         }
@@ -86,8 +86,8 @@ public class AvailablePositionsController implements Controller {
     @Override
     public void exit() {
         try {
-            WriterThreadStarter.startWriter(data, FilePaths.AVAILABLEPOSITIONCSV.toString());
-            WriterThreadStarter.startWriter(data, FilePaths.AVAILABLEPOSITIONJOBJ.toString());
+            WriterThreadStarter.startWriter(data, ActivePaths.getAvailablePositionJOBJPath());
+            WriterThreadStarter.startWriter(data, ActivePaths.getAvailablePositionCSVPath());
         } catch (InterruptedException e) {
             e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
         }
