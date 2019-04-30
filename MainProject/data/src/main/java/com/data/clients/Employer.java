@@ -45,7 +45,7 @@ public class Employer extends Client implements Serializable, CSVWriteable {
         private final boolean privateSector;
 
         // Optional parameters
-        private ArrayList<String> joblist = null;
+        private ArrayList<String> joblist = new ArrayList<>();
 
         // Builder for required parameters
         public Builder(String name, String address, int zipcode, String city, boolean privateSector, String industry) {

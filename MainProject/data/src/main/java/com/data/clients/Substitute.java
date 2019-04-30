@@ -54,10 +54,10 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
         private final int age;
 
         // Optional parameters
-        private int salaryRequirement;
-        private ArrayList<String> education = null;
-        private ArrayList<String> workExperience = null;
-        private ArrayList<String> workReference = null;
+        private int salaryRequirement = 0;
+        private ArrayList<String> education = new ArrayList<>();
+        private ArrayList<String> workExperience = new ArrayList<>();
+        private ArrayList<String> workReference = new ArrayList<>();
 
         // Builder for required parameters
         public Builder(String firstname, String lastname, String address, int age, int zipcode, String city,
