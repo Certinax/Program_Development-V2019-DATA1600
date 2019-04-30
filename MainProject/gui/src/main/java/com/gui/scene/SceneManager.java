@@ -95,6 +95,8 @@ public enum SceneManager {
         Objects.requireNonNull(popUpStage, "The new stage can't be null, please provide a Stage object");
         popUpStage.setWidth(this.primaryStage.getWidth()/3);
         popUpStage.setHeight(this.primaryStage.getHeight()/2);
+        popUpStage.setMinHeight(333);
+        popUpStage.setMinWidth(400);
 
         SceneInfo sceneInfo = scenes.get(sceneName);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneInfo.getViewPath()));

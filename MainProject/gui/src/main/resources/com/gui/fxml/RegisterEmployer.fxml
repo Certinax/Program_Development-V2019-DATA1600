@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -12,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="574.0" prefWidth="727.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterEmployerController">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterEmployerController">
     <children>
 
         <!-- MENU -->
@@ -44,69 +46,81 @@
             </children>
         </GridPane>
         <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
-
-        <!-- MAIN SECTION -->
-        <Label alignment="CENTER" layoutX="301.0" layoutY="19.0" text="Register Employer" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-            <font>
-                <Font name="System Bold" size="20.0" />
-            </font>
-        </Label>
-        <Label alignment="CENTER" layoutX="340.0" layoutY="49.0" text="Personalia" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="49.0">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Label alignment="CENTER" layoutX="300.0" layoutY="197.0" text="Contact information" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="210.0">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <GridPane hgap="20.0" layoutX="10.0" layoutY="212.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="80.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <Label text="Public / Private" />
-                <Label text="Name" GridPane.columnIndex="1" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Private" GridPane.rowIndex="1" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Finn.no" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label text="Streetname" GridPane.rowIndex="2" />
-                <Label text="Zip Code" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label text="City" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="Streetway 10" GridPane.rowIndex="3" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="1930" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label text="Industry" GridPane.columnIndex="2" />
-            <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            </children>
-        </GridPane>
-        <GridPane alignment="CENTER" hgap="20.0" layoutX="-41.0" layoutY="244.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <Label text="Email Address" />
-                <Label text="Phone number" GridPane.columnIndex="1" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="example@sample.com" GridPane.rowIndex="1" />
-                <TextField prefHeight="26.0" prefWidth="128.0" promptText="99106201" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            </children>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-        </GridPane>
-        <Button layoutX="220.0" layoutY="323.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="323.0" />
+      <ScrollPane fitToWidth="true" layoutX="220.0" layoutY="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane prefHeight="659.0" prefWidth="557.0">
+               <children>
+            
+                    <!-- MAIN SECTION -->
+                    <Label alignment="CENTER" text="Register Employer" textAlignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
+                        <font>
+                            <Font name="System Bold" size="32.0" />
+                        </font>
+                    </Label>
+                  <Separator layoutX="179.0" layoutY="157.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                    <Label alignment="CENTER" layoutX="20.0" layoutY="189.0" text="Personalia" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="189.0">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
+                    <GridPane hgap="20.0" layoutX="20.0" layoutY="244.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="244.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Label text="Public / Private" />
+                            <Label text="Name" GridPane.columnIndex="1" />
+                        <Label text="Industry" GridPane.columnIndex="2" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Private" GridPane.rowIndex="1" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Finn.no" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                            <Label text="Adress" GridPane.rowIndex="2" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Streetroad 10" GridPane.rowIndex="3" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Zip Code" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        </children>
+                    </GridPane>
+                  <Separator layoutX="200.0" layoutY="447.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                    <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="477.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Label text="Contact info" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="E-mail" GridPane.rowIndex="1" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Phone number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        </children>
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                    </GridPane>
+                  <GridPane alignment="CENTER" layoutX="171.0" layoutY="574.0" prefHeight="30.0" prefWidth="215.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="574.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                          <Button minWidth="100.0" mnemonicParsing="false" text="Register" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
     </children>
 </AnchorPane>
