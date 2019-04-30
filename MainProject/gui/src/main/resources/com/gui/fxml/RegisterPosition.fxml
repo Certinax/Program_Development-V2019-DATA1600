@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="1500.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="1500.0" prefWidth="981.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
     <children>
 
         <!-- MENU -->
@@ -133,7 +133,7 @@
                             <Insets />
                         </opaqueInsets>
                     </GridPane>
-                    <GridPane hgap="20.0" layoutX="20.0" layoutY="775.0" prefHeight="186.0" prefWidth="527.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="775.0">
+                    <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="775.0" prefHeight="186.0" prefWidth="527.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="775.0">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="261.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="260.0" />
