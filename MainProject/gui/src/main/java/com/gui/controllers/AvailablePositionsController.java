@@ -85,12 +85,6 @@ public class AvailablePositionsController implements Controller {
 
     @Override
     public void exit() {
-        try {
-            WriterThreadStarter.startWriter(data, ActivePaths.getAvailablePositionJOBJPath());
-            WriterThreadStarter.startWriter(data, ActivePaths.getAvailablePositionCSVPath());
-        } catch (InterruptedException e) {
-            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
-        }
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/

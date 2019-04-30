@@ -14,10 +14,14 @@ public class OptionsController implements Controller {
     private File selectedFile;
     private String header = "Wrong File Format";
     private ErrorBox error;
-    private AlertBox alert;
 
     public void setSubstituteCSVPath(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         try {
             UserDefinedPaths.setSubstituteCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
@@ -28,6 +32,11 @@ public class OptionsController implements Controller {
 
     public void setSubstituteJOBJPath(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         try {
             UserDefinedPaths.setSubstituteJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
@@ -38,6 +47,11 @@ public class OptionsController implements Controller {
 
     public void setEmployersCSV(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         try {
             UserDefinedPaths.setEmployerCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
@@ -49,6 +63,11 @@ public class OptionsController implements Controller {
 
     public void setEmployersJOBJ(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         try {
             UserDefinedPaths.setEmployerJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
@@ -59,6 +78,11 @@ public class OptionsController implements Controller {
 
     public void setAvailablePositionsCSV(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         try {
             UserDefinedPaths.setAvailablePositionCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
@@ -69,6 +93,11 @@ public class OptionsController implements Controller {
 
     public void setAvailablePositionsJOBJ(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         try {
             UserDefinedPaths.setAvailablePositionJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
@@ -79,6 +108,11 @@ public class OptionsController implements Controller {
 
     public void setActivePositionsCSV(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         try {
             UserDefinedPaths.setActivePositionCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
@@ -89,6 +123,11 @@ public class OptionsController implements Controller {
 
     public void setActivePositionsJOBJ(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         try {
             UserDefinedPaths.setActivePositionJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
@@ -99,7 +138,7 @@ public class OptionsController implements Controller {
 
     public void setDefaultPaths(ActionEvent event) {
         UserDefinedPaths.setDefaultPaths();
-        alert = new AlertBox("All info files have been set to their default values", "All filepaths set to default");
+        AlertBox alert = new AlertBox("All info files have been set to their default values", "All filepaths set to default");
         alert.show();
     }
 
