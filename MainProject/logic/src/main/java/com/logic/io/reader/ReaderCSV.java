@@ -28,11 +28,6 @@ public class ReaderCSV implements Reader {
 
     @Override
     public <T> ArrayList<T> readObjects(String path) throws CSVParseException {
-        File file = new File(path);
-        if (file.length() == 0) {
-            return new ArrayList<>();
-        }
-
         CSVParser parser = new CSVParser();
 
         List<List<String>> fileInfo = parser.getInfo(path);
