@@ -1,9 +1,12 @@
 package com.gui.controllers;
 
 import com.data.clients.Substitute;
+import com.gui.alertBoxes.AlertBox;
+import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
+import com.logic.concurrency.WriterThread;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
@@ -42,6 +45,9 @@ public class SubstitutesController implements Controller {
     private Button overwrite;
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
+    private String activeFile;
+    private AlertBox alert;
+    private ErrorBox error;
 
 
     @FXML
@@ -102,9 +108,10 @@ public class SubstitutesController implements Controller {
     @FXML
     private void initialize() {
         data = tableView.getItems();
+        activeFile = ActivePaths.getSubstituteJOBJPath();
 
         try {
-            data.addAll(ReaderThreadStarter.startReader(ActivePaths.getSubstituteJOBJPath())); //TODO Should this read from CSV or JOBJ?
+            data.addAll(ReaderThreadStarter.startReader(activeFile)); //TODO Should this read from CSV or JOBJ?
             System.out.println(data);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
@@ -132,8 +139,32 @@ public class SubstitutesController implements Controller {
           WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
           WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
         } catch (InterruptedException e) {
-            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
         }
+    }
+
+    public void readFromCSV(ActionEvent event) {
+        if (activeFile.equals(ActivePaths.getSubstituteCSVPath())) {
+            alert = new AlertBox("" + activeFile + " is already the active file", "Didn't change active file");
+            return;
+        }
+        try {
+            WriterThreadStarter.startWriter(data, activeFile);
+        } catch (InterruptedException e) {
+            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
+        }
+
+        activeFile = ActivePaths.getSubstituteCSVPath();
+
+        try {
+            data.addAll(ReaderThreadStarter.startReader(activeFile));
+        } catch (ExecutionException | InterruptedException e) {
+            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
+        }
+    }
+
+    public void readFromJOBJ(ActionEvent event) {
+
     }
 
 
