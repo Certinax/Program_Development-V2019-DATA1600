@@ -57,6 +57,7 @@
                             <Font name="System Bold" size="32.0" />
                         </font>
                     </Label>
+                  <Separator layoutX="179.0" layoutY="157.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                     <Label alignment="CENTER" layoutX="20.0" layoutY="189.0" text="Personalia" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="189.0">
                         <font>
                             <Font size="20.0" />
@@ -77,16 +78,17 @@
                         <children>
                             <Label text="Public / Private" />
                             <Label text="Name" GridPane.columnIndex="1" />
+                        <Label text="Industry" GridPane.columnIndex="2" />
                             <TextField prefHeight="26.0" prefWidth="128.0" promptText="Private" GridPane.rowIndex="1" />
                             <TextField prefHeight="26.0" prefWidth="128.0" promptText="Finn.no" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                             <Label text="Adress" GridPane.rowIndex="2" />
                             <TextField prefHeight="26.0" prefWidth="128.0" promptText="Streetroad 10" GridPane.rowIndex="3" />
                             <TextField prefHeight="26.0" prefWidth="128.0" promptText="Zip Code" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Label text="Industry" GridPane.columnIndex="2" />
-                        <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         </children>
                     </GridPane>
+                  <Separator layoutX="200.0" layoutY="447.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                     <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="477.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -105,8 +107,6 @@
                             <Insets />
                         </opaqueInsets>
                     </GridPane>
-                  <Separator layoutX="179.0" layoutY="157.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
-                  <Separator layoutX="200.0" layoutY="447.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                   <GridPane alignment="CENTER" layoutX="171.0" layoutY="574.0" prefHeight="30.0" prefWidth="215.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="574.0">
                     <columnConstraints>
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />

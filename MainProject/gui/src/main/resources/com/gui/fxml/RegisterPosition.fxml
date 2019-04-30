@@ -60,17 +60,8 @@
                             <Font name="System Bold" size="32.0" />
                         </font>
                     </Label>
+                  <Separator layoutX="200.0" layoutY="151.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                     <Label alignment="CENTER" layoutX="20.0" layoutY="171.0" text="General info" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="171.0">
-                        <font>
-                            <Font size="20.0" />
-                        </font>
-                    </Label>
-                    <Label alignment="CENTER" layoutX="20.0" layoutY="435.0" text="Contact information" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="435.0">
-                        <font>
-                            <Font size="20.0" />
-                        </font>
-                    </Label>
-                    <Label alignment="CENTER" layoutX="20.0" layoutY="709.0" text="Extra info" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="709.0">
                         <font>
                             <Font size="20.0" />
                         </font>
@@ -88,25 +79,31 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <children>
+                        <Label text="Public / Private" />
                             <Label text="Industry" GridPane.columnIndex="1" />
                             <Label text="Position type" GridPane.columnIndex="2" />
-                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Secretary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                            <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Public / Private" />
                         <TextField promptText="Public" GridPane.rowIndex="1" />
+                            <ComboBox prefWidth="150.0" promptText="List" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="Secretary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                             <Label text="Duration" GridPane.rowIndex="2" />
-                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="2 years" GridPane.rowIndex="3" />
                             <Label text="Start / Finish" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Salary" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                            <TextField prefHeight="26.0" prefWidth="128.0" promptText="2 years" GridPane.rowIndex="3" />
                         <HBox prefHeight="26.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
                                   <DatePicker prefHeight="26.0" prefWidth="87.0" promptText="From" />
                                   <DatePicker prefHeight="26.0" prefWidth="87.0" promptText="To" />
                            </children>
                         </HBox>
-                        <Label text="Salary" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         </children>
                     </GridPane>
+                  <Separator layoutX="200.0" layoutY="410.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                    <Label alignment="CENTER" layoutX="20.0" layoutY="435.0" text="Contact information" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="435.0">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
                     <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="504.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="504.0">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -120,19 +117,25 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <children>
+                            <Label text="Employer" />
                             <Label text="Email Address" GridPane.columnIndex="1" />
                             <Label text="Phonenumber" GridPane.columnIndex="2" />
+                        <ComboBox prefWidth="150.0" promptText="List" GridPane.rowIndex="1" />
                             <TextField prefHeight="26.0" prefWidth="128.0" promptText="example@sample.com" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             <TextField prefHeight="26.0" prefWidth="128.0" promptText="99106201" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                             <Label text="Workplace" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             <TextField prefHeight="26.0" prefWidth="128.0" promptText="Oslo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                            <Label text="Employer" />
-                        <ComboBox prefWidth="150.0" promptText="List" GridPane.rowIndex="1" />
                         </children>
                         <opaqueInsets>
                             <Insets />
                         </opaqueInsets>
                     </GridPane>
+                  <Separator layoutX="200.0" layoutY="686.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                    <Label alignment="CENTER" layoutX="20.0" layoutY="709.0" text="Extra info" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="709.0">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                    </Label>
                     <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="775.0" prefHeight="186.0" prefWidth="527.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="775.0">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="261.0" />
@@ -143,8 +146,8 @@
                             <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="161.0" vgrow="SOMETIMES" />
                         </rowConstraints>
                         <children>
-                            <Label text="Position description" GridPane.columnIndex="1" />
                             <Label text="Required qualifications" />
+                            <Label text="Position description" GridPane.columnIndex="1" />
                         <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                         <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         </children>
@@ -160,9 +163,6 @@
                            <Button minWidth="100.0" mnemonicParsing="false" text="Register" />
                        </children>
                    </GridPane>
-                  <Separator layoutX="200.0" layoutY="151.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
-                  <Separator layoutX="200.0" layoutY="410.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
-                  <Separator layoutX="200.0" layoutY="686.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                </children>
             </AnchorPane>
          </content>
