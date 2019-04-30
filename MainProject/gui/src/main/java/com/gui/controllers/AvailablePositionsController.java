@@ -19,7 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
-
 import java.util.concurrent.ExecutionException;
 
 //TODO Write JavaDocs!
@@ -34,10 +33,10 @@ public class AvailablePositionsController implements Controller {
     private ObservableList<AvailablePosition> data;
 
     @FXML
-    private TableColumn<AvailablePosition, String> placeColumn, positionTypeColumn, industryColumn;
+    private TableColumn<AvailablePosition, String> employerColumn, sectorColumn, availableColumn, workplaceColumn, positionTypeColumn, industryColumn;
 
     @FXML
-    private TableColumn<AvailablePosition, Integer> employerColumn, durationColumn, salaryColumn;
+    private TableColumn<AvailablePosition, Integer> numberOfPositionsColumn, durationColumn, salaryColumn;
 
     @FXML
     private TextField filterField;
@@ -45,6 +44,11 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private Button overwrite;
 
+    String activeFile;
+
+
+    //TODO Ha en checkbox for Available og ikke, som filtrer på den boolske verdien
+    //TODO Samkjør denne controlleren med oppsettet for Active File i Substitute Controller
 
     @FXML
     private void initialize() {
@@ -52,24 +56,14 @@ public class AvailablePositionsController implements Controller {
 
         try {
             data.addAll(ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionJOBJPath())); //TODO Should this read from CSV or JOBJ?
-            System.out.println(data);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
-
-        setFiltering();
-        setPlaceColumnEditable();
-        setSalaryColumnEditable();
-        setPositionColumnEditable();
-        setIndustryColumnEditable();
-        setEmployerColumnEditable();
-        setDurationColumnEditable();
     }
 
     @FXML
     private void delete() {
         data.remove(tableView.getSelectionModel().getSelectedItem());
-
     }
 
     @FXML
@@ -89,7 +83,7 @@ public class AvailablePositionsController implements Controller {
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
 
-    private void setFiltering() {
+  /*  private void setFiltering() {
         FilteredList<AvailablePosition> filteredData = new FilteredList<>(data, p -> true);
 
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -119,7 +113,7 @@ public class AvailablePositionsController implements Controller {
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());
 
         tableView.setItems(sortedData);
-    }
+    } */
 
     private void setSalaryColumnEditable() { //TODO Kolonner som er definert med Integers kræsjer dersom man prøver å skrive inn andre tegn. Trenger korrekt feilhåndtering.
         salaryColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -128,39 +122,11 @@ public class AvailablePositionsController implements Controller {
                         t.getTablePosition().getRow()).setSalary(t.getNewValue()));
     }
 
-    private void setEmployerColumnEditable() { //TODO Kolonner som er definert med Integers kræsjer dersom man prøver å skrive inn andre tegn. Trenger korrekt feilhåndtering.
-        employerColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        employerColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<AvailablePosition, Integer> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setEmployer(t.getNewValue()));
-    }
-
-    private void setDurationColumnEditable() { //TODO Kolonner som er definert med Integers kræsjer dersom man prøver å skrive inn andre tegn. Trenger korrekt feilhåndtering.
-        durationColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        durationColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<AvailablePosition, Integer> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setDuration(t.getNewValue()));
-    }
-
-    private void setPlaceColumnEditable() {
-        placeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        placeColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<AvailablePosition, String> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setWorkplace(t.getNewValue()));
-    }
-
     private void setPositionColumnEditable() {
         positionTypeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         positionTypeColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<AvailablePosition, String> t) -> t.getTableView().getItems().get(
                         t.getTablePosition().getRow()).setPositionType(t.getNewValue()));
-    }
-
-    private void setIndustryColumnEditable() {
-        industryColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        industryColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<AvailablePosition, String> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setIndustry(t.getNewValue()));
     }
 
     /* ----------------------------------- Navigation Buttons - To Be Removed ------------------------------------- */
