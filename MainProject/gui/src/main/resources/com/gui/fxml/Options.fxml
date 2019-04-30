@@ -28,7 +28,7 @@
             <Button alignment="CENTER" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#setAvailablePositionsCSV" prefWidth="160.0" text="Available Positions CSV" textAlignment="CENTER" GridPane.rowIndex="2" />
             <Button alignment="CENTER" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#setSubstituteJOBJPath" prefWidth="160.0" text="Substitutes JOBJ" textAlignment="CENTER" GridPane.columnIndex="1" />
             <Button alignment="CENTER" layoutX="110.0" layoutY="12.0" mnemonicParsing="false" onAction="#setEmployersJOBJ" prefWidth="160.0" text="Employers JOBJ" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button alignment="CENTER" layoutX="110.0" layoutY="43.0" mnemonicParsing="false" onAction="#setActivePositionsJOBJ" prefWidth="163.0" text="Available Positions JOBJ" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" layoutX="110.0" layoutY="43.0" mnemonicParsing="false" onAction="#setAvailablePositionsJOBJ" prefWidth="163.0" text="Available Positions JOBJ" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button alignment="CENTER" layoutX="10.0" layoutY="94.0" mnemonicParsing="false" onAction="#setActivePositionsCSV" prefWidth="160.0" text="Active Positions CSV" textAlignment="CENTER" GridPane.rowIndex="3" />
             <Button alignment="CENTER" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" onAction="#setActivePositionsJOBJ" prefWidth="160.0" text="Active Positions JOBJ" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>

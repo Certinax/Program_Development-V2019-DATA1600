@@ -129,8 +129,8 @@ public class SubstitutesController implements Controller {
     @FXML
     private void save(ActionEvent event) {
       try {
-          WriterThreadStarter.startWriter(data,ActivePaths.getSubstituteJOBJPath());
-          WriterThreadStarter.startWriter(data,ActivePaths.getSubstituteCSVPath());
+          WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
+          WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
         } catch (InterruptedException e) {
             e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
         }
@@ -139,12 +139,6 @@ public class SubstitutesController implements Controller {
 
     @Override
     public void exit() {
-        try {
-            WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
-            WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
-        } catch (InterruptedException e) {
-            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
-        }
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
