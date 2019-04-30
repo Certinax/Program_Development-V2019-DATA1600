@@ -31,6 +31,14 @@ public enum DefaultFilePaths { //TODO Make sure all paths are included here
         public String toString() { return "resources/availablepositions.jobj";}
     },
 
+    ACTIVEPOSITIONCSV { //The CSV-file for active positions
+        public String toString() { return "resources/activepositions.csv";}
+    },
+
+    ACTIVEPOSITIONJOBJ { //The JOBJ-file for active positions
+        public String toString() { return "resources/activepositions.jobj";}
+    },
+
     EMPLOYERCSV {
         public String toString() { return "resources/employers.csv";}
     },
@@ -40,6 +48,8 @@ public enum DefaultFilePaths { //TODO Make sure all paths are included here
             return "resources/employers.jobj";
         }
     }
+
+
 
 
 }
