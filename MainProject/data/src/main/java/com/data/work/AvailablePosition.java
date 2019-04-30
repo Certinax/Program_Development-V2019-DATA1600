@@ -39,7 +39,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     }
 
     public static class Builder<T extends Builder<T>> {
-
+        // Required parameters
         private int positionsID; //An internal ID for the position
         private Boolean publicSector; //Is it public or private sector?
         private String workplace; //Where is it?
@@ -47,12 +47,16 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         private String positionType; //What kind of position is it? Consulent? Manager? Crewmember etc...
         private String industry; //What industry is it? IT? Economics? etc
         private int duration; //For how long do they need a substitute
-        private int startingTime; //When does the workday start
-        private int endingTime; //When does the workday end
-        private String requiredQualifications;
         private int salary; //Hourly salary
         private String contactInfo; //An email for contacting them
-        private String description; //A description of the position
+
+        // Optional parameters
+        private int startingTime = 0; //When does the workday start
+        private int endingTime = 0; //When does the workday end
+        private String requiredQualifications = "";
+        private String description = ""; //A description of the position
+
+        // TODO Denne bør vel være optional?
         private ArrayList<Integer> applicants; //A list of IDs of applicants for the position
 
         //Builder for required parameters
@@ -222,6 +226,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
                 ", publicSector=" + publicSector +
                 ", workplace='" + workplace + '\'' +
                 ", employer=" + employer +
+                ", positionType='" + positionType + '\'' +
                 ", industry='" + industry + '\'' +
                 ", duration=" + duration +
                 ", startingTime=" + startingTime +
