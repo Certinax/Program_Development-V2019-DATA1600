@@ -99,9 +99,12 @@
                <FXCollections fx:factory="observableArrayList" />
            </items>
        </TableView>
+      <Button layoutX="220.0" layoutY="417.0" mnemonicParsing="false" text="Show info" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
+       <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
+      <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
          <Button fx:id="overwrite" layoutX="220.0" layoutY="455.0" onAction="#save" text="Overwrite" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="220.0" />
          <TextField fx:id="filterField" layoutX="489.0" layoutY="455.0" promptText="Filter..." AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="80.0" />
          <Button layoutX="840.0" layoutY="455.0" onAction="#delete" text="Delete" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="220.0" layoutY="417.0" mnemonicParsing="false" text="Show info" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
+
    </children>
 </AnchorPane>
