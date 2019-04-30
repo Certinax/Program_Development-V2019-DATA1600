@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.logic.customTextFields.NameField?>
+<?import com.logic.customTextFields.PhoneField?>
+<?import com.logic.customTextFields.SalaryField?>
 <?import com.logic.customTextFields.ZipCodeField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -18,8 +20,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<?import com.logic.customTextFields.PhoneField?>
-<?import com.logic.customTextFields.SalaryField?>
 <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="2000.0" prefWidth="1014.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.RegisterSubstituteController">
   <children>
 
@@ -183,7 +183,6 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="200.0" layoutY="1482.0" minWidth="100.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="1482.0" />
                   <GridPane layoutX="20.0" layoutY="726.0" prefHeight="159.0" prefWidth="485.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -232,6 +231,19 @@
                   <Separator layoutX="306.0" layoutY="219.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                   <Separator layoutX="306.0" layoutY="624.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                   <Separator layoutX="306.0" layoutY="1268.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+
+                   <GridPane alignment="CENTER" layoutX="20.0" layoutY="1485.0" prefHeight="30.0" prefWidth="215.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="1485.0">
+                       <columnConstraints>
+                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                       </columnConstraints>
+                       <rowConstraints>
+                           <RowConstraints />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                       </rowConstraints>
+                       <children>
+                           <Button minWidth="100.0" mnemonicParsing="false" text="Register" GridPane.rowIndex="1" />
+                       </children>
+                   </GridPane>
                </children>
             </AnchorPane>
          </content>

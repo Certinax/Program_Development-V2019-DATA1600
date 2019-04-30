@@ -105,9 +105,19 @@
                             <Insets />
                         </opaqueInsets>
                     </GridPane>
-                    <Button layoutX="200.0" layoutY="583.0" minWidth="100.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                   <Separator layoutX="179.0" layoutY="157.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                   <Separator layoutX="200.0" layoutY="447.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                  <GridPane alignment="CENTER" layoutX="171.0" layoutY="574.0" prefHeight="30.0" prefWidth="215.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="574.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                          <Button minWidth="100.0" mnemonicParsing="false" text="Register" />
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
          </content>

@@ -149,7 +149,17 @@
                         <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         </children>
                     </GridPane>
-                  <Button layoutX="200.0" layoutY="1008.0" minWidth="100.0" mnemonicParsing="false" text="Register" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                   <GridPane alignment="CENTER" layoutX="200.0" layoutY="1008.0" prefHeight="30.0" prefWidth="215.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                       <columnConstraints>
+                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                       </columnConstraints>
+                       <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                       </rowConstraints>
+                       <children>
+                           <Button minWidth="100.0" mnemonicParsing="false" text="Register" />
+                       </children>
+                   </GridPane>
                   <Separator layoutX="200.0" layoutY="151.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                   <Separator layoutX="200.0" layoutY="410.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                   <Separator layoutX="200.0" layoutY="686.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
