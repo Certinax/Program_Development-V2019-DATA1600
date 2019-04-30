@@ -1,4 +1,4 @@
-package com.logic.utilities;
+package com.logic.filePaths;
 
 /**
  * <h1>FilePaths</h1>
@@ -9,7 +9,7 @@ package com.logic.utilities;
  * @since 28-04-2019
  */
 
-public enum FilePaths { //TODO Make sure all paths are included here
+public enum DefaultFilePaths { //TODO Make sure all paths are included here
 
     SUBSTITUTESCSV { //The CSV-file for substitutes
         public String toString() {
