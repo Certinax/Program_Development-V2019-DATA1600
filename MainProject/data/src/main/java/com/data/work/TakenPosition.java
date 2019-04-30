@@ -1,12 +1,12 @@
 package com.data.work;
 
-import com.data.Writeable;
+import com.data.CSVWriteable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 //TODO Write JavaDocs!
-public class TakenPosition extends AvailablePosition implements Serializable, Writeable {
+public class TakenPosition extends AvailablePosition implements Serializable, CSVWriteable {
 
     private int substituteID;
 

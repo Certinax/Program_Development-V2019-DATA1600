@@ -1,7 +1,5 @@
 package com.data.clients;
 
-import com.data.Writeable;
-
 import java.io.Serializable;
 
 /**

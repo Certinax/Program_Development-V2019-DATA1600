@@ -1,14 +1,11 @@
 package com.data.clients;
 
-import com.data.Writeable;
-import com.data.handlers.IdHandler;
+import com.data.CSVWriteable;
 import com.data.handlers.IdManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
-
-import static java.util.UUID.randomUUID;
 
 /**
  * <h1>Substitute</h1>
@@ -20,7 +17,7 @@ import static java.util.UUID.randomUUID;
  * @since 24-04-2019
  */
 
-public class Substitute extends Client implements Serializable, Writeable {
+public class Substitute extends Client implements Serializable, CSVWriteable {
 
     private int substituteNumber;
     private String substituteId;
@@ -176,8 +173,8 @@ public class Substitute extends Client implements Serializable, Writeable {
 
     @Override
     public String toString() {
-        return super.toString() + "Substitute{" + "substituteNumber'" + substituteNumber
-                + '\'' + ", substituteId" + substituteId
+        return super.toString() + "Substitute{" + "substituteNumber='" + substituteNumber
+                + '\'' + ", substituteId='" + substituteId
                 + '\'' + ", firstname='" + firstname
                 + '\'' + ", lastname='" + lastname + '\'' + ", age=" + age + ", salaryRequirement=" + salaryRequirement
                 + ", education=" + education + ", workExperience=" + workExperience + ", workReference=" + workReference

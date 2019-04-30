@@ -1,6 +1,6 @@
 package com.data.clients;
 
-import com.data.Writeable;
+import com.data.CSVWriteable;
 import com.data.handlers.IdManager;
 
 import java.io.Serializable;
@@ -17,7 +17,7 @@ import java.util.UUID;
  * @since 24-04-2019
  */
 
-public class Employer extends Client implements Serializable, Writeable {
+public class Employer extends Client implements Serializable, CSVWriteable {
 
     private int employerNumber;
     private String employerId;
@@ -111,8 +111,8 @@ public class Employer extends Client implements Serializable, Writeable {
 
     @Override
     public String toString() {
-        return super.toString() + "Employer{" + "employerNumber'" + employerNumber
-                + '\'' + ", employerId" + employerId
+        return super.toString() + "Employer{" + "employerNumber='" + employerNumber
+                + '\'' + ", employerId='" + employerId
                 + '\'' + ", name='" + name + '\''
                 + ", sector='" + privateSector + '\'' + ", joblist=" + joblist + '}';
     }

@@ -1,12 +1,12 @@
 package com.data.work;
 
-import com.data.Writeable;
+import com.data.CSVWriteable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 //TODO Write JavaDocs!
-public class AvailablePosition implements Serializable, Writeable {
+public class AvailablePosition implements Serializable, CSVWriteable {
 
     private int positionsID; //An internal ID for the position
     private Boolean publicSector; //Is it public or private sector?

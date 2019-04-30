@@ -4,7 +4,7 @@ package com.data;
  * Interface representing classes who are writeable to CSV with the CSVWriter
  */
 
-public interface Writeable {
+public interface CSVWriteable {
 
     String[] template();
 }
