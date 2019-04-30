@@ -1,7 +1,7 @@
 package com.data.clients;
 
 import com.data.CSVWriteable;
-import com.data.handlers.IdManager;
+import com.data.handlers.NumberManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -54,10 +54,10 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
         private final int age;
 
         // Optional parameters
-        private int salaryRequirement;
-        private ArrayList<String> education = null;
-        private ArrayList<String> workExperience = null;
-        private ArrayList<String> workReference = null;
+        private int salaryRequirement = 0;
+        private ArrayList<String> education = new ArrayList<>();
+        private ArrayList<String> workExperience = new ArrayList<>();
+        private ArrayList<String> workReference = new ArrayList<>();
 
         // Builder for required parameters
         public Builder(String firstname, String lastname, String address, int age, int zipcode, String city,
@@ -66,7 +66,7 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
             this.firstname = firstname;
             this.lastname = lastname;
             this.age = age;
-            this.substituteNumber = IdManager.INSTANCE.getSubstituteIdAndIncrement();
+            this.substituteNumber = NumberManager.INSTANCE.getSubstituteNumberAndIncrement();
             UUID uuid = UUID.randomUUID();
             this.substituteId = uuid.toString();
         }

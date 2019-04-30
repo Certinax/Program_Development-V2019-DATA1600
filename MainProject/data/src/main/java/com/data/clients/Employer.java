@@ -1,7 +1,7 @@
 package com.data.clients;
 
 import com.data.CSVWriteable;
-import com.data.handlers.IdManager;
+import com.data.handlers.NumberManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -45,14 +45,14 @@ public class Employer extends Client implements Serializable, CSVWriteable {
         private final boolean privateSector;
 
         // Optional parameters
-        private ArrayList<String> joblist = null;
+        private ArrayList<String> joblist = new ArrayList<>();
 
         // Builder for required parameters
         public Builder(String name, String address, int zipcode, String city, boolean privateSector, String industry) {
             super(address, zipcode, city, industry);
             this.name = name;
             this.privateSector = privateSector;
-            this.employerNumber = IdManager.INSTANCE.getEmployerIdAndIncrement();
+            this.employerNumber = NumberManager.INSTANCE.getEmployerNumberAndIncrement();
             UUID uuid = UUID.randomUUID();
             this.employerId = uuid.toString();
         }
