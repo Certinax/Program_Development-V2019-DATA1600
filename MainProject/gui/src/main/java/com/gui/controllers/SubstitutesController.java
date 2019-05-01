@@ -120,6 +120,11 @@ public class SubstitutesController implements Controller {
 
     }
 
+    public void showInfo(ActionEvent event){
+        // TODO send to substituteInfo
+        //industryColumn.getTableView().getSelectionModel().getSelectedItem();
+    }
+
 
     @Override
     public void exit() {

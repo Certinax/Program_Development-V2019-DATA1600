@@ -5,12 +5,22 @@ import com.gui.scene.SceneName;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 //TODO Write JavaDocs!
 public class SubstituteInfoController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
+
+    /* ------------------------------------------ variables ----------------------------------------------- */
+
+    @FXML
+    Label firstnameLbl, lastnameLbl, ageLbl, streetnameLbl, zipcodeLbl, cityLbl;
+    @FXML
+    Label schoolnameLbl, lineLbl, datefromLbl, datetoLbl;
+    @FXML
+    Label emailLbl, phoneLbl, industryLbl, salaryLbl;
 
     @Override
     public void initialize() {
@@ -25,6 +35,8 @@ public class SubstituteInfoController implements Controller {
     public void exit() {
 
     }
+
+
 
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
