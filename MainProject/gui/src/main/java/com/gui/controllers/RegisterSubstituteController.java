@@ -123,38 +123,7 @@ public class RegisterSubstituteController implements Controller {
 
     @FXML
     private void registerSubstitute(ActionEvent event) {
-        String firstname = firstnameField.getText();
-        String lastname = lastnameField.getText();
-        String address = streetnameField.getText();
-        //int zipcode = Integer.parseInt(zipCodeField.getText());
-        //LocalDate now = LocalDate.now();
-        //LocalDate dob = birthdayField.getValue();
-        //int age = Period.between(dob, now).getYears();
-        //String city = cityField.getText();
-        String industry = "DUMMYDATA";
-        //SubReg.subReg();
-        //Substitute substitute = new Substitute.Builder(firstname, lastname, address, age, zipcode, city, industry).build();
-        /*try {
-            WriterThreadStarter.startWriter(substitute, "resources/subreg.csv");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-
-        /*Node parent = anchPane;
-
-        Node test, children;
-
-        ObservableList<Node> nodeList = anchPane.getChildren();
-        for(Node node :nodeList ) {
-            if(node.getTypeSelector().equals("ScrollPane")) {
-                System.out.println("ScrollPane detected");
-                *//*System.out.println(node.getContentBias());
-                test = node;
-                System.out.println(test);*//*
-                NodeGenerator.getAllNodes((Parent) node);
-            }
-        }*/
-
+        
         // This parent holds all the necessary children to retrieve information from
         AnchorPane parent = infoAnchPane;
 
