@@ -54,7 +54,7 @@
       <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
       <ScrollPane fitToWidth="true" layoutX="212.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="1224.0" prefWidth="527.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <AnchorPane prefHeight="1574.0" prefWidth="812.0">
+            <AnchorPane fx:id="infoAnchPane" prefHeight="1574.0" prefWidth="812.0">
                <children>
             
                   <!-- MAIN SECTION -->
@@ -101,7 +101,7 @@
                         <Label text="Adress" />
                       <TextField fx:id="streetnameField" prefHeight="26.0" prefWidth="128.0" promptText="Streetname and number" GridPane.rowIndex="1" />
                         <ZipCodeField fx:id="zipCodeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="SJEKKDENNE" prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="504.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -156,8 +156,8 @@
                      <children>
                       <NameField fx:id="schoolnameField" prefHeight="26.0" prefWidth="128.0" promptText="School name" />
                       <TextField fx:id="educationField" prefHeight="26.0" prefWidth="128.0" promptText="Line of education" GridPane.columnIndex="1" />
-                        <DatePicker prefHeight="26.0" promptText="Started" GridPane.columnIndex="2" />
-                        <DatePicker prefHeight="26.0" promptText="Ended" GridPane.columnIndex="3" />
+                        <DatePicker fx:id="startDate" prefHeight="26.0" promptText="Started" GridPane.columnIndex="2" />
+                        <DatePicker fx:id="endDate" prefHeight="26.0" promptText="Ended" GridPane.columnIndex="3" />
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Add" GridPane.columnIndex="4" />
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Remove" GridPane.columnIndex="5" />
                      </children>

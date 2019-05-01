@@ -8,11 +8,13 @@ import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.SalaryField;
 import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.NodeGenerator;
+import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -21,6 +23,7 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Map;
 
 //TODO Write JavaDocs!
 public class RegisterSubstituteController implements Controller {
@@ -54,7 +57,7 @@ public class RegisterSubstituteController implements Controller {
     ComboBox<String> industryList;
 
     @FXML
-    AnchorPane anchPane;
+    AnchorPane anchPane, infoAnchPane;
 
 
     @Override
@@ -137,23 +140,37 @@ public class RegisterSubstituteController implements Controller {
             e.printStackTrace();
         }*/
 
-        Node parent = anchPane;
+        /*Node parent = anchPane;
+
+        Node test, children;
 
         ObservableList<Node> nodeList = anchPane.getChildren();
         for(Node node :nodeList ) {
             if(node.getTypeSelector().equals("ScrollPane")) {
                 System.out.println("ScrollPane detected");
+                *//*System.out.println(node.getContentBias());
+                test = node;
+                System.out.println(test);*//*
+                NodeGenerator.getAllNodes((Parent) node);
+            }
+        }*/
+
+        // This parent holds all the necessary children to retrieve information from
+        AnchorPane parent = infoAnchPane;
+
+        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
+
+
+        for(Map.Entry<Node, Object> item : nodesAndValues.entrySet()) {
+            System.out.println(item.getKey().toString());
+            if(item.getKey().getId() != null) {
+                if (item.getKey().getId().equals("firstnameField")) {
+                    System.out.println("Test");
+                }
             }
         }
 
-        NodeGenerator.getAllNodes(anchPane);
 
-
-        /*anchPane.getChildren()
-                .filtered(node -> node instanceof GridPane)
-                .forEach(node -> System.out.println(node.getTypeSelector()));*/
-
-        System.out.println("Du har registrert en vikar med fornavn" + firstname);
     }
 
     @FXML
