@@ -53,49 +53,49 @@
       <TableView fx:id="tableView" editable="true" layoutX="210.0" layoutY="45.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
           <columns>
 
-              <TableColumn fx:id="workplaceColumn" prefWidth="100" text="Workplace">
+              <TableColumn fx:id="workplaceColumn" prefWidth="120" text="Workplace">
                   <cellValueFactory>
                       <PropertyValueFactory property="workplace" />
                   </cellValueFactory>
               </TableColumn>
 
-              <TableColumn fx:id="positionTypeColumn" prefWidth="100" text="Position Type">
+              <TableColumn fx:id="positionTypeColumn" prefWidth="110" text="Position Type">
                   <cellValueFactory>
                       <PropertyValueFactory property="positionType" />
                   </cellValueFactory>
               </TableColumn>
 
-              <TableColumn fx:id="employerColumn" prefWidth="150" text="Industry">
+              <TableColumn fx:id="employerColumn" prefWidth="100" text="Employer">
                   <cellValueFactory>
                       <PropertyValueFactory property="employerName" />
                   </cellValueFactory>
               </TableColumn>
 
-              <TableColumn fx:id="sectorColumn" prefWidth="59.0" text="Employer">
+              <TableColumn fx:id="sectorColumn" prefWidth="60.0" text="Sector">
                   <cellValueFactory>
-                      <PropertyValueFactory property="employer" />
+                      <PropertyValueFactory property="publicSector" />
                   </cellValueFactory>
               </TableColumn>
 
-              <TableColumn fx:id="industryColumn" prefWidth="91.0" text="Duration (weeks)">
+              <TableColumn fx:id="industryColumn" prefWidth="90.0" text="Industry">
                   <cellValueFactory>
                       <PropertyValueFactory property="industry" />
                   </cellValueFactory>
               </TableColumn>
 
-              <TableColumn fx:id="salaryColumn" prefWidth="154.0" text="Salary pr hour">
+              <TableColumn fx:id="salaryColumn" prefWidth="100.0" text="Salary(hour)">
                   <cellValueFactory>
                       <PropertyValueFactory property="salary" />
                   </cellValueFactory>
               </TableColumn>
 
-              <TableColumn fx:id="durationColumn" prefWidth="154.0" text="Salary pr hour">
+              <TableColumn fx:id="durationColumn" prefWidth="80.0" text="Duration(weeks)">
                   <cellValueFactory>
-                      <PropertyValueFactory property="duartion" />
+                      <PropertyValueFactory property="duration" />
                   </cellValueFactory>
               </TableColumn>
 
-              <TableColumn fx:id="availableColumn" prefWidth="154.0" text="Salary pr hour">
+              <TableColumn fx:id="availableColumn" prefWidth="90.0" text="Occupied">
                   <cellValueFactory>
                       <PropertyValueFactory property="available" />
                   </cellValueFactory>
