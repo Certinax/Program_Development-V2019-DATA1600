@@ -147,8 +147,8 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="42.0" minWidth="42.0" prefWidth="42.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="62.0" minWidth="62.0" prefWidth="62.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -158,8 +158,8 @@
                       <TextField fx:id="educationField" prefHeight="26.0" prefWidth="128.0" promptText="Line of education" GridPane.columnIndex="1" />
                         <DatePicker prefHeight="26.0" promptText="Started" GridPane.columnIndex="2" />
                         <DatePicker prefHeight="26.0" promptText="Ended" GridPane.columnIndex="3" />
-                        <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" text="Remove" GridPane.columnIndex="5" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Add" GridPane.columnIndex="4" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Remove" GridPane.columnIndex="5" />
                      </children>
                   </GridPane>
                   <GridPane layoutX="20.0" layoutY="967.0" prefHeight="159.0" prefWidth="485.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="967.0">
@@ -198,8 +198,8 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="42.0" minWidth="42.0" prefWidth="42.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="62.0" minWidth="62.0" prefWidth="62.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="46.0" minWidth="46.0" prefWidth="46.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -209,8 +209,8 @@
                         <NameField fx:id="referenceLastnameField" layoutX="210.0" layoutY="43.0" promptText="Ref Lastname" GridPane.columnIndex="1" />
                         <PhoneField fx:id="referencePhoneField" layoutX="110.0" layoutY="43.0" promptText="Ref Phone" GridPane.columnIndex="2" />
                         <TextField fx:id="referenceMailField" layoutX="10.0" layoutY="43.0" promptText="Ref E-mail" GridPane.columnIndex="3" />
-                        <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="4" />
-                        <Button mnemonicParsing="false" text="Remove" GridPane.columnIndex="5" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Add" GridPane.columnIndex="4" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Remove" GridPane.columnIndex="5" />
                      </children>
                   </GridPane>
                   <Separator layoutX="306.0" layoutY="1268.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
@@ -245,7 +245,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                        </rowConstraints>
                        <children>
-                           <Button minWidth="100.0" mnemonicParsing="false" text="Register" onAction="#registerSubstitute" GridPane.rowIndex="1" />
+                           <Button minWidth="100.0" mnemonicParsing="false" onAction="#registerSubstitute" text="Register" GridPane.rowIndex="1" />
                        </children>
                    </GridPane>
                </children>
