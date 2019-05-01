@@ -2,14 +2,83 @@ package com.gui.controllers;
 
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.customTextFields.IntField;
+import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.Map;
 
 public class RegisterPositionController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
+
+    /* ------------------------------------- fx:id fields --------------------------------------- */
+    @FXML
+    private ToggleGroup selector;
+
+    @FXML
+    private RadioButton publicSector;
+
+    @FXML
+    private RadioButton privateSector;
+
+    @FXML
+    private IntField numberOfPositions;
+
+    @FXML
+    private ComboBox employer;
+
+    @FXML
+    private TextField position;
+
+    @FXML
+    private IntField salary;
+
+    @FXML
+    private ComboBox industry;
+
+    @FXML
+    private IntField duration;
+
+    @FXML
+    private DatePicker workStart;
+
+    @FXML
+    private DatePicker workEnd;
+
+    @FXML
+    private TextArea requiredQualifications;
+
+    @FXML
+    private TextArea positionDescription;
+
+    @FXML
+    private Button register;
+
+    @FXML
+    private AnchorPane parent;
+
+    /* ------------------------------------------ Register Method ------------------------------------------ */
+
+    @FXML
+    public void registerPosition(ActionEvent event){
+        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
+
+        for (Map.Entry<Node, Object> item : nodesAndValues.entrySet()) {
+            if (item.getKey().getId().equals("numberOfPositions")){
+                System.out.println("Test for registering positions: numberOfPositions found");
+            }
+        }
+    }
+
+
 
     @Override
     public void initialize() {
