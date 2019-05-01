@@ -7,17 +7,20 @@ import com.logic.customTextFields.NameField;
 import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.SalaryField;
 import com.logic.customTextFields.ZipCodeField;
+import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 
 //TODO Write JavaDocs!
 public class RegisterSubstituteController implements Controller {
@@ -49,6 +52,9 @@ public class RegisterSubstituteController implements Controller {
 
     @FXML
     ComboBox<String> industryList;
+
+    @FXML
+    AnchorPane anchPane;
 
 
     @Override
@@ -130,6 +136,23 @@ public class RegisterSubstituteController implements Controller {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
+
+        Node parent = anchPane;
+
+        ObservableList<Node> nodeList = anchPane.getChildren();
+        for(Node node :nodeList ) {
+            if(node.getTypeSelector().equals("ScrollPane")) {
+                System.out.println("ScrollPane detected");
+            }
+        }
+
+        NodeGenerator.getAllNodes(anchPane);
+
+
+        /*anchPane.getChildren()
+                .filtered(node -> node instanceof GridPane)
+                .forEach(node -> System.out.println(node.getTypeSelector()));*/
+
         System.out.println("Du har registrert en vikar med fornavn" + firstname);
     }
 
