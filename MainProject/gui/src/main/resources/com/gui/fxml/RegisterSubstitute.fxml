@@ -245,7 +245,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                        </rowConstraints>
                        <children>
-                           <Button minWidth="100.0" mnemonicParsing="false" text="Register" GridPane.rowIndex="1" />
+                           <Button minWidth="100.0" mnemonicParsing="false" text="Register" onAction="#registerSubstitute" GridPane.rowIndex="1" />
                        </children>
                    </GridPane>
                </children>

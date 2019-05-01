@@ -1,5 +1,6 @@
 package com.gui.controllers;
 
+import com.data.work.SubReg;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.customTextFields.NameField;
@@ -14,6 +15,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.time.LocalDate;
+import java.time.Period;
 
 //TODO Write JavaDocs!
 public class RegisterSubstituteController implements Controller {
@@ -106,6 +110,27 @@ public class RegisterSubstituteController implements Controller {
         } catch (NoPrimaryStageException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    @FXML
+    private void registerSubstitute(ActionEvent event) {
+        String firstname = firstnameField.getText();
+        String lastname = lastnameField.getText();
+        String address = streetnameField.getText();
+        //int zipcode = Integer.parseInt(zipCodeField.getText());
+        //LocalDate now = LocalDate.now();
+        //LocalDate dob = birthdayField.getValue();
+        //int age = Period.between(dob, now).getYears();
+        //String city = cityField.getText();
+        String industry = "DUMMYDATA";
+        //SubReg.subReg();
+        //Substitute substitute = new Substitute.Builder(firstname, lastname, address, age, zipcode, city, industry).build();
+        /*try {
+            WriterThreadStarter.startWriter(substitute, "resources/subreg.csv");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+        System.out.println("Du har registrert en vikar med fornavn" + firstname);
     }
 
     @FXML
