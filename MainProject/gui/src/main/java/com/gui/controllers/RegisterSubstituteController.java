@@ -42,7 +42,7 @@ public class RegisterSubstituteController implements Controller {
     TextField streetnameField, emailField, educationField, workplaceField, positionField, referenceMailField;
 
     @FXML
-    NameField firstnameField, lastnameField, cityField,schoolnameField, referenceNameField, referenceLastnameField;
+    NameField firstnameField, lastnameField, cityField, schoolnameField, referenceNameField, referenceLastnameField;
 
     @FXML
     PhoneField phoneField, referencePhoneField;

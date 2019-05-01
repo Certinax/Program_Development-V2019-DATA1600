@@ -16,11 +16,11 @@ public enum RequiredDataContainer {
             Map<String, String> temp = Map.ofEntries(
                     entry("firstnameField", "String"),
                     entry("lastnameField", "String"),
-                    entry("addressField", "String"),
-                    entry("ageField", "int"),
-                    entry("zipcodeField", "int"),
+                    entry("streetnameField", "String"),
+                    entry("birthdayField", "int"),
+                    entry("zipCodeField", "int"),
                     entry("cityField", "String"),
-                    entry("industryField", "String")
+                    entry("industryList", "String")
             );
             return temp;
         }

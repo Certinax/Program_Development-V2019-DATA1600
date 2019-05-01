@@ -101,7 +101,7 @@
                         <Label text="Adress" />
                       <TextField fx:id="streetnameField" prefHeight="26.0" prefWidth="128.0" promptText="Streetname and number" GridPane.rowIndex="1" />
                         <ZipCodeField fx:id="zipCodeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="SJEKKDENNE" prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <NameField fx:id="cityField" prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="504.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">

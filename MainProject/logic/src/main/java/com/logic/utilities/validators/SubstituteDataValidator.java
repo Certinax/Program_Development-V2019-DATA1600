@@ -16,20 +16,15 @@ public class SubstituteDataValidator {
         // <variableName, type>
         Map<String,String> requiredData = RequiredDataContainer.SUBSTITUTE.requiredData();
 
-        for (Map.Entry<String, String> entry : requiredData.entrySet()) {
+        for(Map.Entry<String, String> entry : requiredData.entrySet()) {
             for (Map.Entry<Node, Object> item : nodeAndValues.entrySet()) {
-                System.out.println(item.getKey().getId());
                 if(entry.getKey().equals(item.getKey().getId())) {
+                    System.out.println("Entry key: " + entry.getKey() + "Item id : " + item.getKey().getId());
                     match++;
+                    break;
                 }
             }
         }
-
-        /*System.out.println(match);
-        if(requiredData.size() == match) {
-            System.out.println("JIPPI");
-        }*/
-
         return match == requiredData.size();
     }
 
