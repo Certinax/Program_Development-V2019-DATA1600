@@ -1,5 +1,7 @@
 package com.logic.utilities.validators;
 
+import javafx.scene.Node;
+
 import java.util.Map;
 
 import static java.util.Map.entry;
@@ -7,17 +9,18 @@ import static java.util.Map.entry;
 public enum RequiredDataContainer {
 
 
+
     SUBSTITUTE() {
         @Override
         public Map<String, String> requiredData() {
             Map<String, String> temp = Map.ofEntries(
-                    entry("firstname", "String"),
-                    entry("lastname", "String"),
-                    entry("address", "String"),
-                    entry("age", "int"),
-                    entry("zipcode", "int"),
-                    entry("city", "String"),
-                    entry("industry", "String")
+                    entry("firstnameField", "String"),
+                    entry("lastnameField", "String"),
+                    entry("addressField", "String"),
+                    entry("ageField", "int"),
+                    entry("zipcodeField", "int"),
+                    entry("cityField", "String"),
+                    entry("industryField", "String")
             );
             return temp;
         }

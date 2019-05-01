@@ -1,5 +1,7 @@
 package com.gui.controllers;
 
+import com.data.clients.Employer;
+import com.data.clients.Substitute;
 import com.data.work.SubReg;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
@@ -128,7 +130,7 @@ public class RegisterSubstituteController implements Controller {
         // This parent holds all the necessary children to retrieve information from
         AnchorPane parent = infoAnchPane;
 
-        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
+        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(infoAnchPane);
 
         for(Map.Entry<Node, Object> item : nodesAndValues.entrySet()) {
             System.out.println(item.getKey().toString());
@@ -138,6 +140,12 @@ public class RegisterSubstituteController implements Controller {
                 }
             }
         }
+
+        Substitute substitute = new Substitute.Builder("mathias", "ahrn", "asf",
+                12, 122," sad", "asd")
+                .education(new ArrayList<>())
+                .build();
+
 
         System.out.println(SubstituteDataValidator.dataMatching(nodesAndValues));
 
