@@ -8,8 +8,6 @@ import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -187,7 +185,7 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private void openOptions(ActionEvent event) {
         try {
-            sceneManager.createNewStageWithScene(new Stage(), SceneName.OPTIONS);
+            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS);
         } catch (NoPrimaryStageException e) {
             System.err.println(e.getMessage());
         }
