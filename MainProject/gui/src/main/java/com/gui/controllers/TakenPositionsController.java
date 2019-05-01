@@ -17,6 +17,11 @@ public class TakenPositionsController implements Controller {
     }
 
     @Override
+    public void refresh() {
+
+    }
+
+    @Override
     public void exit() {
 
     }

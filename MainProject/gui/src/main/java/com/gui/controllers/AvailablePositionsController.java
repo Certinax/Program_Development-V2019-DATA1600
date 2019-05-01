@@ -59,6 +59,12 @@ public class AvailablePositionsController implements Controller {
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
+
+        System.out.println("THIS IS TRIGGERED!");
+    }
+
+    @Override
+    public void refresh() {
     }
 
     @FXML

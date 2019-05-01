@@ -16,6 +16,11 @@ public class RegisterPositionController implements Controller {
     }
 
     @Override
+    public void refresh() {
+
+    }
+
+    @Override
     public void exit() {
 
     }

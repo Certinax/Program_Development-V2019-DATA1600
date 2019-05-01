@@ -2,21 +2,34 @@ package com.gui.controllers;
 
 import com.gui.alertBoxes.AlertBox;
 import com.gui.alertBoxes.ErrorBox;
+import com.gui.scene.SceneManager;
 import com.logic.filePaths.UserDefinedPaths;
 import com.logic.utilities.exceptions.UnsupportedFileFormatException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 import java.io.File;
 
 public class OptionsController implements Controller {
 
+    private SceneManager sceneManager = SceneManager.INSTANCE;
     private FileChooser fileChooser = new FileChooser();
     private File selectedFile;
     private String header = "Wrong File Format";
     private ErrorBox error;
+    private Controller activeController;
+    private FXMLLoader currentLoader;
+    private Stage optionsStage;
+
 
     @Override
     public void initialize() {
+    }
+    @Override
+    public void refresh() {
+
     }
 
     public void setSubstituteCSVPath(ActionEvent event) {
@@ -148,6 +161,10 @@ public class OptionsController implements Controller {
 
     @Override
     public void exit() {
-
+        currentLoader = sceneManager.getCurrentLoader();
+        activeController = currentLoader.getController();
+        activeController.refresh();
+        optionsStage = sceneManager.getCurrentPopUpStage();
+        optionsStage.close();
     }
 }

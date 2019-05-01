@@ -13,4 +13,5 @@ public interface Controller {
 
     void exit();
     void initialize();
+    void refresh();
 }

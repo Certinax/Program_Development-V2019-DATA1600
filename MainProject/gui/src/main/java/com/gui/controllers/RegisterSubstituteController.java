@@ -51,6 +51,11 @@ public class RegisterSubstituteController implements Controller {
     public void initialize() {
     }
 
+    @Override
+    public void refresh() {
+
+    }
+
 
     @Override
     public void exit() {

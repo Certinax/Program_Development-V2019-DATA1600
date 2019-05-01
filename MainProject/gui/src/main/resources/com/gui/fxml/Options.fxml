@@ -46,6 +46,7 @@
         </rowConstraints>
          <children>
              <Button alignment="CENTER" maxWidth="160.0" minWidth="160.0" mnemonicParsing="false" onAction="#setDefaultPaths" prefWidth="160.0" text="Set Default Files" textAlignment="CENTER" />
+             <Button alignment="CENTER" maxWidth="160" minWidth="160" mnemonicParsing="false" onAction="#exit" prefWidth="160" text="Close" textAlignment="CENTER" />
          </children>
       </GridPane>
    </children>

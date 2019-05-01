@@ -17,6 +17,11 @@ public class RegisterEmployerController implements Controller {
     }
 
     @Override
+    public void refresh() {
+
+    }
+
+    @Override
     public void exit() {
 
     }

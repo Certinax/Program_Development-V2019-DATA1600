@@ -56,7 +56,6 @@ public class SubstitutesController implements Controller {
 
         try {
             data.addAll(ReaderThreadStarter.startReader(activeFile)); //TODO Should this read from CSV or JOBJ?
-            System.out.println(data);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -69,6 +68,18 @@ public class SubstitutesController implements Controller {
         setCityColumnEditable();
         setAgeColumnEditable();
         setSalaryColumnEditable();
+    }
+
+    @Override
+    public void refresh() {
+        activeFile = ActivePaths.getSubstituteJOBJPath();
+        data.clear();
+
+        try {
+            data.addAll(ReaderThreadStarter.startReader(activeFile)); //TODO Should this read from CSV or JOBJ?
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

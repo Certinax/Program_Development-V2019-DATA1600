@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.security.InvalidParameterException;
@@ -33,6 +34,8 @@ public enum SceneManager {
     private Screen screen = Screen.getPrimary();
     private Rectangle2D bounds = screen.getVisualBounds();
     private Controller activeController;
+    private Stage currentPopUpStage;
+    private FXMLLoader currentLoader;
 
     SceneManager() {
         scenes = new HashMap<>();
@@ -110,7 +113,8 @@ public enum SceneManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        popUpStage.initStyle(StageStyle.UNDECORATED);
+        setCurrentPopUpStage(popUpStage);
         popUpStage.show();
 
     }
@@ -146,6 +150,7 @@ public enum SceneManager {
 
         SceneInfo sceneInfo = scenes.get(sceneName);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneInfo.getViewPath()));
+        setCurrentLoader(loader);
         Pane root;
 
         try {
@@ -158,5 +163,22 @@ public enum SceneManager {
             e.printStackTrace();
         }
     }
+
+    private void setCurrentPopUpStage(Stage popUpStage) {
+        this.currentPopUpStage = popUpStage;
+    }
+
+    public Stage getCurrentPopUpStage() {
+        return currentPopUpStage;
+    }
+
+    private void setCurrentLoader(FXMLLoader loader) {
+        this.currentLoader = loader;
+    }
+
+    public FXMLLoader getCurrentLoader() {
+        return currentLoader;
+    }
+
 
 }
