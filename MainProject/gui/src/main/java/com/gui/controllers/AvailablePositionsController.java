@@ -8,8 +8,6 @@ import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,7 +34,7 @@ public class AvailablePositionsController implements Controller {
     private TableColumn<AvailablePosition, String> employerColumn, sectorColumn, availableColumn, workplaceColumn, positionTypeColumn, industryColumn;
 
     @FXML
-    private TableColumn<AvailablePosition, Integer> numberOfPositionsColumn, durationColumn, salaryColumn;
+    private TableColumn<AvailablePosition, Integer> durationColumn, salaryColumn;
 
     @FXML
     private TextField filterField;
@@ -187,7 +185,7 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private void openOptions(ActionEvent event) {
         try {
-            sceneManager.createNewStageWithScene(new Stage(), SceneName.OPTIONS);
+            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS);
         } catch (NoPrimaryStageException e) {
             System.err.println(e.getMessage());
         }

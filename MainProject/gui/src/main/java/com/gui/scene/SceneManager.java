@@ -90,7 +90,7 @@ public enum SceneManager {
         initialized = true;
     }
 
-    public void createNewStageWithScene(Stage popUpStage, SceneName sceneName) throws NoPrimaryStageException {
+    public void createUndecoratedStageWithScene(Stage popUpStage, SceneName sceneName) throws NoPrimaryStageException {
         if (this.primaryStage == null) {
             throw new NoPrimaryStageException("No primary stage. Do not call this method before a Primary Stage has been defined");
         }
