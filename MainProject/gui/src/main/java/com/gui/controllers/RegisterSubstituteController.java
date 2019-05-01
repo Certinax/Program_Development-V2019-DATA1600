@@ -10,6 +10,7 @@ import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
+import com.logic.utilities.validators.SubstituteDataValidator;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -123,12 +124,11 @@ public class RegisterSubstituteController implements Controller {
 
     @FXML
     private void registerSubstitute(ActionEvent event) {
-        
+
         // This parent holds all the necessary children to retrieve information from
         AnchorPane parent = infoAnchPane;
 
         Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
-
 
         for(Map.Entry<Node, Object> item : nodesAndValues.entrySet()) {
             System.out.println(item.getKey().toString());
@@ -138,6 +138,10 @@ public class RegisterSubstituteController implements Controller {
                 }
             }
         }
+
+        System.out.println(SubstituteDataValidator.dataMatching(nodesAndValues));
+
+
 
 
     }
