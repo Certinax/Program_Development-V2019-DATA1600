@@ -81,10 +81,10 @@
                     </rowConstraints>
                      <children>
                         <Label text="Name" />
-                        <NameField fx:id="firstnameField" promptText="Firstname" GridPane.rowIndex="1" />
-                        <NameField fx:id="lastnameField" promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <NameField fx:id="firstname" promptText="Firstname" GridPane.rowIndex="1" />
+                        <NameField fx:id="lastname" promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Birthday" GridPane.columnIndex="2" />
-                        <DatePicker fx:id="birthdayField" promptText="Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="age" promptText="Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane hgap="20.0" layoutX="20.0" layoutY="411.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="411.0">
@@ -99,9 +99,9 @@
                     </rowConstraints>
                      <children>
                         <Label text="Adress" />
-                      <TextField fx:id="streetnameField" prefHeight="26.0" prefWidth="128.0" promptText="Streetname and number" GridPane.rowIndex="1" />
-                        <ZipCodeField fx:id="zipCodeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <NameField fx:id="cityField" prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                      <TextField fx:id="address" prefHeight="26.0" prefWidth="128.0" promptText="Streetname and number" GridPane.rowIndex="1" />
+                        <ZipCodeField fx:id="zipcode" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <NameField fx:id="city" prefHeight="26.0" prefWidth="128.0" promptText="City" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane alignment="CENTER" hgap="20.0" layoutX="20.0" layoutY="504.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -232,7 +232,7 @@
                         <Label prefHeight="17.0" text="Salary requirements" />
                         <Label text="Industry" GridPane.columnIndex="1" />
                         <SalaryField fx:id="salaryField" prefHeight="26.0" prefWidth="128.0" promptText="Salary" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="industryList" prefWidth="150.0" promptText="List" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="industry" prefWidth="150.0" promptText="Choose Industry"  GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
 

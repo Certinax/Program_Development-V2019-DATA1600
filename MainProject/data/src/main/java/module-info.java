@@ -8,9 +8,11 @@ module data {
      */
 
     requires logic;
+    requires javafx.graphics;
 
     exports com.data.clients;
     exports com.data.work;
+    exports com.data.objectCreation;
 
     opens com.data.clients to logic;
     opens com.data.work to logic;

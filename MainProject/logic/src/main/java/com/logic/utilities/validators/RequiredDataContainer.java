@@ -14,13 +14,13 @@ public enum RequiredDataContainer {
         @Override
         public Map<String, String> requiredData() {
             Map<String, String> temp = Map.ofEntries(
-                    entry("firstnameField", "String"),
-                    entry("lastnameField", "String"),
-                    entry("streetnameField", "String"),
-                    entry("birthdayField", "int"),
-                    entry("zipCodeField", "int"),
-                    entry("cityField", "String"),
-                    entry("industryList", "String")
+                    entry("firstname", "String"),
+                    entry("lastname", "String"),
+                    entry("address", "String"),
+                    entry("age", "int"),
+                    entry("zipcode", "int"),
+                    entry("city", "String"),
+                    entry("industry", "String")
             );
             return temp;
         }

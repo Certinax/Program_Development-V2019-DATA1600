@@ -1,8 +1,7 @@
 package com.gui.controllers;
 
-import com.data.clients.Employer;
 import com.data.clients.Substitute;
-import com.data.work.SubReg;
+import com.data.objectCreation.SubstituteCreation;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.customTextFields.NameField;
@@ -10,7 +9,6 @@ import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.SalaryField;
 import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.NodeGenerator;
-import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import com.logic.utilities.validators.SubstituteDataValidator;
 import javafx.collections.FXCollections;
@@ -18,16 +16,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 //TODO Write JavaDocs!
@@ -41,25 +35,25 @@ public class RegisterSubstituteController implements Controller {
             referenceNamelbl, referenceLastnamelbl, referencePhonelbl, referenceMaillbl, industrylbl, salarylbl;
 
     @FXML
-    TextField streetnameField, emailField, educationField, workplaceField, positionField, referenceMailField;
+    TextField address, emailField, educationField, workplaceField, positionField, referenceMailField;
 
     @FXML
-    NameField firstnameField, lastnameField, cityField, schoolnameField, referenceNameField, referenceLastnameField;
+    NameField firstname, lastname, city, schoolnameField, referenceNameField, referenceLastnameField;
 
     @FXML
     PhoneField phoneField, referencePhoneField;
 
     @FXML
-    ZipCodeField zipCodeField;
+    ZipCodeField zipcode;
 
     @FXML
     SalaryField salaryField;
 
     @FXML
-    DatePicker birthdayField, educationStartField, educationEndField, workStartField, workEndField;
+    DatePicker age, educationStartField, educationEndField, workStartField, workEndField;
 
     @FXML
-    ComboBox<String> industryList;
+    ComboBox<String> industry;
 
     @FXML
     AnchorPane anchPane, infoAnchPane;
@@ -67,6 +61,10 @@ public class RegisterSubstituteController implements Controller {
 
     @Override
     public void initialize() {
+        ObservableList<String> industries = FXCollections.observableArrayList();
+        industries.add("Bank");
+        industries.add("IT");
+        industry.setItems(industries);
     }
 
     @Override
@@ -129,6 +127,8 @@ public class RegisterSubstituteController implements Controller {
     @FXML
     private void registerSubstitute(ActionEvent event) {
 
+        String error = "";
+
         // This parent holds all the necessary children to retrieve information from
         AnchorPane parent = infoAnchPane;
 
@@ -137,29 +137,48 @@ public class RegisterSubstituteController implements Controller {
         for(Map.Entry<Node, Object> item : nodesAndValues.entrySet()) {
             System.out.println(item.getKey().toString());
             if(item.getKey().getId() != null) {
-                if (item.getKey().getId().equals("firstnameField")) {
+                if (item.getKey().getId().equals("firstname")) {
                     System.out.println("Test");
                 }
             }
         }
 
-        ObservableList<String> listItems = FXCollections.observableArrayList();
-        listItems.add("Banking");
-        industryList.setItems(listItems);
-
-        Substitute substitute = new Substitute.Builder("mathias", "ahrn", "asf",
-                12, 122," sad", "asd")
-                .education(new ArrayList<>())
-                .build();
-
-
         System.out.println(SubstituteDataValidator.dataMatching(nodesAndValues));
+
+        /*for (Map.Entry<Node, Object> entry : nodesAndValues.entrySet()) {
+            if(entry.getKey().getId().equals("age")) {
+                System.out.println(entry.getValue());
+                LocalDate now = LocalDate.now();
+                LocalDate dob = (LocalDate)entry.getValue();
+                System.out.println("NOW YEAR: " + now.getYear());
+                System.out.println("DOB YEAR: " + dob.getYear());
+
+                int age = now.getYear() - dob.getYear();
+
+                System.out.println("AGE : " + age);
+
+            }
+        }*/
 
         if(SubstituteDataValidator.dataMatching(nodesAndValues)) {
             // Opprett objekt
-
+            try {
+                SubstituteCreation substitute = new SubstituteCreation(nodesAndValues);
+            } catch (IllegalArgumentException e) {
+                error += e.getMessage();
+                e.printStackTrace();
+                // TODO Sett in error label/popup med error-variabel
+            }
         } else {
-
+                error += "You need to fill the required fields:\n " +
+                        "- Firstname\n" +
+                        "- Lastname\n" +
+                        "- Address\n" +
+                        "- Date of birth\n" +
+                        "- Zipcode\n" +
+                        "- City\n" +
+                        "- Industry";
+                // TODO Sett en error label/popup med error-variabel
         }
 
     }
