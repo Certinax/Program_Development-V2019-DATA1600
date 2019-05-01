@@ -13,6 +13,7 @@ import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import com.logic.utilities.validators.SubstituteDataValidator;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,7 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 //TODO Write JavaDocs!
@@ -141,6 +143,10 @@ public class RegisterSubstituteController implements Controller {
             }
         }
 
+        ObservableList<String> listItems = FXCollections.observableArrayList();
+        listItems.add("Banking");
+        industryList.setItems(listItems);
+
         Substitute substitute = new Substitute.Builder("mathias", "ahrn", "asf",
                 12, 122," sad", "asd")
                 .education(new ArrayList<>())
@@ -149,8 +155,12 @@ public class RegisterSubstituteController implements Controller {
 
         System.out.println(SubstituteDataValidator.dataMatching(nodesAndValues));
 
+        if(SubstituteDataValidator.dataMatching(nodesAndValues)) {
+            // Opprett objekt
 
+        } else {
 
+        }
 
     }
 
