@@ -24,6 +24,12 @@ public class RegisterPositionController implements Controller {
     private ToggleGroup selector;
 
     @FXML
+    private RadioButton publicSector;
+
+    @FXML
+    private RadioButton privateSector;
+
+    @FXML
     private IntField numberOfPositions;
 
     @FXML

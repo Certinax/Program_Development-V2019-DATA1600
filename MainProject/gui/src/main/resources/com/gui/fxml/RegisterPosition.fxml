@@ -98,12 +98,12 @@
                                 <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="233.0" spacing="10.0"
                                       GridPane.rowIndex="1">
                                     <children>
-                                        <RadioButton mnemonicParsing="false" text="Public">
+                                        <RadioButton fx:id="publicSector" mnemonicParsing="false" text="Public">
                                             <toggleGroup>
                                                 <ToggleGroup fx:id="selector"/>
                                             </toggleGroup>
                                         </RadioButton>
-                                        <RadioButton mnemonicParsing="false" text="Private" toggleGroup="$selector"/>
+                                        <RadioButton fx:id="privateSector" mnemonicParsing="false" text="Private" toggleGroup="$selector"/>
                                     </children>
                                 </HBox>
                                 <IntField fx:id="numberOfPositions" GridPane.columnIndex="1" GridPane.rowIndex="1"/>

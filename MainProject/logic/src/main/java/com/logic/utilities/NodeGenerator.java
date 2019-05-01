@@ -99,6 +99,12 @@ public class NodeGenerator {
                 map.put(node, ((ComboBox<?>) node).getValue());
             }
 
+            if (node instanceof RadioButton) {
+                if (((RadioButton) node).isSelected()){
+                    map.put(node, ((RadioButton) node).getText());
+                }
+            }
+
             // This is used for recursive call
             if (node instanceof Pane) {
                 generateNodesAndValues((Pane) node, map);
@@ -107,5 +113,9 @@ public class NodeGenerator {
         }
 
         return map;
+    }
+
+    public void test(){
+
     }
 }
