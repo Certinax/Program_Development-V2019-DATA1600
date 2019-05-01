@@ -23,7 +23,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     private boolean publicSector; //Is it public or private sector?
 
     // Dependable variable
-    private boolean isAvailable; // This boolean should be changed upon applicants.size() == numberOfPositions
+    private boolean available; // This boolean should be changed upon applicants.size() == numberOfPositions
 
     // Optional
     private String workplace; //Where is it?
@@ -48,6 +48,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         this.numberOfPositions = builder.numberOfPositions;
         this.publicSector = builder.publicSector;
 
+        this.available = builder.available;
         // Optional
         this.workplace = builder.workplace;
         this.positionType = builder.positionType;
@@ -71,19 +72,19 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         private boolean publicSector; //Is it public or private sector?
 
         // Dependable variable
-        private boolean isAvailable = true; // This boolean should be changed upon applicants.size() == numberOfPositions
+        private boolean available = true; // This boolean should be changed upon applicants.size() == numberOfPositions
 
         // Optional parameters
         private int duration = 0; //For how long do they need a substitute
         private int salary = 0; //Hourly salary
-        private String contactInfo = ""; //An email for contacting them
-        private String workplace = ""; //Where is it?
-        private String positionType = ""; //What kind of position is it? Consulent? Manager? Crewmember etc...
-        private String industry = ""; //What industry is it? IT? Economics? etc
+        private String contactInfo = "a"; //An email for contacting them
+        private String workplace = "b"; //Where is it?
+        private String positionType = "c"; //What kind of position is it? Consulent? Manager? Crewmember etc...
+        private String industry = "d"; //What industry is it? IT? Economics? etc
         private int startingTime = 0; //When does the workday start
         private int endingTime = 0; //When does the workday end
-        private String requiredQualifications = "";
-        private String description = ""; //A description of the position
+        private String requiredQualifications = "e";
+        private String description = "f"; //A description of the position
         private ArrayList<String> applicants = new ArrayList<>(); //A list of IDs of applicants for the position
 
         //Builder for required parameters
@@ -154,7 +155,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
                 return self();
             } else if (applicants.size() == numberOfPositions) {
                 this.applicants = applicants;
-                isAvailable = false;
+                available = false;
                 return self();
             } else {
                 throw new AvailablePositionException("Number of applicants cannot be higher than number of positions");
@@ -187,7 +188,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     }
 
     public void setAvailable(boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 
     public void setWorkplace(String workplace) {
@@ -235,7 +236,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
             this.applicants = applicants;
         } else if (applicants.size() == numberOfPositions) {
             this.applicants = applicants;
-            isAvailable = false;
+            this.available = false;
         } else {
             throw new AvailablePositionException("Number of applicants cannot be higher than number of positions");
         }
@@ -262,7 +263,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     }
 
     public boolean isAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public String getWorkplace() {
@@ -325,5 +326,28 @@ public class AvailablePosition implements Serializable, CSVWriteable {
             }
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "AvailablePosition{" +
+                "availablePositionNumber=" + availablePositionNumber +
+                ", availablePositionId='" + availablePositionId + '\'' +
+                ", employerId='" + employerId + '\'' +
+                ", numberOfPositions=" + numberOfPositions +
+                ", publicSector=" + publicSector +
+                ", available=" + available +
+                ", workplace='" + workplace + '\'' +
+                ", positionType='" + positionType + '\'' +
+                ", industry='" + industry + '\'' +
+                ", duration=" + duration +
+                ", startingTime=" + startingTime +
+                ", endingTime=" + endingTime +
+                ", requiredQualifications='" + requiredQualifications + '\'' +
+                ", salary=" + salary +
+                ", contactInfo='" + contactInfo + '\'' +
+                ", description='" + description + '\'' +
+                ", applicants=" + applicants +
+                '}';
     }
 }
