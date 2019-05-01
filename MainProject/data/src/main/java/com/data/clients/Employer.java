@@ -105,7 +105,7 @@ public class Employer extends Client implements Serializable, CSVWriteable {
     }
 
     public String[] template() {
-        return new String[] { "getEmployerNumber", "getName", "getAddress", "getZipcode", "getCity", "isPrivateSector",
+        return new String[] {"getEmployerNumber", "getName", "getAddress", "getZipcode", "getCity", "isPrivateSector",
                 "getIndustry", "getJoblist", "getEmployerId", this.getClass().getName() };
     }
 
