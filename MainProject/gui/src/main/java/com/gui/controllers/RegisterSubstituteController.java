@@ -13,6 +13,7 @@ import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import com.logic.utilities.validators.SubstituteDataValidator;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,7 +37,7 @@ public class RegisterSubstituteController implements Controller {
     @FXML
     Label firstnamelbl, lastnamelbl, birthdaylbl, streetnamelbl, zipcodelbl, citylbl, emaillbl, phonenumberlbl,
             schoolnamelbl, educationlbl, startedlbl, finnishedlbl, workplacelbl, positionlbl, fromlbl, tolbl,
-            referenceNamelbl, referenceLastnamelbl, referencePhonelbl, referenceMaillbl, industrylbl, salarylbl;
+            referenceNamelbl, referenceLastnamelbl, referencePhonelbl, referenceMaillbl, industrylbl, salarylbl, eduErrorLbl, jobErrorLbl;
 
     @FXML
     TextField streetnameField, emailField, educationField, workplaceField, positionField, referenceMailField;
@@ -62,9 +63,22 @@ public class RegisterSubstituteController implements Controller {
     @FXML
     AnchorPane anchPane, infoAnchPane;
 
+    @FXML
+    ListView<String> schoolList, workList;
+
+    @FXML
+    DatePicker startDate, endDate;
+
+    private ObservableList<String> observableSchool;
+    private ObservableList<String> observableJob;
+
 
     @Override
     public void initialize() {
+        observableSchool = FXCollections.observableArrayList();
+        observableJob = FXCollections.observableArrayList();
+        schoolList.setItems(observableSchool);
+        workList.setItems(observableJob);
     }
 
     @Override
@@ -116,6 +130,16 @@ public class RegisterSubstituteController implements Controller {
     }
 
     @FXML
+    private void setFullscreenMode(ActionEvent event) {
+        sceneManager.setFullscreen();
+    }
+
+    @FXML
+    private void setWindowedMode() {
+        sceneManager.setWindowed();
+    }
+
+    @FXML
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS);
@@ -123,6 +147,8 @@ public class RegisterSubstituteController implements Controller {
             System.err.println(e.getMessage());
         }
     }
+
+    /* --------------------------------------- Other Methods --------------------------------------- */
 
     @FXML
     private void registerSubstitute(ActionEvent event) {
@@ -149,18 +175,62 @@ public class RegisterSubstituteController implements Controller {
 
         System.out.println(SubstituteDataValidator.dataMatching(nodesAndValues));
 
+    }
 
+    @FXML
+    public void addSchool(ActionEvent event){
+        if(!(schoolnameField.getText().isEmpty() || educationField.getText().isEmpty() || startDate.getEditor().getText().isEmpty() || endDate.getEditor().getText().isEmpty())){
+            eduErrorLbl.setVisible(false);
+            String theSchool = "";
+            theSchool += schoolnameField.getText() + " ";
+            theSchool += educationField.getText() + " ";
+            theSchool += startDate.getEditor().getText() + " - ";
+            theSchool += endDate.getEditor().getText();
 
+            observableSchool.add(theSchool);
+        }else {
+            eduErrorLbl.setVisible(true);
+        }
 
     }
 
     @FXML
-    private void setFullscreenMode(ActionEvent event) {
-        sceneManager.setFullscreen();
+    public void removeSchool(ActionEvent event){
+        if (!observableSchool.isEmpty()){
+            observableSchool.remove(observableSchool.size()-1);
+        }
     }
 
     @FXML
-    private void setWindowedMode() {
-        sceneManager.setWindowed();
+    public void addWork(ActionEvent event){
+        if(!(workplaceField.getText().isEmpty() || positionField.getText().isEmpty() || workStartField.getEditor().getText().isEmpty() || workEndField.getEditor().getText().isEmpty())){
+            jobErrorLbl.setVisible(false);
+            String theWork = "";
+            theWork += workplaceField.getText() + " ";
+            theWork += positionField.getText() + " ";
+            theWork += workStartField.getEditor().getText() + " - ";
+            theWork += workEndField.getEditor().getText();
+            if (!(referenceNameField.getText().isEmpty() || referenceLastnameField.getText().isEmpty() || referencePhoneField.getText().isEmpty() || referenceMailField.getText().isEmpty())) {
+                theWork += " " + referenceNameField.getText() + " ";
+                theWork += referenceLastnameField.getText() + " ";
+                theWork += referencePhoneField.getText() + " ";
+                theWork += referenceMailField.getText();
+            }
+
+            observableJob.add(theWork);
+        }else{
+            jobErrorLbl.setVisible(true);
+        }
     }
+
+    @FXML
+    public void removeWork(ActionEvent event){
+        if (!observableJob.isEmpty()){
+            observableJob.remove(observableJob.size()-1);
+        }
+    }
+
+
+
+
 }

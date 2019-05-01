@@ -105,6 +105,10 @@ public class NodeGenerator {
                 }
             }
 
+            if (node instanceof ListView) {
+                map.put(node, ((ListView) node).getItems());
+            }
+
             // This is used for recursive call
             if (node instanceof Pane) {
                 generateNodesAndValues((Pane) node, map);
