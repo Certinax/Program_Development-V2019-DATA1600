@@ -317,7 +317,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
            employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerJOBJPath());
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace(); //TODO Figure out where to properly do with this error message
-            return null;
+            return "";
         }
 
         for (Employer employer : employers) {
@@ -325,7 +325,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
                 return employer.getName();
             }
         }
-        return null;
+        return "";
     }
 
     @Override

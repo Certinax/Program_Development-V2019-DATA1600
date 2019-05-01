@@ -34,7 +34,7 @@ public class AvailablePositionsController implements Controller {
     private TableColumn<AvailablePosition, String> employerColumn, sectorColumn, availableColumn, workplaceColumn, positionTypeColumn, industryColumn;
 
     @FXML
-    private TableColumn<AvailablePosition, Integer> numberOfPositionsColumn, durationColumn, salaryColumn;
+    private TableColumn<AvailablePosition, Integer> durationColumn, salaryColumn;
 
     @FXML
     private TextField filterField;
