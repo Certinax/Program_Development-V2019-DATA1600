@@ -3,12 +3,17 @@ package com.gui.controllers;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.customTextFields.IntField;
+import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.Map;
 
 public class RegisterPositionController implements Controller {
 
@@ -51,11 +56,20 @@ public class RegisterPositionController implements Controller {
     @FXML
     private Button register;
 
+    @FXML
+    private AnchorPane parent;
+
     /* ------------------------------------------ Register Method ------------------------------------------ */
 
     @FXML
-    public void register(ActionEvent event){
+    public void registerPosition(ActionEvent event){
+        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
 
+        for (Map.Entry<Node, Object> item : nodesAndValues.entrySet()) {
+            if (item.getKey().getId().equals("numberOfPositions")){
+                System.out.println("Test for registering positions: numberOfPositions found");
+            }
+        }
     }
 
 

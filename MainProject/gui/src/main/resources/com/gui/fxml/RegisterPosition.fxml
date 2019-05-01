@@ -68,7 +68,7 @@
         <ScrollPane fitToWidth="true" layoutX="220.0" layoutY="15.0" AnchorPane.bottomAnchor="0.0"
                     AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
-                <AnchorPane prefHeight="893.0" prefWidth="779.0">
+                <AnchorPane fx:id="parent" prefHeight="893.0" prefWidth="779.0">
                     <children>
                         <Label alignment="CENTER" text="Register Position" textAlignment="CENTER"
                                AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
@@ -173,7 +173,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Button fx:id="register" onAction="#register" minWidth="100.0" mnemonicParsing="false"
+                                <Button fx:id="register" onAction="#registerPosition" minWidth="100.0" mnemonicParsing="false"
                                         text="Register"/>
                             </children>
                         </GridPane>
