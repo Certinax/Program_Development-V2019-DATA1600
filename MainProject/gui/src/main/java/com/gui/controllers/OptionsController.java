@@ -15,6 +15,10 @@ public class OptionsController implements Controller {
     private String header = "Wrong File Format";
     private ErrorBox error;
 
+    @Override
+    public void initialize() {
+    }
+
     public void setSubstituteCSVPath(ActionEvent event) {
         selectedFile = fileChooser.showOpenDialog(null);
 

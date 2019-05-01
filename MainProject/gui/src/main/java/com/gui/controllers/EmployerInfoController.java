@@ -12,6 +12,17 @@ public class EmployerInfoController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
 
+    @Override
+    public void initialize() {
+    }
+
+
+    @Override
+    public void exit() {
+
+    }
+
+    /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
     @FXML
     private void goToPositionInfo(ActionEvent event) {
@@ -65,10 +76,5 @@ public class EmployerInfoController implements Controller {
         } catch (NoPrimaryStageException e) {
             System.err.println(e.getMessage());
         }
-    }
-
-    @Override
-    public void exit() {
-
     }
 }

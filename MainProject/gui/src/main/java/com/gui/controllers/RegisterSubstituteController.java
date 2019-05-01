@@ -47,13 +47,17 @@ public class RegisterSubstituteController implements Controller {
     ComboBox<String> industryList;
 
 
+    @Override
+    public void initialize() {
+    }
+
 
     @Override
     public void exit() {
 
     }
 
-    /* -------------------- Menu Methods -------------------------*/
+    /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
     @FXML
     private void goToPositionInfo(ActionEvent event) {

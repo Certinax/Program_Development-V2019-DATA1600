@@ -50,8 +50,8 @@ public class AvailablePositionsController implements Controller {
     //TODO Ha en checkbox for Available og ikke, som filtrer på den boolske verdien
     //TODO Samkjør denne controlleren med oppsettet for Active File i Substitute Controller
 
-    @FXML
-    private void initialize() {
+    @Override
+    public void initialize() {
         data = tableView.getItems();
 
         try {
@@ -129,7 +129,7 @@ public class AvailablePositionsController implements Controller {
                         t.getTablePosition().getRow()).setPositionType(t.getNewValue()));
     }
 
-    /* ----------------------------------- Navigation Buttons - To Be Removed ------------------------------------- */
+    /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
 
     @FXML
@@ -173,6 +173,12 @@ public class AvailablePositionsController implements Controller {
     }
 
     @FXML
+    private void setWindowedMode() {
+        sceneManager.setWindowed();
+    }
+
+
+    @FXML
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createNewStageWithScene(new Stage(), SceneName.OPTIONS);
@@ -180,10 +186,4 @@ public class AvailablePositionsController implements Controller {
             System.err.println(e.getMessage());
         }
     }
-
-    @FXML
-    private void setWindowedMode() {
-        sceneManager.setWindowed();
-    }
-
 }

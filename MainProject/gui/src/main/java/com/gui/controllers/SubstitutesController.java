@@ -49,64 +49,8 @@ public class SubstitutesController implements Controller {
     private AlertBox alert;
     private ErrorBox error;
 
-
-    @FXML
-    private void goToPositionInfo(ActionEvent event) {
-        sceneManager.changeScene(SceneName.POSITIONINFO);
-    }
-
-    @FXML
-    private void goToRegisterEmployer(ActionEvent event) {
-        sceneManager.changeScene(SceneName.REGISTEREMPLOYER);
-    }
-
-    @FXML
-    private void goToRegisterPosition(ActionEvent event) {
-        sceneManager.changeScene(SceneName.REGISTERPOSITION);
-    }
-
-    @FXML
-    private void goToRegisterSubstitute(ActionEvent event) {
-        sceneManager.changeScene(SceneName.REGISTERSUBSTITUTE);
-    }
-
-    @FXML
-    private void goToSubstitutes(ActionEvent event) {
-        sceneManager.changeScene(SceneName.SUBSTITUTES);
-    }
-
-    @FXML
-    private void goToTakenPositions(ActionEvent event) {
-        sceneManager.changeScene(SceneName.TAKENPOSITIONS);
-    }
-
-    @FXML
-    private void goToAvailablePositions(ActionEvent event) {
-        sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
-    }
-
-    @FXML
-    private void openOptions(ActionEvent event) {
-        try {
-            sceneManager.createNewStageWithScene(new Stage(), SceneName.OPTIONS);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
-    @FXML
-    private void setFullscreenMode(ActionEvent event) {
-        sceneManager.setFullscreen();
-    }
-
-    @FXML
-    private void setWindowedMode() {
-        sceneManager.setWindowed();
-    }
-
-
-    @FXML
-    private void initialize() {
+    @Override
+    public void initialize() {
         data = tableView.getItems();
         activeFile = ActivePaths.getSubstituteJOBJPath();
 
@@ -255,6 +199,63 @@ public class SubstitutesController implements Controller {
         salaryColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Substitute, Integer> t) -> t.getTableView().getItems().get(
                         t.getTablePosition().getRow()).setAge(t.getNewValue()));
+    }
+
+
+    /* ------------------------------------------ Menu Methods ----------------------------------------------*/
+
+    @FXML
+    private void goToPositionInfo(ActionEvent event) {
+        sceneManager.changeScene(SceneName.POSITIONINFO);
+    }
+
+    @FXML
+    private void goToRegisterEmployer(ActionEvent event) {
+        sceneManager.changeScene(SceneName.REGISTEREMPLOYER);
+    }
+
+    @FXML
+    private void goToRegisterPosition(ActionEvent event) {
+        sceneManager.changeScene(SceneName.REGISTERPOSITION);
+    }
+
+    @FXML
+    private void goToRegisterSubstitute(ActionEvent event) {
+        sceneManager.changeScene(SceneName.REGISTERSUBSTITUTE);
+    }
+
+    @FXML
+    private void goToSubstitutes(ActionEvent event) {
+        sceneManager.changeScene(SceneName.SUBSTITUTES);
+    }
+
+    @FXML
+    private void goToTakenPositions(ActionEvent event) {
+        sceneManager.changeScene(SceneName.TAKENPOSITIONS);
+    }
+
+    @FXML
+    private void goToAvailablePositions(ActionEvent event) {
+        sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
+    }
+
+    @FXML
+    private void openOptions(ActionEvent event) {
+        try {
+            sceneManager.createNewStageWithScene(new Stage(), SceneName.OPTIONS);
+        } catch (NoPrimaryStageException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    private void setFullscreenMode(ActionEvent event) {
+        sceneManager.setFullscreen();
+    }
+
+    @FXML
+    private void setWindowedMode() {
+        sceneManager.setWindowed();
     }
 
 }
