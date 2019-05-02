@@ -191,7 +191,7 @@ public class RegisterSubstituteController implements Controller {
             } catch (IllegalArgumentException | InterruptedException e) {
                 error += e.getMessage();
                 e.printStackTrace();
-                scrollPane.setVvalue(0);
+                scrollPane.setVvalue(0); // This moves the scrollpane to top
                 // TODO Sett in error label/popup med error-variabel
             }
         } else {
