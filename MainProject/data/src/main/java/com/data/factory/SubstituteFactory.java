@@ -3,6 +3,7 @@ package com.data.factory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
 import com.data.clients.Substitute;
@@ -93,9 +94,17 @@ public class SubstituteFactory {
             if(entry.getKey().getId().equals("salaryRequirement")) {
                 this.salaryRequirement = Integer.parseInt(entry.getValue().toString());
             }
-            if(entry.getKey().getId().equals("education")) {
+            if(entry.getKey().getId().equals("schoolList")) {
                 if(entry.getValue() instanceof ObservableList) {
-                    this.education = (ArrayList<String>) entry.getValue();
+                    //this.education = (ArrayList<String>) entry.getValue();
+
+                    Collection<String> sda = (ObservableList<String>)entry.getValue();
+                    ArrayList<String> list = new ArrayList<>();
+                    for (String s : sda) {
+                        list.add(s);
+                    }
+
+                    this.education = list;
                 }
             }
             if(entry.getKey().getId().equals("workExperience")) {

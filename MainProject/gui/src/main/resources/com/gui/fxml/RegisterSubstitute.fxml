@@ -137,8 +137,8 @@
                       <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="132.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ListView prefHeight="135.0" prefWidth="449.0" GridPane.rowIndex="1" />
                         <Label text="Education" />
+                         <ListView fx:id="schoolList" prefHeight="135.0" prefWidth="449.0" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane hgap="10.0" layoutX="20.0" layoutY="893.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -158,10 +158,11 @@
                       <TextField fx:id="educationField" prefHeight="26.0" prefWidth="128.0" promptText="Line of education" GridPane.columnIndex="1" />
                         <DatePicker fx:id="startDate" prefHeight="26.0" promptText="Started" GridPane.columnIndex="2" />
                         <DatePicker fx:id="endDate" prefHeight="26.0" promptText="Ended" GridPane.columnIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Add" GridPane.columnIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Remove" GridPane.columnIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#addSchool" prefHeight="25.0" prefWidth="50.0" text="Add" GridPane.columnIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#removeSchool" prefHeight="25.0" prefWidth="72.0" text="Remove" GridPane.columnIndex="5" />
                      </children>
                   </GridPane>
+                   <Label fx:id="eduErrorLbl" layoutX="20.0" layoutY="923.0" text="* Fill in all fields" textFill="RED" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="923.0" />
                   <GridPane layoutX="20.0" layoutY="967.0" prefHeight="159.0" prefWidth="485.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="967.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -172,7 +173,7 @@
                      </rowConstraints>
                      <children>
                         <Label text="Work experience" />
-                        <ListView prefHeight="135.0" prefWidth="449.0" GridPane.rowIndex="1" />
+                         <ListView fx:id="workList" prefHeight="135.0" prefWidth="449.0" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane hgap="10.0" layoutX="20.0" layoutY="1136.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="1136.0">
@@ -209,10 +210,11 @@
                         <NameField fx:id="referenceLastnameField" layoutX="210.0" layoutY="43.0" promptText="Ref Lastname" GridPane.columnIndex="1" />
                         <PhoneField fx:id="referencePhoneField" layoutX="110.0" layoutY="43.0" promptText="Ref Phone" GridPane.columnIndex="2" />
                         <TextField fx:id="referenceMailField" layoutX="10.0" layoutY="43.0" promptText="Ref E-mail" GridPane.columnIndex="3" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="Add" GridPane.columnIndex="4" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Remove" GridPane.columnIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#addWork" prefHeight="25.0" prefWidth="49.0" text="Add" GridPane.columnIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#removeWork" prefHeight="25.0" prefWidth="73.0" text="Remove" GridPane.columnIndex="5" />
                      </children>
                   </GridPane>
+                   <Label fx:id="jobErrorLbl" layoutX="20.0" layoutY="1210.0" text="* Fill in all fields. Reference can be left" textFill="RED" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="1210.0" />
                   <Separator layoutX="306.0" layoutY="1268.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                   <Label alignment="CENTER" layoutX="20.0" layoutY="1305.0" prefWidth="485.0" text="Desired job information" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="1305.0">
                      <font>
