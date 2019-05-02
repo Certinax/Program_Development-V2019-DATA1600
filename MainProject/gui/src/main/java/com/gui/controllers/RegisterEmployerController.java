@@ -60,7 +60,10 @@ public class RegisterEmployerController implements Controller {
 
     @Override
     public void refresh() {
+    }
 
+    @Override
+    public void updateDataFromDataPasser() {
     }
 
     @Override

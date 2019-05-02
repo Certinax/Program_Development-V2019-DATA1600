@@ -63,6 +63,10 @@ public class TakenPositionsController implements Controller {
     }
 
     @Override
+    public void updateDataFromDataPasser() {
+    }
+
+    @Override
     public void exit() {
     }
 

@@ -21,12 +21,14 @@ public class PositionInfoController implements Controller {
 
     @Override
     public void refresh() {
+    }
 
+    @Override
+    public void updateDataFromDataPasser() {
     }
 
     @Override
     public void exit() {
-
     }
 
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/

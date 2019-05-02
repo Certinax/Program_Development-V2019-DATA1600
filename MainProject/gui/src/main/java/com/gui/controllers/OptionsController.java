@@ -19,17 +19,18 @@ public class OptionsController implements Controller {
     private File selectedFile;
     private String header = "Wrong File Format";
     private ErrorBox error;
-    private Controller activeController;
-    private FXMLLoader currentLoader;
-    private Stage optionsStage;
 
 
     @Override
     public void initialize() {
     }
+
     @Override
     public void refresh() {
+    }
 
+    @Override
+    public void updateDataFromDataPasser() {
     }
 
     public void setSubstituteCSVPath(ActionEvent event) {
@@ -152,10 +153,11 @@ public class OptionsController implements Controller {
 
     @Override
     public void exit() {
-        currentLoader = sceneManager.getCurrentLoader();
-        activeController = currentLoader.getController();
+        FXMLLoader currentLoader = sceneManager.getCurrentLoader();
+        Controller activeController = currentLoader.getController();
         activeController.refresh();
-        optionsStage = sceneManager.getCurrentPopUpStage();
+
+        Stage optionsStage = sceneManager.getCurrentPopUpStage();
         optionsStage.close();
         sceneManager.setCurrentPopUpStage(null);
     }

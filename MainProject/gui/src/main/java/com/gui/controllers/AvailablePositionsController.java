@@ -67,6 +67,8 @@ public class AvailablePositionsController implements Controller {
         setWorkplaceColumnEditable();
         setSalaryColumnEditable();
         setDurationEditable();
+
+        System.out.println(data);
     }
 
     @Override
@@ -78,6 +80,19 @@ public class AvailablePositionsController implements Controller {
 
     @Override
     public void exit() {
+    }
+
+    @Override
+    public void updateDataFromDataPasser() {
+        AvailablePosition positionFromDataPasser = (AvailablePosition)DataPasser.getData();
+        System.out.println(data);
+        for (int i = 0; i < data.size(); i++) {
+            if (positionFromDataPasser.getAvailablePositionId().equals(data.get(i).getAvailablePositionId())) {
+                data.set(i,positionFromDataPasser);
+                break;
+            }
+        }
+        System.out.println(data);
     }
 
     /* ------------------------------------------- Misc Methods -----------------------------------------------------*/
