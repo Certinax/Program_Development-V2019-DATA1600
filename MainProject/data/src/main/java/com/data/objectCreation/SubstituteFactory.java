@@ -10,7 +10,7 @@ import com.data.clients.Substitute;
 import com.logic.concurrency.WriterThreadStarter;
 import javafx.scene.Node;
 
-public class SubstituteCreation {
+public class SubstituteFactory {
 
     Map<Node, Object> objectInfo;
 
@@ -29,9 +29,8 @@ public class SubstituteCreation {
     private ArrayList<String> workExcperience;
     private ArrayList<String> workReference;
 
-    private static String test;
 
-    public SubstituteCreation(Map<Node, Object> objectInfo) throws IllegalArgumentException{
+    public SubstituteFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException{
         this.objectInfo = objectInfo;
         generateFields();
         createSubstitute();

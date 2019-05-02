@@ -8,7 +8,7 @@ import java.util.Objects;
 public class SubstituteDataValidator {
 
 
-    public static boolean dataMatching(Map<Node, Object> nodeAndValues) {
+    public static boolean requiredDataMatching(Map<Node, Object> nodeAndValues) {
 
         int fieldNotSet = 0;
 

@@ -1,7 +1,6 @@
 package com.gui.controllers;
 
-import com.data.clients.Substitute;
-import com.data.objectCreation.SubstituteCreation;
+import com.data.objectCreation.SubstituteFactory;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.customTextFields.NameField;
@@ -20,8 +19,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Map;
 
 //TODO Write JavaDocs!
@@ -56,7 +53,10 @@ public class RegisterSubstituteController implements Controller {
     ComboBox<String> industry;
 
     @FXML
-    AnchorPane anchPane, infoAnchPane;
+    AnchorPane anchPane, infoAnchorPane;
+
+    @FXML
+    ScrollPane scrollPane;
 
 
     @Override
@@ -126,47 +126,22 @@ public class RegisterSubstituteController implements Controller {
 
     @FXML
     private void registerSubstitute(ActionEvent event) {
-
         String error = "";
 
         // This parent holds all the necessary children to retrieve information from
-        AnchorPane parent = infoAnchPane;
+        AnchorPane parent = infoAnchorPane;
 
-        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(infoAnchPane);
+        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(infoAnchorPane);
 
-        for(Map.Entry<Node, Object> item : nodesAndValues.entrySet()) {
-            System.out.println(item.getKey().toString());
-            if(item.getKey().getId() != null) {
-                if (item.getKey().getId().equals("firstname")) {
-                    System.out.println("Test");
-                }
-            }
-        }
 
-        System.out.println(SubstituteDataValidator.dataMatching(nodesAndValues));
-
-        /*for (Map.Entry<Node, Object> entry : nodesAndValues.entrySet()) {
-            if(entry.getKey().getId().equals("age")) {
-                System.out.println(entry.getValue());
-                LocalDate now = LocalDate.now();
-                LocalDate dob = (LocalDate)entry.getValue();
-                System.out.println("NOW YEAR: " + now.getYear());
-                System.out.println("DOB YEAR: " + dob.getYear());
-
-                int age = now.getYear() - dob.getYear();
-
-                System.out.println("AGE : " + age);
-
-            }
-        }*/
-
-        if(SubstituteDataValidator.dataMatching(nodesAndValues)) {
+        if(SubstituteDataValidator.requiredDataMatching(nodesAndValues)) {
             // Opprett objekt
             try {
-                SubstituteCreation substitute = new SubstituteCreation(nodesAndValues);
+                SubstituteFactory substitute = new SubstituteFactory(nodesAndValues);
             } catch (IllegalArgumentException e) {
                 error += e.getMessage();
                 e.printStackTrace();
+                scrollPane.setVvalue(0);
                 // TODO Sett in error label/popup med error-variabel
             }
         } else {
@@ -178,6 +153,7 @@ public class RegisterSubstituteController implements Controller {
                         "- Zipcode\n" +
                         "- City\n" +
                         "- Industry";
+                scrollPane.setVvalue(0);
                 // TODO Sett en error label/popup med error-variabel
         }
 

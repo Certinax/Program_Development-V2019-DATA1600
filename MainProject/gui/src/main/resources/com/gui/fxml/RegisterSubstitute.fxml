@@ -52,9 +52,9 @@
           </children>
       </GridPane>
       <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
-      <ScrollPane fitToWidth="true" layoutX="212.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="1224.0" prefWidth="527.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="212.0" layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="1224.0" prefWidth="527.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <AnchorPane fx:id="infoAnchPane" prefHeight="1574.0" prefWidth="812.0">
+            <AnchorPane fx:id="infoAnchorPane" prefHeight="1574.0" prefWidth="812.0">
                <children>
             
                   <!-- MAIN SECTION -->
