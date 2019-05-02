@@ -339,23 +339,22 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         return "";
     }
 
-    public String getApplicantName(){
-        String applicantList = "";
+    public String getApplicantNames(){
         ArrayList<Substitute> substitutes;
+        StringBuilder sb = new StringBuilder();
+
         try {
             substitutes = ReaderThreadStarter.startReader(ActivePaths.getSubstituteJOBJPath());
         } catch (InterruptedException | ExecutionException e){
             e.printStackTrace();
             return "";
         }
-        for (String apli : applicants){
-            for (Substitute substitute : substitutes){
-                if (apli.equals(substitute.getSubstituteId())){
-                    applicantList += apli + "\n";
-                }
-            }
+
+        for (Substitute substitute : substitutes) {
+            sb.append(substitute.getFirstname()).append(" ").append(substitute.getLastname());
         }
-        return applicantList;
+
+        return sb.toString();
 
     }
 
