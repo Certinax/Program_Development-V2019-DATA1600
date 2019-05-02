@@ -10,7 +10,8 @@ import com.logic.customTextFields.SalaryField;
 import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
-import com.logic.utilities.validators.SubstituteDataValidator;
+import com.logic.utilities.validators.RequiredDataContainer;
+import com.logic.utilities.validators.ObjectDataValidator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -133,7 +134,7 @@ public class RegisterSubstituteController implements Controller {
         Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(infoAnchorPane);
 
 
-        if(SubstituteDataValidator.requiredDataMatching(nodesAndValues)) {
+        if(ObjectDataValidator.requiredDataMatching(nodesAndValues, RequiredDataContainer.SUBSTITUTE.requiredData())) {
             // Opprett objekt
             try {
                 SubstituteFactory substitute = new SubstituteFactory(nodesAndValues);
