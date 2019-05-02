@@ -62,6 +62,9 @@ public class SubstituteFactory {
             if (entry.getKey().getId().equals("lastname")) {
                 this.lastname = entry.getValue().toString();
             }
+            if (entry.getKey().getId().equals("address")) {
+                this.address = entry.getValue().toString();
+            }
             if (entry.getKey().getId().equals("age")) {
                 LocalDate now = LocalDate.now();
                 LocalDate dob = (LocalDate)entry.getValue();
@@ -78,7 +81,8 @@ public class SubstituteFactory {
                 this.city = entry.getValue().toString();
             }
             if (entry.getKey().getId().equals("industry")) {
-                this.city = entry.getValue().toString();
+                System.out.println(entry.getValue().toString());
+                this.industry = entry.getValue().toString();
             }
         }
 
