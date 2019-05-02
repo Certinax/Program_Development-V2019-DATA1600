@@ -25,6 +25,8 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
     private String lastname;
     private int age;
     private int salaryRequirement;
+    private int phoneNumber;
+    private String email;
     private ArrayList<String> education;
     private ArrayList<String> workExperience;
     private ArrayList<String> workReference;
@@ -40,6 +42,8 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
         education = builder.education;
         workExperience = builder.workExperience;
         workReference = builder.workReference;
+        phoneNumber = builder.phoneNumber;
+        email = builder.email;
     }
 
     private Substitute() {
@@ -52,6 +56,8 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
         private final String firstname;
         private final String lastname;
         private final int age;
+        private final int phoneNumber;
+        private final String email;
 
         // Optional parameters
         private int salaryRequirement = 0;
@@ -60,12 +66,14 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
         private ArrayList<String> workReference = new ArrayList<>();
 
         // Builder for required parameters
-        public Builder(String firstname, String lastname, String address, int age, int zipcode, String city,
-                String industry) {
+        public Builder(String firstname, String lastname, int phoneNumber, String email, String address, int age, int zipcode, String city,
+                       String industry) {
             super(address, zipcode, city, industry);
             this.firstname = firstname;
             this.lastname = lastname;
             this.age = age;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
             this.substituteNumber = NumberManager.INSTANCE.getSubstituteNumberAndIncrement();
             UUID uuid = UUID.randomUUID();
             this.substituteId = uuid.toString();
@@ -129,6 +137,22 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
         return age;
     }
 
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setAge(int age) {
         this.age = age;
     }
@@ -166,18 +190,26 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
     }
 
     public String[] template() {
-        return new String[] {"getSubstituteNumber", "getFirstname", "getLastname", "getAddress", "getZipcode", "getCity",
-                "getAge", "getSalaryRequirement", "getIndustry", "getEducation", "getWorkExperience",
+        return new String[] {"getSubstituteNumber", "getFirstname", "getLastname", "getAddress", "getZipcode",
+                "getPhoneNumber", "getEmail", "getCity", "getAge", "getSalaryRequirement", "getIndustry",
+                "getEducation", "getWorkExperience",
                 "getWorkReference", "getSubstituteId", this.getClass().getName() };
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Substitute{" + "substituteNumber='" + substituteNumber
-                + '\'' + ", substituteId='" + substituteId
-                + '\'' + ", firstname='" + firstname
-                + '\'' + ", lastname='" + lastname + '\'' + ", age=" + age + ", salaryRequirement=" + salaryRequirement
-                + ", education=" + education + ", workExperience=" + workExperience + ", workReference=" + workReference
-                + '}';
+        return "Substitute{" +
+                "substituteNumber=" + substituteNumber +
+                ", substituteId='" + substituteId + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", age=" + age +
+                ", salaryRequirement=" + salaryRequirement +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                ", education=" + education +
+                ", workExperience=" + workExperience +
+                ", workReference=" + workReference +
+                '}';
     }
 }

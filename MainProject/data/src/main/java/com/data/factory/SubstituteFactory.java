@@ -23,6 +23,8 @@ public class SubstituteFactory {
     private int zipcode;
     private String city;
     private String industry;
+    private int phoneNumber;
+    private String email;
 
     // Optional fields with default values to avoid null
     private int salaryRequirement = 0;
@@ -40,7 +42,7 @@ public class SubstituteFactory {
     }
 
     private void createSubstitute() {
-         this.substitute = new Substitute.Builder(firstname, lastname, address, age, zipcode, city, industry)
+         this.substitute = new Substitute.Builder(firstname, lastname, phoneNumber, email, address, age, zipcode, city, industry)
                  .salaryRequirement(salaryRequirement)
                  .education(education)
                  .workExperience(workExperience)
@@ -80,8 +82,13 @@ public class SubstituteFactory {
                 this.city = entry.getValue().toString();
             }
             if (entry.getKey().getId().equals("industry")) {
-                System.out.println(entry.getValue().toString());
                 this.industry = entry.getValue().toString();
+            }
+            if(entry.getKey().getId().equals("phoneField")) {
+                this.phoneNumber = Integer.parseInt(entry.getValue().toString());
+            }
+            if(entry.getKey().getId().equals("emailField")) {
+                this.email = entry.getValue().toString();
             }
         }
 
@@ -106,7 +113,7 @@ public class SubstituteFactory {
                     this.workExperience = new ArrayList<>(workExperience);
                 }
             }
-            if(entry.getKey().getId().equals("workReferenceList")) {
+            if(entry.getKey().getId().equals("referenceList")) {
                 if(entry.getValue() instanceof ObservableList) {
                     Collection<String> workReference = (ObservableList<String>)entry.getValue();
                     this.workReference = new ArrayList<>(workReference);

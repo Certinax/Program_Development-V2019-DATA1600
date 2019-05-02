@@ -5,7 +5,7 @@ import com.logic.concurrency.WriterThreadStarter;
 
 public class SubReg {
 
-    public static void subReg() {
+    /*public static void subReg() {
         Substitute sub = new Substitute.Builder("Mathias", "Ahrn", "Fjellstadvegen 31",
                 28, 2009, "Nordby", "IT").build();
 
@@ -16,6 +16,6 @@ public class SubReg {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 }
