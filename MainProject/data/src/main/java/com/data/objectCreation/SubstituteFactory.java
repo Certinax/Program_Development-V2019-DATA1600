@@ -23,10 +23,11 @@ public class SubstituteFactory {
     private String city;
     private String industry;
 
-    private int salaryRequirement;
-    private ArrayList<String> education;
-    private ArrayList<String> workExperience;
-    private ArrayList<String> workReference;
+    // Optional fields with default values to avoid null
+    private int salaryRequirement = 0;
+    private ArrayList<String> education = new ArrayList<>();
+    private ArrayList<String> workExperience = new ArrayList<>();
+    private ArrayList<String> workReference = new ArrayList<>();
 
 
     public SubstituteFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException{
