@@ -99,7 +99,9 @@ public class SubstituteFactory {
 
         for (Map.Entry<Node, Object> entry : objectInfo.entrySet()) {
             if(entry.getKey().getId().equals("salaryRequirement")) {
-                this.salaryRequirement = Integer.parseInt(entry.getValue().toString());
+                if(!entry.getValue().toString().isEmpty()) {
+                    this.salaryRequirement = Integer.parseInt(entry.getValue().toString());
+                }
             }
             if(entry.getKey().getId().equals("schoolList")) {
                 if(entry.getValue() instanceof ObservableList) {

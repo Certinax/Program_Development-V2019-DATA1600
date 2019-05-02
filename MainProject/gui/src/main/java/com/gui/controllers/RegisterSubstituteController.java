@@ -156,7 +156,6 @@ public class RegisterSubstituteController implements Controller {
     /* --------------------------------------- Other Methods --------------------------------------- */
 
     @FXML
-    @SuppressWarnings("unchecked")
     private void registerSubstitute(ActionEvent event) {
         String error = "";
 
