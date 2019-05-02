@@ -11,6 +11,7 @@ import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.DataPasser;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -23,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
+
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 //TODO Write JavaDocs!
@@ -32,7 +35,7 @@ public class AvailablePositionsController implements Controller {
     private TableView<AvailablePosition> tableView;
 
     @FXML
-    private ObservableList<AvailablePosition> data;
+    private ObservableList<AvailablePosition> tableData;
 
     @FXML
     private TableColumn<AvailablePosition, String> workplaceColumn;
@@ -46,6 +49,7 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private Button matchSubstitute, save;
 
+    private ArrayList<AvailablePosition> allData;
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private boolean readFromCSV = false;
     private String activeFile;
@@ -60,9 +64,13 @@ public class AvailablePositionsController implements Controller {
     @Override
     public void initialize() {
         activeFile = ActivePaths.getAvailablePositionJOBJPath();
-        data = tableView.getItems();
+        tableData = tableView.getItems();
+        allData = new ArrayList<>();
 
         readData(activeFile);
+
+        System.out.println("All data after initialization " + allData);
+        System.out.println("Table data after initialization " + tableData);
         setFiltering();
         setWorkplaceColumnEditable();
         setSalaryColumnEditable();
@@ -72,12 +80,50 @@ public class AvailablePositionsController implements Controller {
     @Override
     public void refresh() {
         setActiveFile();
-        data.clear();
+        allData.clear();
+        tableData.clear();
         readData(activeFile);
     }
 
     @Override
     public void exit() {
+        ObservableList<AvailablePosition> toFile = FXCollections.observableArrayList();
+        toFile.addAll(allData);
+        try {
+            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
+            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
+        } catch (InterruptedException e) {
+            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+        }
+    }
+
+    @Override
+    public void updateDataFromDataPasser() {
+        AvailablePosition positionFromDataPasser = (AvailablePosition)DataPasser.getData();
+
+        for (int i = 0; i < allData.size(); i++) {
+            if (positionFromDataPasser.getAvailablePositionId().equals(allData.get(i).getAvailablePositionId())) {
+                allData.set(i,positionFromDataPasser);
+                break;
+            }
+        }
+
+        if (positionFromDataPasser.isAvailable()) {
+            for (int i = 0; i < tableData.size(); i++) {
+                if (positionFromDataPasser.getAvailablePositionId().equals(tableData.get(i).getAvailablePositionId())) {
+                    tableData.set(i, positionFromDataPasser);
+                    break;
+                }
+            }
+
+        } else {
+            for (int i = 0; i < tableData.size(); i++) {
+                if (positionFromDataPasser.getAvailablePositionId().equals(tableData.get(i).getAvailablePositionId())) {
+                    tableData.remove(i);
+                    break;
+                }
+            }
+        }
     }
 
     /* ------------------------------------------- Misc Methods -----------------------------------------------------*/
@@ -98,7 +144,13 @@ public class AvailablePositionsController implements Controller {
 
     private void readData(String activeFile) {
         try {
-            data.addAll(ReaderThreadStarter.startReader(activeFile));
+            allData.addAll(ReaderThreadStarter.startReader(activeFile));
+            for (int i = 0; i < allData.size(); i++) {
+                if (allData.get(i).isAvailable()) {
+                    tableData.add(allData.get(i));
+                }
+            }
+
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -106,9 +158,12 @@ public class AvailablePositionsController implements Controller {
 
     @FXML
     private void save(ActionEvent event) {
+        ObservableList<AvailablePosition> toFile = FXCollections.observableArrayList();
+        toFile.addAll(allData);
         try {
-            WriterThreadStarter.startWriter(data, ActivePaths.getAvailablePositionJOBJPath());
-            WriterThreadStarter.startWriter(data, ActivePaths.getAvailablePositionCSVPath());
+
+            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
+            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
         } catch (InterruptedException e) {
             e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
         }
@@ -158,11 +213,16 @@ public class AvailablePositionsController implements Controller {
 
     @FXML
     private void delete() {
-        data.remove(tableView.getSelectionModel().getSelectedItem());
+        for (int i = 0; i < allData.size(); i++) {
+            if (allData.get(i).getAvailablePositionId().equals(tableView.getSelectionModel().getSelectedItem().getAvailablePositionId())) {
+                allData.remove(tableView.getSelectionModel().getSelectedItem());
+            }
+        }
+        tableData.remove(tableView.getSelectionModel().getSelectedItem());
     }
 
     private void setFiltering() {
-        FilteredList<AvailablePosition> filteredData = new FilteredList<>(data, p -> true);
+        FilteredList<AvailablePosition> filteredData = new FilteredList<>(tableData, p -> true);
 
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(anAvailablePosition -> {

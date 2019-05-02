@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * Used for industry selector
  *
- * @Author Mathias Lund Ahrn
+ * @Author Candidate 511
  * @since 15-04-2019
  */
 

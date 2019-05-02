@@ -65,7 +65,10 @@ public class SubstituteInfoController implements Controller {
 
     @Override
     public void refresh() {
+    }
 
+    @Override
+    public void updateDataFromDataPasser() {
     }
 
     @Override

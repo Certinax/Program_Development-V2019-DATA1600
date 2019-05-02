@@ -28,7 +28,7 @@ public class PositionInfoController implements Controller {
   @FXML
   TextArea applicants, requiredQualifications, description;
 
-  private void setData(AvailablePosition pos){
+  private void setData(AvailablePosition pos) {
     employerName.setText(pos.getEmployerName());
     numberOfPositions.setText(String.valueOf(pos.getNumberOfPositions()));
     publicSector.setText(pos.getSectorAsString());
@@ -61,6 +61,13 @@ public class PositionInfoController implements Controller {
   public void exit() {
 
   }
+
+
+  @Override
+  public void updateDataFromDataPasser() {
+  }
+
+
 
   /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
@@ -116,5 +123,7 @@ public class PositionInfoController implements Controller {
     } catch (NoPrimaryStageException | ExtraStageException e) {
       error = new ErrorBox(e.getMessage(), "Can't open new window");
     }
+
   }
+}
 }

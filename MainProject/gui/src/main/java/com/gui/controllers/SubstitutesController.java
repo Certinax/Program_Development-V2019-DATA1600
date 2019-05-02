@@ -82,6 +82,10 @@ public class SubstitutesController implements Controller {
         }
     }
 
+    @Override
+    public void updateDataFromDataPasser() {
+    }
+
     @FXML
     private void delete() {
         data.remove(tableView.getSelectionModel().getSelectedItem());

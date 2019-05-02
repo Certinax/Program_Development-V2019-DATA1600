@@ -7,9 +7,9 @@ import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
-import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.DataPasser;
+import com.logic.utilities.exceptions.AvailablePositionException;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
@@ -17,14 +17,14 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class MatchSubstituteController implements Controller {
@@ -75,6 +75,10 @@ public class MatchSubstituteController implements Controller {
     }
 
     @Override
+    public void updateDataFromDataPasser() {
+    }
+
+    @Override
     public void exit() {
     }
 
@@ -82,7 +86,24 @@ public class MatchSubstituteController implements Controller {
 
     @FXML
     private void match() {
-        System.out.println(position);
+        if (tableView.getSelectionModel().getSelectedItem() == null) {
+            alert = new AlertBox("Please select an item from the list", "No substitute selected");
+        } else  {
+            ArrayList<String> applicants = position.getApplicants();
+            applicants.add(tableView.getSelectionModel().getSelectedItem().getSubstituteId());
+
+            try {
+                position.setApplicants(applicants);
+            } catch (AvailablePositionException e) {
+                error = new ErrorBox("This position can't have more applicants!", "Too many applicants");
+            }
+
+            DataPasser.setData(position);
+            FXMLLoader loader = sceneManager.getCurrentLoader();
+            Controller activeController = loader.getController();
+            activeController.updateDataFromDataPasser();
+            cancel();
+        }
     }
 
     @FXML
