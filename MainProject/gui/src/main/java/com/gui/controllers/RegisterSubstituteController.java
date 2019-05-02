@@ -252,7 +252,7 @@ public class RegisterSubstituteController implements Controller {
             refErrorLbl.setVisible(false);
             String theRef = "";
 
-            theRef += " " + referenceNameField.getText() + " ";
+            theRef += referenceNameField.getText() + " ";
             theRef += referenceLastnameField.getText() + " ";
             theRef += referencePhoneField.getText() + " ";
             theRef += referenceMailField.getText();
