@@ -56,6 +56,7 @@ public class AvailablePositionFactory {
     }
 
     private void saveAvailablePosition(AvailablePosition availablePosition) throws InterruptedException {
+        // TODO FIKS FREDRIK PATHS HER FØR INNLEVERING
         WriterThreadStarter.startWriter(availablePosition, "resources/tempPoscreation.csv");
     }
 

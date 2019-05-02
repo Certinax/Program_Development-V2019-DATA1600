@@ -36,6 +36,8 @@ public enum RequiredDataContainer {
                     entry("address", "String"),
                     entry("zipcode", "int"),
                     entry("city", "String"),
+                    entry("phoneNumber", "int"),
+                    entry("email", "String"),
                     entry("privateSector", "boolean"),
                     entry("industry", "String")
             );

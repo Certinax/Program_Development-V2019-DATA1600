@@ -67,7 +67,7 @@
                 textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0"/>
 
         <!-- MAIN SECTION -->
-        <ScrollPane fitToWidth="true" layoutX="220.0" layoutY="20.0" AnchorPane.bottomAnchor="0.0"
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="220.0" layoutY="20.0" AnchorPane.bottomAnchor="0.0"
                     AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
                 <AnchorPane fx:id="parent" prefHeight="659.0" prefWidth="557.0">
@@ -78,6 +78,7 @@
                                 <Font name="System Bold" size="32.0"/>
                             </font>
                         </Label>
+                        <Label fx:id="errorMsg" alignment="CENTER" layoutX="392.0" layoutY="283.0" text="Error msg" textFill="RED" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="145.0" />
                         <Separator layoutX="179.0" layoutY="157.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0"
                                    AnchorPane.rightAnchor="200.0"/>
                         <Label alignment="CENTER" layoutX="20.0" layoutY="189.0" text="Personalia"
@@ -105,22 +106,24 @@
                                 <Label text="Industry *" GridPane.columnIndex="2"/>
                                 <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.rowIndex="1">
                                     <children>
-                                        <RadioButton mnemonicParsing="false" text="Public">
+                                        <RadioButton fx:id="publicSector" mnemonicParsing="false" text="Public">
                                             <toggleGroup>
-                                                <ToggleGroup fx:id="privateSector"/>
+                                                <ToggleGroup fx:id="sector"/>
                                             </toggleGroup>
                                         </RadioButton>
-                                        <RadioButton mnemonicParsing="false" text="Private" toggleGroup="$privateSector"/>
+                                        <RadioButton fx:id="privateSector" mnemonicParsing="false" text="Private" toggleGroup="$sector"/>
                                     </children>
                                 </HBox>
-                                <NameField fx:id="name" prefHeight="26.0" prefWidth="128.0" promptText="Finn.no"
+                                <NameField fx:id="name" prefHeight="26.0" prefWidth="128.0" promptText="Name"
                                            GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                                <ComboBox fx:id="industry" prefWidth="150.0" promptText="List" GridPane.columnIndex="2"
+                                <ComboBox fx:id="industry" prefWidth="150.0" promptText="Choose industry" GridPane.columnIndex="2"
                                           GridPane.rowIndex="1"/>
-                                <Label text="Adress *" GridPane.rowIndex="2"/>
-                                <TextField fx:id="address" prefHeight="26.0" prefWidth="128.0" promptText="Streetroad 10"
+                                <Label text="Address *" GridPane.rowIndex="2"/>
+                                <Label text="Zip code *" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                <Label text="City *" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                                <TextField fx:id="address" prefHeight="26.0" prefWidth="128.0" promptText="Streetname"
                                            GridPane.rowIndex="3"/>
-                                <ZipCodeField fx:id="zipcode" prefHeight="26.0" prefWidth="128.0" promptText="Zip Code"
+                                <ZipCodeField fx:id="zipcode" prefHeight="26.0" prefWidth="128.0" promptText="Zip code"
                                            GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                                 <TextField fx:id="city" prefHeight="26.0" prefWidth="128.0" promptText="City"
                                            GridPane.columnIndex="2" GridPane.rowIndex="3"/>
@@ -142,8 +145,8 @@
                                 <Label text="Contact info"/>
                                 <TextField fx:id="email" prefHeight="26.0" prefWidth="128.0" promptText="E-mail"
                                            GridPane.rowIndex="1"/>
-                                <PhoneField fx:id="phone" prefHeight="26.0" prefWidth="128.0" promptText="Phone number"
-                                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <PhoneField fx:id="phoneNumber" prefHeight="26.0" prefWidth="128.0" promptText="Phone number"
+                                            GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                             </children>
                             <opaqueInsets>
                                 <Insets/>
@@ -160,7 +163,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Button minWidth="100.0" mnemonicParsing="false" text="Register"/>
+                                <Button minWidth="100.0" mnemonicParsing="false" onAction="#registerEmployer" text="Register"/>
                             </children>
                         </GridPane>
                     </children>

@@ -41,11 +41,8 @@ public class NodeGenerator {
             }
 
             if (node instanceof RadioButton) {
-                if (((RadioButton) node).isSelected()){
-                    map.put(node, ((RadioButton) node).getText());
-                }
+                map.put(node, ((RadioButton) node).isSelected());
             }
-
             if (node instanceof ListView) {
                 map.put(node, ((ListView) node).getItems());
             }
