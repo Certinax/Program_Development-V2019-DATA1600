@@ -1,6 +1,7 @@
 package com.gui.controllers;
 
 import com.data.clients.Substitute;
+import com.data.work.AvailablePosition;
 import com.gui.alertBoxes.AlertBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
@@ -8,6 +9,7 @@ import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.DataPasser;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
@@ -49,6 +51,7 @@ public class MatchSubstituteController implements Controller {
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private String activeFile;
     private boolean readFromCSV;
+    private AvailablePosition position;
     private AlertBox alert;
     private ErrorBox error;
 
@@ -60,7 +63,8 @@ public class MatchSubstituteController implements Controller {
         activeFile = ActivePaths.getSubstituteJOBJPath();
 
        readData(activeFile);
-        setFiltering();
+       setFiltering();
+       position = (AvailablePosition) DataPasser.getData();
     }
 
     @Override
@@ -75,6 +79,17 @@ public class MatchSubstituteController implements Controller {
     }
 
     /* --------------------------------- Misc Methods ------------------------------*/
+
+    @FXML
+    private void match() {
+        System.out.println(position);
+    }
+
+    @FXML
+    private void cancel() {
+        sceneManager.getCurrentPopUpStage().close();
+        sceneManager.setCurrentPopUpStage(null);
+    }
 
     @FXML
     private void switchToCSV(ActionEvent event) {
@@ -110,12 +125,6 @@ public class MatchSubstituteController implements Controller {
         } else {
             activeFile = ActivePaths.getAvailablePositionJOBJPath();
         }
-    }
-
-    @FXML
-    private void cancel() {
-        sceneManager.getCurrentPopUpStage().close();
-        sceneManager.setCurrentPopUpStage(null);
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/

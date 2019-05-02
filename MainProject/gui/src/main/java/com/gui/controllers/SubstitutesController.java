@@ -128,8 +128,8 @@ public class SubstitutesController implements Controller {
             try {
                 sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.SUBSTITUTEINFO,1,1);
                 //TemoraryDataSaver.substitute = tableView.getSelectionModel().getSelectedItem();
-            } catch (NoPrimaryStageException e) {
-                System.err.println(e.getMessage());
+            } catch (NoPrimaryStageException | ExtraStageException e) {
+                error = new ErrorBox(e.getMessage(), "Can't open new window");
             }
         }
 

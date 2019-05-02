@@ -71,7 +71,7 @@ public class SubstituteInfoController implements Controller {
     public void exit() {
 
     }
-    
+
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
     @FXML

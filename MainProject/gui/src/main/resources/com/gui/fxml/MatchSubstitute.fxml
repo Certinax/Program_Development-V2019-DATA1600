@@ -78,7 +78,7 @@
         <Button layoutX="20.0" layoutY="419.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Show info" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="20.0" />
         <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
         <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
-        <Button layoutX="380.0" layoutY="418.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" style="-fx-font-weight: Bold;" text="Match With Position" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="430" />
+        <Button layoutX="380.0" layoutY="418.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" style="-fx-font-weight: Bold;" text="Match With Position" onAction="#match" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="430" />
         <Button layoutX="407.0" layoutY="451.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Cancel" onAction="#cancel" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="460" />
         <TextField fx:id="filterField" layoutX="20.0" layoutY="452.0" prefHeight="26.0" prefWidth="114.0" promptText="Filter..." AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="793.0" />
 

@@ -8,6 +8,7 @@ import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.DataPasser;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
@@ -87,6 +88,7 @@ public class AvailablePositionsController implements Controller {
             alert = new AlertBox("Please select an available position \nbefore trying to match with a substitute!", "No position selected");
         } else {
             try {
+                DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
                 sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.MATCHSUBSTITUTE, 1, 1);
             } catch (NoPrimaryStageException | ExtraStageException e) {
                 error = new ErrorBox(e.getMessage(), "Can't open new window");
