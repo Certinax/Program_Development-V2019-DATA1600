@@ -4,6 +4,7 @@ import com.gui.alertBoxes.ErrorBox;
 import com.data.clients.Substitute;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.utilities.DataPasser;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.FXCollections;
@@ -60,6 +61,7 @@ public class SubstituteInfoController implements Controller {
     @Override
     public void initialize() {
         // TODO get substitute and call setData(substitute)
+        setData((Substitute) DataPasser.getData());
     }
 
     @Override
