@@ -105,6 +105,8 @@
                                         <DatePicker fx:id="workEnd" prefHeight="26.0" prefWidth="105.0" promptText="To" />
                                     </children>
                                 </HBox>
+                        <Label text="Workplace" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <TextField fx:id="workplace" promptText="telenor" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                             </children>
                      <rowConstraints>
                         <RowConstraints />

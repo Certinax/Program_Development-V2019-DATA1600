@@ -124,6 +124,15 @@ public class SubstitutesController implements Controller {
     public void showInfo(ActionEvent event){
         // TODO send to substituteInfo
         //industryColumn.getTableView().getSelectionModel().getSelectedItem();
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            try {
+                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.SUBSTITUTEINFO,1,1);
+                //TemoraryDataSaver.substitute = tableView.getSelectionModel().getSelectedItem();
+            } catch (NoPrimaryStageException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
     }
 
 
