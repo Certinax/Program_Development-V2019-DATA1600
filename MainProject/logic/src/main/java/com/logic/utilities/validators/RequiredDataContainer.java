@@ -52,7 +52,8 @@ public enum RequiredDataContainer {
                     entry("employerId", "String"),
                     entry("numberOfPositions", "int"),
                     entry("publicSector", "boolean"),
-                    entry("industry", "string")
+                    entry("industry", "String"),
+                    entry("position", "String")
             );
             return temp;
         }

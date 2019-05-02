@@ -34,15 +34,15 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     private int numberOfPositions; // This keeps track of how many subtitutes this position can employ
     private boolean publicSector; //Is it public or private sector?
     private String industry; //What industry is it? IT? Economics? etc
+    private String positionType; //What kind of position is it? Consulent? Manager? Crewmember etc...
     // Dependable variable
     private boolean available; // This boolean should be changed upon applicants.size() == numberOfPositions
 
     // Optional
     private String workplace; //Where is it?
-    private String positionType; //What kind of position is it? Consulent? Manager? Crewmember etc...
     private String duration; //For how long do they need a substitute
-    private int startingTime; //When does the workday start
-    private int endingTime; //When does the workday end
+    private String startingTime; //When does the workday start
+    private String endingTime; //When does the workday end
     private String requiredQualifications;
     private int salary; //Hourly salary
     private String contactInfo; //An email for contacting them
@@ -82,6 +82,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         private int numberOfPositions;
         private boolean publicSector;
         private String industry;
+        private String positionType;
 
         // Dependable variable
         private boolean available = true;
@@ -91,15 +92,14 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         private int salary = 0;
         private String contactInfo = "";
         private String workplace = "";
-        private String positionType = "";
-        private int startingTime = 0;
-        private int endingTime = 0;
+        private String startingTime = "";
+        private String endingTime = "";
         private String requiredQualifications = "";
         private String description = "";
         private ArrayList<String> applicants = new ArrayList<>();
 
         //Builder for required parameters
-        public Builder(String employerId, boolean publicSector, int numberOfPositions, String industry) {
+        public Builder(String employerId, boolean publicSector, int numberOfPositions, String industry, String positionType) {
 
             this.availablePositionNumber = NumberManager.INSTANCE.getAvailablePositionNumberAndIncrement();
             UUID uuid = UUID.randomUUID();
@@ -108,6 +108,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
             this.publicSector = publicSector;
             this.numberOfPositions = numberOfPositions;
             this.industry = industry;
+            this.positionType = positionType;
         }
 
         //Builders for optional parameters
@@ -131,17 +132,12 @@ public class AvailablePosition implements Serializable, CSVWriteable {
             return self();
         }
 
-        public Builder positionType(String positionType) {
-            this.positionType = positionType;
-            return  self();
-        }
-
-        public Builder startingTime(int startingTime) {
+        public Builder startingTime(String startingTime) {
             this.startingTime = startingTime;
             return self();
         }
 
-        public Builder endingTime(int endingTime) {
+        public Builder endingTime(String endingTime) {
             this.endingTime = endingTime;
             return self();
         }
@@ -214,11 +210,11 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         this.duration = duration;
     }
 
-    public void setStartingTime(int startingTime) {
+    public void setStartingTime(String startingTime) {
         this.startingTime = startingTime;
     }
 
-    public void setEndingTime(int endingTime) {
+    public void setEndingTime(String endingTime) {
         this.endingTime = endingTime;
     }
 
@@ -289,11 +285,11 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         return duration;
     }
 
-    public int getStartingTime() {
+    public String getStartingTime() {
         return startingTime;
     }
 
-    public int getEndingTime() {
+    public String getEndingTime() {
         return endingTime;
     }
 

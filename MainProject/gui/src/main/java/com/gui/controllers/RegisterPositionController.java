@@ -45,7 +45,7 @@ public class RegisterPositionController implements Controller {
     private RadioButton publicSector, privateSector;
 
     @FXML
-    private IntField numberOfPositions;
+    private IntField numberOfPositions, startingTime, endingTime, salary;
 
     @FXML
     private ComboBox<String> employerList, industry;
@@ -54,13 +54,7 @@ public class RegisterPositionController implements Controller {
     private ComboBox<Employer> employer;
 
     @FXML
-    private TextField position, workplace, duration;
-
-    @FXML
-    private IntField salary;
-
-    @FXML
-    private DatePicker workStart, workEnd;
+    private TextField position, workplace, duration, contactInfo;
 
     @FXML
     private TextArea requiredQualifications, positionDescription;
@@ -89,7 +83,7 @@ public class RegisterPositionController implements Controller {
     @FXML
     public void registerPosition(ActionEvent event){
 
-        String error = "";
+        String msg = "";
 
         Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
         nodesAndValues.put(employer, selectedEmployer);
@@ -98,19 +92,20 @@ public class RegisterPositionController implements Controller {
             // Opprett objekt
             try {
                 AvailablePositionFactory availablePositionFactory = new AvailablePositionFactory(nodesAndValues);
+                msg += "";
             } catch (IllegalArgumentException | InterruptedException | AvailablePositionException e) {
-                error += e.getMessage();
+                msg += e.getMessage();
                 e.printStackTrace();
                 scrollPane.setVvalue(0);
-                errorMsg.setText(error);
+                errorMsg.setText(msg);
                 errorMsg.setVisible(true);
             }
         } else {
-            error += "You need to set Employer from list and fill the required fields:\n" +
+            msg += "You need to set Employer from list and fill the required fields:\n" +
                     "Sector" +
                     ", Number of positions";
             scrollPane.setVvalue(0);
-            errorMsg.setText(error);
+            errorMsg.setText(msg);
             errorMsg.setVisible(true);
         }
     }

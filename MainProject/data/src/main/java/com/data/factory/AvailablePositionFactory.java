@@ -21,13 +21,13 @@ public class AvailablePositionFactory {
     private int numberOfPositions;
     private boolean publicSector;
     private String industry;
+    private String positionType;
 
     // Optional fields with default values to avoid null
     private String workplace = "";
-    private String positionType = "";
     private String duration = "";
-    private int startingTime = 0;
-    private int endingTime = 0;
+    private String startingTime = "";
+    private String endingTime = "";
     private String requiredQualifications = "";
     private int salary = 0;
     private String contactInfo = "";
@@ -43,9 +43,8 @@ public class AvailablePositionFactory {
     }
 
     private void createAvailablePosition() throws AvailablePositionException {
-        this.availablePosition = new AvailablePosition.Builder(employerId, publicSector, numberOfPositions, industry)
+        this.availablePosition = new AvailablePosition.Builder(employerId, publicSector, numberOfPositions, industry, positionType)
                 .workplace(workplace)
-                .positionType(positionType)
                 .duration(duration)
                 .startingTime(startingTime)
                 .endingTime(endingTime)
@@ -79,6 +78,9 @@ public class AvailablePositionFactory {
                     this.numberOfPositions = Integer.parseInt(entry.getValue().toString());
                 }
             }
+            if(entry.getKey().getId().equals("position")) {
+                this.positionType = entry.getValue().toString();
+            }
         }
     }
 
@@ -89,9 +91,6 @@ public class AvailablePositionFactory {
             if(entry.getKey().getId().equals("workplace")) {
                 this.workplace = entry.getValue().toString();
             }
-            if(entry.getKey().getId().equals("positionType")) {
-                this.positionType = entry.getValue().toString();
-            }
             if(entry.getKey().getId().equals("industry")) {
                 if(!entry.getValue().toString().isEmpty()) {
                     this.industry = entry.getValue().toString();
@@ -101,20 +100,11 @@ public class AvailablePositionFactory {
                 this.duration = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("startingTime")) {
-                int startingTime = Integer.parseInt(entry.getValue().toString());
-                if(startingTime >= this.endingTime && this.endingTime != 0) {
-                    throw new IllegalArgumentException("Starting time cannot be greater than ending time");
-                } else {
-                    this.startingTime = startingTime;
-                }
+                this.startingTime = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("endingTime")) {
-                int endingTime = Integer.parseInt(entry.getValue().toString());
-                if(endingTime <= this.startingTime && this.startingTime != 0) {
-                    throw new IllegalArgumentException("Ending time cannot be less than starting time");
-                } else {
-                    this.endingTime = endingTime;
-                }
+                System.out.println("ENDINGTIME" + entry.getValue().toString());
+                this.endingTime = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("requiredQualifications")) {
                 this.requiredQualifications = entry.getValue().toString();
@@ -127,7 +117,7 @@ public class AvailablePositionFactory {
             if(entry.getKey().getId().equals("contactInfo")) {
                 this.contactInfo = entry.getValue().toString();
             }
-            if(entry.getKey().getId().equals("description")) {
+            if(entry.getKey().getId().equals("positionDescription")) {
                 this.description = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("applicants")) {

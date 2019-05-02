@@ -77,7 +77,7 @@
                             </columnConstraints>
                             <children>
                                 <Label text="Sector *" />
-                                <Label text="Nbr of Positions *" GridPane.columnIndex="1" />
+                                <Label text="Number of applicants *" GridPane.columnIndex="1" />
                                 <Label text="Employer *" GridPane.columnIndex="2" />
                                 <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="233.0" spacing="10.0" GridPane.rowIndex="1">
                                     <children>
@@ -90,25 +90,25 @@
                                     </children>
                                 </HBox>
                                 <IntField fx:id="numberOfPositions" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <ComboBox fx:id="employerList" prefWidth="150.0" promptText="List" onAction="#setSelectedEmployer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <ComboBox fx:id="employerList" prefWidth="150.0" promptText="Choose employer" onAction="#setSelectedEmployer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                 <ComboBox fx:id="employer" visible="false" />
-                                <Label text="Position type" GridPane.rowIndex="2" />
+                                <Label text="Title*" GridPane.rowIndex="2" />
                                 <Label text="Salary" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label text="Industry" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                <TextField fx:id="position" prefHeight="26.0" prefWidth="128.0" promptText="Secretary" GridPane.rowIndex="3" />
+                                <Label text="Industry*" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                <TextField fx:id="position" prefHeight="26.0" prefWidth="128.0" promptText="Name of job" GridPane.rowIndex="3" />
                                 <IntField fx:id="salary" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <ComboBox fx:id="industry" prefWidth="150.0" promptText="List" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                <ComboBox fx:id="industry" prefWidth="150.0" promptText="Choose industry" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                 <Label text="Duration" GridPane.rowIndex="4" />
-                                <Label text="Start / Finish" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <TextField fx:id="duration" prefHeight="26.0" prefWidth="128.0" promptText="2 years" GridPane.rowIndex="5" />
+                                <Label text="Working time (From-To)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <TextField fx:id="duration" prefHeight="26.0" prefWidth="128.0" promptText="(Eg. weeks, months..)" GridPane.rowIndex="5" />
                                 <HBox prefHeight="26.0" prefWidth="135.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                     <children>
-                                        <DatePicker fx:id="workStart" prefHeight="26.0" prefWidth="105.0" promptText="From" />
-                                        <DatePicker fx:id="workEnd" prefHeight="26.0" prefWidth="105.0" promptText="To" />
+                                        <IntField fx:id="startingTime" prefHeight="26.0" prefWidth="105.0" promptText="08:00" />
+                                        <IntField fx:id="endingTime" prefHeight="26.0" prefWidth="105.0" promptText="16:00" />
                                     </children>
                                 </HBox>
                         <Label text="Workplace" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <TextField fx:id="workplace" promptText="telenor" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <TextField fx:id="workplace" promptText="Location of job" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                             </children>
                      <rowConstraints>
                         <RowConstraints />
