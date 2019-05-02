@@ -233,41 +233,6 @@ public class RegisterSubstituteController implements Controller {
         }
     }
 
-    @FXML
-    public void addWork(ActionEvent event){
-        if(!(workplaceField.getText().isEmpty() || positionField.getText().isEmpty() || workStartField.getEditor().getText().isEmpty() || workEndField.getEditor().getText().isEmpty())){
-            jobErrorLbl.setVisible(false);
-            String theWork = "";
-            theWork += workplaceField.getText() + " ";
-            theWork += positionField.getText() + " ";
-            theWork += workStartField.getEditor().getText() + " - ";
-            theWork += workEndField.getEditor().getText();
-            if (!(referenceNameField.getText().isEmpty() || referenceLastnameField.getText().isEmpty() || referencePhoneField.getText().isEmpty() || referenceMailField.getText().isEmpty())) {
-                theWork += " " + referenceNameField.getText() + " ";
-                theWork += referenceLastnameField.getText() + " ";
-                theWork += referencePhoneField.getText() + " ";
-                theWork += referenceMailField.getText();
-            }
-
-            observableJob.add(theWork);
-        }else{
-            jobErrorLbl.setVisible(true);
-        }
-    }
-
-    @FXML
-    public void removeWork(ActionEvent event){
-        if (!observableJob.isEmpty()){
-            observableJob.remove(observableJob.size()-1);
-        }
-    }
-
-    @FXML
-    public void removeSchool(ActionEvent event){
-        if (!observableSchool.isEmpty()){
-            observableSchool.remove(observableSchool.size()-1);
-        }
-    }
 
     @FXML
     public void addWork(ActionEvent event){
