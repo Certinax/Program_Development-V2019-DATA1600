@@ -32,8 +32,7 @@ public class SubstitutesController implements Controller {
     private ObservableList<Substitute> data;
 
     @FXML
-    private TableColumn<Substitute, String> fnameColumn, lnameColumn, addressColumn, cityColumn,
-            industryColumn;
+    private TableColumn<Substitute, String> fnameColumn, lnameColumn, addressColumn, cityColumn;
 
     @FXML
     private TableColumn<Substitute, Integer> zipcodeColumn, ageColumn, salaryColumn;
@@ -42,12 +41,14 @@ public class SubstitutesController implements Controller {
     private TextField filterField;
 
     @FXML
-    private Button overwrite;
+    private Button save;
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private String activeFile;
     private InformationBox alert;
     private ErrorBox error;
+
+    /* --------------------------------- Required Controller Methods ------------------------------------*/
 
     @Override
     public void initialize() {
@@ -86,10 +87,15 @@ public class SubstitutesController implements Controller {
     public void updateDataFromDataPasser() {
     }
 
+    @Override
+    public void exit() {
+    }
+
+    /* --------------------------- Misc Methods ----------------------------------------*/
+
     @FXML
     private void delete() {
         data.remove(tableView.getSelectionModel().getSelectedItem());
-
     }
 
     @FXML
@@ -136,11 +142,6 @@ public class SubstitutesController implements Controller {
             }
         }
 
-    }
-
-
-    @Override
-    public void exit() {
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/

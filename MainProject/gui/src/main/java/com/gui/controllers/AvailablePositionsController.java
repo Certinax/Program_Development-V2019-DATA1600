@@ -36,6 +36,7 @@ import java.util.concurrent.ExecutionException;
  * @author Candidate 730
  * @since 22-04-2019
  */
+
 public class AvailablePositionsController implements Controller {
 
     @FXML
@@ -45,10 +46,10 @@ public class AvailablePositionsController implements Controller {
     private ObservableList<AvailablePosition> tableData; //List containing all positions who are hava available = true
 
     @FXML
-    private TableColumn<AvailablePosition, String> workplaceColumn;
+    private TableColumn<AvailablePosition, String> workplaceColumn, durationColumn;
 
     @FXML
-    private TableColumn<AvailablePosition, Integer> durationColumn, salaryColumn;
+    private TableColumn<AvailablePosition, Integer> salaryColumn;
 
     @FXML
     private TextField filterField;
@@ -73,7 +74,7 @@ public class AvailablePositionsController implements Controller {
         setFiltering();
         setWorkplaceColumnEditable();
         setSalaryColumnEditable();
-        setDurationEditable();
+        setDurationColumnEditable();
     }
 
     @Override
@@ -144,9 +145,9 @@ public class AvailablePositionsController implements Controller {
     private void readData(String activeFile) {
         try {
             allData.addAll(ReaderThreadStarter.startReader(activeFile));
-            for (int i = 0; i < allData.size(); i++) {
-                if (allData.get(i).isAvailable()) {
-                    tableData.add(allData.get(i));
+            for (AvailablePosition anAllData : allData) {
+                if (anAllData.isAvailable()) {
+                    tableData.add(anAllData);
                 }
             }
 
@@ -196,11 +197,12 @@ public class AvailablePositionsController implements Controller {
         }
     }
 
+    @FXML
     private void showInfo(){
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             try {
-                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.POSITIONINFO,1,1);
                 DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
+                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.POSITIONINFO,1,1);
             } catch (NoPrimaryStageException | ExtraStageException e) {
                 error = new ErrorBox(e.getMessage(), "Can't open new window");
             }
@@ -261,10 +263,10 @@ public class AvailablePositionsController implements Controller {
                 (TableColumn.CellEditEvent<AvailablePosition, Integer> t) -> t.getRowValue().setSalary(t.getNewValue()));
     }
 
-    private void setDurationEditable() { //TODO Kolonner som er definert med Integers gir en NumberFormatException når annet skrives inn. Håndter dette!
-            durationColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-            durationColumn.setOnEditCommit(
-                    (TableColumn.CellEditEvent<AvailablePosition, Integer> t) -> t.getRowValue().setSalary(t.getNewValue()));
+    private void setDurationColumnEditable() {
+        durationColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        durationColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<AvailablePosition, String> t) -> t.getRowValue().setPositionType(t.getNewValue()));
     }
 
     private void setWorkplaceColumnEditable() {

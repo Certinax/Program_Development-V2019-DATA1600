@@ -11,13 +11,13 @@ import javafx.scene.control.Alert;
  * @since 01-05-2019
  */
 
-public class InformationBox {
+public class InformationBox extends Alert {
 
     public InformationBox(String contentText, String header) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(header);
-        alert.setContentText(contentText);
-        alert.setTitle("Alert");
-        alert.show();
+        super(AlertType.INFORMATION);
+        this.setHeaderText(header);
+        this.setContentText(contentText);
+        this.setTitle("Alert");
+        this.show();
     }
 }
