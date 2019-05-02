@@ -147,7 +147,7 @@ public class RegisterSubstituteController implements Controller {
     @FXML
     private void openOptions(ActionEvent event) {
         try {
-            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS);
+            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS, 2, 3);
         } catch (NoPrimaryStageException e) {
             System.err.println(e.getMessage());
         }
