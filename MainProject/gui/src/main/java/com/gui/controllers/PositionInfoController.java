@@ -1,6 +1,5 @@
 package com.gui.controllers;
 
-import com.data.clients.Substitute;
 import com.data.work.AvailablePosition;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
@@ -11,7 +10,6 @@ import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
@@ -32,7 +30,6 @@ public class PositionInfoController implements Controller {
     employerName.setText(pos.getEmployerName());
     numberOfPositions.setText(String.valueOf(pos.getNumberOfPositions()));
     publicSector.setText(pos.getSectorAsString());
-
     workplace.setText(pos.getWorkplace());
     positionType.setText(pos.getPositionType());
     industry.setText(pos.getIndustry());
@@ -41,8 +38,7 @@ public class PositionInfoController implements Controller {
     endingTime.setText(String.valueOf(pos.getEndingTime()));
     contactInfo.setText(pos.getContactInfo());
     salary.setText(String.valueOf(pos.getSalary()));
-
-    applicants.setText(pos.getApplicantName());
+    applicants.setText(pos.getApplicantNames());
     requiredQualifications.setText(pos.getRequiredQualifications());
     description.setText(pos.getDescription());
   }
