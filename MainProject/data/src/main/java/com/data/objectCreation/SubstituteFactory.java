@@ -12,8 +12,8 @@ import javafx.scene.Node;
 
 public class SubstituteFactory {
 
-    Map<Node, Object> objectInfo;
-    Substitute substitute;
+    private Map<Node, Object> objectInfo;
+    private Substitute substitute;
 
     private String firstname;
     private String lastname;
