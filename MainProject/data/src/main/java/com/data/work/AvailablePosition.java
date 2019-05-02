@@ -344,14 +344,6 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         }
     }
 
-    public String getAvailableAsString() {
-        if (this.available) {
-            return "No";
-        } else {
-            return "Yes";
-        }
-    }
-
     @Override
     public String toString() {
         return "AvailablePosition{" +
