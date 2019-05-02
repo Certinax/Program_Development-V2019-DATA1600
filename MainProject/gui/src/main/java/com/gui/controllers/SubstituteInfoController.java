@@ -60,7 +60,6 @@ public class SubstituteInfoController implements Controller {
 
     @Override
     public void initialize() {
-        // TODO get substitute and call setData(substitute)
         setData((Substitute) DataPasser.getData());
     }
 
