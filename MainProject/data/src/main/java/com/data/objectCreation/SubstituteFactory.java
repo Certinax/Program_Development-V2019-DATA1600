@@ -1,19 +1,18 @@
 package com.data.objectCreation;
 
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 
 import com.data.clients.Substitute;
 import com.logic.concurrency.WriterThreadStarter;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
 public class SubstituteFactory {
 
     Map<Node, Object> objectInfo;
-
     Substitute substitute;
 
     private String firstname;
@@ -26,13 +25,14 @@ public class SubstituteFactory {
 
     private int salaryRequirement;
     private ArrayList<String> education;
-    private ArrayList<String> workExcperience;
+    private ArrayList<String> workExperience;
     private ArrayList<String> workReference;
 
 
     public SubstituteFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException{
         this.objectInfo = objectInfo;
-        generateFields();
+        generateRequiredFields();
+        generateOptionalFields();
         createSubstitute();
         saveSubstitute(substitute);
     }
@@ -41,7 +41,7 @@ public class SubstituteFactory {
          this.substitute = new Substitute.Builder(firstname, lastname, address, age, zipcode, city, industry)
                  .salaryRequirement(salaryRequirement)
                  .education(education)
-                 .workExperience(workExcperience)
+                 .workExperience(workExperience)
                  .workReference(workReference)
                  .build();
     }
@@ -54,7 +54,7 @@ public class SubstituteFactory {
         }
     }
 
-    private void generateFields() throws IllegalArgumentException{
+    private void generateRequiredFields() throws IllegalArgumentException{
         for (Map.Entry<Node, Object> entry : objectInfo.entrySet()) {
             if (entry.getKey().getId().equals("firstname")) {
                 this.firstname = entry.getValue().toString();
@@ -86,6 +86,31 @@ public class SubstituteFactory {
             }
         }
 
+    }
+
+    @SuppressWarnings("unchecked")
+    private void generateOptionalFields() {
+
+        for (Map.Entry<Node, Object> entry : objectInfo.entrySet()) {
+            if(entry.getKey().getId().equals("salaryRequirement")) {
+                this.salaryRequirement = Integer.parseInt(entry.getValue().toString());
+            }
+            if(entry.getKey().getId().equals("education")) {
+                if(entry.getValue() instanceof ObservableList) {
+                    this.education = (ArrayList<String>) entry.getValue();
+                }
+            }
+            if(entry.getKey().getId().equals("workExperience")) {
+                if(entry.getValue() instanceof ObservableList) {
+                    this.workExperience = (ArrayList<String>) entry.getValue();
+                }
+            }
+            if(entry.getKey().getId().equals("workReference")) {
+                if(entry.getValue() instanceof ObservableList) {
+                    this.workReference = (ArrayList<String>) entry.getValue();
+                }
+            }
+        }
     }
 
 

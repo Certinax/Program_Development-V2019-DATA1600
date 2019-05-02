@@ -231,7 +231,7 @@
                      <children>
                         <Label prefHeight="17.0" text="Salary requirements" />
                         <Label text="Industry" GridPane.columnIndex="1" />
-                        <SalaryField fx:id="salaryField" prefHeight="26.0" prefWidth="128.0" promptText="Salary" GridPane.rowIndex="1" />
+                        <SalaryField fx:id="salaryRequirement" prefHeight="26.0" prefWidth="128.0" promptText="Salary" GridPane.rowIndex="1" />
                         <ComboBox fx:id="industry" prefWidth="150.0" promptText="Choose Industry"  GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>

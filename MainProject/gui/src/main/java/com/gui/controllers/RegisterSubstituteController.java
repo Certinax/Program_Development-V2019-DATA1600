@@ -47,7 +47,7 @@ public class RegisterSubstituteController implements Controller {
     ZipCodeField zipcode;
 
     @FXML
-    SalaryField salaryField;
+    SalaryField salaryRequirement;
 
     @FXML
     DatePicker age, educationStartField, educationEndField, workStartField, workEndField;
