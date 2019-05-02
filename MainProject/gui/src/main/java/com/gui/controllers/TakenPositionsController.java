@@ -128,8 +128,7 @@ public class TakenPositionsController implements Controller {
                     intFilter = -1; //set to a negative value as we don't allow negative values in the datafields. Won't give a match.
                 } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
 
-                if (anAvailablePosition.getSectorAsString().toLowerCase().contains(stringFilter)
-                        || anAvailablePosition.getAvailableAsString().toLowerCase().contains(stringFilter)
+                if (anAvailablePosition.getContactInfo().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getEmployerName().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getWorkplace().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getPositionType().toLowerCase().contains(stringFilter)
