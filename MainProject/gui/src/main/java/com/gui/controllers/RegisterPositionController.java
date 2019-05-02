@@ -33,7 +33,7 @@ public class RegisterPositionController implements Controller {
     private ComboBox employer, industry;
 
     @FXML
-    private TextField position;
+    private TextField position, workplace;
 
     @FXML
     private IntField salary, duration;
