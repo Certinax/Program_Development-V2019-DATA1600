@@ -41,6 +41,7 @@ public class EmployerFactory {
     }
 
     private void saveEmployer(Employer employer) throws InterruptedException {
+        // TODO FIKS FREDRIK PATHS HER FØR INNLEVERING
         WriterThreadStarter.startWriter(employer, "resources/empcreation.csv");
     }
 

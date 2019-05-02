@@ -51,6 +51,7 @@ public class SubstituteFactory {
     }
 
     private void saveSubstitute(Substitute substitute) throws InterruptedException {
+        // TODO FIKS FREDRIK PATHS HER FØR INNLEVERING
         WriterThreadStarter.startWriter(substitute, "resources/subcreation.csv");
     }
 
