@@ -1,5 +1,7 @@
 package com.data;
 
+import java.util.ArrayList;
+
 /**
  * <h1>Industry</h1>
  *
@@ -95,5 +97,13 @@ public enum Industry {
 
     public String getIndustryName() {
         return this.industryName;
+    }
+
+    public static ArrayList<String> industryList() {
+        ArrayList<String> industryList = new ArrayList<>();
+        for (Industry industry : Industry.values()) {
+            industryList.add(industry.getIndustryName());
+        }
+        return industryList;
     }
 }
