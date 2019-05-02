@@ -34,7 +34,7 @@ public class RegisterSubstituteController implements Controller {
     Label firstnamelbl, lastnamelbl, birthdaylbl, streetnamelbl, zipcodelbl, citylbl, emaillbl, phonenumberlbl,
             schoolnamelbl, educationlbl, startedlbl, finnishedlbl, workplacelbl, positionlbl, fromlbl, tolbl,
             referenceNamelbl, referenceLastnamelbl, referencePhonelbl, referenceMaillbl, industrylbl, salarylbl,
-            eduErrorLbl, jobErrorLbl;
+            eduErrorLbl, jobErrorLbl, errorMsg;
 
     @FXML
     TextField address, emailField, educationField, workplaceField, positionField, referenceMailField;
@@ -191,19 +191,23 @@ public class RegisterSubstituteController implements Controller {
             } catch (IllegalArgumentException | InterruptedException e) {
                 error += e.getMessage();
                 e.printStackTrace();
-                scrollPane.setVvalue(0); // This moves the scrollpane to top
+                scrollPane.setVvalue(0);
+                errorMsg.setText(error);
+                errorMsg.setVisible(true);
                 // TODO Sett in error label/popup med error-variabel
             }
         } else {
                 error += "You need to fill the required fields:\n " +
-                        "- Firstname\n" +
-                        "- Lastname\n" +
-                        "- Address\n" +
-                        "- Date of birth\n" +
-                        "- Zipcode\n" +
-                        "- City\n" +
-                        "- Industry";
+                        "- Firstname" +
+                        ", Lastname" +
+                        ", Address" +
+                        ", Date of birth" +
+                        ", Zipcode" +
+                        ", City" +
+                        ", Industry -";
                 scrollPane.setVvalue(0);
+                errorMsg.setText(error);
+                errorMsg.setVisible(true);
                 // TODO Sett en error label/popup med error-variabel
         }
 
