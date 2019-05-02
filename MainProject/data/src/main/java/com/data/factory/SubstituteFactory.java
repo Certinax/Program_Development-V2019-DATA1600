@@ -11,6 +11,7 @@ import com.logic.concurrency.WriterThreadStarter;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
+//TODO JavaDocs
 public class SubstituteFactory {
 
     private Map<Node, Object> objectInfo;

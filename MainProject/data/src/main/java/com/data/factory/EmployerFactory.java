@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import java.util.ArrayList;
 import java.util.Map;
 
+//TODO JavaDocs
 public class EmployerFactory {
 
     private Map<Node, Object> objectInfo;

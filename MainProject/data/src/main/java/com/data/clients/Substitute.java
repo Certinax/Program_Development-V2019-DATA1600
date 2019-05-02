@@ -15,7 +15,7 @@ import java.util.UUID;
  * Class for representing substitutes Utilizes the Builder-pattern to create
  * objects
  *
- * @author Mathias Lund Ahrn, Fredrik Pedersen
+ * @author Candidate 511, Candidate 730
  * @since 24-04-2019
  */
 

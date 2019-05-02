@@ -10,7 +10,7 @@ import com.logic.utilities.exceptions.NumberGenerationException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-
+//TODO Skrive JavaDocs
 public enum NumberManager {
     INSTANCE;
 
