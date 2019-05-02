@@ -2,15 +2,37 @@ package com.gui.controllers;
 
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.customTextFields.NameField;
+import com.logic.customTextFields.PhoneField;
+import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 //TODO Write JavaDocs!
 public class RegisterEmployerController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
+
+    @FXML
+    ToggleGroup privateSector;
+    @FXML
+    AnchorPane parent;
+    @FXML
+    NameField name;
+    @FXML
+    ComboBox industry;
+    @FXML
+    ZipCodeField zipcode;
+    @FXML
+    TextField address, city, email;
+    @FXML
+    PhoneField phone;
 
     @Override
     public void initialize() {
