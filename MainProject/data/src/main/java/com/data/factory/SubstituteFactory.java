@@ -96,25 +96,20 @@ public class SubstituteFactory {
             }
             if(entry.getKey().getId().equals("schoolList")) {
                 if(entry.getValue() instanceof ObservableList) {
-                    //this.education = (ArrayList<String>) entry.getValue();
-
-                    Collection<String> sda = (ObservableList<String>)entry.getValue();
-                    ArrayList<String> list = new ArrayList<>();
-                    for (String s : sda) {
-                        list.add(s);
-                    }
-
-                    this.education = list;
+                    Collection<String> education = (ObservableList<String>)entry.getValue();
+                    this.education = new ArrayList<>(education);
                 }
             }
-            if(entry.getKey().getId().equals("workExperience")) {
+            if(entry.getKey().getId().equals("workList")) {
                 if(entry.getValue() instanceof ObservableList) {
-                    this.workExperience = (ArrayList<String>) entry.getValue();
+                    Collection<String> workExperience = (ObservableList<String>)entry.getValue();
+                    this.workExperience = new ArrayList<>(workExperience);
                 }
             }
-            if(entry.getKey().getId().equals("workReference")) {
+            if(entry.getKey().getId().equals("workReferenceList")) {
                 if(entry.getValue() instanceof ObservableList) {
-                    this.workReference = (ArrayList<String>) entry.getValue();
+                    Collection<String> workReference = (ObservableList<String>)entry.getValue();
+                    this.workReference = new ArrayList<>(workReference);
                 }
             }
         }

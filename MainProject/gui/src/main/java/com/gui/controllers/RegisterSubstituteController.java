@@ -158,31 +158,8 @@ public class RegisterSubstituteController implements Controller {
         String error = "";
 
         // This parent holds all the necessary children to retrieve information from
-        AnchorPane parent = infoAnchorPane;
-
         Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(infoAnchorPane);
 
-
-        for (Map.Entry<Node, Object> entry : nodesAndValues.entrySet()) {
-            System.out.println("Node ID: " + entry.getKey().getId() + " Value : " + entry.getValue());
-            if(entry.getKey().getId().toString().equals("schoolList")) {
-                System.out.println("HER HAR JEG LISTA");
-                System.out.println(entry.getKey().getTypeSelector());
-                //ObservableList<String> szz = ((ListView) entry.getValue()).getItems();
-                System.out.println(entry.getValue().getClass());
-
-                //System.out.println("Lengden på obsList: " + szz.size());
-                Collection<String> sda = (ObservableList<String>)entry.getValue();
-                ArrayList<String> list = new ArrayList<>();
-                for (String s : sda) {
-                    list.add(s);
-                }
-
-                System.out.println(list.toString());
-
-                System.out.println("LENGDEN TIL COLLECTION: " + sda.size());
-            }
-        }
 
         if(ObjectDataValidator.requiredDataMatching(nodesAndValues, RequiredDataContainer.SUBSTITUTE.requiredData())) {
             // Opprett objekt
