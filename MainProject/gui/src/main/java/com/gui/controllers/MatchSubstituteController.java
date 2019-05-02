@@ -2,7 +2,7 @@ package com.gui.controllers;
 
 import com.data.clients.Substitute;
 import com.data.work.AvailablePosition;
-import com.gui.alertBoxes.AlertBox;
+import com.gui.alertBoxes.InformationBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
@@ -52,7 +52,7 @@ public class MatchSubstituteController implements Controller {
     private String activeFile;
     private boolean readFromCSV;
     private AvailablePosition position;
-    private AlertBox alert;
+    private InformationBox alert;
     private ErrorBox error;
 
     /* ----------------- Required Controller Methods ------------------------------*/
@@ -87,7 +87,7 @@ public class MatchSubstituteController implements Controller {
     @FXML
     private void match() {
         if (tableView.getSelectionModel().getSelectedItem() == null) {
-            alert = new AlertBox("Please select an item from the list", "No substitute selected");
+            alert = new InformationBox("Please select an item from the list", "No substitute selected");
         } else  {
             ArrayList<String> applicants = position.getApplicants();
             applicants.add(tableView.getSelectionModel().getSelectedItem().getSubstituteId());
@@ -115,7 +115,7 @@ public class MatchSubstituteController implements Controller {
     @FXML
     private void switchToCSV(ActionEvent event) {
         if (readFromCSV) {
-            alert = new AlertBox("Already reading from CSV!", "File not changed");
+            alert = new InformationBox("Already reading from CSV!", "File not changed");
         } else {
             readFromCSV = true;
             refresh();
@@ -125,7 +125,7 @@ public class MatchSubstituteController implements Controller {
     @FXML
     private void switchToJOBJ(ActionEvent event) {
         if (!readFromCSV) {
-            alert = new AlertBox("Already reading from JOBJ!", "File not changed");
+            alert = new InformationBox("Already reading from JOBJ!", "File not changed");
         } else {
             readFromCSV = false;
             refresh();

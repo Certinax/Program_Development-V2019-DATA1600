@@ -1,12 +1,11 @@
 package com.gui.controllers;
 
 import com.data.work.AvailablePosition;
-import com.gui.alertBoxes.AlertBox;
+import com.gui.alertBoxes.InformationBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
-import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
@@ -15,13 +14,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -41,7 +36,7 @@ public class TakenPositionsController implements Controller {
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private boolean readFromCSV = false;
     private String activeFile;
-    private AlertBox alert;
+    private InformationBox alert;
     private ErrorBox error;
 
     /* --------------------------------- Required Controller Methods ------------------------------------*/
@@ -88,7 +83,7 @@ public class TakenPositionsController implements Controller {
     @FXML
     private void switchToCSV(ActionEvent event) {
         if (readFromCSV) {
-            alert = new AlertBox("Already reading from CSV!", "File not changed");
+            alert = new InformationBox("Already reading from CSV!", "File not changed");
         } else {
             readFromCSV = true;
             refresh();
@@ -98,7 +93,7 @@ public class TakenPositionsController implements Controller {
     @FXML
     private void switchToJOBJ(ActionEvent event) {
         if (!readFromCSV) {
-            alert = new AlertBox("Already reading from JOBJ!", "File not changed");
+            alert = new InformationBox("Already reading from JOBJ!", "File not changed");
         } else {
             readFromCSV = false;
             refresh();
