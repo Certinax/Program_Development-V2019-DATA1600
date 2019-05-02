@@ -9,6 +9,7 @@ import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.DataPasser;
+import com.logic.utilities.exceptions.AvailablePositionException;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
@@ -23,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class MatchSubstituteController implements Controller {
@@ -87,12 +89,18 @@ public class MatchSubstituteController implements Controller {
         if (tableView.getSelectionModel().getSelectedItem() == null) {
             alert = new AlertBox("Please select an item from the list", "No substitute selected");
         } else  {
-            position.getApplicants().add(tableView.getSelectionModel().getSelectedItem().getSubstituteId());
-            DataPasser.setData(position);
+            ArrayList<String> applicants = position.getApplicants();
+            applicants.add(tableView.getSelectionModel().getSelectedItem().getSubstituteId());
 
+            try {
+                position.setApplicants(applicants);
+            } catch (AvailablePositionException e) {
+                error = new ErrorBox("This position can't have more applicants!", "Too many applicants");
+            }
+
+            DataPasser.setData(position);
             FXMLLoader loader = sceneManager.getCurrentLoader();
             Controller activeController = loader.getController();
-
             activeController.updateDataFromDataPasser();
             cancel();
         }
