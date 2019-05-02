@@ -1,10 +1,7 @@
 package com.gui.controllers;
 
-<<<<<<< HEAD
 import com.gui.alertBoxes.ErrorBox;
-=======
 import com.data.clients.Substitute;
->>>>>>> 8771cdbaf5022e298aba1db675626c695024780c
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.utilities.exceptions.ExtraStageException;
@@ -31,14 +28,12 @@ public class SubstituteInfoController implements Controller {
     @FXML
     Label emailLbl, phoneLbl, industryLbl, salaryLbl;
 
-<<<<<<< HEAD
     private ErrorBox error;
-=======
     private ObservableList<String> eduList = FXCollections.observableArrayList();
     private ObservableList<String> jobList = FXCollections.observableArrayList();
     private ObservableList<String> refList = FXCollections.observableArrayList();
 
-    private void setData(Substitute substitute){
+    private void setData(Substitute substitute) {
         firstnameLbl.setText(substitute.getFirstname());
         lastnameLbl.setText(substitute.getLastname());
         ageLbl.setText(String.valueOf(substitute.getAge()));
@@ -51,17 +46,16 @@ public class SubstituteInfoController implements Controller {
         industryLbl.setText(substitute.getIndustry());
         salaryLbl.setText(String.valueOf(substitute.getSalaryRequirement()));
 
-        for (String edu : substitute.getEducation()){
+        for (String edu : substitute.getEducation()) {
             education.setItems(eduList);
         }
-        for (String job : substitute.getWorkExperience()){
+        for (String job : substitute.getWorkExperience()) {
             work.setItems(jobList);
         }
-        for (String ref : substitute.getWorkReference()){
+        for (String ref : substitute.getWorkReference()) {
             reference.setItems(refList);
         }
     }
->>>>>>> 8771cdbaf5022e298aba1db675626c695024780c
 
     @Override
     public void initialize() {
@@ -77,9 +71,7 @@ public class SubstituteInfoController implements Controller {
     public void exit() {
 
     }
-
-
-
+    
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
     @FXML
