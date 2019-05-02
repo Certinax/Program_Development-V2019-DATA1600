@@ -1,10 +1,20 @@
 package com.gui.controllers;
 
+import com.data.Industry;
+import com.data.clients.Employer;
+import com.data.factory.AvailablePositionFactory;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.customTextFields.IntField;
+import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.NodeGenerator;
+import com.logic.utilities.exceptions.AvailablePositionException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
+import com.logic.utilities.validators.ObjectDataValidator;
+import com.logic.utilities.validators.RequiredDataContainer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,13 +23,19 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class RegisterPositionController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
 
     /* ------------------------------------- fx:id fields --------------------------------------- */
+    @FXML
+    private Label errorMsg, employerNode;
+
     @FXML
     private ToggleGroup selector;
 
@@ -30,13 +46,16 @@ public class RegisterPositionController implements Controller {
     private IntField numberOfPositions;
 
     @FXML
-    private ComboBox employer, industry;
+    private ComboBox<String> employerList, industry;
 
     @FXML
-    private TextField position, workplace;
+    private ComboBox<Employer> employer;
 
     @FXML
-    private IntField salary, duration;
+    private TextField position, workplace, duration;
+
+    @FXML
+    private IntField salary;
 
     @FXML
     private DatePicker workStart, workEnd;
@@ -50,16 +69,46 @@ public class RegisterPositionController implements Controller {
     @FXML
     private AnchorPane parent;
 
+    @FXML
+    private ScrollPane scrollPane;
+
+
+
+    // Keeping track of employer names and Id's.
+    private ArrayList<Employer> employers = new ArrayList<>();
+    private Employer selectedEmployer;
+
+
+
+
     /* ------------------------------------------ Register Method ------------------------------------------ */
 
     @FXML
     public void registerPosition(ActionEvent event){
-        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
 
-        for (Map.Entry<Node, Object> item : nodesAndValues.entrySet()) {
-            if (item.getKey().getId().equals("numberOfPositions")){
-                System.out.println("Test for registering positions: numberOfPositions found");
+        String error = "";
+
+        Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
+        nodesAndValues.put(employer, selectedEmployer);
+
+        if (ObjectDataValidator.requiredDataMatching(nodesAndValues, RequiredDataContainer.AVAILABLE_POSITION.requiredData())) {
+            // Opprett objekt
+            try {
+                AvailablePositionFactory availablePositionFactory = new AvailablePositionFactory(nodesAndValues);
+            } catch (IllegalArgumentException | InterruptedException | AvailablePositionException e) {
+                error += e.getMessage();
+                e.printStackTrace();
+                scrollPane.setVvalue(0);
+                errorMsg.setText(error);
+                errorMsg.setVisible(true);
             }
+        } else {
+            error += "You need to set Employer from list and fill the required fields:\n" +
+                    "Sector" +
+                    ", Number of positions";
+            scrollPane.setVvalue(0);
+            errorMsg.setText(error);
+            errorMsg.setVisible(true);
         }
     }
 
@@ -67,6 +116,31 @@ public class RegisterPositionController implements Controller {
 
     @Override
     public void initialize() {
+        String error = "";
+
+        ObservableList<String> oIndustrylist = FXCollections.observableArrayList(Industry.industryList());
+        industry.setItems(oIndustrylist.sorted());
+
+        try {
+            employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerCSVPath());
+        } catch (ExecutionException | InterruptedException e) {
+            error += e.getMessage();
+            e.printStackTrace();
+        }
+        ObservableList<String> empList = FXCollections.observableArrayList();
+        for (Employer employer : employers) {
+            empList.add(employer.getName());
+        }
+        employerList.setItems(empList);
+    }
+
+    @FXML
+    public void setSelectedEmployer(ActionEvent event) {
+        for (Employer emp : employers) {
+            if(emp.getName().equals(employerList.getSelectionModel().getSelectedItem())) {
+                selectedEmployer = emp;
+            }
+        }
     }
 
     @Override

@@ -53,7 +53,7 @@
         <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
 
         <!-- MAIN SECTION -->
-        <ScrollPane fitToWidth="true" layoutX="220.0" layoutY="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="220.0" layoutY="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
                 <AnchorPane fx:id="parent" prefHeight="893.0" prefWidth="779.0">
                     <children>
@@ -62,6 +62,7 @@
                                 <Font name="System Bold" size="32.0" />
                             </font>
                         </Label>
+                        <Label fx:id="errorMsg" alignment="CENTER" layoutX="392.0" layoutY="283.0" text="Error msg" textFill="RED" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="145.0" />
                         <Separator layoutX="200.0" layoutY="151.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
                         <Label alignment="CENTER" layoutX="20.0" layoutY="171.0" text="General info" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="171.0">
                             <font>
@@ -89,7 +90,8 @@
                                     </children>
                                 </HBox>
                                 <IntField fx:id="numberOfPositions" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <ComboBox fx:id="employer" prefWidth="150.0" promptText="List" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <ComboBox fx:id="employerList" prefWidth="150.0" promptText="List" onAction="#setSelectedEmployer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <ComboBox fx:id="employer" visible="false" />
                                 <Label text="Position type" GridPane.rowIndex="2" />
                                 <Label text="Salary" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Label text="Industry" GridPane.columnIndex="2" GridPane.rowIndex="2" />
@@ -98,7 +100,7 @@
                                 <ComboBox fx:id="industry" prefWidth="150.0" promptText="List" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                 <Label text="Duration" GridPane.rowIndex="4" />
                                 <Label text="Start / Finish" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <IntField fx:id="duration" prefHeight="26.0" prefWidth="128.0" promptText="2 years" GridPane.rowIndex="5" />
+                                <TextField fx:id="duration" prefHeight="26.0" prefWidth="128.0" promptText="2 years" GridPane.rowIndex="5" />
                                 <HBox prefHeight="26.0" prefWidth="135.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                     <children>
                                         <DatePicker fx:id="workStart" prefHeight="26.0" prefWidth="105.0" promptText="From" />

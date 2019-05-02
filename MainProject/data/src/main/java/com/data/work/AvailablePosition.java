@@ -21,15 +21,14 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     private String employerId; // This is foreign key for employerobject that owns this temporary position
     private int numberOfPositions; // This keeps track of how many subtitutes this position can employ
     private boolean publicSector; //Is it public or private sector?
-
+    private String industry; //What industry is it? IT? Economics? etc
     // Dependable variable
     private boolean available; // This boolean should be changed upon applicants.size() == numberOfPositions
 
     // Optional
     private String workplace; //Where is it?
     private String positionType; //What kind of position is it? Consulent? Manager? Crewmember etc...
-    private String industry; //What industry is it? IT? Economics? etc
-    private int duration; //For how long do they need a substitute
+    private String duration; //For how long do they need a substitute
     private int startingTime; //When does the workday start
     private int endingTime; //When does the workday end
     private String requiredQualifications;
@@ -68,27 +67,27 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         private int availablePositionNumber; //An internal ID for the position
         private String availablePositionId;
         private String employerId;
-        private int numberOfPositions; // This keeps track of how many subtitutes this position can employ
-        private boolean publicSector; //Is it public or private sector?
+        private int numberOfPositions;
+        private boolean publicSector;
+        private String industry;
 
         // Dependable variable
-        private boolean available = true; // This boolean should be changed upon applicants.size() == numberOfPositions
+        private boolean available = true;
 
         // Optional parameters
-        private int duration = 0; //For how long do they need a substitute
-        private int salary = 0; //Hourly salary
-        private String contactInfo = "a"; //An email for contacting them
-        private String workplace = "b"; //Where is it?
-        private String positionType = "c"; //What kind of position is it? Consulent? Manager? Crewmember etc...
-        private String industry = "d"; //What industry is it? IT? Economics? etc
-        private int startingTime = 0; //When does the workday start
-        private int endingTime = 0; //When does the workday end
-        private String requiredQualifications = "e";
-        private String description = "f"; //A description of the position
-        private ArrayList<String> applicants = new ArrayList<>(); //A list of IDs of applicants for the position
+        private String duration = "";
+        private int salary = 0;
+        private String contactInfo = "";
+        private String workplace = "";
+        private String positionType = "";
+        private int startingTime = 0;
+        private int endingTime = 0;
+        private String requiredQualifications = "";
+        private String description = "";
+        private ArrayList<String> applicants = new ArrayList<>();
 
         //Builder for required parameters
-        public Builder(String employerId, boolean publicSector, int numberOfPositions) {
+        public Builder(String employerId, boolean publicSector, int numberOfPositions, String industry) {
 
             this.availablePositionNumber = NumberManager.INSTANCE.getAvailablePositionNumberAndIncrement();
             UUID uuid = UUID.randomUUID();
@@ -96,10 +95,11 @@ public class AvailablePosition implements Serializable, CSVWriteable {
             this.employerId = employerId; // This is reference to employer-object
             this.publicSector = publicSector;
             this.numberOfPositions = numberOfPositions;
+            this.industry = industry;
         }
 
         //Builders for optional parameters
-        public Builder duration(int duration) {
+        public Builder duration(String duration) {
             this.duration = duration;
             return self();
         }
@@ -122,11 +122,6 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         public Builder positionType(String positionType) {
             this.positionType = positionType;
             return  self();
-        }
-
-        public Builder industry(String industry) {
-            this.industry = industry;
-            return self();
         }
 
         public Builder startingTime(int startingTime) {
@@ -203,7 +198,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         this.industry = industry;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -278,7 +273,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         return industry;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 

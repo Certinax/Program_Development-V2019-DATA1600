@@ -35,11 +35,9 @@ public class NodeGenerator {
             if (node instanceof DatePicker) {
                 map.put(node, ((DatePicker) node).getValue());
             }
-
             if (node instanceof ComboBox<?>) {
                 map.put(node, ((ComboBox<?>) node).getValue());
             }
-
             if (node instanceof RadioButton) {
                 map.put(node, ((RadioButton) node).isSelected());
             }

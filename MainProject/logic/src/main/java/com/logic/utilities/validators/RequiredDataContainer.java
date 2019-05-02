@@ -51,7 +51,8 @@ public enum RequiredDataContainer {
             Map<String, String> temp = Map.ofEntries(
                     entry("employerId", "String"),
                     entry("numberOfPositions", "int"),
-                    entry("publicSector", "boolean")
+                    entry("publicSector", "boolean"),
+                    entry("industry", "string")
             );
             return temp;
         }

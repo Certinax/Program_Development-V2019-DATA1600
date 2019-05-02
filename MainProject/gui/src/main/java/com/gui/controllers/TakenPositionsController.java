@@ -131,7 +131,7 @@ public class TakenPositionsController implements Controller {
                         || anAvailablePosition.getWorkplace().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getPositionType().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getIndustry().toLowerCase().contains(stringFilter)
-                        || anAvailablePosition.getDuration() == intFilter){
+                        /*|| anAvailablePosition.getDuration() == intFilter*/){
                     return true;
                 } else return anAvailablePosition.getSalary() == intFilter;
             });

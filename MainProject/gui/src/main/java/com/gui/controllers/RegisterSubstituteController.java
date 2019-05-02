@@ -31,43 +31,43 @@ public class RegisterSubstituteController implements Controller {
     private SceneManager sceneManager = SceneManager.INSTANCE;
 
     @FXML
-    Label firstnamelbl, lastnamelbl, birthdaylbl, streetnamelbl, zipcodelbl, citylbl, emaillbl, phonenumberlbl,
+    private Label firstnamelbl, lastnamelbl, birthdaylbl, streetnamelbl, zipcodelbl, citylbl, emaillbl, phonenumberlbl,
             schoolnamelbl, educationlbl, startedlbl, finnishedlbl, workplacelbl, positionlbl, fromlbl, tolbl,
             referenceNamelbl, referenceLastnamelbl, referencePhonelbl, referenceMaillbl, industrylbl, salarylbl,
             eduErrorLbl, jobErrorLbl, refErrorLbl, errorMsg;
 
     @FXML
-    TextField address, emailField, educationField, workplaceField, positionField, referenceMailField;
+    private TextField address, emailField, educationField, workplaceField, positionField, referenceMailField;
 
     @FXML
-    NameField firstname, lastname, city, schoolnameField, referenceNameField, referenceLastnameField;
+    private NameField firstname, lastname, city, schoolnameField, referenceNameField, referenceLastnameField;
 
     @FXML
-    PhoneField phoneField, referencePhoneField;
+    private PhoneField phoneField, referencePhoneField;
 
     @FXML
-    ZipCodeField zipcode;
+    private ZipCodeField zipcode;
 
     @FXML
-    SalaryField salaryRequirement;
+    private SalaryField salaryRequirement;
 
     @FXML
-    DatePicker age, educationStartField, educationEndField, workStartField, workEndField;
+    private DatePicker age, educationStartField, educationEndField, workStartField, workEndField;
 
     @FXML
-    ComboBox<String> industry;
+    private ComboBox<String> industry;
 
     @FXML
-    AnchorPane anchPane, infoAnchorPane;
+    private AnchorPane anchPane, infoAnchorPane;
 
     @FXML
-    ScrollPane scrollPane;
+    private ScrollPane scrollPane;
 
     @FXML
-    ListView<String> schoolList, workList, referenceList;
+    private ListView<String> schoolList, workList, referenceList;
 
     @FXML
-    DatePicker startDate, endDate;
+    private DatePicker startDate, endDate;
 
     private ObservableList<String> observableSchool;
     private ObservableList<String> observableJob;

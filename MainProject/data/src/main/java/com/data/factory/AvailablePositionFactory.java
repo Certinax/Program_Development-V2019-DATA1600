@@ -1,5 +1,6 @@
 package com.data.factory;
 
+import com.data.clients.Employer;
 import com.data.work.AvailablePosition;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.utilities.exceptions.AvailablePositionException;
@@ -7,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
 public class AvailablePositionFactory {
@@ -17,12 +19,12 @@ public class AvailablePositionFactory {
     private String employerId;
     private int numberOfPositions;
     private boolean publicSector;
+    private String industry;
 
     // Optional fields with default values to avoid null
     private String workplace = "";
     private String positionType = "";
-    private String industry = "";
-    private int duration = 0;
+    private String duration = "";
     private int startingTime = 0;
     private int endingTime = 0;
     private String requiredQualifications = "";
@@ -40,10 +42,9 @@ public class AvailablePositionFactory {
     }
 
     private void createAvailablePosition() throws AvailablePositionException {
-        this.availablePosition = new AvailablePosition.Builder(employerId, publicSector, numberOfPositions)
+        this.availablePosition = new AvailablePosition.Builder(employerId, publicSector, numberOfPositions, industry)
                 .workplace(workplace)
                 .positionType(positionType)
-                .industry(industry)
                 .duration(duration)
                 .startingTime(startingTime)
                 .endingTime(endingTime)
@@ -63,14 +64,19 @@ public class AvailablePositionFactory {
     private void generateRequiredFields() throws IllegalArgumentException {
 
         for (Map.Entry<Node, Object> entry : objectInfo.entrySet()) {
-            if(entry.getKey().getId().equals("employerId")) {
-                this.employerId = entry.getValue().toString();
+            if(entry.getKey().getId().equals("employer")) {
+                Employer emp = (Employer)entry.getValue();
+                this.employerId = emp.getEmployerId();
             }
             if(entry.getKey().getId().equals("publicSector")) {
-                this.publicSector = Boolean.parseBoolean(entry.getValue().toString());
+                if (!entry.getValue().toString().isEmpty()) {
+                    this.publicSector = Boolean.parseBoolean(entry.getValue().toString());
+                }
             }
             if(entry.getKey().getId().equals("numberOfPositions")) {
-                this.numberOfPositions = Integer.parseInt(entry.getValue().toString());
+                if (!entry.getValue().toString().isEmpty()) {
+                    this.numberOfPositions = Integer.parseInt(entry.getValue().toString());
+                }
             }
         }
     }
@@ -86,10 +92,12 @@ public class AvailablePositionFactory {
                 this.positionType = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("industry")) {
-                this.industry = entry.getValue().toString();
+                if(!entry.getValue().toString().isEmpty()) {
+                    this.industry = entry.getValue().toString();
+                }
             }
             if(entry.getKey().getId().equals("duration")) {
-                this.duration = Integer.parseInt(entry.getValue().toString());
+                this.duration = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("startingTime")) {
                 int startingTime = Integer.parseInt(entry.getValue().toString());
@@ -111,7 +119,9 @@ public class AvailablePositionFactory {
                 this.requiredQualifications = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("salary")) {
-                this.salary = Integer.parseInt(entry.getValue().toString());
+                if(!entry.getValue().toString().isEmpty()) {
+                    this.salary = Integer.parseInt(entry.getValue().toString());
+                }
             }
             if(entry.getKey().getId().equals("contactInfo")) {
                 this.contactInfo = entry.getValue().toString();
@@ -121,7 +131,8 @@ public class AvailablePositionFactory {
             }
             if(entry.getKey().getId().equals("applicants")) {
                 if(entry.getValue() instanceof ObservableList) {
-                    this.applicants = (ArrayList<String>) entry.getValue();
+                    Collection<String> education = (ObservableList<String>)entry.getValue();
+                    this.applicants = new ArrayList<>(education);
                 }
             }
         }
