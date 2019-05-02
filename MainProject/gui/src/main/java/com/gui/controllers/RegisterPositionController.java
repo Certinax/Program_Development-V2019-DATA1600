@@ -3,6 +3,7 @@ package com.gui.controllers;
 import com.data.Industry;
 import com.data.clients.Employer;
 import com.data.factory.AvailablePositionFactory;
+import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
@@ -10,6 +11,7 @@ import com.logic.customTextFields.IntField;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.exceptions.AvailablePositionException;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import com.logic.utilities.validators.ObjectDataValidator;
 import com.logic.utilities.validators.RequiredDataContainer;
@@ -80,6 +82,7 @@ public class RegisterPositionController implements Controller {
 
 
 
+    ErrorBox error;
 
     /* ------------------------------------------ Register Method ------------------------------------------ */
 
@@ -145,12 +148,14 @@ public class RegisterPositionController implements Controller {
 
     @Override
     public void refresh() {
+    }
 
+    @Override
+    public void updateDataFromDataPasser() {
     }
 
     @Override
     public void exit() {
-
     }
 
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
@@ -204,8 +209,8 @@ public class RegisterPositionController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2,3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 }

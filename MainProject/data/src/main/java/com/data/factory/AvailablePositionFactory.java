@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
+//TODO JavaDocs
 public class AvailablePositionFactory {
 
     Map<Node, Object> objectInfo;

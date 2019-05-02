@@ -8,6 +8,8 @@ import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.DataPasser;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -80,6 +82,10 @@ public class SubstitutesController implements Controller {
         }
     }
 
+    @Override
+    public void updateDataFromDataPasser() {
+    }
+
     @FXML
     private void delete() {
         data.remove(tableView.getSelectionModel().getSelectedItem());
@@ -121,14 +127,12 @@ public class SubstitutesController implements Controller {
     }
 
     public void showInfo(ActionEvent event){
-        // TODO send to substituteInfo
-        //industryColumn.getTableView().getSelectionModel().getSelectedItem();
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             try {
                 sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.SUBSTITUTEINFO,1,1);
-                //TemoraryDataSaver.substitute = tableView.getSelectionModel().getSelectedItem();
-            } catch (NoPrimaryStageException e) {
-                System.err.println(e.getMessage());
+                DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
+            } catch (NoPrimaryStageException | ExtraStageException e) {
+                error = new ErrorBox(e.getMessage(), "Can't open new window");
             }
         }
 
@@ -266,8 +270,8 @@ public class SubstitutesController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2,3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 

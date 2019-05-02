@@ -2,11 +2,13 @@ package com.gui.controllers;
 
 import com.data.work.AvailablePosition;
 import com.gui.alertBoxes.AlertBox;
+import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -40,6 +42,7 @@ public class TakenPositionsController implements Controller {
     private boolean readFromCSV = false;
     private String activeFile;
     private AlertBox alert;
+    private ErrorBox error;
 
     /* --------------------------------- Required Controller Methods ------------------------------------*/
 
@@ -57,6 +60,10 @@ public class TakenPositionsController implements Controller {
         setActiveFile();
         data.clear();
         readData(activeFile);
+    }
+
+    @Override
+    public void updateDataFromDataPasser() {
     }
 
     @Override
@@ -194,8 +201,8 @@ public class TakenPositionsController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2,3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 }

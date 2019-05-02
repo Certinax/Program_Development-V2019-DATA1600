@@ -1,8 +1,11 @@
 package com.gui.controllers;
 
+import com.gui.alertBoxes.ErrorBox;
 import com.data.clients.Substitute;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.utilities.DataPasser;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,11 +29,12 @@ public class SubstituteInfoController implements Controller {
     @FXML
     Label emailLbl, phoneLbl, industryLbl, salaryLbl;
 
+    private ErrorBox error;
     private ObservableList<String> eduList = FXCollections.observableArrayList();
     private ObservableList<String> jobList = FXCollections.observableArrayList();
     private ObservableList<String> refList = FXCollections.observableArrayList();
 
-    private void setData(Substitute substitute){
+    private void setData(Substitute substitute) {
         firstnameLbl.setText(substitute.getFirstname());
         lastnameLbl.setText(substitute.getLastname());
         ageLbl.setText(String.valueOf(substitute.getAge()));
@@ -43,33 +47,34 @@ public class SubstituteInfoController implements Controller {
         industryLbl.setText(substitute.getIndustry());
         salaryLbl.setText(String.valueOf(substitute.getSalaryRequirement()));
 
-        for (String edu : substitute.getEducation()){
+        for (String edu : substitute.getEducation()) {
             education.setItems(eduList);
         }
-        for (String job : substitute.getWorkExperience()){
+        for (String job : substitute.getWorkExperience()) {
             work.setItems(jobList);
         }
-        for (String ref : substitute.getWorkReference()){
+        for (String ref : substitute.getWorkReference()) {
             reference.setItems(refList);
         }
     }
 
     @Override
     public void initialize() {
-        // TODO get substitute and call setData(substitute)
+        setData((Substitute) DataPasser.getData());
     }
 
     @Override
     public void refresh() {
+    }
 
+    @Override
+    public void updateDataFromDataPasser() {
     }
 
     @Override
     public void exit() {
 
     }
-
-
 
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
@@ -122,8 +127,8 @@ public class SubstituteInfoController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2,3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 }

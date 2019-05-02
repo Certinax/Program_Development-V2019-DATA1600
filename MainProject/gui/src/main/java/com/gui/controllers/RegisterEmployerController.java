@@ -2,12 +2,14 @@ package com.gui.controllers;
 
 import com.data.Industry;
 import com.data.factory.EmployerFactory;
+import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.customTextFields.NameField;
 import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.NodeGenerator;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import com.logic.utilities.validators.ObjectDataValidator;
 import com.logic.utilities.validators.RequiredDataContainer;
@@ -48,6 +50,8 @@ public class RegisterEmployerController implements Controller {
     @FXML
     ScrollPane scrollPane;
 
+    ErrorBox error;
+
     @Override
     public void initialize() {
         ObservableList<String> oIndustryList = FXCollections.observableArrayList(Industry.industryList());
@@ -56,7 +60,10 @@ public class RegisterEmployerController implements Controller {
 
     @Override
     public void refresh() {
+    }
 
+    @Override
+    public void updateDataFromDataPasser() {
     }
 
     @Override
@@ -115,8 +122,8 @@ public class RegisterEmployerController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS, 2, 3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 

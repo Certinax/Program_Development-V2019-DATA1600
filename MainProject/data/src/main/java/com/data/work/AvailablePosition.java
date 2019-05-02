@@ -2,6 +2,7 @@ package com.data.work;
 
 import com.data.CSVWriteable;
 import com.data.clients.Employer;
+import com.data.clients.Substitute;
 import com.data.handlers.NumberManager;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.filePaths.ActivePaths;
@@ -12,7 +13,18 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
-//TODO Write JavaDocs!
+
+//TODO Endre navn til Positions
+/**
+ * <h1>Positions</h1>
+ *
+ * Class for representing positions. Utilizes the Builder-pattern to create
+ * objects
+ *
+ * @author Candidate 511
+ * @since 26-04-2019
+ */
+
 public class AvailablePosition implements Serializable, CSVWriteable {
 
     // Required
@@ -313,7 +325,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     return a correctly formated value to the TableView
      */
 
-    //TODO Denne metoden kalles hver gang tableViewet oppdateres. Det er lite effektivt. Finne en bedre måte å gjøre det på.
+
     public String getEmployerName() {
         ArrayList<Employer> employers;
         try {
@@ -329,6 +341,26 @@ public class AvailablePosition implements Serializable, CSVWriteable {
             }
         }
         return "";
+    }
+
+    public String getApplicantName(){
+        String applicantList = "";
+        ArrayList<Substitute> substitutes;
+        try {
+            substitutes = ReaderThreadStarter.startReader(ActivePaths.getSubstituteJOBJPath());
+        } catch (InterruptedException | ExecutionException e){
+            e.printStackTrace();
+            return "";
+        }
+        for (String apli : applicants){
+            for (Substitute substitute : substitutes){
+                if (apli.equals(substitute.getSubstituteId())){
+                    applicantList += apli + "\n";
+                }
+            }
+        }
+        return applicantList;
+
     }
 
     public String getSectorAsString() {

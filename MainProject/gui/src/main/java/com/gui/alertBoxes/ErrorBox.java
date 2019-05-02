@@ -9,5 +9,6 @@ public class ErrorBox {
         alert.setHeaderText(header);
         alert.setContentText(contentText);
         alert.setTitle("Error");
+        alert.show();
     }
 }

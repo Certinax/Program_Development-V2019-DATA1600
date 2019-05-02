@@ -15,7 +15,7 @@ import java.util.UUID;
  * Class for representing substitutes Utilizes the Builder-pattern to create
  * objects
  *
- * @author Mathias Lund Ahrn, Fredrik Pedersen
+ * @author Candidate 511, Candidate 730
  * @since 24-04-2019
  */
 
@@ -206,11 +206,13 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
      */
 
     public String getOneEducation() {
-        if (this.education.size() >= 1) {
+        if (this.education.size() > 1) {
             Random rng = new Random();
             return education.get(rng.nextInt(education.size()));
+        } else if (this.education.size() == 1) {
+            return education.get(0);
         }
-        return education.get(0);
+        return "";
     }
 
     @Override
