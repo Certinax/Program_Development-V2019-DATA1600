@@ -23,6 +23,8 @@ public class Employer extends Client implements Serializable, CSVWriteable {
     private String employerId;
     private String name;
     private boolean privateSector;
+    private int phoneNumber;
+    private String email;
     private ArrayList<String> joblist;
 
     private Employer() {
@@ -35,6 +37,8 @@ public class Employer extends Client implements Serializable, CSVWriteable {
         name = builder.name;
         privateSector = builder.privateSector;
         joblist = builder.joblist;
+        phoneNumber = builder.phoneNumber;
+        email = builder.email;
     }
 
     public static class Builder extends Client.Builder<Builder> {
@@ -43,15 +47,20 @@ public class Employer extends Client implements Serializable, CSVWriteable {
         private final int employerNumber;
         private final String name;
         private final boolean privateSector;
+        private final int phoneNumber;
+        private final String email;
 
         // Optional parameters
         private ArrayList<String> joblist = new ArrayList<>();
 
         // Builder for required parameters
-        public Builder(String name, String address, int zipcode, String city, boolean privateSector, String industry) {
+        public Builder(String name, String address, int zipcode, String city, int phoneNumber,
+                       String email, boolean privateSector, String industry) {
             super(address, zipcode, city, industry);
             this.name = name;
             this.privateSector = privateSector;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
             this.employerNumber = NumberManager.INSTANCE.getEmployerNumberAndIncrement();
             UUID uuid = UUID.randomUUID();
             this.employerId = uuid.toString();
@@ -90,6 +99,26 @@ public class Employer extends Client implements Serializable, CSVWriteable {
         return employerId;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getEmployerNumber() { return  employerNumber; }
 
     public void setPrivateSector(Boolean privateSector) {
@@ -105,15 +134,22 @@ public class Employer extends Client implements Serializable, CSVWriteable {
     }
 
     public String[] template() {
-        return new String[] {"getEmployerNumber", "getName", "getAddress", "getZipcode", "getCity", "isPrivateSector",
-                "getIndustry", "getJoblist", "getEmployerId", this.getClass().getName() };
+        return new String[] {"getEmployerNumber", "getName", "getAddress", "getZipcode", "getCity",
+                "getPhoneNumber", "getEmail", "isPrivateSector", "getIndustry", "getJoblist",
+                "getEmployerId", this.getClass().getName() };
     }
+
 
     @Override
     public String toString() {
-        return super.toString() + "Employer{" + "employerNumber='" + employerNumber
-                + '\'' + ", employerId='" + employerId
-                + '\'' + ", name='" + name + '\''
-                + ", sector='" + privateSector + '\'' + ", joblist=" + joblist + '}';
+        return "Employer{" +
+                "employerNumber=" + employerNumber +
+                ", employerId='" + employerId + '\'' +
+                ", name='" + name + '\'' +
+                ", privateSector=" + privateSector +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                ", joblist=" + joblist +
+                '}';
     }
 }

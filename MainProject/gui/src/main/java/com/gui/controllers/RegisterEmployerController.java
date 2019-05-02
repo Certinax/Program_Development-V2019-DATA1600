@@ -44,7 +44,7 @@ public class RegisterEmployerController implements Controller {
     @FXML
     TextField address, city, email;
     @FXML
-    PhoneField phone;
+    PhoneField phoneNumber;
     @FXML
     ScrollPane scrollPane;
 
@@ -126,7 +126,6 @@ public class RegisterEmployerController implements Controller {
 
         Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
 
-        
         if(ObjectDataValidator.requiredDataMatching(nodesAndValues, RequiredDataContainer.EMPLOYER.requiredData())) {
             // Opprett object
             try {
@@ -144,6 +143,8 @@ public class RegisterEmployerController implements Controller {
                     ", Address" +
                     ", Zipcode" +
                     ", City" +
+                    ", Phonenumber" +
+                    ", Email" +
                     ", Sector" +
                     ", Industry";
             scrollPane.setVvalue(0);

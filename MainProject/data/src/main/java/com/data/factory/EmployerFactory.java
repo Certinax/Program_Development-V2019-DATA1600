@@ -19,6 +19,8 @@ public class EmployerFactory {
     private String city;
     private boolean privateSector;
     private String industry;
+    private int phoneNumber;
+    private String email;
 
     // Optional fields with default values to avoid null
     private ArrayList<String> joblist = new ArrayList<>();
@@ -33,7 +35,7 @@ public class EmployerFactory {
 
     private void createEmployer() {
         this.employer = new Employer
-                .Builder(name, address, zipcode, city, privateSector, industry)
+                .Builder(name, address, zipcode, city, phoneNumber, email, privateSector, industry)
                 .joblist(joblist)
                 .build();
     }
@@ -62,6 +64,14 @@ public class EmployerFactory {
             }
             if (entry.getKey().getId().equals("industry")) {
                 this.industry = entry.getValue().toString();
+            }
+            if (entry.getKey().getId().equals("phoneNumber")) {
+                if (!entry.getValue().toString().isEmpty()) {
+                    this.phoneNumber = Integer.parseInt(entry.getValue().toString());
+                }
+            }
+            if (entry.getKey().getId().equals("email")) {
+                this.email = entry.getValue().toString();
             }
         }
     }

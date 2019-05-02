@@ -145,8 +145,8 @@
                                 <Label text="Contact info"/>
                                 <TextField fx:id="email" prefHeight="26.0" prefWidth="128.0" promptText="E-mail"
                                            GridPane.rowIndex="1"/>
-                                <PhoneField fx:id="phone" prefHeight="26.0" prefWidth="128.0" promptText="Phone number"
-                                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <PhoneField fx:id="phoneNumber" prefHeight="26.0" prefWidth="128.0" promptText="Phone number"
+                                            GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                             </children>
                             <opaqueInsets>
                                 <Insets/>
