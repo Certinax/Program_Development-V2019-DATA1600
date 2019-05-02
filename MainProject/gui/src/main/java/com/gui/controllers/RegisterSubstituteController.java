@@ -1,7 +1,7 @@
 package com.gui.controllers;
 
 import com.data.Industry;
-import com.data.objectCreation.SubstituteFactory;
+import com.data.factory.SubstituteFactory;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.customTextFields.NameField;
@@ -20,8 +20,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.EnumSet;
-import java.util.List;
 import java.util.Map;
 
 //TODO Write JavaDocs!
