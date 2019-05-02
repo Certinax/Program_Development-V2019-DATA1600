@@ -2,6 +2,7 @@ package com.gui.controllers;
 
 import com.data.Industry;
 import com.data.factory.SubstituteFactory;
+import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.customTextFields.NameField;
@@ -9,6 +10,7 @@ import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.SalaryField;
 import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.NodeGenerator;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import com.logic.utilities.validators.RequiredDataContainer;
 import com.logic.utilities.validators.ObjectDataValidator;
@@ -69,6 +71,7 @@ public class RegisterSubstituteController implements Controller {
     @FXML
     DatePicker startDate, endDate;
 
+    ErrorBox error;
     private ObservableList<String> observableSchool;
     private ObservableList<String> observableJob;
     private ObservableList<String> observableRef;
@@ -148,8 +151,8 @@ public class RegisterSubstituteController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS, 2, 3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 

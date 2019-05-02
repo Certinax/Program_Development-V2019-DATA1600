@@ -8,6 +8,7 @@ import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -87,8 +88,8 @@ public class AvailablePositionsController implements Controller {
         } else {
             try {
                 sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.MATCHSUBSTITUTE, 1, 1);
-            } catch (NoPrimaryStageException e) {
-                error = new ErrorBox(e.getMessage(), "How did you even...?");
+            } catch (NoPrimaryStageException | ExtraStageException e) {
+                error = new ErrorBox(e.getMessage(), "Can't open new window");
             }
         }
     }
@@ -252,8 +253,8 @@ public class AvailablePositionsController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS, 2, 3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 }

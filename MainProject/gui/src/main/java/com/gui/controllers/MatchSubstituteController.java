@@ -8,6 +8,7 @@ import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -47,90 +48,74 @@ public class MatchSubstituteController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private String activeFile;
+    private boolean readFromCSV;
     private AlertBox alert;
     private ErrorBox error;
+
+    /* ----------------- Required Controller Methods ------------------------------*/
 
     @Override
     public void initialize() {
         data = tableView.getItems();
         activeFile = ActivePaths.getSubstituteJOBJPath();
 
-        try {
-            data.addAll(ReaderThreadStarter.startReader(activeFile)); //TODO Should this read from CSV or JOBJ?
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
+       readData(activeFile);
         setFiltering();
-        setAddressColumnEditable();
-        setLnameColumnEditable();
-        setFnameColumnEditable();
-        setZipCodeColumnEditable();
-        setCityColumnEditable();
-        setAgeColumnEditable();
-        setSalaryColumnEditable();
     }
 
     @Override
     public void refresh() {
-        activeFile = ActivePaths.getSubstituteJOBJPath();
+        setActiveFile();
         data.clear();
+        readData(activeFile);
+    }
 
+    @Override
+    public void exit() {
+    }
+
+    /* --------------------------------- Misc Methods ------------------------------*/
+
+    @FXML
+    private void switchToCSV(ActionEvent event) {
+        if (readFromCSV) {
+            alert = new AlertBox("Already reading from CSV!", "File not changed");
+        } else {
+            readFromCSV = true;
+            refresh();
+        }
+    }
+
+    @FXML
+    private void switchToJOBJ(ActionEvent event) {
+        if (!readFromCSV) {
+            alert = new AlertBox("Already reading from JOBJ!", "File not changed");
+        } else {
+            readFromCSV = false;
+            refresh();
+        }
+    }
+
+    private void readData(String activeFile) {
         try {
-            data.addAll(ReaderThreadStarter.startReader(activeFile)); //TODO Should this read from CSV or JOBJ?
+            data.addAll(ReaderThreadStarter.startReader(activeFile));
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
     }
 
+    private void setActiveFile() {
+        if (readFromCSV) {
+            activeFile = ActivePaths.getAvailablePositionCSVPath();
+        } else {
+            activeFile = ActivePaths.getAvailablePositionJOBJPath();
+        }
+    }
+
     @FXML
-    private void delete() {
-        data.remove(tableView.getSelectionModel().getSelectedItem());
-
-    }
-
-    @FXML
-    private void save(ActionEvent event) {
-        try {
-            WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
-            WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
-        } catch (InterruptedException e) {
-            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
-        }
-    }
-
-    public void readFromCSV(ActionEvent event) {
-        if (activeFile.equals(ActivePaths.getSubstituteCSVPath())) {
-            alert = new AlertBox("" + activeFile + " is already the active file", "Didn't change active file");
-            return;
-        }
-        try {
-            WriterThreadStarter.startWriter(data, activeFile);
-        } catch (InterruptedException e) {
-            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
-        }
-
-        activeFile = ActivePaths.getSubstituteCSVPath();
-
-        try {
-            data.addAll(ReaderThreadStarter.startReader(activeFile));
-        } catch (ExecutionException | InterruptedException e) {
-            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
-        }
-    }
-
-    public void readFromJOBJ(ActionEvent event) {
-
-    }
-
-    public void showInfo(ActionEvent event){
-        // TODO send to substituteInfo
-        //industryColumn.getTableView().getSelectionModel().getSelectedItem();
-    }
-
-
-    @Override
-    public void exit() {
+    private void cancel() {
+        sceneManager.getCurrentPopUpStage().close();
+        sceneManager.setCurrentPopUpStage(null);
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
@@ -168,56 +153,6 @@ public class MatchSubstituteController implements Controller {
 
         tableView.setItems(sortedData);
     }
-
-    private void setFnameColumnEditable() {
-        fnameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        fnameColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<Substitute, String> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setFirstname(t.getNewValue()));
-    }
-
-    private void setLnameColumnEditable() {
-        lnameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        lnameColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<Substitute, String> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setLastname(t.getNewValue()));
-    }
-
-    private void setAddressColumnEditable() {
-        addressColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        addressColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<Substitute, String> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setAddress(t.getNewValue()));
-    }
-
-    private void setZipCodeColumnEditable() { //TODO Kolonner som er definert med Integers kræsjer dersom man prøver å skrive inn andre tegn. Trenger korrekt feilhåndtering.
-        zipcodeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        zipcodeColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<Substitute, Integer> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setZipcode(t.getNewValue()));
-    }
-
-    private void setCityColumnEditable() {
-        cityColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        cityColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<Substitute, String> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setCity(t.getNewValue()));
-    }
-
-    private void setAgeColumnEditable() {
-        ageColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        ageColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<Substitute, Integer> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setAge(t.getNewValue()));
-    }
-
-    private void setSalaryColumnEditable() {
-        salaryColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        salaryColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<Substitute, Integer> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setAge(t.getNewValue()));
-    }
-
 
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
@@ -260,8 +195,8 @@ public class MatchSubstituteController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2,3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 

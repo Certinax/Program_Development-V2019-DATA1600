@@ -1,6 +1,7 @@
 package com.gui.scene;
 
 import com.gui.controllers.Controller;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -92,9 +93,13 @@ public enum SceneManager {
         initialized = true;
     }
 
-    public void createUndecoratedStageWithScene(Stage popUpStage, SceneName sceneName, double heightDivisor, double widthDivisor) throws NoPrimaryStageException {
+    public void createUndecoratedStageWithScene(Stage popUpStage, SceneName sceneName, double heightDivisor, double widthDivisor) throws NoPrimaryStageException, ExtraStageException {
         if (this.primaryStage == null) {
             throw new NoPrimaryStageException("No primary stage. Do not call this method before a Primary Stage has been defined");
+        }
+
+        if (this.currentPopUpStage != null) {
+            throw new ExtraStageException("You can only have one pop-up window at the time. \nPlease close the other pop-up window first");
         }
 
         Objects.requireNonNull(popUpStage, "The new stage can't be null, please provide a Stage object");
@@ -118,7 +123,6 @@ public enum SceneManager {
         popUpStage.initStyle(StageStyle.UNDECORATED);
         setCurrentPopUpStage(popUpStage);
         popUpStage.show();
-
     }
 
     public void setFullscreen() {
@@ -166,7 +170,7 @@ public enum SceneManager {
         }
     }
 
-    private void setCurrentPopUpStage(Stage popUpStage) {
+    public void setCurrentPopUpStage(Stage popUpStage) {
         this.currentPopUpStage = popUpStage;
     }
 

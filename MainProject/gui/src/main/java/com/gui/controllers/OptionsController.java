@@ -157,5 +157,6 @@ public class OptionsController implements Controller {
         activeController.refresh();
         optionsStage = sceneManager.getCurrentPopUpStage();
         optionsStage.close();
+        sceneManager.setCurrentPopUpStage(null);
     }
 }

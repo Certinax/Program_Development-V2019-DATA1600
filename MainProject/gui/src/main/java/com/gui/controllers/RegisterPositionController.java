@@ -1,9 +1,11 @@
 package com.gui.controllers;
 
+import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.customTextFields.IntField;
 import com.logic.utilities.NodeGenerator;
+import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -49,6 +51,8 @@ public class RegisterPositionController implements Controller {
 
     @FXML
     private AnchorPane parent;
+
+    ErrorBox error;
 
     /* ------------------------------------------ Register Method ------------------------------------------ */
 
@@ -130,8 +134,8 @@ public class RegisterPositionController implements Controller {
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2,3);
-        } catch (NoPrimaryStageException e) {
-            System.err.println(e.getMessage());
+        } catch (NoPrimaryStageException | ExtraStageException e) {
+            error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
 }
