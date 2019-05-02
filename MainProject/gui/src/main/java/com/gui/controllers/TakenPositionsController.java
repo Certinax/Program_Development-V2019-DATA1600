@@ -82,7 +82,6 @@ public class TakenPositionsController implements Controller {
     private void switchToCSV(ActionEvent event) {
         if (readFromCSV) {
             alert = new AlertBox("Already reading from CSV!", "File not changed");
-            alert.show();
         } else {
             readFromCSV = true;
             refresh();
@@ -93,7 +92,6 @@ public class TakenPositionsController implements Controller {
     private void switchToJOBJ(ActionEvent event) {
         if (!readFromCSV) {
             alert = new AlertBox("Already reading from JOBJ!", "File not changed");
-            alert.show();
         } else {
             readFromCSV = false;
             refresh();

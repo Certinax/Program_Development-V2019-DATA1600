@@ -43,7 +43,6 @@ public class OptionsController implements Controller {
             UserDefinedPaths.setSubstituteCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
             error = new ErrorBox(e.getMessage(), header);
-            error.show();
         }
     }
 
@@ -58,7 +57,6 @@ public class OptionsController implements Controller {
             UserDefinedPaths.setSubstituteJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
             error = new ErrorBox(e.getMessage(), header);
-            error.show();
         }
     }
 
@@ -73,7 +71,6 @@ public class OptionsController implements Controller {
             UserDefinedPaths.setEmployerCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
             error = new ErrorBox(e.getMessage(), header);
-            error.show();
         }
 
     }
@@ -89,7 +86,6 @@ public class OptionsController implements Controller {
             UserDefinedPaths.setEmployerJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
             error = new ErrorBox(e.getMessage(), header);
-            error.show();
         }
     }
 
@@ -104,7 +100,6 @@ public class OptionsController implements Controller {
             UserDefinedPaths.setAvailablePositionCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
             error = new ErrorBox(e.getMessage(), header);
-            error.show();
         }
     }
 
@@ -119,7 +114,6 @@ public class OptionsController implements Controller {
             UserDefinedPaths.setAvailablePositionJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
             error = new ErrorBox(e.getMessage(), header);
-            error.show();
         }
     }
 
@@ -134,7 +128,6 @@ public class OptionsController implements Controller {
             UserDefinedPaths.setActivePositionCSVPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
             error = new ErrorBox(e.getMessage(), header);
-            error.show();
         }
     }
 
@@ -149,14 +142,12 @@ public class OptionsController implements Controller {
             UserDefinedPaths.setActivePositionJOBJPath(selectedFile.toString());
         } catch (UnsupportedFileFormatException e) {
             error = new ErrorBox(e.getMessage(), header);
-            error.show();
         }
     }
 
     public void setDefaultPaths(ActionEvent event) {
         UserDefinedPaths.setDefaultPaths();
         AlertBox alert = new AlertBox("All info files have been set to their default values", "All filepaths set to default");
-        alert.show();
     }
 
     @Override

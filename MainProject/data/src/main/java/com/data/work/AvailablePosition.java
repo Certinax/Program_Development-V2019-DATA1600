@@ -36,7 +36,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
     private int salary; //Hourly salary
     private String contactInfo; //An email for contacting them
     private String description; //A description of the position
-    private ArrayList<String> applicants; //A list of applicants for the position (use employerId)
+    private ArrayList<String> applicants; //A list of applicants for the position (use substituteIDs)
 
     protected AvailablePosition() {} //Default constructor used by the CSV Reader to create objects
 

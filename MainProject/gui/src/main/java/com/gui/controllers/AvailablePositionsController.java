@@ -2,6 +2,7 @@ package com.gui.controllers;
 
 import com.data.work.AvailablePosition;
 import com.gui.alertBoxes.AlertBox;
+import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
@@ -41,12 +42,13 @@ public class AvailablePositionsController implements Controller {
     private TextField filterField;
 
     @FXML
-    private Button overwrite;
+    private Button matchSubstitute, save;
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private boolean readFromCSV = false;
     private String activeFile;
     private AlertBox alert;
+    private ErrorBox error;
 
     //TODO Ha en checkbox for Available og ikke, som filtrer på den boolske verdien
     //TODO Samkjør denne controlleren med oppsettet for Active File i Substitute Controller
@@ -78,6 +80,19 @@ public class AvailablePositionsController implements Controller {
 
     /* ------------------------------------------- Misc Methods -----------------------------------------------------*/
 
+    @FXML
+    private void matchSubstitute() {
+        if (tableView.getSelectionModel().getSelectedItem() == null) {
+            alert = new AlertBox("Please select an available position \nbefore trying to match with a substitute!", "No position selected");
+        } else {
+            try {
+                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.SUBSTITUTES, 1, 1);
+            } catch (NoPrimaryStageException e) {
+                error = new ErrorBox(e.getMessage(), "How did you even...?");
+            }
+        }
+    }
+
     private void readData(String activeFile) {
         try {
             data.addAll(ReaderThreadStarter.startReader(activeFile));
@@ -85,7 +100,6 @@ public class AvailablePositionsController implements Controller {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     private void save(ActionEvent event) {
@@ -101,7 +115,6 @@ public class AvailablePositionsController implements Controller {
     private void switchToCSV(ActionEvent event) {
         if (readFromCSV) {
             alert = new AlertBox("Already reading from CSV!", "File not changed");
-            alert.show();
         } else {
             readFromCSV = true;
             refresh();
@@ -112,7 +125,6 @@ public class AvailablePositionsController implements Controller {
     private void switchToJOBJ(ActionEvent event) {
         if (!readFromCSV) {
             alert = new AlertBox("Already reading from JOBJ!", "File not changed");
-            alert.show();
         } else {
             readFromCSV = false;
             refresh();
