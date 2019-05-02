@@ -8,6 +8,7 @@ import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.DataPasser;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
@@ -126,12 +127,10 @@ public class SubstitutesController implements Controller {
     }
 
     public void showInfo(ActionEvent event){
-        // TODO send to substituteInfo
-        //industryColumn.getTableView().getSelectionModel().getSelectedItem();
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             try {
                 sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.SUBSTITUTEINFO,1,1);
-                //TemoraryDataSaver.substitute = tableView.getSelectionModel().getSelectedItem();
+                DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
             } catch (NoPrimaryStageException | ExtraStageException e) {
                 error = new ErrorBox(e.getMessage(), "Can't open new window");
             }
