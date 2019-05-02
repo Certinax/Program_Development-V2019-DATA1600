@@ -64,14 +64,6 @@ public class RegisterSubstituteController implements Controller {
 
     @Override
     public void initialize() {
-        ObservableList<String> industries = FXCollections.observableArrayList();
-        industries.add("Bank");
-        industries.add("IT");
-
-        EnumSet<Industry> allIndustries = EnumSet.allOf(Industry.class);
-        //List<String> industryList = (List<String>)List.copyOf(allIndustries);
-
-
         ObservableList<String> oIndustryList = FXCollections.observableArrayList(Industry.industryList());
         industry.setItems(oIndustryList.sorted());
     }
