@@ -50,12 +50,12 @@ public class PositionInfoController implements Controller {
 
   @Override
   public void refresh() {
-
   }
 
   @Override
   public void exit() {
-
+    sceneManager.getCurrentPopUpStage().close();
+    sceneManager.setCurrentPopUpStage(null);
   }
 
 

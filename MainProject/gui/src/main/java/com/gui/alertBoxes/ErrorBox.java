@@ -11,13 +11,13 @@ import javafx.scene.control.Alert;
  * @since 01-05-2019
  */
 
-public class ErrorBox {
+public class ErrorBox extends Alert{
 
     public ErrorBox(String contentText, String header) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText(header);
-        alert.setContentText(contentText);
-        alert.setTitle("Error");
-        alert.show();
+        super(AlertType.ERROR);
+        this.setHeaderText(header);
+        this.setContentText(contentText);
+        this.setTitle("Error");
+        this.show();
     }
 }

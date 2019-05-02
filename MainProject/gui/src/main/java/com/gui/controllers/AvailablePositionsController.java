@@ -36,6 +36,7 @@ import java.util.concurrent.ExecutionException;
  * @author Candidate 730
  * @since 22-04-2019
  */
+
 public class AvailablePositionsController implements Controller {
 
     @FXML
@@ -144,9 +145,9 @@ public class AvailablePositionsController implements Controller {
     private void readData(String activeFile) {
         try {
             allData.addAll(ReaderThreadStarter.startReader(activeFile));
-            for (int i = 0; i < allData.size(); i++) {
-                if (allData.get(i).isAvailable()) {
-                    tableData.add(allData.get(i));
+            for (AvailablePosition anAllData : allData) {
+                if (anAllData.isAvailable()) {
+                    tableData.add(anAllData);
                 }
             }
 

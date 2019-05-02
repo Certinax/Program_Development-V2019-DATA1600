@@ -7,6 +7,7 @@ import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.DataPasser;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
@@ -70,9 +71,9 @@ public class TakenPositionsController implements Controller {
     private void readData(String activeFile) {
         try {
             ArrayList<AvailablePosition> tempList = ReaderThreadStarter.startReader(activeFile);
-            for (int i = 0; i < tempList.size(); i++) {
-                if (!tempList.get(i).isAvailable()) {
-                    data.add(tempList.get(i));
+            for (AvailablePosition aTempList : tempList) {
+                if (!aTempList.isAvailable()) {
+                    data.add(aTempList);
                 }
             }
         } catch (ExecutionException | InterruptedException e) {
@@ -105,6 +106,18 @@ public class TakenPositionsController implements Controller {
             activeFile = ActivePaths.getAvailablePositionCSVPath();
         } else {
             activeFile = ActivePaths.getAvailablePositionJOBJPath();
+        }
+    }
+
+    @FXML
+    private void showInfo(){
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            try {
+                DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
+                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.POSITIONINFO,1,1);
+            } catch (NoPrimaryStageException | ExtraStageException e) {
+                error = new ErrorBox(e.getMessage(), "Can't open new window");
+            }
         }
     }
 
