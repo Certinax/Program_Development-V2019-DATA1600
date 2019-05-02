@@ -1,7 +1,7 @@
 package com.gui.controllers;
 
 import com.data.clients.Substitute;
-import com.gui.alertBoxes.AlertBox;
+import com.gui.alertBoxes.InformationBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
@@ -46,7 +46,7 @@ public class SubstitutesController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private String activeFile;
-    private AlertBox alert;
+    private InformationBox alert;
     private ErrorBox error;
 
     @Override
@@ -104,7 +104,7 @@ public class SubstitutesController implements Controller {
 
     public void readFromCSV(ActionEvent event) {
         if (activeFile.equals(ActivePaths.getSubstituteCSVPath())) {
-            alert = new AlertBox("" + activeFile + " is already the active file", "Didn't change active file");
+            alert = new InformationBox("" + activeFile + " is already the active file", "Didn't change active file");
             return;
         }
         try {

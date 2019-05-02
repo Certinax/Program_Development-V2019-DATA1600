@@ -1,6 +1,6 @@
 package com.gui.controllers;
 
-import com.gui.alertBoxes.AlertBox;
+import com.gui.alertBoxes.InformationBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.logic.filePaths.UserDefinedPaths;
@@ -148,7 +148,7 @@ public class OptionsController implements Controller {
 
     public void setDefaultPaths(ActionEvent event) {
         UserDefinedPaths.setDefaultPaths();
-        AlertBox alert = new AlertBox("All info files have been set to their default values", "All filepaths set to default");
+        InformationBox alert = new InformationBox("All info files have been set to their default values", "All filepaths set to default");
     }
 
     @Override

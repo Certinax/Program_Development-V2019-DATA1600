@@ -1,7 +1,7 @@
 package com.gui.controllers;
 
 import com.data.work.AvailablePosition;
-import com.gui.alertBoxes.AlertBox;
+import com.gui.alertBoxes.InformationBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
@@ -28,14 +28,21 @@ import javafx.util.converter.IntegerStringConverter;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-//TODO Write JavaDocs!
+/**
+ * <h1>Available Positions Controller</h1>
+ *
+ * Controller class for controlling the available positions view.
+ *
+ * @author Candidate 730
+ * @since 22-04-2019
+ */
 public class AvailablePositionsController implements Controller {
 
     @FXML
     private TableView<AvailablePosition> tableView;
 
     @FXML
-    private ObservableList<AvailablePosition> tableData;
+    private ObservableList<AvailablePosition> tableData; //List containing all positions who are hava available = true
 
     @FXML
     private TableColumn<AvailablePosition, String> workplaceColumn;
@@ -46,18 +53,12 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private TextField filterField;
 
-    @FXML
-    private Button matchSubstitute, save;
-
-    private ArrayList<AvailablePosition> allData;
+    private ArrayList<AvailablePosition> allData; //List containing all positions
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private boolean readFromCSV = false;
-    private String activeFile;
-    private AlertBox alert;
+    private String activeFile; //The currently selected CSV or JOBJ file to read and write from.
+    private InformationBox alert;
     private ErrorBox error;
-
-    //TODO Ha en checkbox for Available og ikke, som filtrer på den boolske verdien
-    //TODO Samkjør denne controlleren med oppsettet for Active File i Substitute Controller
 
     /* --------------------------------- Required Controller Methods ------------------------------------*/
 
@@ -69,8 +70,6 @@ public class AvailablePositionsController implements Controller {
 
         readData(activeFile);
 
-        System.out.println("All data after initialization " + allData);
-        System.out.println("Table data after initialization " + tableData);
         setFiltering();
         setWorkplaceColumnEditable();
         setSalaryColumnEditable();
@@ -78,7 +77,7 @@ public class AvailablePositionsController implements Controller {
     }
 
     @Override
-    public void refresh() {
+    public void refresh() { //Method to
         setActiveFile();
         allData.clear();
         tableData.clear();
@@ -131,7 +130,7 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private void matchSubstitute() {
         if (tableView.getSelectionModel().getSelectedItem() == null) {
-            alert = new AlertBox("Please select an available position \nbefore trying to match with a substitute!", "No position selected");
+            alert = new InformationBox("Please select an available position \nbefore trying to match with a substitute!", "No position selected");
         } else {
             try {
                 DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
@@ -172,7 +171,7 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private void switchToCSV(ActionEvent event) {
         if (readFromCSV) {
-            alert = new AlertBox("Already reading from CSV!", "File not changed");
+            alert = new InformationBox("Already reading from CSV!", "File not changed");
         } else {
             readFromCSV = true;
             refresh();
@@ -182,7 +181,7 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private void switchToJOBJ(ActionEvent event) {
         if (!readFromCSV) {
-            alert = new AlertBox("Already reading from JOBJ!", "File not changed");
+            alert = new InformationBox("Already reading from JOBJ!", "File not changed");
         } else {
             readFromCSV = false;
             refresh();
