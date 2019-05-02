@@ -142,6 +142,17 @@ public class AvailablePositionsController implements Controller {
         }
     }
 
+    private void showInfo(){
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+            try {
+                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.POSITIONINFO,1,1);
+                DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
+            } catch (NoPrimaryStageException | ExtraStageException e) {
+                error = new ErrorBox(e.getMessage(), "Can't open new window");
+            }
+        }
+    }
+
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
 
 
