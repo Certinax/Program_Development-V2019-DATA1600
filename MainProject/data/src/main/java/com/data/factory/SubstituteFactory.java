@@ -106,7 +106,7 @@ public class SubstituteFactory {
                     this.workExperience = new ArrayList<>(workExperience);
                 }
             }
-            if(entry.getKey().getId().equals("workReferenceList")) {
+            if(entry.getKey().getId().equals("referenceList")) {
                 if(entry.getValue() instanceof ObservableList) {
                     Collection<String> workReference = (ObservableList<String>)entry.getValue();
                     this.workReference = new ArrayList<>(workReference);
