@@ -310,9 +310,17 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         return applicants;
     }
 
+
+    /* ------------------------ Tableview Specific Getters --------------------------------*/
+
+    /*
+    TableView uses reflection to read the getters in a class. These getters are specificly made to
+    return a correctly formated value to the TableView
+     */
+
+    //TODO Denne metoden kalles hver gang tableViewet oppdateres. Det er lite effektivt. Finne en bedre måte å gjøre det på.
     public String getEmployerName() {
         ArrayList<Employer> employers;
-
         try {
            employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerJOBJPath());
         } catch (InterruptedException | ExecutionException e) {
@@ -326,6 +334,22 @@ public class AvailablePosition implements Serializable, CSVWriteable {
             }
         }
         return "";
+    }
+
+    public String getSectorAsString() {
+        if (this.publicSector) {
+            return "Public";
+        } else {
+            return "Private";
+        }
+    }
+
+    public String getAvailableAsString() {
+        if (this.available) {
+            return "No";
+        } else {
+            return "Yes";
+        }
     }
 
     @Override

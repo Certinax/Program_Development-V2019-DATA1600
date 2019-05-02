@@ -1,6 +1,7 @@
 package com.gui.controllers;
 
 import com.data.work.AvailablePosition;
+import com.gui.alertBoxes.AlertBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
@@ -8,6 +9,8 @@ import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,8 +25,6 @@ import java.util.concurrent.ExecutionException;
 //TODO Write JavaDocs!
 public class AvailablePositionsController implements Controller {
 
-    private SceneManager sceneManager = SceneManager.INSTANCE;
-
     @FXML
     private TableView<AvailablePosition> tableView;
 
@@ -31,7 +32,8 @@ public class AvailablePositionsController implements Controller {
     private ObservableList<AvailablePosition> data;
 
     @FXML
-    private TableColumn<AvailablePosition, String> employerColumn, sectorColumn, availableColumn, workplaceColumn, positionTypeColumn, industryColumn;
+    private TableColumn<AvailablePosition, String> employerColumn, sectorColumn, availableColumn, workplaceColumn,
+            positionTypeColumn, industryColumn;
 
     @FXML
     private TableColumn<AvailablePosition, Integer> durationColumn, salaryColumn;
@@ -42,33 +44,49 @@ public class AvailablePositionsController implements Controller {
     @FXML
     private Button overwrite;
 
-    String activeFile;
-
+    private SceneManager sceneManager = SceneManager.INSTANCE;
+    private boolean readFromCSV = false;
+    private String activeFile;
+    private AlertBox alert;
 
     //TODO Ha en checkbox for Available og ikke, som filtrer på den boolske verdien
     //TODO Samkjør denne controlleren med oppsettet for Active File i Substitute Controller
 
+    /* --------------------------------- Required Controller Methods ------------------------------------*/
+
     @Override
     public void initialize() {
+        activeFile = ActivePaths.getAvailablePositionJOBJPath();
         data = tableView.getItems();
 
-        try {
-            data.addAll(ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionJOBJPath())); //TODO Should this read from CSV or JOBJ?
-        } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("THIS IS TRIGGERED!");
+        readData(activeFile);
+        setFiltering();
+        setWorkplaceColumnEditable();
+        setSalaryColumnEditable();
+        setDurationEditable();
     }
 
     @Override
     public void refresh() {
+        setActiveFile();
+        data.clear();
+        readData(activeFile);
     }
 
-    @FXML
-    private void delete() {
-        data.remove(tableView.getSelectionModel().getSelectedItem());
+    @Override
+    public void exit() {
     }
+
+    /* ------------------------------------------- Misc Methods -----------------------------------------------------*/
+
+    private void readData(String activeFile) {
+        try {
+            data.addAll(ReaderThreadStarter.startReader(activeFile));
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     private void save(ActionEvent event) {
@@ -80,14 +98,45 @@ public class AvailablePositionsController implements Controller {
         }
     }
 
+    @FXML
+    private void switchToCSV(ActionEvent event) {
+        if (readFromCSV) {
+            alert = new AlertBox("Already reading from CSV!", "File not changed");
+            alert.show();
+        } else {
+            readFromCSV = true;
+            refresh();
+        }
+    }
 
-    @Override
-    public void exit() {
+    @FXML
+    private void switchToJOBJ(ActionEvent event) {
+        if (!readFromCSV) {
+            alert = new AlertBox("Already reading from JOBJ!", "File not changed");
+            alert.show();
+        } else {
+            readFromCSV = false;
+            refresh();
+        }
+    }
+
+    private void setActiveFile() {
+        if (readFromCSV) {
+            activeFile = ActivePaths.getAvailablePositionCSVPath();
+        } else {
+            activeFile = ActivePaths.getAvailablePositionJOBJPath();
+        }
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
 
-  /*  private void setFiltering() {
+
+    @FXML
+    private void delete() {
+        data.remove(tableView.getSelectionModel().getSelectedItem());
+    }
+
+    private void setFiltering() {
         FilteredList<AvailablePosition> filteredData = new FilteredList<>(data, p -> true);
 
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -96,20 +145,24 @@ public class AvailablePositionsController implements Controller {
                     return true;
                 }
 
-                String lowerCaseFilter = newValue.toLowerCase();
-                int intFilter = -1; //set to a negative value as we don't allow negative values in the datafields. Won't give a match.
+                String stringFilter = newValue.toLowerCase();
+                int intFilter;
 
                 try {
-                    intFilter = Integer.parseInt(lowerCaseFilter);
+                    intFilter = Integer.parseInt(stringFilter);
                 } catch (NumberFormatException e) {
-                    //If the String can't  be parsed to an int, don't change the intFilter.
+                    intFilter = -1; //set to a negative value as we don't allow negative values in the datafields. Won't give a match.
                 } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
 
-                if (anAvailablePosition.getWorkplace().toLowerCase().contains(lowerCaseFilter)) {
+                if (anAvailablePosition.getSectorAsString().toLowerCase().contains(stringFilter)
+                        || anAvailablePosition.getAvailableAsString().toLowerCase().contains(stringFilter)
+                        || anAvailablePosition.getEmployerName().toLowerCase().contains(stringFilter)
+                        || anAvailablePosition.getWorkplace().toLowerCase().contains(stringFilter)
+                        || anAvailablePosition.getPositionType().toLowerCase().contains(stringFilter)
+                        || anAvailablePosition.getIndustry().toLowerCase().contains(stringFilter)
+                        || anAvailablePosition.getDuration() == intFilter){
                     return true;
-                } else if (anAvailablePosition.getEmployer() == intFilter) {
-                    return true;
-                } else return anAvailablePosition.getPositionType().toLowerCase().contains(lowerCaseFilter);
+                } else return anAvailablePosition.getSalary() == intFilter;
             });
         });
 
@@ -117,20 +170,24 @@ public class AvailablePositionsController implements Controller {
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());
 
         tableView.setItems(sortedData);
-    } */
-
-    private void setSalaryColumnEditable() { //TODO Kolonner som er definert med Integers kræsjer dersom man prøver å skrive inn andre tegn. Trenger korrekt feilhåndtering.
-        salaryColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        salaryColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<AvailablePosition, Integer> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setSalary(t.getNewValue()));
     }
 
-    private void setPositionColumnEditable() {
-        positionTypeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        positionTypeColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<AvailablePosition, String> t) -> t.getTableView().getItems().get(
-                        t.getTablePosition().getRow()).setPositionType(t.getNewValue()));
+    private void setSalaryColumnEditable() { //TODO Kolonner som er definert med Integers gir en NumberFormatException når annet skrives inn. Håndter dette!
+        salaryColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        salaryColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<AvailablePosition, Integer> t) -> t.getRowValue().setSalary(t.getNewValue()));
+    }
+
+    private void setDurationEditable() { //TODO Kolonner som er definert med Integers gir en NumberFormatException når annet skrives inn. Håndter dette!
+            durationColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+            durationColumn.setOnEditCommit(
+                    (TableColumn.CellEditEvent<AvailablePosition, Integer> t) -> t.getRowValue().setSalary(t.getNewValue()));
+    }
+
+    private void setWorkplaceColumnEditable() {
+        workplaceColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        workplaceColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<AvailablePosition, String> t) -> t.getRowValue().setPositionType(t.getNewValue()));
     }
 
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
@@ -181,11 +238,10 @@ public class AvailablePositionsController implements Controller {
         sceneManager.setWindowed();
     }
 
-
     @FXML
     private void openOptions(ActionEvent event) {
         try {
-            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS);
+            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS, 2, 3);
         } catch (NoPrimaryStageException e) {
             System.err.println(e.getMessage());
         }

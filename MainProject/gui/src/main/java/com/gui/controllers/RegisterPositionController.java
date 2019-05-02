@@ -24,40 +24,25 @@ public class RegisterPositionController implements Controller {
     private ToggleGroup selector;
 
     @FXML
-    private RadioButton publicSector;
-
-    @FXML
-    private RadioButton privateSector;
+    private RadioButton publicSector, privateSector;
 
     @FXML
     private IntField numberOfPositions;
 
     @FXML
-    private ComboBox employer;
+    private ComboBox employer, industry;
 
     @FXML
     private TextField position;
 
     @FXML
-    private IntField salary;
+    private IntField salary, duration;
 
     @FXML
-    private ComboBox industry;
+    private DatePicker workStart, workEnd;
 
     @FXML
-    private IntField duration;
-
-    @FXML
-    private DatePicker workStart;
-
-    @FXML
-    private DatePicker workEnd;
-
-    @FXML
-    private TextArea requiredQualifications;
-
-    @FXML
-    private TextArea positionDescription;
+    private TextArea requiredQualifications, positionDescription;
 
     @FXML
     private Button register;
@@ -144,7 +129,7 @@ public class RegisterPositionController implements Controller {
     @FXML
     private void openOptions(ActionEvent event) {
         try {
-            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS);
+            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2,3);
         } catch (NoPrimaryStageException e) {
             System.err.println(e.getMessage());
         }

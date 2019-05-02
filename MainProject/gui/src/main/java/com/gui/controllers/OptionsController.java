@@ -33,8 +33,8 @@ public class OptionsController implements Controller {
     }
 
     public void setSubstituteCSVPath(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(null);
 
+        selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile == null) {
             return;
         }
