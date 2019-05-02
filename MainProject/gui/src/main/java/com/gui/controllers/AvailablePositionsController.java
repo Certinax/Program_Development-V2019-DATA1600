@@ -86,7 +86,7 @@ public class AvailablePositionsController implements Controller {
             alert = new AlertBox("Please select an available position \nbefore trying to match with a substitute!", "No position selected");
         } else {
             try {
-                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.SUBSTITUTES, 1, 1);
+                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.MATCHSUBSTITUTE, 1, 1);
             } catch (NoPrimaryStageException e) {
                 error = new ErrorBox(e.getMessage(), "How did you even...?");
             }

@@ -48,6 +48,7 @@ public enum SceneManager {
     private void createSceneInfos() { //TODO MAKE SURE ALL VIEWS ARE REPRESENTED HERE
         SceneInfo availablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
         SceneInfo employerInfo = new SceneInfo("Employer Info", "/com/gui/fxml/EmployerInfo.fxml");
+        SceneInfo matchSubstitute = new SceneInfo("Match Substitute", "/com/gui/fxml/MatchSubstitute.fxml");
         SceneInfo options = new SceneInfo("Options", "/com/gui/fxml/Options.fxml");
         SceneInfo positionInfo = new SceneInfo("Position Info", "/com/gui/fxml/PositionInfo.fxml");
         SceneInfo registerEmployer = new SceneInfo("Register Employer", "/com/gui/fxml/RegisterEmployer.fxml");
@@ -59,6 +60,7 @@ public enum SceneManager {
 
         scenes.put(SceneName.AVAILABLEPOSITIONS, availablePositions);
         scenes.put(SceneName.EMPLOYERINFO, employerInfo);
+        scenes.put(SceneName.MATCHSUBSTITUTE, matchSubstitute);
         scenes.put(SceneName.OPTIONS, options);
         scenes.put(SceneName.POSITIONINFO, positionInfo);
         scenes.put(SceneName.REGISTEREMPLOYER, registerEmployer);
@@ -179,6 +181,5 @@ public enum SceneManager {
     public FXMLLoader getCurrentLoader() {
         return currentLoader;
     }
-
 
 }

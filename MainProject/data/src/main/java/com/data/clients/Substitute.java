@@ -3,8 +3,10 @@ package com.data.clients;
 import com.data.CSVWriteable;
 import com.data.handlers.NumberManager;
 
+import java.io.RandomAccessFile;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -194,6 +196,21 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
                 "getPhoneNumber", "getEmail", "getCity", "getAge", "getSalaryRequirement", "getIndustry",
                 "getEducation", "getWorkExperience",
                 "getWorkReference", "getSubstituteId", this.getClass().getName() };
+    }
+
+    /* ------------------------ Tableview Specific Getters --------------------------------*/
+
+    /*
+    TableView uses reflection to read the getters in a class. These getters are specificly made to
+    return a correctly formated value to the TableView
+     */
+
+    public String getOneEducation() {
+        if (this.education.size() >= 1) {
+            Random rng = new Random();
+            return education.get(rng.nextInt(education.size()));
+        }
+        return education.get(0);
     }
 
     @Override

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="499.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.MatchSubstituteController">
+    <children>
+        <!-- MAIN SECTION -->
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" style="-fx-font: NORMAL 20 Tahoma;" text="Substitutes" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
+        <TableView fx:id="tableView" editable="true" layoutX="20.0" layoutY="45.0" prefHeight="363.0" prefWidth="887.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
+            <columns>
+
+                <TableColumn fx:id="fnameColumn" prefWidth="80" text="First Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="firstname" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="lnameColumn" prefWidth="80" text="Last Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="lastname" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="addressColumn" prefWidth="120" text="Address">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="address" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="zipcodeColumn" prefWidth="80" text="Zip Code">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="zipcode" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="cityColumn" prefWidth="100.0" text="City">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="city" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="ageColumn" prefWidth="50" text="Age">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="age" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="salaryColumn" prefWidth="120" text="Salary Requirement">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="salaryRequirement" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="educationColumn" prefWidth="250" text="Education">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="oneEducation" />
+                    </cellValueFactory>
+                </TableColumn>
+
+                <TableColumn fx:id="mailColumn" prefWidth="120" text="Email">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="email" />
+                    </cellValueFactory>
+                </TableColumn>
+
+            </columns>
+            <items>
+                <FXCollections fx:factory="observableArrayList" />
+            </items>
+        </TableView>
+        <Button layoutX="20.0" layoutY="419.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Show info" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="20.0" />
+        <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
+        <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
+        <Button layoutX="380.0" layoutY="418.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" style="-fx-font-weight: Bold;" text="Match With Position" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="430" />
+        <Button layoutX="407.0" layoutY="451.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Cancel" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="460" />
+        <TextField fx:id="filterField" layoutX="20.0" layoutY="452.0" prefHeight="26.0" prefWidth="114.0" promptText="Filter..." AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="793.0" />
+
+    </children>
+</AnchorPane>
