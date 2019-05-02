@@ -17,6 +17,8 @@ public enum RequiredDataContainer {
                     entry("firstname", "String"),
                     entry("lastname", "String"),
                     entry("address", "String"),
+                    entry("phoneField", "int"),
+                    entry("emailField", "String"),
                     entry("age", "int"),
                     entry("zipcode", "int"),
                     entry("city", "String"),

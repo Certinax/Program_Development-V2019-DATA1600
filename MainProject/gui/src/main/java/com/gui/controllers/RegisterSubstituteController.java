@@ -180,6 +180,8 @@ public class RegisterSubstituteController implements Controller {
                         "Firstname" +
                         ", Lastname" +
                         ", Address" +
+                        ", Phonenumber" +
+                        ", Email" +
                         ", Date of birth" +
                         ", Zipcode" +
                         ", City" +

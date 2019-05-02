@@ -27,7 +27,7 @@ public class IdHandler {
 
     private boolean idChecker() {
         try {
-            sublist = ReaderThreadStarter.startReader("resources/substitutes.csv");
+            sublist = ReaderThreadStarter.startReader("");
             //this.substituteId = new AtomicInteger(sublist.get(sublist.size()-1).getSubstituteId());
             return true;
         } catch (ExecutionException | InterruptedException e) {

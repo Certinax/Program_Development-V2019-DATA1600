@@ -85,7 +85,9 @@ public class SubstituteFactory {
                 this.industry = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("phoneField")) {
-                this.phoneNumber = Integer.parseInt(entry.getValue().toString());
+                if(!entry.getValue().toString().isEmpty()) {
+                    this.phoneNumber = Integer.parseInt(entry.getValue().toString());
+                }
             }
             if(entry.getKey().getId().equals("emailField")) {
                 this.email = entry.getValue().toString();
