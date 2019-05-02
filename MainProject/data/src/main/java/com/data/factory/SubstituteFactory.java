@@ -56,6 +56,7 @@ public class SubstituteFactory {
     }
 
     private void generateRequiredFields() throws IllegalArgumentException{
+
         for (Map.Entry<Node, Object> entry : objectInfo.entrySet()) {
             if (entry.getKey().getId().equals("firstname")) {
                 this.firstname = entry.getValue().toString();
