@@ -175,13 +175,13 @@ public class RegisterSubstituteController implements Controller {
             }
         } else {
                 error += "You need to fill the required fields:\n " +
-                        "- Firstname" +
+                        "Firstname" +
                         ", Lastname" +
                         ", Address" +
                         ", Date of birth" +
                         ", Zipcode" +
                         ", City" +
-                        ", Industry -";
+                        ", Industry";
                 scrollPane.setVvalue(0);
                 errorMsg.setText(error);
                 errorMsg.setVisible(true);
