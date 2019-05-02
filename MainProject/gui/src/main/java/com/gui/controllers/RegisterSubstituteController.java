@@ -1,5 +1,6 @@
 package com.gui.controllers;
 
+import com.data.Industry;
 import com.data.objectCreation.SubstituteFactory;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
@@ -19,6 +20,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.util.EnumSet;
+import java.util.List;
 import java.util.Map;
 
 //TODO Write JavaDocs!
@@ -64,7 +67,13 @@ public class RegisterSubstituteController implements Controller {
         ObservableList<String> industries = FXCollections.observableArrayList();
         industries.add("Bank");
         industries.add("IT");
-        industry.setItems(industries);
+
+        EnumSet<Industry> allIndustries = EnumSet.allOf(Industry.class);
+        //List<String> industryList = (List<String>)List.copyOf(allIndustries);
+
+
+        ObservableList<String> oIndustryList = FXCollections.observableArrayList(Industry.industryList());
+        industry.setItems(oIndustryList.sorted());
     }
 
     @Override

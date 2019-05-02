@@ -10,6 +10,7 @@ module data {
     requires logic;
     requires javafx.graphics;
 
+    exports com.data;
     exports com.data.clients;
     exports com.data.work;
     exports com.data.objectCreation;
