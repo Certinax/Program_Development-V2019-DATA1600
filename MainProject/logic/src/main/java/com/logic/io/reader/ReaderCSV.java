@@ -191,7 +191,9 @@ public class ReaderCSV implements Reader {
     private <T> void setPrimitive(String info, T instance, Field field) throws IllegalAccessException, NumberFormatException{
         String type = field.getType().getName();
 
-        if(type.equals(boolean.class.getName())) {
+        if (type.equals(int.class.getName())) {
+            field.setInt(instance, Integer.parseInt(info));
+        } else if(type.equals(boolean.class.getName())) {
             field.setBoolean(instance, Boolean.parseBoolean(info));
         } else if (type.equals(short.class.getName())) {
             field.setShort(instance, Short.parseShort(info));
@@ -203,8 +205,6 @@ public class ReaderCSV implements Reader {
             field.setFloat(instance, Float.parseFloat(info));
         } else if (type.equals(double.class.getName())) {
             field.setDouble(instance, Double.parseDouble(info));
-        } else if (type.equals(int.class.getName())) {
-            field.setInt(instance, Integer.parseInt(info));
         } else if (type.equals(long.class.getName())) {
             field.setLong(instance, Long.parseLong(info));
         }
