@@ -23,7 +23,7 @@ public class EmployerFactory {
     // Optional fields with default values to avoid null
     private ArrayList<String> joblist = new ArrayList<>();
 
-    public EmployerFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException {
+    public EmployerFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException, InterruptedException {
         this.objectInfo = objectInfo;
         generateRequiredFields();
         generateOptionalFields();
@@ -38,12 +38,8 @@ public class EmployerFactory {
                 .build();
     }
 
-    private void saveEmployer(Employer employer) {
-        try {
-            WriterThreadStarter.startWriter(employer, "resources/empcreation.csv");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    private void saveEmployer(Employer employer) throws InterruptedException {
+        WriterThreadStarter.startWriter(employer, "resources/empcreation.csv");
     }
 
     private void generateRequiredFields() throws IllegalArgumentException {

@@ -137,7 +137,7 @@ public class RegisterSubstituteController implements Controller {
             // Opprett objekt
             try {
                 SubstituteFactory substitute = new SubstituteFactory(nodesAndValues);
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException | InterruptedException e) {
                 error += e.getMessage();
                 e.printStackTrace();
                 scrollPane.setVvalue(0);

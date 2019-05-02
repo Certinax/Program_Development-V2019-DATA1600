@@ -30,7 +30,7 @@ public class SubstituteFactory {
     private ArrayList<String> workReference = new ArrayList<>();
 
 
-    public SubstituteFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException{
+    public SubstituteFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException, InterruptedException {
         this.objectInfo = objectInfo;
         generateRequiredFields();
         generateOptionalFields();
@@ -47,12 +47,8 @@ public class SubstituteFactory {
                  .build();
     }
 
-    private void saveSubstitute(Substitute substitute) {
-        try {
-            WriterThreadStarter.startWriter(substitute, "resources/subcreation.csv");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    private void saveSubstitute(Substitute substitute) throws InterruptedException {
+        WriterThreadStarter.startWriter(substitute, "resources/subcreation.csv");
     }
 
     private void generateRequiredFields() throws IllegalArgumentException{
