@@ -34,7 +34,7 @@ public class RegisterSubstituteController implements Controller {
     Label firstnamelbl, lastnamelbl, birthdaylbl, streetnamelbl, zipcodelbl, citylbl, emaillbl, phonenumberlbl,
             schoolnamelbl, educationlbl, startedlbl, finnishedlbl, workplacelbl, positionlbl, fromlbl, tolbl,
             referenceNamelbl, referenceLastnamelbl, referencePhonelbl, referenceMaillbl, industrylbl, salarylbl,
-            eduErrorLbl, jobErrorLbl, errorMsg;
+            eduErrorLbl, jobErrorLbl, refErrorLbl, errorMsg;
 
     @FXML
     TextField address, emailField, educationField, workplaceField, positionField, referenceMailField;
@@ -64,21 +64,24 @@ public class RegisterSubstituteController implements Controller {
     ScrollPane scrollPane;
 
     @FXML
-    ListView<String> schoolList, workList;
+    ListView<String> schoolList, workList, referenceList;
 
     @FXML
     DatePicker startDate, endDate;
 
     private ObservableList<String> observableSchool;
     private ObservableList<String> observableJob;
+    private ObservableList<String> observableRef;
 
 
     @Override
     public void initialize() {
         observableSchool = FXCollections.observableArrayList();
         observableJob = FXCollections.observableArrayList();
+        observableRef = FXCollections.observableArrayList();
         schoolList.setItems(observableSchool);
         workList.setItems(observableJob);
+        referenceList.setItems(observableRef);
         ObservableList<String> oIndustryList = FXCollections.observableArrayList(Industry.industryList());
         industry.setItems(oIndustryList.sorted());
     }
@@ -241,6 +244,31 @@ public class RegisterSubstituteController implements Controller {
     public void removeWork(ActionEvent event){
         if (!observableJob.isEmpty()){
             observableJob.remove(observableJob.size()-1);
+        }
+    }
+
+    @FXML
+    public void addReference(ActionEvent event){
+        if(!(referenceNameField.getText().isEmpty() || referenceLastnameField.getText().isEmpty() || referencePhoneField.getText().isEmpty() || referenceMailField.getText().isEmpty())){
+            refErrorLbl.setVisible(false);
+            String theRef = "";
+
+            theRef += " " + referenceNameField.getText() + " ";
+            theRef += referenceLastnameField.getText() + " ";
+            theRef += referencePhoneField.getText() + " ";
+            theRef += referenceMailField.getText();
+
+
+            observableRef.add(theRef);
+        }else{
+            refErrorLbl.setVisible(true);
+        }
+    }
+
+    @FXML
+    public void removeReference(ActionEvent event){
+        if (!observableRef.isEmpty()){
+            observableRef.remove(observableRef.size()-1);
         }
     }
 
