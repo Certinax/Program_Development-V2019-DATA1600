@@ -30,13 +30,24 @@ public enum RequiredDataContainer {
         @Override
         public Map<String,String> requiredData() {
             Map<String, String> temp = Map.ofEntries(
-                    entry("Name", "String"),
-                    entry("Address", "String"),
-                    entry("Zipcode", "int"),
-                    entry("City", "String"),
-                    entry("Sector", "String"),
-                    entry("Industry", "ArrayList<String>"),
-                    entry("Joblist", "ArrayList<String>")
+                    entry("name", "String"),
+                    entry("address", "String"),
+                    entry("zipcode", "int"),
+                    entry("city", "String"),
+                    entry("privateSector", "boolean"),
+                    entry("industry", "String")
+            );
+            return temp;
+        }
+    },
+
+    AVAILABLE_POSITION() {
+        @Override
+        public Map<String, String> requiredData() {
+            Map<String, String> temp = Map.ofEntries(
+                    entry("employerId", "String"),
+                    entry("numberOfPositions", "int"),
+                    entry("publicSector", "boolean")
             );
             return temp;
         }
