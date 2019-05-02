@@ -90,14 +90,14 @@ public enum SceneManager {
         initialized = true;
     }
 
-    public void createUndecoratedStageWithScene(Stage popUpStage, SceneName sceneName) throws NoPrimaryStageException {
+    public void createUndecoratedStageWithScene(Stage popUpStage, SceneName sceneName, double heightDivisor, double widthDivisor) throws NoPrimaryStageException {
         if (this.primaryStage == null) {
             throw new NoPrimaryStageException("No primary stage. Do not call this method before a Primary Stage has been defined");
         }
 
         Objects.requireNonNull(popUpStage, "The new stage can't be null, please provide a Stage object");
-        popUpStage.setWidth(this.primaryStage.getWidth()/3);
-        popUpStage.setHeight(this.primaryStage.getHeight()/2);
+        popUpStage.setWidth(this.primaryStage.getWidth()/widthDivisor);
+        popUpStage.setHeight(this.primaryStage.getHeight()/heightDivisor);
         popUpStage.setMinHeight(333);
         popUpStage.setMinWidth(400);
 

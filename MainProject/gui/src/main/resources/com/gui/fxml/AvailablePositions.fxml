@@ -73,7 +73,7 @@
 
               <TableColumn fx:id="sectorColumn" prefWidth="60.0" text="Sector">
                   <cellValueFactory>
-                      <PropertyValueFactory property="publicSector" />
+                      <PropertyValueFactory property="sectorAsString" />
                   </cellValueFactory>
               </TableColumn>
 
@@ -97,7 +97,7 @@
 
               <TableColumn fx:id="availableColumn" prefWidth="90.0" text="Occupied">
                   <cellValueFactory>
-                      <PropertyValueFactory property="available" />
+                      <PropertyValueFactory property="availableAsString" />
                   </cellValueFactory>
               </TableColumn>
 
@@ -108,8 +108,8 @@
       </TableView>
 
       <Button layoutX="220.0" layoutY="417.0" mnemonicParsing="false" text="Show info" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
-      <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
-      <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" onAction="#switchToJOBJ" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
+      <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" onAction="#switchToCSV" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
       <Button layoutX="300.0" layoutY="457.0" mnemonicParsing="false" text="Add substitute" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="300.0" />
       <Button fx:id="overwrite" layoutX="220.0" layoutY="455.0" onAction="#save" text="Overwrite" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="220.0" />
       <TextField fx:id="filterField" layoutX="489.0" layoutY="455.0" promptText="Filter..." AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="80.0" />
