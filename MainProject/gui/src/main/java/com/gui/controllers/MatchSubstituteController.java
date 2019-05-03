@@ -5,13 +5,10 @@ import com.data.work.AvailablePosition;
 import com.gui.alertBoxes.InformationBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
-import com.gui.scene.SceneName;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.DataPasser;
 import com.logic.utilities.exceptions.AvailablePositionException;
-import com.logic.utilities.exceptions.ExtraStageException;
-import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -22,8 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 

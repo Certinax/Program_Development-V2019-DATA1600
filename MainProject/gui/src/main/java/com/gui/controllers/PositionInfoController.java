@@ -3,15 +3,10 @@ package com.gui.controllers;
 import com.data.work.AvailablePosition;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
-import com.gui.scene.SceneName;
 import com.logic.utilities.DataPasser;
-import com.logic.utilities.exceptions.ExtraStageException;
-import com.logic.utilities.exceptions.NoPrimaryStageException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 
 //TODO Write JavaDocs!
 public class PositionInfoController implements Controller {

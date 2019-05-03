@@ -5,7 +5,6 @@ import com.data.factory.EmployerFactory;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
-import com.logic.customTextFields.IntField;
 import com.logic.customTextFields.NameField;
 import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.ZipCodeField;
@@ -55,8 +54,9 @@ public class RegisterEmployerController implements Controller {
     ScrollPane scrollPane;
 
     ErrorBox error;
-
     ArrayList<Node> nodeList;
+
+    /* --------------------------------- Required Controller Methods ------------------------------------*/
 
     @Override
     public void initialize() {

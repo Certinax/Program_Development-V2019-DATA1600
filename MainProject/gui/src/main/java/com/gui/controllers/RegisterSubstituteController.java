@@ -79,6 +79,8 @@ public class RegisterSubstituteController implements Controller {
     private ObservableList<String> observableRef;
 
 
+    /* --------------------------------- Required Controller Methods ------------------------------------*/
+
     @Override
     public void initialize() {
         observableSchool = FXCollections.observableArrayList();
@@ -97,10 +99,6 @@ public class RegisterSubstituteController implements Controller {
 
     @Override
     public void updateDataFromDataPasser() {
-    }
-
-    private void clear() {
-        NodeHandler.clearNodes(NodeGenerator.generateNodes(infoAnchorPane));
     }
 
     @Override
@@ -154,6 +152,10 @@ public class RegisterSubstituteController implements Controller {
     }
 
     /* --------------------------------------- Other Methods --------------------------------------- */
+
+    private void clear() {
+        NodeHandler.clearNodes(NodeGenerator.generateNodes(infoAnchorPane));
+    }
 
     @FXML
     private void registerSubstitute(ActionEvent event) {

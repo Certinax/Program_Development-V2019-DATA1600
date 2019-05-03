@@ -19,7 +19,7 @@ public class EmployerInfoController implements Controller {
     private ErrorBox error;
 
     @FXML
-    Label name, address, zipcode, city, phoneNumber, email, sector, industry;
+    private Label name, address, zipcode, city, phoneNumber, email, sector, industry;
 
     @FXML
     private void setData(Employer employer){

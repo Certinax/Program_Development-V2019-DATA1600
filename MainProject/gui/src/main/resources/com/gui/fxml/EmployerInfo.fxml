@@ -10,8 +10,6 @@
 
 <AnchorPane prefHeight="402.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.EmployerInfoController">
    <children>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
-
       <!-- MAIN SECTION -->
       <Label alignment="CENTER" layoutX="100.0" layoutY="29.0" text="Employer" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0">
          <font>
