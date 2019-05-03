@@ -351,7 +351,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         }
 
         for (Substitute substitute : substitutes) {
-            sb.append(substitute.getFirstname()).append(" ").append(substitute.getLastname());
+            sb.append(substitute.getFirstname()).append(" ").append(substitute.getLastname()).append("\n");
         }
 
         return sb.toString();
