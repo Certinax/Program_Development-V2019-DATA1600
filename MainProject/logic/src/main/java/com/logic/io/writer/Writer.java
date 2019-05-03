@@ -17,10 +17,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public interface Writer {
 
-    void writeObject(Object obj, String path)
+    void writeObject(Object obj, String path, boolean append)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException;
 
-    <T> void writeObjects(ObservableList<T> list, String path)
+    <T> void writeObjects(ObservableList<T> list, String path, boolean append)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException;
 
 }

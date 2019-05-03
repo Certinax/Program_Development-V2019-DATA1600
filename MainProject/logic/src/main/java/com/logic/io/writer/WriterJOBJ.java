@@ -19,14 +19,14 @@ import java.util.ArrayList;
 
 public class WriterJOBJ implements Writer {
 
-    public void writeObject(Object obj, String path) throws IOException {
+    public void writeObject(Object obj, String path, boolean append) throws IOException {
         ObservableList<Object> object = FXCollections.observableArrayList();
         object.add(obj);
 
-        writeObjects(object, path);
+        writeObjects(object, path, append);
     }
 
-    public <T> void writeObjects(ObservableList<T> objectList, String path) throws IOException {
+    public <T> void writeObjects(ObservableList<T> objectList, String path, boolean append) throws IOException {
         ArrayList<T> serializeableList = new ArrayList<>(objectList);
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(path));
         out.writeObject(serializeableList);

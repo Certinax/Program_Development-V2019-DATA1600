@@ -25,23 +25,25 @@ public class WriterCSV implements Writer {
 
     private final static String DELIMITER = ";";
 
-    public void writeObject(Object obj, String path) throws IllegalAccessException,
+    public void writeObject(Object obj, String path, boolean append) throws IllegalAccessException,
             InvocationTargetException, ClassNotFoundException, IOException {
 
         ObservableList<Object> object = FXCollections.observableArrayList();
         object.add(obj);
 
-        writeObjects(object, path);
+        writeObjects(object, path, append);
     }
 
-    public <T> void writeObjects(ObservableList<T> objects, String path)
+    public <T> void writeObjects(ObservableList<T> objects, String path, boolean append)
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, IOException {
 
 
         FileWriter filewriter = null;
         File file = new File(path);
         ArrayList<String> infoToWrite = new ArrayList<>();
-        boolean header = true;
+        boolean header;
+
+        header = file.length() == 0 && !append;
 
         for (Object object : objects) {
             infoToWrite.add(generateCSVInfo(object, header));
@@ -51,7 +53,7 @@ public class WriterCSV implements Writer {
         }
 
         try {
-            filewriter = new FileWriter(file);
+            filewriter = new FileWriter(file, append);
             for (String anInfoToWrite : infoToWrite) {
                 filewriter.write(anInfoToWrite);
             }
