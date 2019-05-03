@@ -95,5 +95,7 @@ public class EmployerInfoController implements Controller {
 
     @Override
     public void exit() {
+        sceneManager.getCurrentPopUpStage().close();
+        sceneManager.setCurrentPopUpStage(null);
     }
 }

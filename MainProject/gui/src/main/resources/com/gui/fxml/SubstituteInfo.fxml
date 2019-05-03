@@ -100,19 +100,19 @@
                                     <Font name="System Bold" size="12.0" />
                                 </font>
                             </Label>
-                            <ListView fx:id="education" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                            <ListView fx:id="education" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                             <Label text="Work experience :" GridPane.rowIndex="2">
                                 <font>
                                     <Font name="System Bold" size="12.0" />
                                 </font>
                             </Label>
-                            <ListView fx:id="work" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                            <ListView fx:id="work" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
                             <Label text="References :" GridPane.rowIndex="4">
                                 <font>
                                     <Font name="System Bold" size="12.0" />
                                 </font>
                             </Label>
-                            <ListView fx:id="reference" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5" />
+                            <ListView fx:id="reference" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5" />
                         </children>
                     </GridPane>
                     <Label alignment="CENTER" layoutX="130.0" layoutY="618.0" text="Contact information" textAlignment="CENTER" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="618.0">
