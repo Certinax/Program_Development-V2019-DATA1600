@@ -45,6 +45,7 @@ public class SubstitutesController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private String activeFile;
+    private boolean readFromCSV = false;
     private InformationBox alert;
     private ErrorBox error;
 
@@ -109,22 +110,11 @@ public class SubstitutesController implements Controller {
     }
 
     public void readFromCSV(ActionEvent event) {
-        if (activeFile.equals(ActivePaths.getSubstituteCSVPath())) {
-            alert = new InformationBox("" + activeFile + " is already the active file", "Didn't change active file");
-            return;
-        }
-        try {
-            WriterThreadStarter.startWriter(data, activeFile);
-        } catch (InterruptedException e) {
-            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
-        }
-
-        activeFile = ActivePaths.getSubstituteCSVPath();
-
-        try {
-            data.addAll(ReaderThreadStarter.startReader(activeFile));
-        } catch (ExecutionException | InterruptedException e) {
-            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
+        if (readFromCSV) {
+            alert = new InformationBox("Already reading from CSV!", "File not changed");
+        } else {
+            readFromCSV = true;
+            refresh();
         }
     }
 
@@ -135,8 +125,8 @@ public class SubstitutesController implements Controller {
     public void showInfo(ActionEvent event){
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             try {
-                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.SUBSTITUTEINFO,1,1);
                 DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
+                sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.SUBSTITUTEINFO,1,1);
             } catch (NoPrimaryStageException | ExtraStageException e) {
                 error = new ErrorBox(e.getMessage(), "Can't open new window");
             }

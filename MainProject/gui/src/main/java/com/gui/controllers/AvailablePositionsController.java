@@ -1,6 +1,7 @@
 package com.gui.controllers;
 
 import com.data.work.AvailablePosition;
+import com.gui.alertBoxes.ConfirmationBox;
 import com.gui.alertBoxes.InformationBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
@@ -17,15 +18,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -60,6 +59,7 @@ public class AvailablePositionsController implements Controller {
     private String activeFile; //The currently selected CSV or JOBJ file to read and write from.
     private InformationBox alert;
     private ErrorBox error;
+    private ConfirmationBox confirm;
 
     /* --------------------------------- Required Controller Methods ------------------------------------*/
 
@@ -158,14 +158,18 @@ public class AvailablePositionsController implements Controller {
 
     @FXML
     private void save(ActionEvent event) {
-        ObservableList<AvailablePosition> toFile = FXCollections.observableArrayList();
-        toFile.addAll(allData);
-        try {
+        confirm = new ConfirmationBox("Sure you want to save all data to file?", "Save?");
+        Optional<ButtonType> result = confirm.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            ObservableList<AvailablePosition> toFile = FXCollections.observableArrayList();
+            toFile.addAll(allData);
+            try {
 
-            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
-            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
-        } catch (InterruptedException e) {
-            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
+                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
+            } catch (InterruptedException e) {
+                e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+            }
         }
     }
 
@@ -214,12 +218,26 @@ public class AvailablePositionsController implements Controller {
 
     @FXML
     private void delete() {
-        for (int i = 0; i < allData.size(); i++) {
-            if (allData.get(i).getAvailablePositionId().equals(tableView.getSelectionModel().getSelectedItem().getAvailablePositionId())) {
-                allData.remove(tableView.getSelectionModel().getSelectedItem());
+        confirm = new ConfirmationBox("Sure you want to delete this position?", "Delete?");
+        Optional<ButtonType> result = confirm.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            for (int i = 0; i < allData.size(); i++) {
+                if (allData.get(i).getAvailablePositionId().equals(tableView.getSelectionModel().getSelectedItem().getAvailablePositionId())) {
+                    allData.remove(tableView.getSelectionModel().getSelectedItem());
+                }
+            }
+            tableData.remove(tableView.getSelectionModel().getSelectedItem());
+
+            ObservableList<AvailablePosition> toFile = FXCollections.observableArrayList();
+            toFile.addAll(allData);
+            try {
+
+                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
+                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
+            } catch (InterruptedException e) {
+                e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
             }
         }
-        tableData.remove(tableView.getSelectionModel().getSelectedItem());
     }
 
     private void setFiltering() {
