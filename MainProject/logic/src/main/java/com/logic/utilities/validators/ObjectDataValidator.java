@@ -14,21 +14,16 @@ public class ObjectDataValidator {
 
         // requiredData = <variableName, type>
 
-        // TODO FJERN SYSTEM OUT PRINTLNS FØR LEVERING
-
         for(Map.Entry<String, String> entry : requiredData.entrySet()) {
             for (Map.Entry<Node, Object> item : nodeAndValues.entrySet()) {
                 if(entry.getKey().equals(item.getKey().getId())) {
                     if(item.getValue() == null || item.getValue().toString().equals("")) {
-                        System.out.println("Item name: " + item.getKey().getId() + " Object value: " + item.getValue());
                         fieldNotSet++;
                         break;
                     }
-                    System.out.println("Item name: " + item.getKey().getId() + " Object value: " + item.getValue());
                 }
             }
         }
-        System.out.println(fieldNotSet);
         return fieldNotSet == 0;
     }
 

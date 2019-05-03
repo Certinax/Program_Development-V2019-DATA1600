@@ -16,7 +16,7 @@ import java.util.concurrent.Callable;
  *
  * Class for using the CSV-reader in it's own thread with any object in an ObservableList
  * @param <T> generic representing whatever object you wish to read
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 23-04-2019
  */
 
@@ -47,7 +47,7 @@ public class ReaderThread<T> implements Callable<ArrayList<T>> {
     private ArrayList<T> readObjects() throws UnsupportedFileFormatException, IOException,
             ClassNotFoundException, CSVParseException, SerializationException {
         Reader reader;
-        String[] separator = path.split("\\."); //TODO Hva hvis filen heter f.eks fredrik.pedersen.txt?
+        String[] separator = path.split("\\.");
 
         switch (separator[separator.length - 1]) {
             case "jobj":

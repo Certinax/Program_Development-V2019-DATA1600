@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
  *
  * Class for handling the CSV writer's thread
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 19-04-2019
  */
 
