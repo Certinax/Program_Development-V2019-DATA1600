@@ -261,12 +261,6 @@ public class SubstitutesController implements Controller {
     private void goToAvailablePositions(ActionEvent event) {
         sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
     }
-    @FXML
-    private void goToEmployers(ActionEvent event) {
-        sceneManager.changeScene(SceneName.EMPLOYERS);
-    }
-
-
 
     @FXML
     private void openOptions(ActionEvent event) {

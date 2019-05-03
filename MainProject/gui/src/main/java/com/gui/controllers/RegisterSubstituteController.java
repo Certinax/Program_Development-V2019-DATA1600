@@ -129,11 +129,6 @@ public class RegisterSubstituteController implements Controller {
     }
 
     @FXML
-    private void goToEmployers(ActionEvent event) {
-        sceneManager.changeScene(SceneName.EMPLOYERS);
-    }
-
-    @FXML
     private void goToTakenPositions(ActionEvent event) {
         sceneManager.changeScene(SceneName.TAKENPOSITIONS);
     }
@@ -147,7 +142,6 @@ public class RegisterSubstituteController implements Controller {
     private void goToEmployers(ActionEvent event) {
         sceneManager.changeScene(SceneName.EMPLOYERS);
     }
-
 
     @FXML
     private void openOptions(ActionEvent event) {
@@ -222,7 +216,6 @@ public class RegisterSubstituteController implements Controller {
             observableSchool.remove(observableSchool.size()-1);
         }
     }
-
 
     @FXML
     public void addWork(ActionEvent event){
