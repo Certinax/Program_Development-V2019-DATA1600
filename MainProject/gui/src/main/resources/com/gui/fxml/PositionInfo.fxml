@@ -13,7 +13,7 @@
     <children>
 
         <!-- MAIN SECTION -->
-        <Label alignment="CENTER" layoutX="100.0" layoutY="29.0" text="Employer Info" textAlignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0">
+        <Label alignment="CENTER" layoutX="100.0" layoutY="29.0" text="Position Info" textAlignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
