@@ -49,20 +49,4 @@ public class ActivePaths {
             return DefaultFilePaths.AVAILABLEPOSITIONJOBJ.toString();
         }
     }
-
-    public static String getActivePositionCSVPath() {
-        if (UserDefinedPaths.getActivePositionCSVPath() != null) {
-            return  UserDefinedPaths.getActivePositionCSVPath();
-        } else {
-            return DefaultFilePaths.ACTIVEPOSITIONCSV.toString();
-        }
-    }
-
-    public static String getActivePositionJOBJPath() {
-        if (UserDefinedPaths.getActivePositionJOBJPath() != null) {
-            return  UserDefinedPaths.getActivePositionJOBJPath();
-        } else {
-            return DefaultFilePaths.ACTIVEPOSITIONJOBJ.toString();
-        }
-    }
 }
