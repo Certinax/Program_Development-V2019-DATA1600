@@ -2,6 +2,7 @@ package com.data.factory;
 
 import com.data.clients.Employer;
 import com.data.work.AvailablePosition;
+import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.AvailablePositionException;
@@ -11,6 +12,7 @@ import javafx.scene.Node;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * <h1>AvailablePosition Factory</h1>
@@ -66,6 +68,17 @@ public class AvailablePositionFactory {
     }
 
     private void saveAvailablePosition(AvailablePosition availablePosition) throws InterruptedException {
+        ArrayList<AvailablePosition> templist;
+        try {
+            templist = ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionJOBJPath());
+        } catch (ExecutionException e) {
+            templist = new ArrayList<>();
+            e.printStackTrace();
+        }
+
+        templist.add(availablePosition);
+
+
         WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionJOBJPath());
         WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionCSVPath());
     }
