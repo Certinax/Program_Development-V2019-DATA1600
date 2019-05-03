@@ -4,10 +4,8 @@ import com.logic.io.reader.Reader;
 import com.logic.io.reader.ReaderCSV;
 import com.logic.io.reader.ReaderJOBJ;
 import com.logic.utilities.exceptions.CSVParseException;
-import com.logic.utilities.exceptions.CannotReadException;
 import com.logic.utilities.exceptions.SerializationException;
 import com.logic.utilities.exceptions.UnsupportedFileFormatException;
-import javafx.scene.control.Alert;
 
 import java.io.IOException;
 import java.util.ArrayList;

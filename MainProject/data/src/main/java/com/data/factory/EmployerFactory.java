@@ -3,6 +3,7 @@ package com.data.factory;
 import com.data.clients.Employer;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.exceptions.NumberGenerationException;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
@@ -35,7 +36,7 @@ public class EmployerFactory {
     // Optional fields with default values to avoid null
     private ArrayList<String> joblist = new ArrayList<>();
 
-    public EmployerFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException, InterruptedException {
+    public EmployerFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException, InterruptedException, NumberGenerationException {
         this.objectInfo = objectInfo;
         generateRequiredFields();
         generateOptionalFields();
@@ -43,7 +44,7 @@ public class EmployerFactory {
         saveEmployer(employer);
     }
 
-    private void createEmployer() {
+    private void createEmployer() throws NumberGenerationException {
         this.employer = new Employer
                 .Builder(name, address, zipcode, city, phoneNumber, email, privateSector, industry)
                 .joblist(joblist)
@@ -51,8 +52,8 @@ public class EmployerFactory {
     }
 
     private void saveEmployer(Employer employer) throws InterruptedException {
-        WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerCSVPath());
-        WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerJOBJPath());
+        WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerCSVPath(), true);
+        WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerJOBJPath(), false);
     }
 
     private void generateRequiredFields() throws IllegalArgumentException {

@@ -26,15 +26,18 @@ public class WriterThread implements Runnable {
     private Object objectToWrite = null;
     private ObservableList data = null;
     private String path;
+    private boolean append;
 
-    protected WriterThread(Object objectToWrite, String path) { // contructor for writing only one object to file
+    protected WriterThread(Object objectToWrite, String path, boolean append) { // contructor for writing only one object to file
         this.objectToWrite = Objects.requireNonNull(objectToWrite);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
+        this.append = append;
     }
 
-    protected <T> WriterThread(ObservableList<T> data, String path) { // constructor for writing several objects to file
+    protected <T> WriterThread(ObservableList<T> data, String path, boolean append) { // constructor for writing several objects to file
         this.data = ListValidator.requireNonNullObservable(data);
         this.path = StringValidator.requireNonNullAndNotEmpty(path);
+        this.append = append;
     }
 
     @Override
@@ -67,9 +70,9 @@ public class WriterThread implements Runnable {
         }
 
         if (objectToWrite == null) {
-            writer.writeObjects(data, path);
+            writer.writeObjects(data, path, append);
         } else {
-            writer.writeObject(objectToWrite, path);
+            writer.writeObject(objectToWrite, path, append);
         }
 
     }

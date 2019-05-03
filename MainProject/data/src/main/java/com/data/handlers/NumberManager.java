@@ -21,9 +21,9 @@ import java.util.concurrent.ExecutionException;
 public enum NumberManager {
     INSTANCE;
 
-    private int substituteNumber = 0;
-    private int employerNumber = 0;
-    private int availablePositionNumber = 0;
+    private int substituteNumber = 1;
+    private int employerNumber = 1;
+    private int availablePositionNumber = 1;
 
     NumberManager() {
         try {
@@ -31,21 +31,18 @@ public enum NumberManager {
         } catch (NumberGenerationException e) {
             e.getMessage();
             e.printStackTrace();
-            substituteNumber = 1;
         }
         try {
             generateEmployerNumber();
         } catch (NumberGenerationException e) {
             e.getMessage();
             e.printStackTrace();
-            employerNumber = 1;
         }
         try {
             generateAvailablePositionNumber();
         } catch (NumberGenerationException e) {
             e.getMessage();
             e.printStackTrace();
-            availablePositionNumber = 1;
         }
     }
 
@@ -91,22 +88,22 @@ public enum NumberManager {
         }
     }
 
-    public int getSubstituteNumberAndIncrement() {
-        int current = substituteNumber;
+    public int getSubstituteNumberAndIncrement() throws NumberGenerationException {
+        generateSubstituteNumber();
         this.substituteNumber = substituteNumber + 1;
-        return current;
+        return substituteNumber;
     }
 
-    public int getEmployerNumberAndIncrement() {
-        int current = employerNumber;
+    public int getEmployerNumberAndIncrement() throws NumberGenerationException {
+        generateEmployerNumber();
         this.employerNumber = employerNumber + 1;
-        return current;
+        return employerNumber;
     }
 
-    public int getAvailablePositionNumberAndIncrement() {
-        int current = availablePositionNumber;
+    public int getAvailablePositionNumberAndIncrement() throws NumberGenerationException {
+        generateAvailablePositionNumber();
         this.availablePositionNumber = availablePositionNumber + 1;
-        return current;
+        return availablePositionNumber;
     }
 
 }

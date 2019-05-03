@@ -9,6 +9,7 @@ import java.util.Map;
 import com.data.clients.Substitute;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
+import com.logic.utilities.exceptions.NumberGenerationException;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
@@ -43,7 +44,8 @@ public class SubstituteFactory {
     private ArrayList<String> workReference = new ArrayList<>();
 
 
-    public SubstituteFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException, InterruptedException {
+    public SubstituteFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException,
+            InterruptedException, NumberGenerationException {
         this.objectInfo = objectInfo;
         generateRequiredFields();
         generateOptionalFields();
@@ -51,7 +53,7 @@ public class SubstituteFactory {
         saveSubstitute(substitute);
     }
 
-    private void createSubstitute() {
+    private void createSubstitute() throws NumberGenerationException {
          this.substitute = new Substitute.Builder(firstname, lastname, phoneNumber, email, address, age, zipcode, city, industry)
                  .salaryRequirement(salaryRequirement)
                  .education(education)
@@ -61,8 +63,8 @@ public class SubstituteFactory {
     }
 
     private void saveSubstitute(Substitute substitute) throws InterruptedException {
-        WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteJOBJPath());
-        WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteCSVPath());
+        WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteJOBJPath(), false);
+        WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteCSVPath(), true);
     }
 
     private void generateRequiredFields() throws IllegalArgumentException{

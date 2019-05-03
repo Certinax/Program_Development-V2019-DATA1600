@@ -2,6 +2,7 @@ package com.data.clients;
 
 import com.data.CSVWriteable;
 import com.data.handlers.NumberManager;
+import com.logic.utilities.exceptions.NumberGenerationException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class Employer extends Client implements Serializable, CSVWriteable {
 
         // Builder for required parameters
         public Builder(String name, String address, int zipcode, String city, int phoneNumber,
-                       String email, boolean privateSector, String industry) {
+                       String email, boolean privateSector, String industry) throws NumberGenerationException {
             super(address, zipcode, city, industry);
             this.name = name;
             this.privateSector = privateSector;

@@ -12,6 +12,7 @@ import com.logic.utilities.NodeGenerator;
 import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
+import com.logic.utilities.exceptions.NumberGenerationException;
 import com.logic.utilities.validators.ObjectDataValidator;
 import com.logic.utilities.validators.RequiredDataContainer;
 import javafx.collections.FXCollections;
@@ -150,7 +151,9 @@ public class RegisterEmployerController implements Controller {
                 errorMsg.setText(msg);
                 errorMsg.setVisible(true);
                 clear();
-            } catch (IllegalArgumentException | InterruptedException e) {
+            } catch (IllegalArgumentException
+                    | InterruptedException
+                    | NumberGenerationException e) {
                 msg += e.getMessage();
                 scrollPane.setVvalue(0);
                 errorMsg.setTextFill(Color.RED);

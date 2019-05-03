@@ -88,8 +88,8 @@ public class EmployersController implements Controller {
         ObservableList<Employer> toFile = FXCollections.observableArrayList();
         toFile.addAll(tableData);
         try {
-            WriterThreadStarter.startWriter(toFile, ActivePaths.getEmployerJOBJPath());
-            WriterThreadStarter.startWriter(toFile, ActivePaths.getEmployerCSVPath());
+            WriterThreadStarter.startWriter(toFile, ActivePaths.getEmployerJOBJPath(), false);
+            WriterThreadStarter.startWriter(toFile, ActivePaths.getEmployerCSVPath(), false);
         } catch (InterruptedException e) {
             error = new ErrorBox("The program can't write the data to a file", "Can't save");
         }
@@ -115,8 +115,8 @@ public class EmployersController implements Controller {
         Optional<ButtonType> result = confirm.showAndWait();
         if (result.get() == ButtonType.OK) {
             try {
-                WriterThreadStarter.startWriter(tableData, ActivePaths.getAvailablePositionJOBJPath());
-                WriterThreadStarter.startWriter(tableData, ActivePaths.getAvailablePositionCSVPath());
+                WriterThreadStarter.startWriter(tableData, ActivePaths.getAvailablePositionJOBJPath(), false);
+                WriterThreadStarter.startWriter(tableData, ActivePaths.getAvailablePositionCSVPath(), false);
             } catch (InterruptedException e) {
                 error = new ErrorBox("The program can't write the data to a file", "Can't save");
             }
@@ -174,8 +174,8 @@ public class EmployersController implements Controller {
             tableData.remove(tableView.getSelectionModel().getSelectedItem());
 
             try {
-                WriterThreadStarter.startWriter(tableData, ActivePaths.getEmployerCSVPath());
-                WriterThreadStarter.startWriter(tableData, ActivePaths.getEmployerJOBJPath());
+                WriterThreadStarter.startWriter(tableData, ActivePaths.getEmployerCSVPath(), false);
+                WriterThreadStarter.startWriter(tableData, ActivePaths.getEmployerJOBJPath(), false);
             } catch (InterruptedException e) {
                 error = new ErrorBox("The program can't write the data to a file", "Can't save");
             }

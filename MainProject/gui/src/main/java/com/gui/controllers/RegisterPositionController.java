@@ -14,6 +14,7 @@ import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.AvailablePositionException;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
+import com.logic.utilities.exceptions.NumberGenerationException;
 import com.logic.utilities.validators.ObjectDataValidator;
 import com.logic.utilities.validators.RequiredDataContainer;
 import javafx.collections.FXCollections;
@@ -144,7 +145,10 @@ public class RegisterPositionController implements Controller {
                 errorMsg.setText(msg);
                 errorMsg.setVisible(true);
                 clear();
-            } catch (IllegalArgumentException | InterruptedException | AvailablePositionException e) {
+            } catch (IllegalArgumentException
+                    | InterruptedException
+                    | AvailablePositionException
+                    | NumberGenerationException e) {
                 msg += e.getMessage();
                 scrollPane.setVvalue(0);
                 errorMsg.setTextFill(Color.RED);

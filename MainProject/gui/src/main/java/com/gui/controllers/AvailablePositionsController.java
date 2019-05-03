@@ -90,8 +90,8 @@ public class AvailablePositionsController implements Controller {
         ObservableList<AvailablePosition> toFile = FXCollections.observableArrayList();
         toFile.addAll(allData);
         try {
-            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
-            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
+            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath(), false);
+            WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath(), false);
         } catch (InterruptedException e) {
             error = new ErrorBox("The program was interrupted while saving data!", "Could not write to file");
         }
@@ -165,8 +165,8 @@ public class AvailablePositionsController implements Controller {
             toFile.addAll(allData);
             try {
 
-                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
-                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
+                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath(), false);
+                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath(), false);
             } catch (InterruptedException e) {
                 error = new ErrorBox("The program was interrupted while saving data!", "Could not write to file");
             }
@@ -232,8 +232,8 @@ public class AvailablePositionsController implements Controller {
             toFile.addAll(allData);
             try {
 
-                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
-                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
+                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath(),false);
+                WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath(), false);
             } catch (InterruptedException e) {
                 error = new ErrorBox("The program was interrupted while saving data!", "Could not write to file");
             }

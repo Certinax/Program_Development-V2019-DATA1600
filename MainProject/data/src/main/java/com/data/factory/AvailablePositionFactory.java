@@ -5,6 +5,7 @@ import com.data.work.AvailablePosition;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.AvailablePositionException;
+import com.logic.utilities.exceptions.NumberGenerationException;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
@@ -43,7 +44,8 @@ public class AvailablePositionFactory {
     private String description = "";
     private ArrayList<String> applicants = new ArrayList<>();
 
-    public AvailablePositionFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException, AvailablePositionException, InterruptedException {
+    public AvailablePositionFactory(Map<Node, Object> objectInfo) throws IllegalArgumentException,
+            AvailablePositionException, InterruptedException, NumberGenerationException {
         this.objectInfo = objectInfo;
         generateRequiredFields();
         generateOptionalFields();
@@ -51,7 +53,7 @@ public class AvailablePositionFactory {
         saveAvailablePosition(availablePosition);
     }
 
-    private void createAvailablePosition() throws AvailablePositionException {
+    private void createAvailablePosition() throws AvailablePositionException, NumberGenerationException {
         this.availablePosition = new AvailablePosition.Builder(employerId, publicSector, numberOfPositions, industry, positionType)
                 .workplace(workplace)
                 .duration(duration)
@@ -66,8 +68,8 @@ public class AvailablePositionFactory {
     }
 
     private void saveAvailablePosition(AvailablePosition availablePosition) throws InterruptedException {
-        WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionJOBJPath());
-        WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionCSVPath());
+        WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionJOBJPath(), false);
+        WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionCSVPath(), true);
     }
 
     private void generateRequiredFields() throws IllegalArgumentException {

@@ -7,6 +7,7 @@ import com.data.handlers.NumberManager;
 import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.AvailablePositionException;
+import com.logic.utilities.exceptions.NumberGenerationException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -97,7 +98,8 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         private ArrayList<String> applicants = new ArrayList<>();
 
         //Builder for required parameters
-        public Builder(String employerId, boolean publicSector, int numberOfPositions, String industry, String positionType) {
+        public Builder(String employerId, boolean publicSector, int numberOfPositions, String industry,
+                       String positionType) throws NumberGenerationException {
 
             this.availablePositionNumber = NumberManager.INSTANCE.getAvailablePositionNumberAndIncrement();
             UUID uuid = UUID.randomUUID();

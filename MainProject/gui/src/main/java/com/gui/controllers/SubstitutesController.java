@@ -115,8 +115,8 @@ public class SubstitutesController implements Controller {
 
             try {
 
-                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
-                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
+                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath(), false);
+                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath(), false);
             } catch (InterruptedException e) {
                 error = new ErrorBox("The program can't read from file", "Can't read document");
             }
@@ -129,8 +129,8 @@ public class SubstitutesController implements Controller {
         Optional<ButtonType> result = confirm.showAndWait();
         if (result.get() == ButtonType.OK) {
             try {
-                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
-                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
+                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath(), false);
+                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath(), false);
             } catch (InterruptedException e) {
                 error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
             }

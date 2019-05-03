@@ -41,9 +41,15 @@ public class WriterCSV implements Writer {
         FileWriter filewriter = null;
         File file = new File(path);
         ArrayList<String> infoToWrite = new ArrayList<>();
-        boolean header;
+        boolean header = true;
 
-        header = file.length() == 0 && !append;
+        System.out.println("APPEND INN ER : " + append);
+        //append = false;
+
+        if(append && file.length() > 0) {
+            header = false;
+        }
+        //header = file.length() == 0 && !append;
 
         for (Object object : objects) {
             infoToWrite.add(generateCSVInfo(object, header));

@@ -2,6 +2,7 @@ package com.data.clients;
 
 import com.data.CSVWriteable;
 import com.data.handlers.NumberManager;
+import com.logic.utilities.exceptions.NumberGenerationException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -68,7 +69,7 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
 
         // Builder for required parameters
         public Builder(String firstname, String lastname, int phoneNumber, String email, String address, int age, int zipcode, String city,
-                       String industry) {
+                       String industry) throws NumberGenerationException {
             super(address, zipcode, city, industry);
             this.firstname = firstname;
             this.lastname = lastname;
