@@ -15,40 +15,50 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.AvailablePositionsController">
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.AvailablePositionsController">
   <children>
 
       <!-- MENU -->
-      <Pane maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ddd;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane maxWidth="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="200.0" styleClass="side-menu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Label alignment="CENTER" layoutX="85.0" layoutY="27.0" maxWidth="200.0" minWidth="200.0" prefHeight="17.0" prefWidth="200.0" text="MENU" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0">
           <font>
-              <Font size="15.0" />
+              <Font name="Arial" size="23.0" />
           </font>
       </Label>
-      <GridPane alignment="CENTER" layoutX="63.0" layoutY="78.0" maxWidth="200.0" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="221.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0">
+      <GridPane alignment="CENTER" layoutX="63.0" layoutY="78.0" maxWidth="200.0" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="339.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0">
           <columnConstraints>
               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           </columnConstraints>
           <children>
-              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToAvailablePositions" prefWidth="160.0" text="Available Positions" textAlignment="CENTER" />
-              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToTakenPositions" prefWidth="160.0" text="Taken Positions" GridPane.rowIndex="1" />
-              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToSubstitutes" prefWidth="160.0" text="Substitutes" GridPane.rowIndex="2" />
-              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToEmployers" prefWidth="160.0" text="Employers" GridPane.rowIndex="3" />
-              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterSubstitute" prefWidth="160.0" text="Register Substitute" GridPane.rowIndex="4" />
-              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="5" />
-              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="6" />
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToAvailablePositions" prefWidth="160.0" styleClass="btn-style2" text="Available Positions" textAlignment="CENTER" />
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToTakenPositions" prefWidth="160.0" styleClass="btn-style2" text="Taken Positions" GridPane.rowIndex="1" />
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToSubstitutes" prefWidth="160.0" styleClass="btn-style2" text="Substitutes" GridPane.rowIndex="2" />
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToEmployers" prefWidth="160.0" styleClass="btn-style2" text="Employers" GridPane.rowIndex="3" />
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterSubstitute" prefWidth="160.0" styleClass="btn-style2" text="Register Substitute" GridPane.rowIndex="6" />
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" styleClass="btn-style2" text="Register Employer" GridPane.rowIndex="7" />
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" styleClass="btn-style2" text="Register Position" GridPane.rowIndex="8" />
+            <Label text="REGISTERING" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Label>
           </children>
           <rowConstraints>
-              <RowConstraints prefHeight="30.0" />
-              <RowConstraints prefHeight="30.0" />
-              <RowConstraints prefHeight="30.0" />
-              <RowConstraints prefHeight="30.0" />
-              <RowConstraints prefHeight="30.0" />
-              <RowConstraints prefHeight="30.0" />
-              <RowConstraints prefHeight="30.0" />
+              <RowConstraints prefHeight="50.0" />
+              <RowConstraints prefHeight="50.0" />
+              <RowConstraints prefHeight="50.0" />
+              <RowConstraints prefHeight="50.0" />
+              <RowConstraints prefHeight="20.0" />
+              <RowConstraints prefHeight="50.0" />
+              <RowConstraints prefHeight="50.0" />
+            <RowConstraints prefHeight="50.0" />
+            <RowConstraints minHeight="10.0" prefHeight="50.0" />
           </rowConstraints>
       </GridPane>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" styleClass="btn-style1" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font></Button>
 
       <!-- MAIN SECTION -->
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" style="-fx-font: NORMAL 20 Tahoma;" text="Available Positions" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
@@ -103,17 +113,17 @@
           </items>
       </TableView>
 
-      <Button fx:id="showInfo" layoutX="220.0" layoutY="417.0" mnemonicParsing="false" text="Show info" onAction="#showInfo" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
-      <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" onAction="#switchToJOBJ" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
-      <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" onAction="#switchToCSV" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
-      <Button fx:id="matchSubstitute" layoutX="300.0" layoutY="457.0" mnemonicParsing="false" text="Match substitute" onAction="#matchSubstitute" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="300.0" />
-      <Button fx:id="save" layoutX="220.0" layoutY="455.0" onAction="#save" text="Save" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="220.0" />
+      <Button id="button" fx:id="showInfo" layoutX="220.0" layoutY="417.0" mnemonicParsing="false" onAction="#showInfo" text="Show info" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
+      <Button id="button" layoutX="711.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToJOBJ" text="Read from jobj" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
+      <Button id="button" layoutX="856.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToCSV" text="Read from csv" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
+      <Button id="button" fx:id="matchSubstitute" layoutX="300.0" layoutY="457.0" mnemonicParsing="false" onAction="#matchSubstitute" text="Match substitute" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="300.0" />
+      <Button id="button" fx:id="save" layoutX="220.0" layoutY="455.0" onAction="#save" text="Save" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="220.0" />
       <TextField fx:id="filterField" layoutX="489.0" layoutY="455.0" promptText="Filter..." AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="80.0" />
-      <Button layoutX="840.0" layoutY="455.0" onAction="#delete" text="Delete" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="20.0" />
+      <Button id="button" layoutX="840.0" layoutY="455.0" onAction="#delete" text="Delete" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="20.0" />
 
   </children>
 
-  <stylesheets>
-    <URL value="@../css/WelcomeScreen.css" />
-  </stylesheets>
+    <stylesheets>
+        <URL value="@../css/WelcomeScreen.css" />
+    </stylesheets>
 </AnchorPane>

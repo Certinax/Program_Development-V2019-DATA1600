@@ -1,3 +1,45 @@
 #userCreation {
     textFill: 'blue';
 }
+
+
+.button {
+    textFill: 'blue';
+}
+
+.side-menu {
+    -fx-font-size: 20px;
+    -fx-background-color: #C0C5C1;
+    -fx-label-font-size: 30px;
+}
+
+.btn-style1 {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-underline: true;
+    -fx-width: 150px;
+    -fx-float: left;
+    -fx-font-family: Arial Black;
+    -fx-font-size: 18px;
+}
+
+.btn-style2 {
+    -fx-font-family: Arial;
+    -fx-color: #7D8491;
+    -fx-text-fill: black;
+    -fx-background-color: #ddd;
+    -fx-margin-top: 40px;
+    -fx-text-alignment: left;
+    -fx-pref-width: 180px;
+    -fx-border-insets: 50px;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 10,0,0,1 );
+    -fx-cursor: hand;
+}
+
+.btn-style2:hover {
+    -fx-underline: true;
+    -fx-background-color: #bababa;
+
+}
