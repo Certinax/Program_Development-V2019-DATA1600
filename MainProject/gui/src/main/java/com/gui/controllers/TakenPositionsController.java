@@ -161,11 +161,6 @@ public class TakenPositionsController implements Controller {
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
     @FXML
-    private void goToPositionInfo(ActionEvent event) {
-        sceneManager.changeScene(SceneName.POSITIONINFO);
-    }
-
-    @FXML
     private void goToRegisterEmployer(ActionEvent event) {
         sceneManager.changeScene(SceneName.REGISTEREMPLOYER);
     }
