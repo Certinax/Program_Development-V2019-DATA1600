@@ -3,6 +3,7 @@ package com.data.factory;
 import com.data.clients.Employer;
 import com.data.work.AvailablePosition;
 import com.logic.concurrency.WriterThreadStarter;
+import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.AvailablePositionException;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -11,7 +12,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-//TODO JavaDocs
+/**
+ * <h1>AvailablePosition Factory</h1>
+ *
+ * This is a factory-class that is used for creating objects from a bigger chunk of
+ * dataset (typically a registration form) of type AvailablePosition and store it to file.
+ *
+ * @author Candidate 511
+ * @since 23-04-2019
+ */
 public class AvailablePositionFactory {
 
     Map<Node, Object> objectInfo;
@@ -57,8 +66,8 @@ public class AvailablePositionFactory {
     }
 
     private void saveAvailablePosition(AvailablePosition availablePosition) throws InterruptedException {
-        // TODO FIKS FREDRIK PATHS HER FØR INNLEVERING
-        WriterThreadStarter.startWriter(availablePosition, "resources/tempPoscreation.csv");
+        WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionJOBJPath());
+        WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionCSVPath());
     }
 
     private void generateRequiredFields() throws IllegalArgumentException {

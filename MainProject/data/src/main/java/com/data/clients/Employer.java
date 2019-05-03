@@ -27,8 +27,7 @@ public class Employer extends Client implements Serializable, CSVWriteable {
     private String email;
     private ArrayList<String> joblist;
 
-    private Employer() {
-    } // Default constructor used by the CSV Reader to create objects
+    private Employer() {} // Default constructor used by the CSV Reader to create objects
 
     private Employer(Builder builder) {
         super(builder);
@@ -42,6 +41,7 @@ public class Employer extends Client implements Serializable, CSVWriteable {
     }
 
     public static class Builder extends Client.Builder<Builder> {
+
         // Required parameters
         private final String employerId;
         private final int employerNumber;

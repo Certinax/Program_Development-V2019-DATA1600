@@ -3,7 +3,6 @@ package com.data.clients;
 import com.data.CSVWriteable;
 import com.data.handlers.NumberManager;
 
-import java.io.RandomAccessFile;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -48,10 +47,10 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
         email = builder.email;
     }
 
-    private Substitute() {
-    } // Default constructor used by the CSV Reader to create objects
+    private Substitute() {} // Default constructor used by the CSV Reader to create objects
 
     public static class Builder extends Client.Builder<Builder> {
+
         // Required parameters
         private final int substituteNumber;
         private final String substituteId;
