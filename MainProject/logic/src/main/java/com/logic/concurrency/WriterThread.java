@@ -42,8 +42,6 @@ public class WriterThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Writing to file with thread " + Thread.currentThread().getId());
-
         try {
             writeObjects();
         } catch (UnsupportedFileFormatException | IllegalAccessException | InvocationTargetException | ClassNotFoundException | IOException e) { // Exceptions thrown to run must be handled here

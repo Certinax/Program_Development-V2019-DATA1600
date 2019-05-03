@@ -131,7 +131,6 @@ public class AvailablePositionFactory {
                 this.startingTime = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("endingTime")) {
-                System.out.println("ENDINGTIME" + entry.getValue().toString());
                 this.endingTime = entry.getValue().toString();
             }
             if(entry.getKey().getId().equals("requiredQualifications")) {

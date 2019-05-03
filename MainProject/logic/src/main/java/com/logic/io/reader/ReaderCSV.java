@@ -113,7 +113,9 @@ public class ReaderCSV implements Reader {
 
             return objectList;
 
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException  e) {
+        } catch (InstantiationException
+                | IllegalAccessException
+                | InvocationTargetException  e) {
             throw new SerializationException();
         }
     }

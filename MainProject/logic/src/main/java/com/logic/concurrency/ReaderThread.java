@@ -30,8 +30,6 @@ public class ReaderThread<T> implements Callable<ArrayList<T>> {
 
     @Override
     public ArrayList<T> call() {
-        System.out.println("Reading from file with thread " + Thread.currentThread().getId());
-
         try {
             return readObjects();
         } catch (UnsupportedFileFormatException

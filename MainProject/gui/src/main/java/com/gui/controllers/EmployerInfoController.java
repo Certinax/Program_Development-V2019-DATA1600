@@ -78,7 +78,6 @@ public class EmployerInfoController implements Controller {
     @Override
     public void initialize() {
       setData((Employer) DataPasser.getData());
-        System.out.println(DataPasser.getData());
     }
 
     @Override

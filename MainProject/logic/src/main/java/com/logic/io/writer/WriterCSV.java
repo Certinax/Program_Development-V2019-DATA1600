@@ -47,13 +47,9 @@ public class WriterCSV implements Writer {
         ArrayList<String> infoToWrite = new ArrayList<>();
         boolean header = true;
 
-        System.out.println("APPEND INN ER : " + append);
-        //append = false;
-
         if(append && file.length() > 0) {
             header = false;
         }
-        //header = file.length() == 0 && !append;
 
         for (Object object : objects) {
             infoToWrite.add(generateCSVInfo(object, header));

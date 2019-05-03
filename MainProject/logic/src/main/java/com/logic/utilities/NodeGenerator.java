@@ -62,7 +62,7 @@ public class NodeGenerator {
 
     private static <T extends Pane> ArrayList<Node> generateNodes(T parent, ArrayList<Node> nodeList) {
         for (Node node : parent.getChildren()) {
-            // Nodes - You can add more.
+
             if (node instanceof TextField) {
                 nodeList.add(node);
             }
