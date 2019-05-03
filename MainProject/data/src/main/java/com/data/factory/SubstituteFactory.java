@@ -61,8 +61,8 @@ public class SubstituteFactory {
     }
 
     private void saveSubstitute(Substitute substitute) throws InterruptedException {
-        WriterThreadStarter.startWriter(substitute, ActivePaths.getAvailablePositionJOBJPath());
-        WriterThreadStarter.startWriter(substitute, ActivePaths.getAvailablePositionCSVPath());
+        WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteJOBJPath());
+        WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteCSVPath());
     }
 
     private void generateRequiredFields() throws IllegalArgumentException{
