@@ -27,7 +27,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class AvailablePositionFactory {
 
-    Map<Node, Object> objectInfo;
+    private Map<Node, Object> objectInfo;
     private AvailablePosition availablePosition;
 
     private String employerId;
@@ -80,7 +80,12 @@ public class AvailablePositionFactory {
 
         templist.add(availablePosition);
 
-        WriterThreadStarter.startWriter(templist, ActivePaths.getAvailablePositionJOBJPath(), false);
+        if (!templist.isEmpty()) {
+            WriterThreadStarter.startWriter(templist, ActivePaths.getAvailablePositionJOBJPath(), false);
+        } else {
+            WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionJOBJPath(), false);
+        }
+
         WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionCSVPath(), true);
     }
 

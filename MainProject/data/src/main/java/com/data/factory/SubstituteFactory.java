@@ -75,7 +75,12 @@ public class SubstituteFactory {
 
         templist.add(substitute);
 
-        WriterThreadStarter.startWriter(templist, ActivePaths.getSubstituteJOBJPath(), false);
+        if (!templist.isEmpty()) {
+            WriterThreadStarter.startWriter(templist, ActivePaths.getSubstituteJOBJPath(), false);
+        } else {
+            WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteJOBJPath(), false);
+        }
+
         WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteCSVPath(), true);
     }
 
