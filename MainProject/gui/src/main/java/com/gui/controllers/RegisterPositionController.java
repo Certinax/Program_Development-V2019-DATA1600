@@ -10,6 +10,7 @@ import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.customTextFields.IntField;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.NodeGenerator;
+import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.AvailablePositionException;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
@@ -23,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -93,10 +95,16 @@ public class RegisterPositionController implements Controller {
             try {
                 AvailablePositionFactory availablePositionFactory = new AvailablePositionFactory(nodesAndValues);
                 msg += "";
+                scrollPane.setVvalue(0);
+                errorMsg.setTextFill(Color.GREEN);
+                errorMsg.setText(msg);
+                errorMsg.setVisible(true);
+                clear();
             } catch (IllegalArgumentException | InterruptedException | AvailablePositionException e) {
                 msg += e.getMessage();
                 e.printStackTrace();
                 scrollPane.setVvalue(0);
+                errorMsg.setTextFill(Color.RED);
                 errorMsg.setText(msg);
                 errorMsg.setVisible(true);
             }
@@ -105,6 +113,7 @@ public class RegisterPositionController implements Controller {
                     "Sector" +
                     ", Number of positions";
             scrollPane.setVvalue(0);
+            errorMsg.setTextFill(Color.RED);
             errorMsg.setText(msg);
             errorMsg.setVisible(true);
         }
@@ -121,9 +130,14 @@ public class RegisterPositionController implements Controller {
 
         try {
             employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerCSVPath());
+            clear();
         } catch (ExecutionException | InterruptedException e) {
             error += e.getMessage();
             e.printStackTrace();
+            scrollPane.setVvalue(0);
+            errorMsg.setTextFill(Color.RED);
+            errorMsg.setText(error);
+            errorMsg.setVisible(true);
         }
         ObservableList<String> empList = FXCollections.observableArrayList();
         for (Employer employer : employers) {
@@ -147,6 +161,10 @@ public class RegisterPositionController implements Controller {
 
     @Override
     public void updateDataFromDataPasser() {
+    }
+
+    private void clear() {
+        NodeHandler.clearNodes(NodeGenerator.generateNodes(parent));
     }
 
     @Override

@@ -10,6 +10,7 @@ import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.SalaryField;
 import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.NodeGenerator;
+import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import com.logic.utilities.validators.RequiredDataContainer;
@@ -21,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -97,6 +99,10 @@ public class RegisterSubstituteController implements Controller {
     public void updateDataFromDataPasser() {
     }
 
+    private void clear() {
+        NodeHandler.clearNodes(NodeGenerator.generateNodes(infoAnchorPane));
+    }
+
     @Override
     public void exit() {
     }
@@ -161,7 +167,7 @@ public class RegisterSubstituteController implements Controller {
 
     @FXML
     private void registerSubstitute(ActionEvent event) {
-        String error = "";
+        String msg = "";
 
         // This parent holds all the necessary children to retrieve information from
         Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(infoAnchorPane);
@@ -171,16 +177,21 @@ public class RegisterSubstituteController implements Controller {
             // Opprett objekt
             try {
                 SubstituteFactory substitute = new SubstituteFactory(nodesAndValues);
+                scrollPane.setVvalue(0);
+                errorMsg.setTextFill(Color.GREEN);
+                errorMsg.setText(msg);
+                errorMsg.setVisible(true);
+                clear();
             } catch (IllegalArgumentException | InterruptedException e) {
-                error += e.getMessage();
+                msg += e.getMessage();
                 e.printStackTrace();
                 scrollPane.setVvalue(0);
-                errorMsg.setText(error);
+                errorMsg.setTextFill(Color.RED);
+                errorMsg.setText(msg);
                 errorMsg.setVisible(true);
-                // TODO Sett in error label/popup med error-variabel
             }
         } else {
-                error += "You need to fill the required fields:\n " +
+                msg += "You need to fill the required fields:\n " +
                         "Firstname" +
                         ", Lastname" +
                         ", Address" +
@@ -191,9 +202,9 @@ public class RegisterSubstituteController implements Controller {
                         ", City" +
                         ", Industry";
                 scrollPane.setVvalue(0);
-                errorMsg.setText(error);
+                errorMsg.setTextFill(Color.RED);
+                errorMsg.setText(msg);
                 errorMsg.setVisible(true);
-                // TODO Sett en error label/popup med error-variabel
         }
 
     }
