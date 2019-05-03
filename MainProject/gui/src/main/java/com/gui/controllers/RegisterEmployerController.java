@@ -38,7 +38,7 @@ public class RegisterEmployerController implements Controller {
     private SceneManager sceneManager = SceneManager.INSTANCE;
 
     @FXML
-    Label errorMsg, succeedMsg;
+    Label errorMsg;
     @FXML
     ToggleGroup sector;
     @FXML
