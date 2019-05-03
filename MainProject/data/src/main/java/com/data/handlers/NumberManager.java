@@ -21,9 +21,9 @@ import java.util.concurrent.ExecutionException;
 public enum NumberManager {
     INSTANCE;
 
-    private int substituteNumber = 1;
-    private int employerNumber = 1;
-    private int availablePositionNumber = 1;
+    private int substituteNumber = 0;
+    private int employerNumber = 0;
+    private int availablePositionNumber = 0;
 
     NumberManager() {
         try {
@@ -50,7 +50,7 @@ public enum NumberManager {
         try {
             ArrayList<Substitute> substitutes = ReaderThreadStarter.startReader(ActivePaths.getSubstituteCSVPath());
             if (substitutes.size() == 0) {
-                this.substituteNumber = 1;
+                this.substituteNumber = 0;
             } else {
                 this.substituteNumber = substitutes.get(substitutes.size() - 1).getSubstituteNumber();
             }
@@ -64,7 +64,7 @@ public enum NumberManager {
         try {
             ArrayList<Employer> employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerCSVPath());
             if (employers.size() == 0) {
-                this.employerNumber = 1;
+                this.employerNumber = 0;
             } else {
                 this.employerNumber = employers.get(employers.size()-1).getEmployerNumber();
             }
@@ -78,7 +78,7 @@ public enum NumberManager {
         try {
             ArrayList<AvailablePosition> positions = ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionCSVPath());
             if (positions.size() == 0) {
-                this.availablePositionNumber = 1;
+                this.availablePositionNumber = 0;
             } else {
                 this.availablePositionNumber = positions.get(positions.size() - 1).getAvailablePositionNumber();
             }

@@ -7,6 +7,7 @@ import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.AvailablePositionException;
 import com.logic.utilities.exceptions.NumberGenerationException;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
@@ -70,19 +71,17 @@ public class AvailablePositionFactory {
     }
 
     private void saveAvailablePosition(AvailablePosition availablePosition) throws InterruptedException {
-        ArrayList<AvailablePosition> templist;
+        ObservableList<AvailablePosition> templist = FXCollections.observableArrayList();
         try {
-            templist = ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionJOBJPath());
+            templist.addAll(ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionJOBJPath()));
         } catch (ExecutionException e) {
-            templist = new ArrayList<>();
             e.printStackTrace();
         }
 
         templist.add(availablePosition);
 
-
-        WriterThreadStarter.startWriter(templist, ActivePaths.getAvailablePositionJOBJPath());
-        WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionCSVPath());
+        WriterThreadStarter.startWriter(templist, ActivePaths.getAvailablePositionJOBJPath(), false);
+        WriterThreadStarter.startWriter(availablePosition, ActivePaths.getAvailablePositionCSVPath(), true);
     }
 
     private void generateRequiredFields() throws IllegalArgumentException {

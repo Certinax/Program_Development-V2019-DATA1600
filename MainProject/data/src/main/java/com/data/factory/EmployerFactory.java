@@ -1,14 +1,17 @@
 package com.data.factory;
 
 import com.data.clients.Employer;
+import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.NumberGenerationException;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * <h1>Employer Factory</h1>
@@ -52,8 +55,22 @@ public class EmployerFactory {
     }
 
     private void saveEmployer(Employer employer) throws InterruptedException {
+        ObservableList<Employer> templist = FXCollections.observableArrayList();
+        try {
+            templist.addAll(ReaderThreadStarter.startReader(ActivePaths.getEmployerJOBJPath()));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        templist.add(employer);
+
+        if (!templist.isEmpty()) {
+            WriterThreadStarter.startWriter(templist, ActivePaths.getEmployerJOBJPath(), false);
+        } else {
+            WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerJOBJPath(), false);
+        }
+
         WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerCSVPath(), true);
-        WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerJOBJPath(), false);
     }
 
     private void generateRequiredFields() throws IllegalArgumentException {

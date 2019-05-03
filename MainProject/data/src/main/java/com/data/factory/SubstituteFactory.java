@@ -5,11 +5,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import com.data.clients.Substitute;
+import com.logic.concurrency.ReaderThreadStarter;
 import com.logic.concurrency.WriterThreadStarter;
 import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.exceptions.NumberGenerationException;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
@@ -63,7 +66,16 @@ public class SubstituteFactory {
     }
 
     private void saveSubstitute(Substitute substitute) throws InterruptedException {
-        WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteJOBJPath(), false);
+        ObservableList<Substitute> templist = FXCollections.observableArrayList();
+        try {
+            templist.addAll(ReaderThreadStarter.startReader(ActivePaths.getSubstituteJOBJPath()));
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        templist.add(substitute);
+
+        WriterThreadStarter.startWriter(templist, ActivePaths.getSubstituteJOBJPath(), false);
         WriterThreadStarter.startWriter(substitute, ActivePaths.getSubstituteCSVPath(), true);
     }
 

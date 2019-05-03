@@ -22,7 +22,7 @@ public class NameField extends TextField {
         super();
 
         this.textProperty().addListener((ObservableValue<? extends String> observableValue, String oldValue, String newValue) -> {
-            if (!newValue.matches("^[a-zA-Z]{0,100}( [a-zA-Z]{0,100}){0,2}$")) {
+            if (!newValue.matches("^[a-zA-ZÆØÅæøå]{0,100}( [a-zA-ZæøåÆØÅ]{0,100}){0,2}$")) {
                 this.setText(oldValue);
             }
         });

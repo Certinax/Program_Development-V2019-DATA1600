@@ -122,6 +122,7 @@ public enum SceneManager {
             popUpStage.setScene(scene);
             popUpStage.setTitle(sceneInfo.getSceneName());
         } catch (IOException e) {
+            e.printStackTrace();
             error = new ErrorBox("Failed to load FXML-file! \nPlease contact support if the problem persists", "Failed to load FXML file");
         }
         popUpStage.initStyle(StageStyle.UNDECORATED);
@@ -157,6 +158,7 @@ public enum SceneManager {
             primaryStage.setScene(scene);
             primaryStage.setTitle(sceneInfo.getSceneName());
         } catch (IOException e) {
+            e.printStackTrace();
             error = new ErrorBox("Failed to load FXML-file! \nPlease contact support if the problem persists", "Failed to load FXML file");
 
         }
