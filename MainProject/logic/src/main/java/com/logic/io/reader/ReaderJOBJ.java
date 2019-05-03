@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Class for reading serialized objects from file and returning them as objects
  * in an arraylist
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 26-04-2019
  */
 public class ReaderJOBJ implements Reader {

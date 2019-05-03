@@ -8,7 +8,18 @@ import java.io.IOException;
 import java.util.*;
 
 
-//TODO Write JavaDocs
+/**
+ * <h1>CSVParser</h1>
+ *
+ * This class parses a .csv-file and provides a list of lists, where first list will be
+ * the classname of the objects that are stored to the file, second will be header of file corresponding to
+ * the fields of the class and it's superclasses provided. Each line following will represent an own list in the list
+ * as an object.
+ *
+ * @author Candidate 511
+ * @4since 15-04-2019
+ *
+ */
 public class CSVParser {
 
     public CSVParser() {}
@@ -53,9 +64,7 @@ public class CSVParser {
             return fileInfo;
 
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new CSVParseException();
         }
-
-        return null;
     }
 }

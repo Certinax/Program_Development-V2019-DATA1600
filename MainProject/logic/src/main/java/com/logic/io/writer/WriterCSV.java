@@ -9,14 +9,21 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * This class writes objects to csv file.
- * It can take an template input as an string array for sorting the data in desired order
+ * <h1>WriterCSV</h1>
  *
- * @author Mathias Lund Ahrn, Fredrik Pedersen
+ * This class writes objects to csv file.
+ * It utilizes an template as an string array for sorting the data in desired order.
+ *
+ * This writer also uses reflection.
+ *
+ *
+ * @author Candidate 511, Candidate 730
  * @since 18-04-2019
  */
 
 public class WriterCSV implements Writer {
+
+    private final static String DELIMITER = ";";
 
     public void writeObject(Object obj, String path) throws IllegalAccessException,
             InvocationTargetException, ClassNotFoundException, IOException {
@@ -63,31 +70,28 @@ public class WriterCSV implements Writer {
             throws IllegalAccessException, InvocationTargetException, ClassNotFoundException {
 
         Objects.requireNonNull(obj);
+
+        // Access class and template
         Class clazz = obj.getClass();
-        Map<String, String> objectInfo = new HashMap<>();
         String[] sortingTemplate = findTemplate(obj);
+        boolean sorting = sortingTemplate.length > 0;
 
+        // Generate all classes and methods and it's data
+        Map<String, String> objectInfo = new HashMap<>(generateClassMethodsAndData(clazz, obj));
 
-        // TODO This can be handled in a seperate method
-        boolean sorting = false;
-        if (sortingTemplate.length > 0) {
-            sorting = true;
-        }
-
-        // TODO Check for parameterized constructor call
-        objectInfo.putAll(generateClassMethodsAndData(clazz, obj));
+        // For inhertiance cases
         while (hasParent(clazz)) {
             clazz = clazz.getSuperclass();
             objectInfo.putAll(generateClassMethodsAndData(clazz, obj));
         }
 
+        // Map that stores sorted based on a template
         Map<String, String> preparedObjectInfo;
         StringBuilder csvInfo = new StringBuilder();
-        // Ideen er nå at jeg har et map med alle metoder og verdiene deres
-        // Neste steg er å sortere keysettet etter sortingTemplate
+
         if (header) {
             csvInfo.append("Class");
-            csvInfo.append(";");
+            csvInfo.append(DELIMITER);
             csvInfo.append(obj.getClass().getName());
             csvInfo.append("\n");
             if (sorting) {
@@ -100,7 +104,7 @@ public class WriterCSV implements Writer {
                 csvInfo.append(generateCSVStringData(objectInfo));
                 csvInfo.append("\n");
             }
-        } else if (!header) { // TODO Evaluate this later
+        } else {
             if (sorting) {
                 preparedObjectInfo = templateSort(objectInfo, sortingTemplate);
                 csvInfo.append(generateCSVStringData(preparedObjectInfo));
@@ -117,9 +121,10 @@ public class WriterCSV implements Writer {
     private String generateCSVStringData(Map<String, String> preparedObjectInfo) {
         StringBuilder sb = new StringBuilder();
 
+        // Produces a String corresponding to the object values
         for (Map.Entry<String, String> entry : preparedObjectInfo.entrySet()) {
             sb.append(entry.getValue());
-            sb.append(";");
+            sb.append(DELIMITER);
         }
         sb.deleteCharAt(sb.length() - 1);
         sb.append("\n");
@@ -130,22 +135,19 @@ public class WriterCSV implements Writer {
     private String generateCSVStringHeader(Map<String, String> preparedObjectInfo) {
         StringBuilder sb = new StringBuilder();
 
+        // Produces the header and stores it to a String
         for (Map.Entry<String, String> entry : preparedObjectInfo.entrySet()) {
             if(entry.getKey().startsWith("get")) {
                 sb.append(entry.getKey().substring(3));
             } else if (entry.getKey().startsWith("is")) {
                 sb.append(entry.getKey().substring(2));
             }
-            sb.append(";");
+            sb.append(DELIMITER);
         }
         sb.deleteCharAt(sb.length() - 1);
         sb.append("\n");
 
         return sb.toString();
-    }
-
-    private boolean hasParent(Class clazz) {
-        return clazz.getSuperclass() != null && clazz.getSuperclass() != Object.class;
     }
 
     private Map<String, String> generateClassMethodsAndData(Class clazz, Object obj)
@@ -158,6 +160,7 @@ public class WriterCSV implements Writer {
 
         Map<String, String> classData = new HashMap<>();
 
+        // Using reflection in order to mirror the classes methods and it's objects values
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
             if (method.getParameterTypes().length == 0 && method.getName().startsWith("get") || method.getName().startsWith("is")) {
@@ -171,6 +174,12 @@ public class WriterCSV implements Writer {
         return classData;
     }
 
+    // Helper method to access all parent classes
+    private boolean hasParent(Class clazz) {
+        return clazz.getSuperclass() != null && clazz.getSuperclass() != Object.class;
+    }
+
+    // Helper method to sort information map with a template provided from the object's class
     private Map<String, String> templateSort(Map<String, String> objectinfo, String[] sortingTemplate) {
         LinkedHashMap<String, String> sortedData = new LinkedHashMap<>();
         for (int i = 0; i < sortingTemplate.length; i++) { // TODO Evaluate if a foreach loop is more convenient
@@ -183,6 +192,7 @@ public class WriterCSV implements Writer {
         return sortedData;
     }
 
+    // To access the object's template(s)
     private String[] findTemplate(Object obj) throws InvocationTargetException, IllegalAccessException {
         Method[] methods = obj.getClass().getDeclaredMethods();
         String[] template = null;

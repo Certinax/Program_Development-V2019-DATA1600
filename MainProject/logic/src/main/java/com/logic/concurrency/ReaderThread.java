@@ -4,6 +4,7 @@ import com.logic.io.reader.Reader;
 import com.logic.io.reader.ReaderCSV;
 import com.logic.io.reader.ReaderJOBJ;
 import com.logic.utilities.exceptions.CSVParseException;
+import com.logic.utilities.exceptions.SerializationException;
 import com.logic.utilities.exceptions.UnsupportedFileFormatException;
 
 import java.io.IOException;
@@ -33,13 +34,18 @@ public class ReaderThread<T> implements Callable<ArrayList<T>> {
 
         try {
             return readObjects();
-        } catch (UnsupportedFileFormatException | IOException | CSVParseException | ClassNotFoundException e) {
+        } catch (UnsupportedFileFormatException
+                | IOException
+                | CSVParseException
+                | ClassNotFoundException
+                | SerializationException e) {
             e.printStackTrace(); //TODO Handle this in a better way (Message should be sent to GUI
             return null;
         }
     }
 
-    private ArrayList<T> readObjects() throws UnsupportedFileFormatException, IOException, ClassNotFoundException, CSVParseException {
+    private ArrayList<T> readObjects() throws UnsupportedFileFormatException, IOException,
+            ClassNotFoundException, CSVParseException, SerializationException {
         Reader reader;
         String[] separator = path.split("\\."); //TODO Hva hvis filen heter f.eks fredrik.pedersen.txt?
 

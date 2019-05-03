@@ -10,40 +10,45 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-//TODO Write JavaDocs
+/**
+ * <h1>ReaderCSV</h1>
+ *
+ * This class is used for reading .csv-files and returning an array list of objects.
+ * It builds object based on using reflection.
+ *
+ * In order for this class to work, a private default constructor must be provided.
+ *
+ * Datatypes this reader supports:
+ *  - Primtive datatypes
+ *  - String
+ *  - ArrayList
+ *
+ * @author Candidate 530
+ * @since 12-04-2019
+ */
 public class ReaderCSV implements Reader {
 
     public ReaderCSV() {}
 
-    private Constructor<?> getDefaultConstructor(Class<?> clazz) {
-        Constructor<?>[] constructors = clazz.getDeclaredConstructors();
-        for(Constructor<?> constructor : constructors) {
-            if(constructor.getParameterCount() == 0) {
-                return constructor;
-            }
-        }
-        return null;
-    }
 
     @Override
-    public <T> ArrayList<T> readObjects(String path) throws CSVParseException {
+    public <T> ArrayList<T> readObjects(String path) throws CSVParseException, SerializationException {
         CSVParser parser = new CSVParser();
 
         List<List<String>> fileInfo = parser.getInfo(path);
-        ArrayList<T> objects = new ArrayList<>();
+        ArrayList<T> objects;
         try {
             Class clazz = Class.forName(fileInfo.get(0).get(1));
             objects = generateObject(clazz, fileInfo);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            throw new SerializationException();
         }
-
         return objects;
-        //return generateObject(clazz, fileInfo);
     }
 
     @SuppressWarnings("unchecked")
-    private <T> ArrayList<T> generateObject(Class clazz, List<List<String>> info) {
+    private <T> ArrayList<T> generateObject(Class clazz, List<List<String>> info) throws SerializationException{
 
         try {
             Constructor<?> defaultConstructor = getDefaultConstructor(clazz);
@@ -62,15 +67,16 @@ public class ReaderCSV implements Reader {
             // Getting the header list
             List<String> header = info.get(1);
 
+            if(!listComparing(header, fields)) {
+                throw new SerializationException("Header and field does not correspond");
+            }
+
             // Creating a new lists with only objects
             List<List<String>> objects = new ArrayList<>();
             for (int i = 2; i < info.size(); i++) {
                 objects.add(info.get(i));
             }
 
-            // TODO Use this validation (listcompating()) below to do the objectList part later -
-            //  do not uncomment the line below
-            //System.out.println(listComparing(header, fields));
 
             LinkedHashMap<String, Field> boilerPlate = new LinkedHashMap<>();
             for (String headerItem : header) {
@@ -82,7 +88,6 @@ public class ReaderCSV implements Reader {
                 }
             }
 
-            // TODO logic below should be outsourced to seperate methods
             ArrayList<T> objectList = new ArrayList<>();
             int column = 0;
             for (int i = 0; i < objects.size(); i++) {
@@ -108,13 +113,9 @@ public class ReaderCSV implements Reader {
 
             return objectList;
 
-        } catch (SerializationException
-                | InstantiationException
-                | IllegalAccessException
-                | InvocationTargetException  e) {
-            e.printStackTrace();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException  e) {
+            throw new SerializationException();
         }
-        return null;
     }
 
     private boolean listComparing(List<String> list, Field[] fields) {
@@ -161,20 +162,28 @@ public class ReaderCSV implements Reader {
         return fieldOfAllClasses;
     }
 
+    private Constructor<?> getDefaultConstructor(Class<?> clazz) {
+        Constructor<?>[] constructors = clazz.getDeclaredConstructors();
+        for(Constructor<?> constructor : constructors) {
+            if(constructor.getParameterCount() == 0) {
+                return constructor;
+            }
+        }
+        return null;
+    }
 
-    // TODO The setField methods below could be outsourced to a seperate class?
+
     private <T> void setList(String info, T instance, Field field) throws IllegalAccessException {
+
         String type = field.getType().getName();
         String[] infoList = info.split(",");
         String[] formattedInfoList = new String[infoList.length];
 
-        // TODO This should do
         for (int i = 0; i < infoList.length; i++) {
             formattedInfoList[i] = infoList[i].trim();
         }
 
-        List<String> list = new ArrayList<>();
-        list.addAll(Arrays.asList(formattedInfoList));
+        List<String> list = new ArrayList<>(Arrays.asList(formattedInfoList));
         if(type.equals(ArrayList.class.getName())) {
             field.set(instance, list);
         }
@@ -186,7 +195,6 @@ public class ReaderCSV implements Reader {
             field.set(instance, info);
         }
     }
-
 
     private <T> void setPrimitive(String info, T instance, Field field) throws IllegalAccessException, NumberFormatException{
         String type = field.getType().getName();

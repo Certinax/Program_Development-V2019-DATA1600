@@ -1,6 +1,7 @@
 package com.logic.io.reader;
 
 import com.logic.utilities.exceptions.CSVParseException;
+import com.logic.utilities.exceptions.SerializationException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,11 +11,11 @@ import java.util.ArrayList;
  *
  * Interface representing file readers
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 26-04-2019
  */
 
 public interface Reader {
 
-    <T> ArrayList<T> readObjects(String path) throws IOException, ClassNotFoundException, CSVParseException;
+    <T> ArrayList<T> readObjects(String path) throws IOException, ClassNotFoundException, CSVParseException, SerializationException;
 }
