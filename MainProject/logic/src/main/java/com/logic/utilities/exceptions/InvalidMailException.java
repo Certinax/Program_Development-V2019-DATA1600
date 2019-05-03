@@ -5,7 +5,7 @@ package com.logic.utilities.exceptions;
  *
  * Exception to be thrown when an emailaddress has been given on the wrong format.
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 15-04-2019
  */
 

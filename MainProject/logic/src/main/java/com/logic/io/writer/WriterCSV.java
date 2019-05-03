@@ -182,7 +182,7 @@ public class WriterCSV implements Writer {
     // Helper method to sort information map with a template provided from the object's class
     private Map<String, String> templateSort(Map<String, String> objectinfo, String[] sortingTemplate) {
         LinkedHashMap<String, String> sortedData = new LinkedHashMap<>();
-        for (int i = 0; i < sortingTemplate.length; i++) { // TODO Evaluate if a foreach loop is more convenient
+        for (int i = 0; i < sortingTemplate.length; i++) {
             for (Map.Entry<String, String> entry : objectinfo.entrySet()) {
                 if (sortingTemplate[i].equals(entry.getKey())) {
                     sortedData.put(entry.getKey(), entry.getValue());

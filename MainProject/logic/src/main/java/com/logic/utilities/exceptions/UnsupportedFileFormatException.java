@@ -5,7 +5,7 @@ package com.logic.utilities.exceptions;
  *
  * Exception to be thrown if a user tries to read or write to a file of the wrong format
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 26-04-2019
  */
 

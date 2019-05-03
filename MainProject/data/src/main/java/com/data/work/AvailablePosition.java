@@ -325,7 +325,7 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         try {
            employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerJOBJPath());
         } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace(); //TODO Figure out where to properly do with this error message
+            e.printStackTrace(); //TODO Figure out what to properly do with this error message
             return "";
         }
 

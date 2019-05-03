@@ -68,7 +68,7 @@ public class SubstitutesController implements Controller {
         activeFile = ActivePaths.getSubstituteJOBJPath();
 
         try {
-            data.addAll(ReaderThreadStarter.startReader(activeFile)); //TODO Should this read from CSV or JOBJ?
+            data.addAll(ReaderThreadStarter.startReader(activeFile));
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -89,7 +89,7 @@ public class SubstitutesController implements Controller {
         data.clear();
 
         try {
-            data.addAll(ReaderThreadStarter.startReader(activeFile)); //TODO Should this read from CSV or JOBJ?
+            data.addAll(ReaderThreadStarter.startReader(activeFile));
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -118,7 +118,7 @@ public class SubstitutesController implements Controller {
                 WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
                 WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
             } catch (InterruptedException e) {
-                e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+                error = new ErrorBox("The program can't read from file", "Can't read document");
             }
         }
     }
@@ -184,8 +184,7 @@ public class SubstitutesController implements Controller {
                     intFilter = Integer.parseInt(lowerCaseFilter);
                 } catch (NumberFormatException e) {
                     //If the String can't  be parsed to an int, don't change the intFilter.
-                } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
-
+                }
                 if (aSubstitute.getFirstname().toLowerCase().contains(lowerCaseFilter)
                         || aSubstitute.getLastname().toLowerCase().contains(lowerCaseFilter)
                         || aSubstitute.getAddress().toLowerCase().contains(lowerCaseFilter)
@@ -224,7 +223,7 @@ public class SubstitutesController implements Controller {
                         t.getTablePosition().getRow()).setAddress(t.getNewValue()));
     }
 
-    private void setZipCodeColumnEditable() { //TODO Kolonner som er definert med Integers kræsjer dersom man prøver å skrive inn andre tegn. Trenger korrekt feilhåndtering.
+    private void setZipCodeColumnEditable() {
         zipcodeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         zipcodeColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Substitute, Integer> t) -> t.getTableView().getItems().get(

@@ -17,7 +17,7 @@ import java.util.Objects;
  * Class for using the CSV-writer in it's own thread with any object in an
  * ObservableList
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 19-04-2019
  */
 
@@ -53,7 +53,7 @@ public class WriterThread implements Runnable {
             InvocationTargetException, ClassNotFoundException, IOException {
 
         Writer writer;
-        String[] separator = path.split("\\."); //TODO Hva hvis filen heter f.eks fredrik.pedersen.txt?
+        String[] separator = path.split("\\.");
 
         switch (separator[separator.length - 1]) {
             case "jobj":

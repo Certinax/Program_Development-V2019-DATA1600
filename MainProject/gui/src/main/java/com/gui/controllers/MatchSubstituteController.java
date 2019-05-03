@@ -139,7 +139,7 @@ public class MatchSubstituteController implements Controller {
                     intFilter = Integer.parseInt(lowerCaseFilter);
                 } catch (NumberFormatException e) {
                     //If the String can't  be parsed to an int, don't change the intFilter.
-                } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
+                }
 
                 if (aSubstitute.getFirstname().toLowerCase().contains(lowerCaseFilter)
                     || aSubstitute.getLastname().toLowerCase().contains(lowerCaseFilter)
