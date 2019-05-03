@@ -14,7 +14,11 @@ import java.util.*;
  * This class writes objects to csv file.
  * It utilizes an template as an string array for sorting the data in desired order.
  *
- * This writer also uses reflection.
+ * Require that a class implements CSVWriteable interface - this is placed @ com.data.CSVWriteable,
+ * this makes sure that a class has a template.
+ *
+ *
+ * This writer uses reflection.
  *
  *
  * @author Candidate 511, Candidate 730
