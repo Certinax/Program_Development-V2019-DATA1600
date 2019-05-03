@@ -10,10 +10,16 @@ import com.logic.utilities.exceptions.NumberGenerationException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-//TODO Skrive JavaDocs
+/**
+ * <h1>Number Manager</h1>
+ *
+ * Singleton Enum that provides an internal numbering of each object created in this program.
+ *
+ * @author Candidate 511
+ * @since 22-04-19
+ */
 public enum NumberManager {
     INSTANCE;
-
 
     private int substituteNumber = 0;
     private int employerNumber = 0;
@@ -24,18 +30,21 @@ public enum NumberManager {
             generateSubstituteNumber();
         } catch (NumberGenerationException e) {
             e.getMessage();
+            e.printStackTrace();
             substituteNumber = 1;
         }
         try {
             generateEmployerNumber();
         } catch (NumberGenerationException e) {
             e.getMessage();
+            e.printStackTrace();
             employerNumber = 1;
         }
         try {
             generateAvailablePositionNumber();
         } catch (NumberGenerationException e) {
             e.getMessage();
+            e.printStackTrace();
             availablePositionNumber = 1;
         }
     }

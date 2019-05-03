@@ -8,10 +8,19 @@ import java.util.Map;
 
 import com.data.clients.Substitute;
 import com.logic.concurrency.WriterThreadStarter;
+import com.logic.filePaths.ActivePaths;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
-//TODO JavaDocs
+/**
+ * <h1>Substitute Factory</h1>
+ *
+ * This is a factory-class that is used for creating objects from a bigger chunk of
+ * dataset (typically a registration form) of type Substitute and store it to file.
+ *
+ * @author Candidate 511
+ * @since 23-04-2019
+ */
 public class SubstituteFactory {
 
     private Map<Node, Object> objectInfo;
@@ -52,8 +61,8 @@ public class SubstituteFactory {
     }
 
     private void saveSubstitute(Substitute substitute) throws InterruptedException {
-        // TODO FIKS FREDRIK PATHS HER FØR INNLEVERING
-        WriterThreadStarter.startWriter(substitute, "resources/subcreation.csv");
+        WriterThreadStarter.startWriter(substitute, ActivePaths.getAvailablePositionJOBJPath());
+        WriterThreadStarter.startWriter(substitute, ActivePaths.getAvailablePositionCSVPath());
     }
 
     private void generateRequiredFields() throws IllegalArgumentException{

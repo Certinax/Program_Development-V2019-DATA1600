@@ -29,6 +29,8 @@ public abstract class Client implements Serializable {
     }
 
     abstract static class Builder<T extends Builder<T>> {
+
+        // Required parameters
         private String address;
         private int zipcode;
         private String city;
