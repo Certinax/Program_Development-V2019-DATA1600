@@ -88,22 +88,22 @@
                                         <RadioButton fx:id="privateSector" mnemonicParsing="false" text="Private" toggleGroup="$selector" />
                                     </children>
                                 </HBox>
-                                <IntField fx:id="numberOfPositions" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <IntField fx:id="numberOfPositions" promptText="Enter a number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <ComboBox fx:id="employerList" prefWidth="150.0" promptText="Choose employer" onAction="#setSelectedEmployer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                 <ComboBox fx:id="employer" visible="false" />
                                 <Label text="Title*" GridPane.rowIndex="2" />
                                 <Label text="Salary" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Label text="Industry*" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                 <TextField fx:id="position" prefHeight="26.0" prefWidth="128.0" promptText="Name of job" GridPane.rowIndex="3" />
-                                <IntField fx:id="salary" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <IntField fx:id="salary" promptText="Enter salary" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                 <ComboBox fx:id="industry" prefWidth="150.0" promptText="Choose industry" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                 <Label text="Duration" GridPane.rowIndex="4" />
                                 <Label text="Working time (From-To)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                 <TextField fx:id="duration" prefHeight="26.0" prefWidth="128.0" promptText="(Eg. weeks, months..)" GridPane.rowIndex="5" />
                                 <HBox prefHeight="26.0" prefWidth="135.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                     <children>
-                                        <IntField fx:id="startingTime" prefHeight="26.0" prefWidth="105.0" promptText="08:00" />
-                                        <IntField fx:id="endingTime" prefHeight="26.0" prefWidth="105.0" promptText="16:00" />
+                                        <IntField fx:id="startingTime" prefHeight="26.0" prefWidth="105.0" promptText="0800" />
+                                        <IntField fx:id="endingTime" prefHeight="26.0" prefWidth="105.0" promptText="1600" />
                                     </children>
                                 </HBox>
                         <Label text="Workplace" GridPane.columnIndex="2" GridPane.rowIndex="4" />
@@ -136,8 +136,8 @@
                             <children>
                                 <Label text="Required qualifications" />
                                 <Label text="Position description" GridPane.columnIndex="1" />
-                                <TextArea fx:id="requiredQualifications" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                                <TextArea fx:id="positionDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextArea fx:id="requiredQualifications" wrapText="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                <TextArea fx:id="positionDescription" wrapText="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
                         <GridPane alignment="CENTER" layoutX="28.0" layoutY="820.0" prefHeight="30.0" prefWidth="215.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="12.0">
