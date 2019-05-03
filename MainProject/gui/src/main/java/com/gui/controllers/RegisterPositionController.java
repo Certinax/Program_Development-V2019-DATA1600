@@ -191,6 +191,12 @@ public class RegisterPositionController implements Controller {
     }
 
     @FXML
+    private void goToEmployers(ActionEvent event) {
+        sceneManager.changeScene(SceneName.EMPLOYERS);
+    }
+
+
+    @FXML
     private void openOptions(ActionEvent event) {
         try {
             sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2,3);

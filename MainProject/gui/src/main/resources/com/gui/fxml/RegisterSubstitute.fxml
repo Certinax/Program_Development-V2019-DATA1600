@@ -46,9 +46,10 @@
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToAvailablePositions" prefWidth="160.0" text="Available Positions" textAlignment="CENTER" />
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToTakenPositions" prefWidth="160.0" text="Taken Positions" GridPane.rowIndex="1" />
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToSubstitutes" prefWidth="160.0" text="Substitutes" GridPane.rowIndex="2" />
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterSubstitute" prefWidth="160.0" text="Register Substitute" GridPane.rowIndex="3" />
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="4" />
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="5" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToEmployers" prefWidth="160.0" text="Employers" GridPane.rowIndex="3" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterSubstitute" prefWidth="160.0" text="Register Substitute" GridPane.rowIndex="4" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="5" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="6" />
             </children>
         </GridPane>
         <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
