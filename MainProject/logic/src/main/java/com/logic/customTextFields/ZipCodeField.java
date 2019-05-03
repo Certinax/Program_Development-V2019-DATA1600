@@ -5,9 +5,10 @@ import javafx.scene.control.TextField;
 
 /**
  * <h1>PostNumberField</h1>
+ *
  * A custom TextField that only accepts 0 to 4 integers as input value, meant for taking in postnumbers
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 08-04-2019
  */
 
