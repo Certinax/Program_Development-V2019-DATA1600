@@ -91,7 +91,7 @@ public class EmployersController implements Controller {
             WriterThreadStarter.startWriter(toFile, ActivePaths.getEmployerJOBJPath());
             WriterThreadStarter.startWriter(toFile, ActivePaths.getEmployerCSVPath());
         } catch (InterruptedException e) {
-            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+            error = new ErrorBox("The program can't write the data to a file", "Can't save");
         }
     }
 
@@ -118,7 +118,7 @@ public class EmployersController implements Controller {
                 WriterThreadStarter.startWriter(tableData, ActivePaths.getAvailablePositionJOBJPath());
                 WriterThreadStarter.startWriter(tableData, ActivePaths.getAvailablePositionCSVPath());
             } catch (InterruptedException e) {
-                e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+                error = new ErrorBox("The program can't write the data to a file", "Can't save");
             }
         }
     }
@@ -177,7 +177,7 @@ public class EmployersController implements Controller {
                 WriterThreadStarter.startWriter(tableData, ActivePaths.getEmployerCSVPath());
                 WriterThreadStarter.startWriter(tableData, ActivePaths.getEmployerJOBJPath());
             } catch (InterruptedException e) {
-                e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+                error = new ErrorBox("The program can't write the data to a file", "Can't save");
             }
         }
     }
@@ -198,7 +198,7 @@ public class EmployersController implements Controller {
                     intFilter = Integer.parseInt(stringFilter);
                 } catch (NumberFormatException e) {
                     intFilter = -1; //set to a negative value as we don't allow negative values in the datafields. Won't give a match.
-                } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
+                }
 
                 if (anEmployer.getName().toLowerCase().contains(stringFilter)
                         || anEmployer.getEmail().toLowerCase().contains(stringFilter)){
@@ -213,7 +213,7 @@ public class EmployersController implements Controller {
         tableView.setItems(sortedData);
     }
 
-    private void setPhoneColumnEditable() { //TODO Kolonner som er definert med Integers gir en NumberFormatException når annet skrives inn. Håndter dette!
+    private void setPhoneColumnEditable() {
         phoneColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         phoneColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<Employer, Integer> t) -> t.getRowValue().setPhoneNumber(t.getNewValue()));
