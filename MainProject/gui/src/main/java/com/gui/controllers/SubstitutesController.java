@@ -266,14 +266,4 @@ public class SubstitutesController implements Controller {
         }
     }
 
-    @FXML
-    private void setFullscreenMode(ActionEvent event) {
-        sceneManager.setFullscreen();
-    }
-
-    @FXML
-    private void setWindowedMode() {
-        sceneManager.setWindowed();
-    }
-
 }
