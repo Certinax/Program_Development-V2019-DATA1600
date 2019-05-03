@@ -51,8 +51,8 @@ public class EmployerFactory {
     }
 
     private void saveEmployer(Employer employer) throws InterruptedException {
-        WriterThreadStarter.startWriter(employer, ActivePaths.getAvailablePositionJOBJPath());
-        WriterThreadStarter.startWriter(employer, ActivePaths.getAvailablePositionCSVPath());
+        WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerCSVPath());
+        WriterThreadStarter.startWriter(employer, ActivePaths.getEmployerJOBJPath());
     }
 
     private void generateRequiredFields() throws IllegalArgumentException {

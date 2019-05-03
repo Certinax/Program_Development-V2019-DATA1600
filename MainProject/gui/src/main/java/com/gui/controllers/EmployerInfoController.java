@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * <h1>Employer Info Controller</h1>
  *
- * @author Candidate 778
+ * @author Candidate 778, Candidate 530
  * @since 01-05-2019
  */
 public class EmployerInfoController implements Controller {
@@ -38,7 +38,6 @@ public class EmployerInfoController implements Controller {
 
     @FXML
     private void setData(Employer employer){
-        System.out.println(employer.getName());
       name.setText(employer.getName());
       address.setText(employer.getAddress());
       zipcode.setText(String.valueOf(employer.getZipcode()));
@@ -52,7 +51,6 @@ public class EmployerInfoController implements Controller {
         sector.setText("Public");
       }
 
-      ArrayList<String> jobIDList = employer.getJoblist();
       ArrayList<AvailablePosition> jobList;
 
       try {
@@ -64,11 +62,9 @@ public class EmployerInfoController implements Controller {
 
       StringBuilder sb = new StringBuilder();
 
-      for (int i = 0; i < jobIDList.size(); i++) {
-          for (int j = 0; j < jobList.size(); j++) {
-              if (jobIDList.get(i).equals(jobList.get(j).getAvailablePositionId())) {
-                  sb.append(jobList.get(j).getPositionType()).append(" at ").append(jobList.get(j).getWorkplace()).append("\n");
-              }
+      for (AvailablePosition job : jobList) {
+          if(job.getEmployerId().equals(employer.getEmployerId())) {
+              sb.append(job.getPositionType()).append(" at ").append(job.getWorkplace()).append("\n");
           }
       }
       if (sb.toString().equals("")) {
@@ -77,12 +73,12 @@ public class EmployerInfoController implements Controller {
           positions.setText(sb.toString());
       }
 
-
     }
 
     @Override
     public void initialize() {
       setData((Employer) DataPasser.getData());
+        System.out.println(DataPasser.getData());
     }
 
     @Override
