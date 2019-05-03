@@ -1,9 +1,11 @@
 package com.logic.utilities;
 
 import javafx.scene.Node;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +37,9 @@ public class NodeHandler {
             }
             if(node instanceof RadioButton) {
                 ((RadioButton) node).setSelected(false);
+            }
+            if(node instanceof DatePicker) {
+                ((DatePicker) node).setValue(LocalDate.now());
             }
         }
     }

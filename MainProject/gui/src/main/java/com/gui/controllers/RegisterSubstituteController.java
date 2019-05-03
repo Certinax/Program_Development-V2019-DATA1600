@@ -175,6 +175,7 @@ public class RegisterSubstituteController implements Controller {
             // Opprett objekt
             try {
                 SubstituteFactory substitute = new SubstituteFactory(nodesAndValues);
+                msg += "Substitute added!";
                 scrollPane.setVvalue(0);
                 errorMsg.setTextFill(Color.GREEN);
                 errorMsg.setText(msg);

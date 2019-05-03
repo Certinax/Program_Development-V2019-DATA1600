@@ -88,7 +88,7 @@
                                 <NameField fx:id="firstname" promptText="Firstname" GridPane.rowIndex="1" />
                                 <NameField fx:id="lastname" promptText="Lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <Label text="Birthday *" GridPane.columnIndex="2" />
-                                <DatePicker fx:id="age" promptText="Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <DatePicker fx:id="age" editable="false" promptText="Date of Birth" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
                         <GridPane hgap="20.0" layoutX="20.0" layoutY="411.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="411.0">
@@ -162,8 +162,8 @@
                             <children>
                                 <NameField fx:id="schoolnameField" prefHeight="26.0" prefWidth="128.0" promptText="School name" />
                                 <TextField fx:id="educationField" prefHeight="26.0" prefWidth="128.0" promptText="Line of education" GridPane.columnIndex="1" />
-                                <DatePicker fx:id="startDate" prefHeight="26.0" promptText="Started" GridPane.columnIndex="2" />
-                                <DatePicker fx:id="endDate" prefHeight="26.0" promptText="Ended" GridPane.columnIndex="3" />
+                                <DatePicker fx:id="startDate" editable="false" prefHeight="26.0" promptText="Started" GridPane.columnIndex="2" />
+                                <DatePicker fx:id="endDate" editable="false" prefHeight="26.0" promptText="Ended" GridPane.columnIndex="3" />
                                 <Button mnemonicParsing="false" onAction="#addSchool" prefHeight="25.0" prefWidth="50.0" text="Add" GridPane.columnIndex="4" />
                                 <Button mnemonicParsing="false" onAction="#removeSchool" prefHeight="25.0" prefWidth="72.0" text="Remove" GridPane.columnIndex="5" />
                             </children>
@@ -197,8 +197,8 @@
                             <children>
                                 <TextField fx:id="workplaceField" promptText="Workplace" />
                                 <TextField fx:id="positionField" prefWidth="128.0" promptText="Position" GridPane.columnIndex="1" />
-                                <DatePicker fx:id="workStartField" promptText="Hiredate" GridPane.columnIndex="2" />
-                                <DatePicker fx:id="workEndField" layoutX="210.0" layoutY="43.0" promptText="Last day" GridPane.columnIndex="3" />
+                                <DatePicker fx:id="workStartField" editable="false" promptText="Hiredate" GridPane.columnIndex="2" />
+                                <DatePicker fx:id="workEndField" editable="false" layoutX="210.0" layoutY="43.0" promptText="Last day" GridPane.columnIndex="3" />
                                 <Button mnemonicParsing="false" onAction="#addWork" prefHeight="25.0" prefWidth="49.0" text="Add" GridPane.columnIndex="4" />
                                 <Button mnemonicParsing="false" onAction="#removeWork" prefHeight="25.0" prefWidth="73.0" text="Remove" GridPane.columnIndex="5" />
                             </children>

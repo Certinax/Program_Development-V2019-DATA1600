@@ -139,7 +139,7 @@ public class RegisterPositionController implements Controller {
             // Opprett objekt
             try {
                 AvailablePositionFactory availablePositionFactory = new AvailablePositionFactory(nodesAndValues);
-                msg += "";
+                msg += "Temporary position added!";
                 scrollPane.setVvalue(0);
                 errorMsg.setTextFill(Color.GREEN);
                 errorMsg.setText(msg);
