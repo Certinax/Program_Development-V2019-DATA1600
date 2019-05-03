@@ -54,8 +54,6 @@ public class MatchSubstituteController implements Controller {
     private Button overwrite;
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
-    private String activeFile;
-    private boolean readFromCSV;
     private AvailablePosition position;
     private InformationBox alert;
     private ErrorBox error;
@@ -65,18 +63,16 @@ public class MatchSubstituteController implements Controller {
     @Override
     public void initialize() {
         data = tableView.getItems();
-        activeFile = ActivePaths.getSubstituteJOBJPath();
 
-       readData(activeFile);
+       readData(ActivePaths.getSubstituteJOBJPath());
        setFiltering();
        position = (AvailablePosition) DataPasser.getData();
     }
 
     @Override
     public void refresh() {
-        setActiveFile();
         data.clear();
-        readData(activeFile);
+        readData(ActivePaths.getEmployerJOBJPath());
     }
 
     @Override
@@ -117,39 +113,11 @@ public class MatchSubstituteController implements Controller {
         sceneManager.setCurrentPopUpStage(null);
     }
 
-    @FXML
-    private void switchToCSV(ActionEvent event) {
-        if (readFromCSV) {
-            alert = new InformationBox("Already reading from CSV!", "File not changed");
-        } else {
-            readFromCSV = true;
-            refresh();
-        }
-    }
-
-    @FXML
-    private void switchToJOBJ(ActionEvent event) {
-        if (!readFromCSV) {
-            alert = new InformationBox("Already reading from JOBJ!", "File not changed");
-        } else {
-            readFromCSV = false;
-            refresh();
-        }
-    }
-
     private void readData(String activeFile) {
         try {
             data.addAll(ReaderThreadStarter.startReader(activeFile));
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
-        }
-    }
-
-    private void setActiveFile() {
-        if (readFromCSV) {
-            activeFile = ActivePaths.getAvailablePositionCSVPath();
-        } else {
-            activeFile = ActivePaths.getAvailablePositionJOBJPath();
         }
     }
 

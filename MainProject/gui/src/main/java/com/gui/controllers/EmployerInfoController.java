@@ -1,16 +1,23 @@
 package com.gui.controllers;
 
 import com.data.clients.Employer;
+import com.data.work.AvailablePosition;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.concurrency.ReaderThreadStarter;
+import com.logic.filePaths.ActivePaths;
 import com.logic.utilities.DataPasser;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * <h1>Employer Info Controller</h1>
@@ -27,7 +34,11 @@ public class EmployerInfoController implements Controller {
     private Label name, address, zipcode, city, phoneNumber, email, sector, industry;
 
     @FXML
+    private TextArea positions;
+
+    @FXML
     private void setData(Employer employer){
+        System.out.println(employer.getName());
       name.setText(employer.getName());
       address.setText(employer.getAddress());
       zipcode.setText(String.valueOf(employer.getZipcode()));
@@ -36,10 +47,37 @@ public class EmployerInfoController implements Controller {
       email.setText(employer.getEmail());
       industry.setText(employer.getIndustry());
       if (employer.getPrivateSector()){
-        sector.setText("private");
+        sector.setText("Private");
       }else {
-        sector.setText("public");
+        sector.setText("Public");
       }
+
+      ArrayList<String> jobIDList = employer.getJoblist();
+      ArrayList<AvailablePosition> jobList;
+
+      try {
+          jobList = ReaderThreadStarter.startReader(ActivePaths.getAvailablePositionJOBJPath());
+      } catch (InterruptedException | ExecutionException e) {
+          jobList = new ArrayList<>();
+          error = new ErrorBox("Couldn't read from file", "Couldn't read file");
+      }
+
+      StringBuilder sb = new StringBuilder();
+
+      for (int i = 0; i < jobIDList.size(); i++) {
+          for (int j = 0; j < jobList.size(); j++) {
+              if (jobIDList.get(i).equals(jobList.get(j).getAvailablePositionId())) {
+                  sb.append(jobList.get(j).getPositionType()).append(" at ").append(jobList.get(j).getWorkplace()).append("\n");
+              }
+          }
+      }
+      if (sb.toString().equals("")) {
+          positions.setText("No jobs posted");
+      } else {
+          positions.setText(sb.toString());
+      }
+
+
     }
 
     @Override

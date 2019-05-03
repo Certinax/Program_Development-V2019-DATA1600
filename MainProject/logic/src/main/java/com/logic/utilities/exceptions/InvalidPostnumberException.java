@@ -5,7 +5,7 @@ package com.logic.utilities.exceptions;
  *
  * Exception to be thrown when a phonenumber has been given on the wrong format.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 15-04-2019
  */
 

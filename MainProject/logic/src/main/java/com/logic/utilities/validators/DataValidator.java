@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  *
  * Class with static methods to validate Strings in the application
  *
- * @author Candidate 730, Candidate 778
+ * @author Fredrik Pedersen, Lise Sundrønning
  * @since 15-04-2019
  */
 
