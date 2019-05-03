@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.*?>
 
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.collections.FXCollections?>
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gui.controllers.TakenPositionsController" prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.TakenPositionsController">
     <children>
 
         <!-- MENU -->
@@ -32,6 +37,15 @@
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="5" />
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="6" />
             </children>
+         <rowConstraints>
+            <RowConstraints prefHeight="30.0" />
+            <RowConstraints prefHeight="30.0" />
+            <RowConstraints prefHeight="30.0" />
+            <RowConstraints prefHeight="30.0" />
+            <RowConstraints prefHeight="30.0" />
+            <RowConstraints prefHeight="30.0" />
+            <RowConstraints prefHeight="30.0" />
+         </rowConstraints>
         </GridPane>
         <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
 
@@ -88,9 +102,9 @@
             </items>
         </TableView>
 
-        <Button layoutX="220.0" layoutY="417.0" mnemonicParsing="false" text="Show info" onAction="#showInfo" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
-        <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" onAction="#switchToJOBJ" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
-        <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" onAction="#switchToCSV" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
-        <TextField fx:id="filterField" layoutX="489.0" layoutY="455.0" promptText="Filter..." AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="80.0" />
+        <Button layoutX="220.0" layoutY="417.0" mnemonicParsing="false" onAction="#showInfo" text="Show info" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
+        <Button layoutX="487.0" layoutY="355.0" mnemonicParsing="false" onAction="#switchToJOBJ" text="Read from jobj" AnchorPane.bottomAnchor="19.399999999999977" AnchorPane.rightAnchor="18.600000000000023" />
+        <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToCSV" text="Read from csv" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
+        <TextField fx:id="filterField" layoutX="220.0" layoutY="355.0" prefHeight="26.0" prefWidth="134.0" promptText="Filter..." AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="246.0" />
     </children>
 </AnchorPane>

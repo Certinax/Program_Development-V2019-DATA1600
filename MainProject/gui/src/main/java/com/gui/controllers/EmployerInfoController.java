@@ -19,7 +19,7 @@ public class EmployerInfoController implements Controller {
     private ErrorBox error;
 
     @FXML
-    Label name, address, zipcode, city, phoneNumber, email, sector, industry;
+    private Label name, address, zipcode, city, phoneNumber, email, sector, industry;
 
     @FXML
     private void setData(Employer employer){
@@ -52,51 +52,5 @@ public class EmployerInfoController implements Controller {
 
     @Override
     public void exit() {
-    }
-
-    /* ------------------------------------------ Menu Methods ----------------------------------------------*/
-
-    @FXML
-    private void goToPositionInfo(ActionEvent event) {
-        sceneManager.changeScene(SceneName.POSITIONINFO);
-    }
-
-    @FXML
-    private void goToRegisterEmployer(ActionEvent event) {
-        sceneManager.changeScene(SceneName.REGISTEREMPLOYER);
-    }
-
-    @FXML
-    private void goToRegisterPosition(ActionEvent event) {
-        sceneManager.changeScene(SceneName.REGISTERPOSITION);
-    }
-
-    @FXML
-    private void goToRegisterSubstitute(ActionEvent event) {
-        sceneManager.changeScene(SceneName.REGISTERSUBSTITUTE);
-    }
-
-    @FXML
-    private void goToSubstitutes(ActionEvent event) {
-        sceneManager.changeScene(SceneName.SUBSTITUTES);
-    }
-
-    @FXML
-    private void goToTakenPositions(ActionEvent event) {
-        sceneManager.changeScene(SceneName.TAKENPOSITIONS);
-    }
-
-    @FXML
-    private void goToAvailablePositions(ActionEvent event) {
-        sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
-    }
-
-    @FXML
-    private void openOptions(ActionEvent event) {
-        try {
-            sceneManager.createUndecoratedStageWithScene(new Stage(), SceneName.OPTIONS,2 ,3);
-        } catch (NoPrimaryStageException | ExtraStageException e) {
-            error = new ErrorBox(e.getMessage(), "Can't open new window");
-        }
     }
 }

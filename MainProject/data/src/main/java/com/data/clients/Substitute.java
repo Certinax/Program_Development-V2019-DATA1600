@@ -205,10 +205,7 @@ public class Substitute extends Client implements Serializable, CSVWriteable {
      */
 
     public String getOneEducation() {
-        if (this.education.size() > 1) {
-            Random rng = new Random();
-            return education.get(rng.nextInt(education.size()));
-        } else if (this.education.size() == 1) {
+        if (this.education.size() >= 1) {
             return education.get(0);
         }
         return "";

@@ -71,19 +71,57 @@ public class RegisterPositionController implements Controller {
     private ScrollPane scrollPane;
 
 
-
     // Keeping track of employer names and Id's.
     private ArrayList<Employer> employers = new ArrayList<>();
     private Employer selectedEmployer;
+    private ErrorBox error;
 
 
+    /* --------------------------------- Required Controller Methods ------------------------------------*/
 
-    ErrorBox error;
+    @Override
+    public void initialize() {
+        String error = "";
+
+        ObservableList<String> oIndustrylist = FXCollections.observableArrayList(Industry.industryList());
+        industry.setItems(oIndustrylist.sorted());
+
+        try {
+            employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerCSVPath());
+            clear();
+        } catch (ExecutionException | InterruptedException e) {
+            error += e.getMessage();
+            e.printStackTrace();
+            scrollPane.setVvalue(0);
+            errorMsg.setTextFill(Color.RED);
+            errorMsg.setText(error);
+            errorMsg.setVisible(true);
+        }
+        ObservableList<String> empList = FXCollections.observableArrayList();
+        for (Employer employer : employers) {
+            empList.add(employer.getName());
+        }
+        employerList.setItems(empList);
+    }
+
+
+    @Override
+    public void refresh() {
+    }
+
+    @Override
+    public void updateDataFromDataPasser() {
+    }
+
+    @Override
+    public void exit() {
+    }
+
 
     /* ------------------------------------------ Register Method ------------------------------------------ */
 
     @FXML
-    public void registerPosition(ActionEvent event){
+    private void registerPosition(ActionEvent event){
 
         String msg = "";
 
@@ -119,33 +157,6 @@ public class RegisterPositionController implements Controller {
         }
     }
 
-
-
-    @Override
-    public void initialize() {
-        String error = "";
-
-        ObservableList<String> oIndustrylist = FXCollections.observableArrayList(Industry.industryList());
-        industry.setItems(oIndustrylist.sorted());
-
-        try {
-            employers = ReaderThreadStarter.startReader(ActivePaths.getEmployerCSVPath());
-            clear();
-        } catch (ExecutionException | InterruptedException e) {
-            error += e.getMessage();
-            e.printStackTrace();
-            scrollPane.setVvalue(0);
-            errorMsg.setTextFill(Color.RED);
-            errorMsg.setText(error);
-            errorMsg.setVisible(true);
-        }
-        ObservableList<String> empList = FXCollections.observableArrayList();
-        for (Employer employer : employers) {
-            empList.add(employer.getName());
-        }
-        employerList.setItems(empList);
-    }
-
     @FXML
     public void setSelectedEmployer(ActionEvent event) {
         for (Employer emp : employers) {
@@ -155,28 +166,11 @@ public class RegisterPositionController implements Controller {
         }
     }
 
-    @Override
-    public void refresh() {
-    }
-
-    @Override
-    public void updateDataFromDataPasser() {
-    }
-
     private void clear() {
         NodeHandler.clearNodes(NodeGenerator.generateNodes(parent));
     }
 
-    @Override
-    public void exit() {
-    }
-
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
-
-    @FXML
-    private void goToPositionInfo(ActionEvent event) {
-        sceneManager.changeScene(SceneName.POSITIONINFO);
-    }
 
     @FXML
     private void goToRegisterEmployer(ActionEvent event) {

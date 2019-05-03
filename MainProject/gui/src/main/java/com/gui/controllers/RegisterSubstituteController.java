@@ -79,6 +79,8 @@ public class RegisterSubstituteController implements Controller {
     private ObservableList<String> observableRef;
 
 
+    /* --------------------------------- Required Controller Methods ------------------------------------*/
+
     @Override
     public void initialize() {
         observableSchool = FXCollections.observableArrayList();
@@ -99,20 +101,11 @@ public class RegisterSubstituteController implements Controller {
     public void updateDataFromDataPasser() {
     }
 
-    private void clear() {
-        NodeHandler.clearNodes(NodeGenerator.generateNodes(infoAnchorPane));
-    }
-
     @Override
     public void exit() {
     }
 
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
-
-    @FXML
-    private void goToPositionInfo(ActionEvent event) {
-        sceneManager.changeScene(SceneName.POSITIONINFO);
-    }
 
     @FXML
     private void goToRegisterEmployer(ActionEvent event) {
@@ -159,6 +152,10 @@ public class RegisterSubstituteController implements Controller {
     }
 
     /* --------------------------------------- Other Methods --------------------------------------- */
+
+    private void clear() {
+        NodeHandler.clearNodes(NodeGenerator.generateNodes(infoAnchorPane));
+    }
 
     @FXML
     private void registerSubstitute(ActionEvent event) {

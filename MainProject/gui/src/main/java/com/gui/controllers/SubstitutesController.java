@@ -1,6 +1,7 @@
 package com.gui.controllers;
 
 import com.data.clients.Substitute;
+import com.gui.alertBoxes.ConfirmationBox;
 import com.gui.alertBoxes.InformationBox;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
@@ -20,6 +21,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
+
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 //TODO Write JavaDocs!
@@ -48,6 +51,7 @@ public class SubstitutesController implements Controller {
     private boolean readFromCSV = false;
     private InformationBox alert;
     private ErrorBox error;
+    private ConfirmationBox confirm;
 
     /* --------------------------------- Required Controller Methods ------------------------------------*/
 
@@ -96,16 +100,33 @@ public class SubstitutesController implements Controller {
 
     @FXML
     private void delete() {
-        data.remove(tableView.getSelectionModel().getSelectedItem());
+        confirm = new ConfirmationBox("Are you sure you want to delete " + tableView.getSelectionModel().getSelectedItem().getFirstname() +
+                " " + tableView.getSelectionModel().getSelectedItem().getLastname() + "?", "Delete?");
+        Optional<ButtonType> result = confirm.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            data.remove(tableView.getSelectionModel().getSelectedItem());
+
+            try {
+
+                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
+                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
+            } catch (InterruptedException e) {
+                e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+            }
+        }
     }
 
     @FXML
     private void save(ActionEvent event) {
-      try {
-          WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
-          WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
-        } catch (InterruptedException e) {
-            error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
+        confirm = new ConfirmationBox("Are you sure you want to save all data?", "Save?");
+        Optional<ButtonType> result = confirm.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            try {
+                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteJOBJPath());
+                WriterThreadStarter.startWriter(data, ActivePaths.getSubstituteCSVPath());
+            } catch (InterruptedException e) {
+                error = new ErrorBox("Couldn't write to file because" + e.getMessage(), "Couldn't write to file");
+            }
         }
     }
 
@@ -119,7 +140,12 @@ public class SubstitutesController implements Controller {
     }
 
     public void readFromJOBJ(ActionEvent event) {
-
+        if (!readFromCSV) {
+            alert = new InformationBox("Already reading from JOBJ!", "File not changed");
+        } else {
+            readFromCSV = false;
+            refresh();
+        }
     }
 
     public void showInfo(ActionEvent event){
@@ -131,7 +157,6 @@ public class SubstitutesController implements Controller {
                 error = new ErrorBox(e.getMessage(), "Can't open new window");
             }
         }
-
     }
 
     /* ------------------------------------------ TableView Methods ------------------------------------------------*/
@@ -223,11 +248,6 @@ public class SubstitutesController implements Controller {
     /* ------------------------------------------ Menu Methods ----------------------------------------------*/
 
     @FXML
-    private void goToPositionInfo(ActionEvent event) {
-        sceneManager.changeScene(SceneName.POSITIONINFO);
-    }
-
-    @FXML
     private void goToRegisterEmployer(ActionEvent event) {
         sceneManager.changeScene(SceneName.REGISTEREMPLOYER);
     }
@@ -270,5 +290,4 @@ public class SubstitutesController implements Controller {
             error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
     }
-
 }

@@ -3,22 +3,40 @@ package com.gui.controllers;
 import com.gui.alertBoxes.ErrorBox;
 import com.data.clients.Substitute;
 import com.gui.scene.SceneManager;
-import com.gui.scene.SceneName;
 import com.logic.utilities.DataPasser;
-import com.logic.utilities.exceptions.ExtraStageException;
-import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 
 //TODO Write JavaDocs!
 public class SubstituteInfoController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
+
+
+    /* --------------------------------- Required Controller Methods ------------------------------------*/
+
+    @Override
+    public void initialize() {
+        setData((Substitute) DataPasser.getData());
+    }
+
+    @Override
+    public void refresh() {
+    }
+
+    @Override
+    public void updateDataFromDataPasser() {
+    }
+
+    @Override
+    public void exit() {
+        sceneManager.getCurrentPopUpStage().close();
+        sceneManager.setCurrentPopUpStage(null);
+    }
+
 
     /* ------------------------------------------ variables ----------------------------------------------- */
 
@@ -56,23 +74,5 @@ public class SubstituteInfoController implements Controller {
         for (String ref : substitute.getWorkReference()) {
             reference.setItems(refList);
         }
-    }
-
-    @Override
-    public void initialize() {
-        setData((Substitute) DataPasser.getData());
-    }
-
-    @Override
-    public void refresh() {
-    }
-
-    @Override
-    public void updateDataFromDataPasser() {
-    }
-
-    @Override
-    public void exit() {
-
     }
 }

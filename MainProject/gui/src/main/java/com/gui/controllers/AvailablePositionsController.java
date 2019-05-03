@@ -78,7 +78,7 @@ public class AvailablePositionsController implements Controller {
     }
 
     @Override
-    public void refresh() { //Method to
+    public void refresh() {
         setActiveFile();
         allData.clear();
         tableData.clear();

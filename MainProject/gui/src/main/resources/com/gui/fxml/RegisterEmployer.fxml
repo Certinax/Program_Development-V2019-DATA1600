@@ -43,15 +43,15 @@
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="5" />
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="6" />
             </children>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+            </rowConstraints>
         </GridPane>
         <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
         <!-- MAIN SECTION -->
