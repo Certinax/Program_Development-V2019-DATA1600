@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import java.net.URL?>
 <AnchorPane fx:id="parent" prefHeight="402.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.EmployerInfoController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="4.0" layoutY="4.0" prefHeight="620.0" prefWidth="644.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -130,4 +131,7 @@
          </children>
       </VBox>
    </children>
+   <stylesheets>
+      <URL value="@../css/WelcomeScreen.css" />
+   </stylesheets>
 </AnchorPane>
