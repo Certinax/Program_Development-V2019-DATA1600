@@ -15,7 +15,7 @@
         <!-- MAIN SECTION -->
         <Label alignment="CENTER" layoutX="100.0" layoutY="29.0" text="Position Info" textAlignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0">
             <font>
-                <Font name="System Bold" size="20.0" />
+                <Font name="System Bold" size="32.0" />
             </font>
         </Label>
         <GridPane alignment="CENTER" layoutX="220.0" layoutY="88.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
@@ -156,5 +156,20 @@
             <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exit" text="Exit" />
          </children>
       </GridPane>
+      <Label alignment="CENTER" layoutX="372.0" layoutY="75.0" text="A big lbl" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="362.0" layoutY="162.0" text="A big lbl" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="372.0" layoutY="366.0" text="A big lbl" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
