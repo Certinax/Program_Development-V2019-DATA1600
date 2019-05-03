@@ -3,13 +3,12 @@ package com.logic.utilities.exceptions;
 /**
  * <h1>CSVParseException</h1>
  *
- * DESCRIPTION
+ * Used for throwin exception when the CSV parser encounters issues.
  *
- * @author Mathias Lund Ahrn
+ * @author Candidate 511
  * @since 26-04-2019
  */
 
-//TODO Describe when this is thrown in JavaDocs
 public class CSVParseException extends Exception {
 
     public CSVParseException(String msg) {

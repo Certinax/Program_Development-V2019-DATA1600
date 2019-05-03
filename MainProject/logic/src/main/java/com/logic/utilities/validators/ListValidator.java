@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
  *
  * Class with static methods to valide Lists in the application
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 15-04-2019
  */
 

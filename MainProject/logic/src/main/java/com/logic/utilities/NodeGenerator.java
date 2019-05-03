@@ -1,13 +1,22 @@
 package com.logic.utilities;
 
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.util.*;
+
+/**
+ * <h1>NodeGenerator</h1>
+ *
+ * A class that can generate nodes recursively from a fxml hierarchy.
+ *
+ * It provides two different methods, one which returns a list with nodes and one
+ * that return a map with nodes and corresponding object.
+ *
+ * @author Candidate 511
+ * @since 27-04-2019
+ */
 
 public class NodeGenerator {
 

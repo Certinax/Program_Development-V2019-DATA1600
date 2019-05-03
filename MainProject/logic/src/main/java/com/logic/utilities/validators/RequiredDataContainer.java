@@ -1,8 +1,17 @@
 package com.logic.utilities.validators;
 
-import javafx.scene.Node;
 
 import java.util.Map;
+
+/**
+ * <h1>RequireDataContainer</h1>
+ *
+ * This enum holds on to fixed maps of data that each object needs to have.
+ * Used for comparing other maps.
+ *
+ * @author Candidate 511
+ * @since 19-04--2019
+ */
 
 import static java.util.Map.entry;
 
