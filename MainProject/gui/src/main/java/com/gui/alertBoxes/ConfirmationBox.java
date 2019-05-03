@@ -2,6 +2,15 @@ package com.gui.alertBoxes;
 
 import javafx.scene.control.Alert;
 
+/**
+ * <h1>Confirmation Box</h1>
+ *
+ * An alert box for getting confirmations from the user.
+ *
+ * @author Candidate 730
+ * @since 03-05-2019
+ */
+
 public class ConfirmationBox extends Alert {
 
     public ConfirmationBox(String contentText, String header) {

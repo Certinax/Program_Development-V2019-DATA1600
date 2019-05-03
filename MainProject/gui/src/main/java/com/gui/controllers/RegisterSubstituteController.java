@@ -29,7 +29,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
-//TODO Write JavaDocs!
+/**
+ * <h1>Register Substitute Controller</h1>
+ *
+ * @author Candidate 511
+ * @since 02-05-2019
+ */
 public class RegisterSubstituteController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;

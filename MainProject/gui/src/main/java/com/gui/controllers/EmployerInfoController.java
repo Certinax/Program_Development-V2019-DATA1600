@@ -12,7 +12,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-//TODO Write JavaDocs!
+/**
+ * <h1>Employer Info Controller</h1>
+ *
+ * @author Candidate 778
+ * @since 01-05-2019
+ */
 public class EmployerInfoController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;

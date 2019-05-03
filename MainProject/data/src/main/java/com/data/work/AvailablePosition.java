@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
-
-//TODO Endre navn til Positions
 /**
  * <h1>Positions</h1>
  *

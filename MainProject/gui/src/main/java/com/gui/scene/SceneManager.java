@@ -22,7 +22,7 @@ import java.util.Objects;
  *
  * Enum singleton class used to switch scenes in the application
  *
- *@author Fredrik Pedersen
+ *@author Candidate 730
  *@since 15-04-2019
  */
 
@@ -46,7 +46,7 @@ public enum SceneManager {
     /**
      * Private method used to create SceneInfo objects and link them with the SceneName-enums in a hashmap
      */
-    private void createSceneInfos() { //TODO MAKE SURE ALL VIEWS ARE REPRESENTED HERE
+    private void createSceneInfos() {
         SceneInfo availablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
         SceneInfo employerInfo = new SceneInfo("Employer Info", "/com/gui/fxml/EmployerInfo.fxml");
         SceneInfo employers = new SceneInfo("Employers", "/com/gui/fxml/Employers.fxml");

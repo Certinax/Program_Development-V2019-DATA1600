@@ -8,7 +8,7 @@ import com.logic.utilities.validators.StringValidator;
  * Immutable class for creating objects holding the view's paths and names
  * Used in the SceneManager class
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 15-04-2019
  */
 
