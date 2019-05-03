@@ -58,7 +58,8 @@ public class CSVParser {
                 if(info.length == header.length) {
                     fileInfo.add(Arrays.asList(info));
                 } else {
-                    throw new CSVParseException("CSV-file is corrupt. Headerline and infoline doesn't match");
+                    throw new CSVParseException("CSV-file is corrupt. Headerline and infoline doesn't match. " +
+                            "This might be caused of wrong usage of delimiter and/or other conflicting symbols");
                 }
             }
             return fileInfo;
