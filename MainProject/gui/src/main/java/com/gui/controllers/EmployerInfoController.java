@@ -7,6 +7,7 @@ import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 //TODO Write JavaDocs!
@@ -14,6 +15,9 @@ public class EmployerInfoController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
     private ErrorBox error;
+
+    @FXML
+    Label name, address, zipcode, city, phoneNumber, email, sector, industry;
 
     @Override
     public void initialize() {
