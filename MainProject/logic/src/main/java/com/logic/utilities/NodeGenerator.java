@@ -55,4 +55,47 @@ public class NodeGenerator {
         return map;
     }
 
+
+    public static <T extends Pane> ArrayList<Node> generateNodes(T parent) {
+        return generateNodes(parent, new ArrayList<>());
+    }
+
+    private static <T extends Pane> ArrayList<Node> generateNodes(T parent, ArrayList<Node> nodeList) {
+        for (Node node : parent.getChildren()) {
+            // Nodes - You can add more.
+            if (node instanceof TextField) {
+                nodeList.add(node);
+            }
+            if (node instanceof PasswordField) {
+                nodeList.add(node);
+            }
+            if (node instanceof TextArea) {
+                nodeList.add(node);
+            }
+            if (node instanceof CheckBox) {
+                nodeList.add(node);
+            }
+            if (node instanceof DatePicker) {
+                nodeList.add(node);
+            }
+            if (node instanceof ComboBox<?>) {
+                nodeList.add(node);
+            }
+            if (node instanceof RadioButton) {
+                nodeList.add(node);
+            }
+            if (node instanceof ListView) {
+                nodeList.add(node);
+            }
+
+            // This is used for recursive call
+            if (node instanceof Pane) {
+                generateNodes((Pane)node, nodeList);
+            }
+
+        }
+
+        return nodeList;
+    }
+
 }

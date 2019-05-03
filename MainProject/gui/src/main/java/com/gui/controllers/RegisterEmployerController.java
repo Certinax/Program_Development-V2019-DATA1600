@@ -5,10 +5,12 @@ import com.data.factory.EmployerFactory;
 import com.gui.alertBoxes.ErrorBox;
 import com.gui.scene.SceneManager;
 import com.gui.scene.SceneName;
+import com.logic.customTextFields.IntField;
 import com.logic.customTextFields.NameField;
 import com.logic.customTextFields.PhoneField;
 import com.logic.customTextFields.ZipCodeField;
 import com.logic.utilities.NodeGenerator;
+import com.logic.utilities.NodeHandler;
 import com.logic.utilities.exceptions.ExtraStageException;
 import com.logic.utilities.exceptions.NoPrimaryStageException;
 import com.logic.utilities.validators.ObjectDataValidator;
@@ -20,8 +22,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 //TODO Write JavaDocs!
@@ -30,7 +34,7 @@ public class RegisterEmployerController implements Controller {
     private SceneManager sceneManager = SceneManager.INSTANCE;
 
     @FXML
-    Label errorMsg;
+    Label errorMsg, succeedMsg;
     @FXML
     ToggleGroup sector;
     @FXML
@@ -52,10 +56,13 @@ public class RegisterEmployerController implements Controller {
 
     ErrorBox error;
 
+    ArrayList<Node> nodeList;
+
     @Override
     public void initialize() {
         ObservableList<String> oIndustryList = FXCollections.observableArrayList(Industry.industryList());
         industry.setItems(oIndustryList.sorted());
+        nodeList = NodeGenerator.generateNodes(parent);
     }
 
     @Override
@@ -64,6 +71,10 @@ public class RegisterEmployerController implements Controller {
 
     @Override
     public void updateDataFromDataPasser() {
+    }
+
+    private void clear() {
+        NodeHandler.clearNodes(NodeGenerator.generateNodes(parent));
     }
 
     @Override
@@ -120,23 +131,30 @@ public class RegisterEmployerController implements Controller {
 
     @FXML
     private void registerEmployer(ActionEvent event) {
-        String error = "";
+        String msg = "";
 
         Map<Node, Object> nodesAndValues = NodeGenerator.generateNodesAndValues(parent);
 
         if(ObjectDataValidator.requiredDataMatching(nodesAndValues, RequiredDataContainer.EMPLOYER.requiredData())) {
-            // Opprett object
+            // Create object
             try {
                 EmployerFactory employer = new EmployerFactory(nodesAndValues);
+                msg = "Employer added!";
+                scrollPane.setVvalue(0);
+                errorMsg.setTextFill(Color.GREEN);
+                errorMsg.setText(msg);
+                errorMsg.setVisible(true);
+                clear();
             } catch (IllegalArgumentException | InterruptedException e) {
-                error += e.getMessage();
+                msg += e.getMessage();
                 e.printStackTrace();
                 scrollPane.setVvalue(0);
-                errorMsg.setText(error);
+                errorMsg.setTextFill(Color.RED);
+                errorMsg.setText(msg);
                 errorMsg.setVisible(true);
             }
         } else {
-            error += "You need to fill the required fields:\n" +
+            msg += "You need to fill the required fields:\n" +
                     "Name" +
                     ", Address" +
                     ", Zipcode" +
@@ -146,7 +164,8 @@ public class RegisterEmployerController implements Controller {
                     ", Sector" +
                     ", Industry";
             scrollPane.setVvalue(0);
-            errorMsg.setText(error);
+            errorMsg.setTextFill(Color.RED);
+            errorMsg.setText(msg);
             errorMsg.setVisible(true);
         }
     }
