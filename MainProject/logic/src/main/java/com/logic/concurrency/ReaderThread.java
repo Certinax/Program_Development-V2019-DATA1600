@@ -4,8 +4,10 @@ import com.logic.io.reader.Reader;
 import com.logic.io.reader.ReaderCSV;
 import com.logic.io.reader.ReaderJOBJ;
 import com.logic.utilities.exceptions.CSVParseException;
+import com.logic.utilities.exceptions.CannotReadException;
 import com.logic.utilities.exceptions.SerializationException;
 import com.logic.utilities.exceptions.UnsupportedFileFormatException;
+import javafx.scene.control.Alert;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,8 +41,7 @@ public class ReaderThread<T> implements Callable<ArrayList<T>> {
                 | CSVParseException
                 | ClassNotFoundException
                 | SerializationException e) {
-            e.printStackTrace(); //TODO Handle this in a better way (Message should be sent to GUI
-            return null;
+            return new ArrayList<>();
         }
     }
 

@@ -353,7 +353,6 @@ public class AvailablePosition implements Serializable, CSVWriteable {
         }
 
         return sb.toString();
-
     }
 
     public String getSectorAsString() {

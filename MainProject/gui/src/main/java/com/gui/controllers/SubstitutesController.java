@@ -70,7 +70,7 @@ public class SubstitutesController implements Controller {
         try {
             data.addAll(ReaderThreadStarter.startReader(activeFile));
         } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
+            error = new ErrorBox("Can't read file!", "No reading for you");
         }
 
         setFiltering();
@@ -91,7 +91,7 @@ public class SubstitutesController implements Controller {
         try {
             data.addAll(ReaderThreadStarter.startReader(activeFile));
         } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
+            error = new ErrorBox("Reading is for nerds. Crashing is so more fun!", "Could'nt read file");
         }
     }
 

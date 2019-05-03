@@ -181,7 +181,6 @@ public class RegisterSubstituteController implements Controller {
                 clear();
             } catch (IllegalArgumentException | InterruptedException e) {
                 msg += e.getMessage();
-                e.printStackTrace();
                 scrollPane.setVvalue(0);
                 errorMsg.setTextFill(Color.RED);
                 errorMsg.setText(msg);

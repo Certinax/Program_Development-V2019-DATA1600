@@ -98,7 +98,6 @@ public class RegisterPositionController implements Controller {
             clear();
         } catch (ExecutionException | InterruptedException e) {
             error += e.getMessage();
-            e.printStackTrace();
             scrollPane.setVvalue(0);
             errorMsg.setTextFill(Color.RED);
             errorMsg.setText(error);
@@ -147,7 +146,6 @@ public class RegisterPositionController implements Controller {
                 clear();
             } catch (IllegalArgumentException | InterruptedException | AvailablePositionException e) {
                 msg += e.getMessage();
-                e.printStackTrace();
                 scrollPane.setVvalue(0);
                 errorMsg.setTextFill(Color.RED);
                 errorMsg.setText(msg);
