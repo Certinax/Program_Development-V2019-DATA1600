@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import java.net.URL?>
-<AnchorPane styleClass="side-menu" minHeight="350.0" minWidth="400.0" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.OptionsController">
+<AnchorPane styleClass="optionBackground" minHeight="350.0" minWidth="400.0" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.OptionsController">
    <children>
        
       <GridPane alignment="CENTER" hgap="30.0" layoutX="20.0" layoutY="51.0" maxHeight="222.0" maxWidth="360.0" minHeight="194.0" minWidth="332.0" prefHeight="194.0" prefWidth="360.0" vgap="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="51.0">
