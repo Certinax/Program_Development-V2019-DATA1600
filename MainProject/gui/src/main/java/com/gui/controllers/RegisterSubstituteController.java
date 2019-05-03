@@ -129,6 +129,11 @@ public class RegisterSubstituteController implements Controller {
     }
 
     @FXML
+    private void goToEmployers(ActionEvent event) {
+        sceneManager.changeScene(SceneName.EMPLOYERS);
+    }
+
+    @FXML
     private void goToTakenPositions(ActionEvent event) {
         sceneManager.changeScene(SceneName.TAKENPOSITIONS);
     }

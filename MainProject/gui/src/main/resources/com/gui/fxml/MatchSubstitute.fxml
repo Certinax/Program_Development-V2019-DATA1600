@@ -8,6 +8,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane prefHeight="499.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.MatchSubstituteController">
     <children>
@@ -75,12 +78,25 @@
                 <FXCollections fx:factory="observableArrayList" />
             </items>
         </TableView>
-        <Button layoutX="20.0" layoutY="419.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Show info" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="20.0" />
-        <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
-        <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
-        <Button layoutX="380.0" layoutY="418.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="168.0" style="-fx-font-weight: Bold;" text="Match With Position" onAction="#match" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="430" />
-        <Button layoutX="407.0" layoutY="451.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Cancel" onAction="#cancel" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="460" />
-        <TextField fx:id="filterField" layoutX="20.0" layoutY="452.0" prefHeight="26.0" prefWidth="114.0" promptText="Filter..." AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="793.0" />
+      <GridPane layoutX="105.0" layoutY="415.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Show info" />
+              <TextField fx:id="filterField" prefHeight="26.0" prefWidth="114.0" promptText="Filter..." GridPane.rowIndex="1" />
+              <Button mnemonicParsing="false" onAction="#match" prefHeight="26.0" prefWidth="168.0" style="-fx-font-weight: Bold;" text="Match With Position" GridPane.columnIndex="1" />
+              <Button mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="113.0" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+              <Button mnemonicParsing="false" text="Read from jobj" GridPane.columnIndex="2" />
+              <Button mnemonicParsing="false" text="Read from csv" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
 
     </children>
 </AnchorPane>
