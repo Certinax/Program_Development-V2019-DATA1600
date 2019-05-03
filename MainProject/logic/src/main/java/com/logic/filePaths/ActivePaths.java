@@ -1,5 +1,14 @@
 package com.logic.filePaths;
 
+/**
+ * <h1>ActivePaths</h1>
+ *
+ * This class checks if a user defined path is set, if not, default path will be used.
+ *
+ * @author Candidate 730
+ * @since 27-04-2019
+ */
+
 public class ActivePaths {
 
     public static String getSubstituteCSVPath() {

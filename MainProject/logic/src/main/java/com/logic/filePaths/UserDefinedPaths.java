@@ -2,6 +2,15 @@ package com.logic.filePaths;
 
 import com.logic.utilities.exceptions.UnsupportedFileFormatException;
 
+/**
+ * <h1>UserDefinedPaths</h1>
+ *
+ * This class set paths defined by user.
+ *
+ * @atuhor Candidate 730
+ * @since 20-04-2019
+ */
+
 public class UserDefinedPaths {
 
     private static String substituteCSVPath;

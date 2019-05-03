@@ -5,9 +5,10 @@ import javafx.scene.control.TextField;
 
 /**
  * <h1>NameField</h1>
+ *
  * A custom TextField that only accepts 0 to 100 characters as input value
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 08-04-2019
  */
 

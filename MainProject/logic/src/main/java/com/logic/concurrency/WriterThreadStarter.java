@@ -20,7 +20,7 @@ public class WriterThreadStarter {
      * <h2>startWriter</h2>
      * Method for writing a single object to file.
      *
-     * @param objectToWrite the object that shal be written
+     * @param objectToWrite the object that shall be written
      * @param path path to the file
      * @throws InterruptedException if any thread has interrupted the current thread. The
      *                              <i>interrupted status</i> of the current thread is

@@ -12,6 +12,8 @@ package com.logic.utilities.exceptions;
 //TODO Describe when this is thrown in JavaDocs
 public class CSVParseException extends Exception {
 
+    public CSVParseException() {}
+
     public CSVParseException(String msg) {
         super(msg);
     }

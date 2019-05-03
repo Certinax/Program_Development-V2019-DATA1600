@@ -4,9 +4,10 @@ import javafx.scene.control.TextField;
 
 /**
  * <h1>IntField</h1>
+ *
  * A custom TextField that only accepts 0 to 3 integers as input value
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 27-03-2019
  */
 

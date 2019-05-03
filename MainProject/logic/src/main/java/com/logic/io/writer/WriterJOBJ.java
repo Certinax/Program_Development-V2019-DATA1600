@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * Class for serializing objects to file
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 25-04-2019
  */
 

@@ -3,9 +3,9 @@ package com.logic.filePaths;
 /**
  * <h1>FilePaths</h1>
  *
- * Enum clas representing all the default files for the program
+ * Enum class representing all the default files for the program
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 28-04-2019
  */
 
