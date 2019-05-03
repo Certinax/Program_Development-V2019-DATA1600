@@ -33,7 +33,7 @@ import java.util.concurrent.ExecutionException;
  * Controller class for controlling the available positions view.
  *
  * @author Candidate 730
- * @since 22-04-2019
+ * @since 15-04-2019
  */
 
 public class AvailablePositionsController implements Controller {
@@ -78,7 +78,7 @@ public class AvailablePositionsController implements Controller {
     }
 
     @Override
-    public void refresh() {
+    public void refresh() { //Method for refreshing the data shown in the TableView
         setActiveFile();
         allData.clear();
         tableData.clear();
@@ -86,22 +86,23 @@ public class AvailablePositionsController implements Controller {
     }
 
     @Override
-    public void exit() {
+    public void exit() { //Saves all Positions data to file before leaving the view
         ObservableList<AvailablePosition> toFile = FXCollections.observableArrayList();
         toFile.addAll(allData);
         try {
             WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
             WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
         } catch (InterruptedException e) {
-            e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+            error = new ErrorBox("The program was interrupted while saving data!", "Could not write to file");
         }
     }
 
     @Override
     public void updateDataFromDataPasser() {
+        //Method for updating the data in TableData and AllData after matching a Substitute with an available position
         AvailablePosition positionFromDataPasser = (AvailablePosition)DataPasser.getData();
 
-        for (int i = 0; i < allData.size(); i++) {
+        for (int i = 0; i < allData.size(); i++) { //Replaces the AvailablePosition object in AllData with the new one.
             if (positionFromDataPasser.getAvailablePositionId().equals(allData.get(i).getAvailablePositionId())) {
                 allData.set(i,positionFromDataPasser);
                 break;
@@ -109,7 +110,7 @@ public class AvailablePositionsController implements Controller {
         }
 
         if (positionFromDataPasser.isAvailable()) {
-            for (int i = 0; i < tableData.size(); i++) {
+            for (int i = 0; i < tableData.size(); i++) { //If the position is still available after being matched with a subsitute, replace it in TableData
                 if (positionFromDataPasser.getAvailablePositionId().equals(tableData.get(i).getAvailablePositionId())) {
                     tableData.set(i, positionFromDataPasser);
                     break;
@@ -117,7 +118,7 @@ public class AvailablePositionsController implements Controller {
             }
 
         } else {
-            for (int i = 0; i < tableData.size(); i++) {
+            for (int i = 0; i < tableData.size(); i++) { //If the position is no longer available, remove it from the TableData
                 if (positionFromDataPasser.getAvailablePositionId().equals(tableData.get(i).getAvailablePositionId())) {
                     tableData.remove(i);
                     break;
@@ -129,7 +130,7 @@ public class AvailablePositionsController implements Controller {
     /* ------------------------------------------- Misc Methods -----------------------------------------------------*/
 
     @FXML
-    private void matchSubstitute() {
+    private void matchSubstitute() { //Method sending the selected Position object to the DataPasser and opening a new pop-up stage for matching Positions with substitutes
         if (tableView.getSelectionModel().getSelectedItem() == null) {
             alert = new InformationBox("Please select an available position \nbefore trying to match with a substitute!", "No position selected");
         } else {
@@ -142,7 +143,7 @@ public class AvailablePositionsController implements Controller {
         }
     }
 
-    private void readData(String activeFile) {
+    private void readData(String activeFile) { //Method for reading Positions from file to AllData, Available Positions are added to TableData
         try {
             allData.addAll(ReaderThreadStarter.startReader(activeFile));
             for (AvailablePosition anAllData : allData) {
@@ -150,14 +151,13 @@ public class AvailablePositionsController implements Controller {
                     tableData.add(anAllData);
                 }
             }
-
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void save(ActionEvent event) {
+    private void save(ActionEvent event) { //Method for saving the current AllData-list to file
         confirm = new ConfirmationBox("Sure you want to save all data to file?", "Save?");
         Optional<ButtonType> result = confirm.showAndWait();
         if (result.get() == ButtonType.OK) {
@@ -168,13 +168,13 @@ public class AvailablePositionsController implements Controller {
                 WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
                 WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
             } catch (InterruptedException e) {
-                e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+                error = new ErrorBox("The program was interrupted while saving data!", "Could not write to file");
             }
         }
     }
 
     @FXML
-    private void switchToCSV(ActionEvent event) {
+    private void switchToCSV(ActionEvent event) { //Method for making the TableView get it's data from the selected CSV-file
         if (readFromCSV) {
             alert = new InformationBox("Already reading from CSV!", "File not changed");
         } else {
@@ -184,7 +184,7 @@ public class AvailablePositionsController implements Controller {
     }
 
     @FXML
-    private void switchToJOBJ(ActionEvent event) {
+    private void switchToJOBJ(ActionEvent event) { //Method for makin the Tableview get it's data from the selected JOBJ-file
         if (!readFromCSV) {
             alert = new InformationBox("Already reading from JOBJ!", "File not changed");
         } else {
@@ -202,7 +202,7 @@ public class AvailablePositionsController implements Controller {
     }
 
     @FXML
-    private void showInfo(){
+    private void showInfo(){ //Method for passing the currently selected object to a new pop-up window, showin detailed information
         if (tableView.getSelectionModel().getSelectedItem() != null) {
             try {
                 DataPasser.setData(tableView.getSelectionModel().getSelectedItem());
@@ -235,7 +235,7 @@ public class AvailablePositionsController implements Controller {
                 WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionJOBJPath());
                 WriterThreadStarter.startWriter(toFile, ActivePaths.getAvailablePositionCSVPath());
             } catch (InterruptedException e) {
-                e.printStackTrace(); //TODO THIS SHOULD PRINT A MESSAGE TO THE GUI
+                error = new ErrorBox("The program was interrupted while saving data!", "Could not write to file");
             }
         }
     }
@@ -256,14 +256,14 @@ public class AvailablePositionsController implements Controller {
                     intFilter = Integer.parseInt(stringFilter);
                 } catch (NumberFormatException e) {
                     intFilter = -1; //set to a negative value as we don't allow negative values in the datafields. Won't give a match.
-                } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
+                }
 
                 if (anAvailablePosition.getContactInfo().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getEmployerName().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getWorkplace().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getPositionType().toLowerCase().contains(stringFilter)
                         || anAvailablePosition.getIndustry().toLowerCase().contains(stringFilter)
-                        /*|| anAvailablePosition.getDuration() == intFilter*/){
+                        || anAvailablePosition.getDuration().toLowerCase().contains(stringFilter)){
                     return true;
                 } else return anAvailablePosition.getSalary() == intFilter;
             });
@@ -275,7 +275,7 @@ public class AvailablePositionsController implements Controller {
         tableView.setItems(sortedData);
     }
 
-    private void setSalaryColumnEditable() { //TODO Kolonner som er definert med Integers gir en NumberFormatException når annet skrives inn. Håndter dette!
+    private void setSalaryColumnEditable() {
         salaryColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         salaryColumn.setOnEditCommit(
                 (TableColumn.CellEditEvent<AvailablePosition, Integer> t) -> t.getRowValue().setSalary(t.getNewValue()));

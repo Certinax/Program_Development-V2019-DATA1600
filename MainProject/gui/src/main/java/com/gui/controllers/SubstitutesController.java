@@ -25,7 +25,14 @@ import javafx.util.converter.IntegerStringConverter;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
-//TODO Write JavaDocs!
+/**
+ * <h1>Substitute Controller</h1>
+ *
+ * Controller for showing the substitute TableView
+ *
+ * @author Candidate 730
+ * @since 15-04-2019
+ */
 public class SubstitutesController implements Controller {
 
     @FXML
@@ -179,13 +186,14 @@ public class SubstitutesController implements Controller {
                     //If the String can't  be parsed to an int, don't change the intFilter.
                 } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
 
-                if (aSubstitute.getFirstname().toLowerCase().contains(lowerCaseFilter)) {
+                if (aSubstitute.getFirstname().toLowerCase().contains(lowerCaseFilter)
+                        || aSubstitute.getLastname().toLowerCase().contains(lowerCaseFilter)
+                        || aSubstitute.getAddress().toLowerCase().contains(lowerCaseFilter)
+                        || aSubstitute.getCity().toLowerCase().contains(lowerCaseFilter)
+                        || aSubstitute.getAge() == intFilter
+                        || aSubstitute.getSalaryRequirement() == intFilter){
                     return true;
-                } else if (aSubstitute.getLastname().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (aSubstitute.getZipcode() == intFilter) {
-                    return true;
-                } else return aSubstitute.getAddress().toLowerCase().contains(lowerCaseFilter);
+                } else return aSubstitute.getZipcode() == intFilter;
             });
         });
 

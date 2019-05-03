@@ -32,6 +32,13 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+
+/**
+ * <h1>Register Position Controller</h1>
+ *
+ * @author Candidate 511
+ * @since 02-05-2019
+ */
 public class RegisterPositionController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;

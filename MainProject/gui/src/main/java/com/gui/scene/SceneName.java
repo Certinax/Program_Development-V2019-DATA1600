@@ -8,11 +8,11 @@ package com.gui.scene;
  *
  * Add the names of all scenes in the program to this list!
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 15-04-2019
  */
 
-public enum SceneName { //TODO MAKE SURE ALL VIEWS ARE REPRESENTED HERE
+public enum SceneName {
     AVAILABLEPOSITIONS,
     EMPLOYERINFO,
     EMPLOYERS,

@@ -22,8 +22,18 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class MatchSubstituteController implements Controller {
+/**
+ * <h1>Match Substitute Controller</h1>
+ *
+ * Controller for the match substitute view. This is only used as a pop-up window from the
+ * Available Positions controller, and is triggered when the user wants to add a substitute to
+ * an open position.
+ *
+ * @author Candidate 730
+ * @since 01-05-2019
+ */
 
+public class MatchSubstituteController implements Controller {
 
     @FXML
     private TableView<Substitute> tableView;
@@ -163,13 +173,16 @@ public class MatchSubstituteController implements Controller {
                     //If the String can't  be parsed to an int, don't change the intFilter.
                 } //TODO Se om man finner en bedre løsning for å filtrere int-verdier
 
-                if (aSubstitute.getFirstname().toLowerCase().contains(lowerCaseFilter)) {
+                if (aSubstitute.getFirstname().toLowerCase().contains(lowerCaseFilter)
+                    || aSubstitute.getLastname().toLowerCase().contains(lowerCaseFilter)
+                    || aSubstitute.getAddress().toLowerCase().contains(lowerCaseFilter)
+                    || aSubstitute.getCity().toLowerCase().contains(lowerCaseFilter)
+                    || aSubstitute.getAge() == intFilter
+                    || aSubstitute.getSalaryRequirement() == intFilter
+                    || aSubstitute.getOneEducation().toLowerCase().contains(lowerCaseFilter)
+                    || aSubstitute.getEmail().toLowerCase().contains(lowerCaseFilter)){
                     return true;
-                } else if (aSubstitute.getLastname().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (aSubstitute.getZipcode() == intFilter) {
-                    return true;
-                } else return aSubstitute.getAddress().toLowerCase().contains(lowerCaseFilter);
+                } else return aSubstitute.getZipcode() == intFilter;
             });
         });
 

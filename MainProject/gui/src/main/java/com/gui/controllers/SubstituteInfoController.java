@@ -10,7 +10,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-//TODO Write JavaDocs!
+/**
+ * <h1>Subsitute Info Controller</h1>
+ *
+ * @author Candidate 778
+ * @since 02-05-2019
+ */
 public class SubstituteInfoController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;

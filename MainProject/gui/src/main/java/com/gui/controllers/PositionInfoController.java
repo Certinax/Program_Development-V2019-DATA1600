@@ -8,7 +8,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-//TODO Write JavaDocs!
+/**
+ * <h1>Position Info Controller</h1>
+ *
+ * @author Candidate 778
+ * @since 02-05-2019
+ */
 public class PositionInfoController implements Controller {
 
   private SceneManager sceneManager = SceneManager.INSTANCE;

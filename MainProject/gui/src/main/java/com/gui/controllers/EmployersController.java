@@ -28,6 +28,15 @@ import javafx.util.converter.IntegerStringConverter;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * <h1>Employers Controller</h1>
+ *
+ * Controller for the Employers TableView
+ *
+ * @author Candidate 730
+ * @since 02-05-2019
+ */
+
 public class EmployersController implements Controller {
 
     @FXML

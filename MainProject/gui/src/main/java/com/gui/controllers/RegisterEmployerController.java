@@ -27,7 +27,12 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Map;
 
-//TODO Write JavaDocs!
+/**
+ * <h1>Register Employer Controller</h1>
+ *
+ * @author Candidate 511
+ * @since 02-05-2019
+ */
 public class RegisterEmployerController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;

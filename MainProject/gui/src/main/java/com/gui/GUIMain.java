@@ -8,9 +8,9 @@ import javafx.stage.Stage;
 /**
  * <h1>MainClass</h1>
  *
- * A main class for launching the application
+ * Main class for launching the application
  *
- * @author Fredrik Pedersen
+ * @author Candidate 730
  * @since 25-03-2019
  */
 

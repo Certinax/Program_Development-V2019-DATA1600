@@ -22,7 +22,14 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-//TODO Write JavaDocs!
+/**
+ * <h1>Taken Positions Controller</h1>
+ *
+ * Controller for showing occupied positions in a TableView
+ *
+ * @author Candidate 730
+ * @since 01-05-2019
+ */
 public class TakenPositionsController implements Controller {
 
     @FXML

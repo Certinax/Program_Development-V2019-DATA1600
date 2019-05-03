@@ -9,13 +9,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
+
+/**
+ * <h1>Options Controller</h1>
+ *
+ * Controller for the options view.
+ * This view is just used to set the programs filepaths for the session.
+ */
 
 public class OptionsController implements Controller {
 
     private SceneManager sceneManager = SceneManager.INSTANCE;
-    private FileChooser fileChooser = new FileChooser();
     private File selectedFile;
     private String header = "Wrong File Format";
     private ErrorBox error;
@@ -33,9 +38,18 @@ public class OptionsController implements Controller {
     public void updateDataFromDataPasser() {
     }
 
-    public void setSubstituteCSVPath(ActionEvent event) {
+    private File useFileChooser(String fileType) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Find data files");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter(fileType, "*."+fileType));
 
-        selectedFile = fileChooser.showOpenDialog(null);
+        return fileChooser.showOpenDialog(null);
+    }
+
+    public void setSubstituteCSVPath(ActionEvent event) {
+        selectedFile = useFileChooser("csv");
+
         if (selectedFile == null) {
             return;
         }
@@ -48,7 +62,7 @@ public class OptionsController implements Controller {
     }
 
     public void setSubstituteJOBJPath(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(null);
+        selectedFile = useFileChooser("jobj");
 
         if (selectedFile == null) {
             return;
@@ -62,7 +76,7 @@ public class OptionsController implements Controller {
     }
 
     public void setEmployersCSV(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(null);
+        selectedFile = useFileChooser("csv");
 
         if (selectedFile == null) {
             return;
@@ -77,7 +91,7 @@ public class OptionsController implements Controller {
     }
 
     public void setEmployersJOBJ(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(null);
+        selectedFile = useFileChooser("jobj");
 
         if (selectedFile == null) {
             return;
@@ -91,7 +105,7 @@ public class OptionsController implements Controller {
     }
 
     public void setAvailablePositionsCSV(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(null);
+        selectedFile = useFileChooser("csv");
 
         if (selectedFile == null) {
             return;
@@ -105,7 +119,7 @@ public class OptionsController implements Controller {
     }
 
     public void setAvailablePositionsJOBJ(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(null);
+        selectedFile = useFileChooser("jobj");
 
         if (selectedFile == null) {
             return;
