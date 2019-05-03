@@ -145,13 +145,8 @@ public class RegisterSubstituteController implements Controller {
     }
 
     @FXML
-    private void setFullscreenMode(ActionEvent event) {
-        sceneManager.setFullscreen();
-    }
-
-    @FXML
-    private void setWindowedMode() {
-        sceneManager.setWindowed();
+    private void goToEmployers(ActionEvent event) {
+        sceneManager.changeScene(SceneName.EMPLOYERS);
     }
 
     @FXML
@@ -232,7 +227,6 @@ public class RegisterSubstituteController implements Controller {
             observableSchool.remove(observableSchool.size()-1);
         }
     }
-
 
     @FXML
     public void addWork(ActionEvent event){

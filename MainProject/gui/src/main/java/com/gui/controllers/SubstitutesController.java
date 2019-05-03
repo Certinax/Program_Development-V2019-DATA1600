@@ -248,6 +248,11 @@ public class SubstitutesController implements Controller {
     }
 
     @FXML
+    private void goToEmployers(ActionEvent event) {
+        sceneManager.changeScene(SceneName.EMPLOYERS);
+    }
+
+    @FXML
     private void goToTakenPositions(ActionEvent event) {
         sceneManager.changeScene(SceneName.TAKENPOSITIONS);
     }
@@ -264,16 +269,6 @@ public class SubstitutesController implements Controller {
         } catch (NoPrimaryStageException | ExtraStageException e) {
             error = new ErrorBox(e.getMessage(), "Can't open new window");
         }
-    }
-
-    @FXML
-    private void setFullscreenMode(ActionEvent event) {
-        sceneManager.setFullscreen();
-    }
-
-    @FXML
-    private void setWindowedMode() {
-        sceneManager.setWindowed();
     }
 
 }

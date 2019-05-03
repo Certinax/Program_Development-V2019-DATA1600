@@ -186,6 +186,11 @@ public class TakenPositionsController implements Controller {
     }
 
     @FXML
+    private void goToEmployers(ActionEvent event) {
+        sceneManager.changeScene(SceneName.EMPLOYERS);
+    }
+
+    @FXML
     private void goToTakenPositions(ActionEvent event) {
         sceneManager.changeScene(SceneName.TAKENPOSITIONS);
     }
@@ -193,16 +198,6 @@ public class TakenPositionsController implements Controller {
     @FXML
     private void goToAvailablePositions(ActionEvent event) {
         sceneManager.changeScene(SceneName.AVAILABLEPOSITIONS);
-    }
-
-    @FXML
-    private void setFullscreenMode(ActionEvent event) {
-        sceneManager.setFullscreen();
-    }
-
-    @FXML
-    private void setWindowedMode() {
-        sceneManager.setWindowed();
     }
 
     @FXML

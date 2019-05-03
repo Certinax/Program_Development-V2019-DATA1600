@@ -209,14 +209,10 @@ public class RegisterPositionController implements Controller {
     }
 
     @FXML
-    private void setFullscreenMode(ActionEvent event) {
-        sceneManager.setFullscreen();
+    private void goToEmployers(ActionEvent event) {
+        sceneManager.changeScene(SceneName.EMPLOYERS);
     }
 
-    @FXML
-    private void setWindowedMode() {
-        sceneManager.setWindowed();
-    }
 
     @FXML
     private void openOptions(ActionEvent event) {

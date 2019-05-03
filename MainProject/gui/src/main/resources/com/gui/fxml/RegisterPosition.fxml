@@ -32,22 +32,24 @@
             <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
             <children>
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToAvailablePositions" prefWidth="160.0" text="Available Positions" textAlignment="CENTER" />
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToTakenPositions" prefWidth="160.0" text="Taken Positions" GridPane.rowIndex="1" />
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToSubstitutes" prefWidth="160.0" text="Substitutes" GridPane.rowIndex="2" />
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterSubstitute" prefWidth="160.0" text="Register Substitute" GridPane.rowIndex="3" />
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="4" />
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="5" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToEmployers" prefWidth="160.0" text="Employers" GridPane.rowIndex="3" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterSubstitute" prefWidth="160.0" text="Register Substitute" GridPane.rowIndex="4" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterEmployer" prefWidth="160.0" text="Register Employer" GridPane.rowIndex="5" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToRegisterPosition" prefWidth="160.0" text="Register Position" GridPane.rowIndex="6" />
             </children>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
         <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
 
@@ -61,9 +63,9 @@
                                 <Font name="System Bold" size="32.0" />
                             </font>
                         </Label>
-                        <Label fx:id="errorMsg" alignment="CENTER" layoutX="392.0" layoutY="283.0" text="Error msg" textFill="RED" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="145.0" />
-                        <Separator layoutX="200.0" layoutY="151.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
-                        <Label alignment="CENTER" layoutX="20.0" layoutY="171.0" text="General info" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="171.0">
+                        <Label fx:id="errorMsg" alignment="CENTER" layoutX="20.0" layoutY="114.0" text="Error msg" textFill="RED" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="114.0" />
+                        <Separator layoutX="200.0" layoutY="161.0" prefWidth="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                        <Label alignment="CENTER" layoutX="20.0" layoutY="182.0" text="General info" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="182.0">
                             <font>
                                 <Font size="20.0" />
                             </font>
@@ -89,7 +91,7 @@
                                     </children>
                                 </HBox>
                                 <IntField fx:id="numberOfPositions" promptText="Enter a number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <ComboBox fx:id="employerList" prefWidth="150.0" promptText="Choose employer" onAction="#setSelectedEmployer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <ComboBox fx:id="employerList" onAction="#setSelectedEmployer" prefWidth="150.0" promptText="Choose employer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                 <ComboBox fx:id="employer" visible="false" />
                                 <Label text="Title*" GridPane.rowIndex="2" />
                                 <Label text="Salary" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -99,7 +101,7 @@
                                 <ComboBox fx:id="industry" prefWidth="150.0" promptText="Choose industry" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                 <Label text="Duration" GridPane.rowIndex="4" />
                                 <Label text="Working time (From-To)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <TextField fx:id="duration" prefHeight="26.0" prefWidth="128.0" promptText="(Eg. weeks, months..)" GridPane.rowIndex="5" />
+                                <TextField fx:id="duration" prefHeight="26.0" prefWidth="128.0" promptText="(Eg. 2 weeks, 3 months..)" GridPane.rowIndex="5" />
                                 <HBox prefHeight="26.0" prefWidth="135.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                     <children>
                                         <IntField fx:id="startingTime" prefHeight="26.0" prefWidth="105.0" promptText="0800" />
@@ -108,23 +110,27 @@
                                 </HBox>
                         <Label text="Workplace" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                         <TextField fx:id="workplace" promptText="Location of job" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <Label layoutX="10.0" layoutY="129.0" text="Contact Information" GridPane.rowIndex="6" />
+                        <TextField fx:id="contactInfo" layoutX="10.0" layoutY="96.0" prefHeight="26.0" prefWidth="128.0" promptText="Email or Phonenumber" GridPane.rowIndex="7" />
                             </children>
                      <rowConstraints>
+                        <RowConstraints prefHeight="30.0" />
                         <RowConstraints />
+                        <RowConstraints prefHeight="30.0" />
                         <RowConstraints />
+                        <RowConstraints prefHeight="30.0" />
                         <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" />
                      </rowConstraints>
                         </GridPane>
-                        <Separator layoutX="208.0" layoutY="503.0" prefWidth="200.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="192.0" />
-                        <Label alignment="CENTER" layoutX="28.0" layoutY="531.0" text="Extra info" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="531.0">
+                        <Separator layoutX="208.0" layoutY="500.0" prefWidth="200.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="192.0" />
+                        <Label alignment="CENTER" layoutX="28.0" layoutY="525.0" text="Extra info" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="525.0">
                             <font>
                                 <Font size="20.0" />
                             </font>
                         </Label>
-                        <GridPane alignment="CENTER" hgap="20.0" layoutX="28.0" layoutY="587.0" prefHeight="186.0" prefWidth="527.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="587.0">
+                        <GridPane alignment="CENTER" hgap="20.0" layoutX="28.0" layoutY="573.0" prefHeight="186.0" prefWidth="527.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="573.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="261.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="260.0" />
@@ -136,11 +142,11 @@
                             <children>
                                 <Label text="Required qualifications" />
                                 <Label text="Position description" GridPane.columnIndex="1" />
-                                <TextArea fx:id="requiredQualifications" wrapText="true" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                                <TextArea fx:id="positionDescription" wrapText="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextArea fx:id="requiredQualifications" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="1" />
+                                <TextArea fx:id="positionDescription" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             </children>
                         </GridPane>
-                        <GridPane alignment="CENTER" layoutX="28.0" layoutY="820.0" prefHeight="30.0" prefWidth="215.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="12.0">
+                        <GridPane alignment="CENTER" layoutX="28.0" layoutY="781.0" prefHeight="30.0" prefWidth="215.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="12.0">
                             <columnConstraints>
                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
                             </columnConstraints>

@@ -118,34 +118,6 @@ public class OptionsController implements Controller {
         }
     }
 
-    public void setActivePositionsCSV(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(null);
-
-        if (selectedFile == null) {
-            return;
-        }
-
-        try {
-            UserDefinedPaths.setActivePositionCSVPath(selectedFile.toString());
-        } catch (UnsupportedFileFormatException e) {
-            error = new ErrorBox(e.getMessage(), header);
-        }
-    }
-
-    public void setActivePositionsJOBJ(ActionEvent event) {
-        selectedFile = fileChooser.showOpenDialog(null);
-
-        if (selectedFile == null) {
-            return;
-        }
-
-        try {
-            UserDefinedPaths.setActivePositionJOBJPath(selectedFile.toString());
-        } catch (UnsupportedFileFormatException e) {
-            error = new ErrorBox(e.getMessage(), header);
-        }
-    }
-
     public void setDefaultPaths(ActionEvent event) {
         UserDefinedPaths.setDefaultPaths();
         InformationBox alert = new InformationBox("All info files have been set to their default values", "All filepaths set to default");

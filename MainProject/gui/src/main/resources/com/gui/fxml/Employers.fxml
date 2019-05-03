@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.*?>
 
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.collections.FXCollections?>
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gui.controllers.TakenPositionsController" prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.controllers.EmployersController">
     <children>
 
         <!-- MENU -->
@@ -36,61 +42,42 @@
         <Button alignment="CENTER" mnemonicParsing="false" onAction="#openOptions" prefWidth="160.0" text="Options" textAlignment="CENTER" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="20.0" />
 
         <!-- MAIN SECTION -->
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" style="-fx-font: NORMAL 20 Tahoma;" text="Taken Positions" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" style="-fx-font: NORMAL 20 Tahoma;" text="Employers" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
         <TableView fx:id="tableView" editable="true" layoutX="210.0" layoutY="45.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0">
             <columns>
 
-                <TableColumn fx:id="workplaceColumn" prefWidth="100" text="Workplace">
+                <TableColumn fx:id="nameColumn" prefWidth="100" text="Name">
                     <cellValueFactory>
-                        <PropertyValueFactory property="workplace" />
+                        <PropertyValueFactory property="name" />
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="positionTypeColumn" prefWidth="110" text="Position Type">
+                <TableColumn fx:id="emailColumn" prefWidth="110" text="Email">
                     <cellValueFactory>
-                        <PropertyValueFactory property="positionType" />
+                        <PropertyValueFactory property="email" />
                     </cellValueFactory>
                 </TableColumn>
 
-                <TableColumn fx:id="employerColumn" prefWidth="90" text="Employer">
+                <TableColumn fx:id="phoneColumn" prefWidth="90" text="Phonenumber">
                     <cellValueFactory>
-                        <PropertyValueFactory property="employerName" />
+                        <PropertyValueFactory property="phoneNumber" />
                     </cellValueFactory>
                 </TableColumn>
-
-                <TableColumn fx:id="industryColumn" prefWidth="90.0" text="Industry">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="industry" />
-                    </cellValueFactory>
-                </TableColumn>
-
-                <TableColumn fx:id="salaryColumn" prefWidth="90.0" text="Salary(hour)">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="salary" />
-                    </cellValueFactory>
-                </TableColumn>
-
-                <TableColumn fx:id="durationColumn" prefWidth="80.0" text="Duration(weeks)">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="duration" />
-                    </cellValueFactory>
-                </TableColumn>
-
-                <TableColumn fx:id="contactInfoColumn" prefWidth="130.0" text="Contact">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="contactInfo" />
-                    </cellValueFactory>
-                </TableColumn>
-
             </columns>
             <items>
                 <FXCollections fx:factory="observableArrayList" />
             </items>
         </TableView>
 
-        <Button layoutX="220.0" layoutY="417.0" mnemonicParsing="false" text="Show info" onAction="#showInfo" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
+        <Button fx:id="showInfo" layoutX="220.0" layoutY="417.0" mnemonicParsing="false" text="Show info" onAction="#showInfo" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="220.0" />
         <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" text="Read from jobj" onAction="#switchToJOBJ" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="121.0" />
         <Button layoutX="856.0" layoutY="420.0" mnemonicParsing="false" text="Read from csv" onAction="#switchToCSV" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="20.0" />
+        <Button fx:id="save" layoutX="220.0" layoutY="455.0" onAction="#save" text="Save" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="220.0" />
         <TextField fx:id="filterField" layoutX="489.0" layoutY="455.0" promptText="Filter..." AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="80.0" />
+        <Button layoutX="840.0" layoutY="455.0" onAction="#delete" text="Delete" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="20.0" />
     </children>
+
+    <stylesheets>
+        <URL value="@../css/WelcomeScreen.css" />
+    </stylesheets>
 </AnchorPane>

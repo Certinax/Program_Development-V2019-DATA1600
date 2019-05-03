@@ -49,6 +49,7 @@ public enum SceneManager {
     private void createSceneInfos() { //TODO MAKE SURE ALL VIEWS ARE REPRESENTED HERE
         SceneInfo availablePositions = new SceneInfo("Available Positions","/com/gui/fxml/AvailablePositions.fxml");
         SceneInfo employerInfo = new SceneInfo("Employer Info", "/com/gui/fxml/EmployerInfo.fxml");
+        SceneInfo employers = new SceneInfo("Employers", "/com/gui/fxml/Employers.fxml");
         SceneInfo matchSubstitute = new SceneInfo("Match Substitute", "/com/gui/fxml/MatchSubstitute.fxml");
         SceneInfo options = new SceneInfo("Options", "/com/gui/fxml/Options.fxml");
         SceneInfo positionInfo = new SceneInfo("Position Info", "/com/gui/fxml/PositionInfo.fxml");
@@ -61,6 +62,7 @@ public enum SceneManager {
 
         scenes.put(SceneName.AVAILABLEPOSITIONS, availablePositions);
         scenes.put(SceneName.EMPLOYERINFO, employerInfo);
+        scenes.put(SceneName.EMPLOYERS, employers);
         scenes.put(SceneName.MATCHSUBSTITUTE, matchSubstitute);
         scenes.put(SceneName.OPTIONS, options);
         scenes.put(SceneName.POSITIONINFO, positionInfo);
@@ -123,19 +125,6 @@ public enum SceneManager {
         popUpStage.initStyle(StageStyle.UNDECORATED);
         setCurrentPopUpStage(popUpStage);
         popUpStage.show();
-    }
-
-    public void setFullscreen() {
-        primaryStage.setMaximized(true);
-        primaryStage.setFullScreen(true);
-    }
-
-    public void setWindowed() {
-        primaryStage.setFullScreen(false);
-        primaryStage.setX(bounds.getMinX());
-        primaryStage.setY(bounds.getMinY());
-        primaryStage.setWidth((bounds.getWidth())/1.5);
-        primaryStage.setHeight((bounds.getHeight())/1.2);
     }
 
     /**
