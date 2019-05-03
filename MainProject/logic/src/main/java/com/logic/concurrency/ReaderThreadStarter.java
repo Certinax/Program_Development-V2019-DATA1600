@@ -27,10 +27,9 @@ public class ReaderThreadStarter {
             return new ArrayList<>();
         }
 
-        ExecutorService service = Executors.newFixedThreadPool(1);
+        ExecutorService service = Executors.newSingleThreadExecutor();
         ArrayList<T> result = null;
         Future<ArrayList<T>> returnedList = service.submit(new ReaderThread(path));
-
         result = returnedList.get();
         service.shutdown();
         return result;

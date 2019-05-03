@@ -152,7 +152,7 @@ public class AvailablePositionsController implements Controller {
                 }
             }
         } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
+            error = new ErrorBox("Reading failed", "Couldn't read file");
         }
     }
 

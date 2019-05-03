@@ -84,7 +84,7 @@ public class TakenPositionsController implements Controller {
                 }
             }
         } catch (ExecutionException | InterruptedException e) {
-            e.printStackTrace();
+            error = new ErrorBox("Can't read from file!", "Couldn't read file");
         }
     }
 
