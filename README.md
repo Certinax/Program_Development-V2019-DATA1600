@@ -22,4 +22,4 @@ JDK 11
 ## Authors
 
 * **Mathias Lund Ahrn** [Certinax](https://github.com/Certinax)
-* **Fredrik Pedersen** [FredrikPedersen] (https://github.com/FredrikPedersen)
+* **Fredrik Pedersen** [FredrikPedersen](https://github.com/FredrikPedersen)
