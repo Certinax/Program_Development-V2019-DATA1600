@@ -1,4 +1,4 @@
-#Program Development (DATA1600) Spring 2019
+# Program Development (DATA1600) Spring 2019
 
 The semesterproject of Mathias Lund Ahrn and Fredrik Pedersen for DATA1600 at OsloMet, spring 2019
 
