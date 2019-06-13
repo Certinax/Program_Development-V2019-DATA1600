@@ -8,7 +8,7 @@ package com.gui.scene;
  *
  * Add the names of all scenes in the program to this list!
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 15-04-2019
  */
 

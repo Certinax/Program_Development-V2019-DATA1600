@@ -23,7 +23,7 @@ import java.util.Objects;
  *
  * Enum singleton class used to switch scenes in the application
  *
- *@author Candidate 730
+ *@author Fredrik Pedersen
  *@since 15-04-2019
  */
 
