@@ -37,7 +37,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * <h1>Register Position Controller</h1>
  *
- * @author Candidate 511
+ * @author Mathias Lund Ahrn
  * @since 02-05-2019
  */
 public class RegisterPositionController implements Controller {

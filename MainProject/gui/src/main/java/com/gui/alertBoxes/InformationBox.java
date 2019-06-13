@@ -7,7 +7,7 @@ import javafx.scene.control.Alert;
  *
  * An alert box for displaying alerts to the user.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 01-05-2019
  */
 

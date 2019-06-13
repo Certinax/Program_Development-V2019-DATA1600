@@ -1,11 +1,11 @@
 package com.logic.utilities.exceptions;
 
 /**
- * <h1>EmptyStringException/h1>
+ * <h1>EmptyStringException</h1>
  *
  * Exception to be thrown when a string is empty.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 15-04-2019
  */
 

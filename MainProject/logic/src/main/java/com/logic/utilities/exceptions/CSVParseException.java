@@ -5,7 +5,7 @@ package com.logic.utilities.exceptions;
  *
  * DESCRIPTION
  *
- * @author Candidate 511
+ * @author Mathias Lund Ahrn
  * @since 26-04-2019
  */
 

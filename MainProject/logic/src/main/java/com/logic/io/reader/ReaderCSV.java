@@ -23,7 +23,7 @@ import java.util.*;
  *  - String
  *  - ArrayList
  *
- * @author Candidate 530
+ * @author Mathias Lund Ahrn
  * @since 12-04-2019
  */
 public class ReaderCSV implements Reader {

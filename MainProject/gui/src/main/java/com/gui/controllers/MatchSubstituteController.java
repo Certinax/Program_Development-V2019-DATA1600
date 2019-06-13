@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
  * Available Positions controller, and is triggered when the user wants to add a substitute to
  * an open position.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 01-05-2019
  */
 

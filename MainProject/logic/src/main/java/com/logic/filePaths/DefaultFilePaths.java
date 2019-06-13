@@ -5,7 +5,7 @@ package com.logic.filePaths;
  *
  * Enum class representing all the default files for the program
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 28-04-2019
  */
 

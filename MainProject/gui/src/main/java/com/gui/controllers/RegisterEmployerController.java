@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * <h1>Register Employer Controller</h1>
  *
- * @author Candidate 511
+ * @author Mathias Lund Ahrn
  * @since 02-05-2019
  */
 public class RegisterEmployerController implements Controller {

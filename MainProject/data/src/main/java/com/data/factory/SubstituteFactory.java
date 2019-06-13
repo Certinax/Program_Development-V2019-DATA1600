@@ -22,7 +22,7 @@ import javafx.scene.Node;
  * This is a factory-class that is used for creating objects from a bigger chunk of
  * dataset (typically a registration form) of type Substitute and store it to file.
  *
- * @author Candidate 511
+ * @author Mathias Lund Ahrn
  * @since 23-04-2019
  */
 public class SubstituteFactory {

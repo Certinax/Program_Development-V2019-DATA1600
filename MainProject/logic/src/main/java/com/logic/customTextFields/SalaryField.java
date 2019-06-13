@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
  *
  * A custom TextField that only accepts 0 to 3 integers as input value
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 27-03-2019
  */
 

@@ -30,7 +30,7 @@ import java.util.concurrent.ExecutionException;
  *
  * Controller for showing the substitute TableView
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 15-04-2019
  */
 public class SubstitutesController implements Controller {

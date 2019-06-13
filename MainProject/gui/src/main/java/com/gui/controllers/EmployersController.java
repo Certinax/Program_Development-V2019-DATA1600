@@ -33,7 +33,7 @@ import java.util.concurrent.ExecutionException;
  *
  * Controller for the Employers TableView
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 02-05-2019
  */
 

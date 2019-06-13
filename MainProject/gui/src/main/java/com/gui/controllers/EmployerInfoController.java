@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * <h1>Employer Info Controller</h1>
  *
- * @author Candidate 778, Candidate 530
+ * @author Mathias Lund Ahrn, Lise Sundrønning
  * @since 01-05-2019
  */
 public class EmployerInfoController implements Controller {

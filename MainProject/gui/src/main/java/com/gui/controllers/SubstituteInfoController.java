@@ -13,7 +13,7 @@ import javafx.scene.control.ListView;
 /**
  * <h1>Subsitute Info Controller</h1>
  *
- * @author Candidate 778
+ * @author Fredrik Pedersen, Lise Sundrønning
  * @since 02-05-2019
  */
 public class SubstituteInfoController implements Controller {

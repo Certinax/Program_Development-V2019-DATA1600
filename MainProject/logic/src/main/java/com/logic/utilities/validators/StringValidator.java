@@ -7,7 +7,7 @@ import com.logic.utilities.exceptions.EmptyStringException;
  *
  * Class with static methods to valide Strings in the application
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 15-04-2019
  */
 

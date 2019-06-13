@@ -17,7 +17,7 @@ import java.util.Objects;
  * Class for using the CSV-writer in it's own thread with any object in an
  * ObservableList
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 19-04-2019
  */
 

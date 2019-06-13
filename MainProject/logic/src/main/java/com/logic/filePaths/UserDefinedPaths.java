@@ -7,7 +7,7 @@ import com.logic.utilities.exceptions.UnsupportedFileFormatException;
  *
  * This class set paths defined by user.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 20-04-2019
  */
 

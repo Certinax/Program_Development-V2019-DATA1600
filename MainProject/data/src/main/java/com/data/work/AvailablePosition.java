@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutionException;
  * Class for representing positions. Utilizes the Builder-pattern to create
  * objects
  *
- * @author Candidate 511
+ * @author Mathias Lund Ahrn
  * @since 26-04-2019
  */
 

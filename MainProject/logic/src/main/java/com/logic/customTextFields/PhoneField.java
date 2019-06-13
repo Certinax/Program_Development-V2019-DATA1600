@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
  *
  * A custom TextField that only accepts 0 to 8 integers as input value
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 08-04-2019
  */
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * Interface representing file readers
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 26-04-2019
  */
 

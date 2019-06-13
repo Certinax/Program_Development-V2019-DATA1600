@@ -11,7 +11,7 @@ import java.util.concurrent.Future;
  *
  * Class for handling the CSV reader's thread
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 23-04-2019
  */
 

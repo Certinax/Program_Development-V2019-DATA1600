@@ -32,7 +32,7 @@ import java.util.concurrent.ExecutionException;
  *
  * Controller class for controlling the available positions view.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 15-04-2019
  */
 

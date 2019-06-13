@@ -16,8 +16,8 @@ import java.util.*;
  * the fields of the class and it's superclasses provided. Each line following will represent an own list in the list
  * as an object.
  *
- * @author Candidate 511
- * @4since 15-04-2019
+ * @author Mathias Lund Ahrn
+ * @since 15-04-2019
  *
  */
 public class CSVParser {

@@ -5,7 +5,7 @@ package com.logic.filePaths;
  *
  * This class checks if a user defined path is set, if not, default path will be used.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 27-04-2019
  */
 

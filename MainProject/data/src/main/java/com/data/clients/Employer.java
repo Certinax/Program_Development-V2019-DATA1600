@@ -14,7 +14,7 @@ import java.util.UUID;
  * Class for representing employers Utilizes the Builder-pattern to create
  * objects
  *
- * @author Candidate 511, Candidate 730
+ * @author Mathias Lund Ahrn, Fredrik Pedersen
  * @since 24-04-2019
  */
 

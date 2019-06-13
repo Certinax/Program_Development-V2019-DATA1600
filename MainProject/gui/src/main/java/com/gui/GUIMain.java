@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  *
  * Main class for launching the application
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 25-03-2019
  */
 

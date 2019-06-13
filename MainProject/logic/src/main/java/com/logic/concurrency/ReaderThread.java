@@ -16,7 +16,8 @@ import java.util.concurrent.Callable;
  *
  * Class for using the CSV-reader in it's own thread with any object in an ObservableList
  * @param <T> generic representing whatever object you wish to read
- * @author Candidate 730
+ *
+ * @author Fredrik Pedersen
  * @since 23-04-2019
  */
 

@@ -21,7 +21,7 @@ import java.util.*;
  * This writer uses reflection.
  *
  *
- * @author Candidate 511, Candidate 730
+ * @author Mathias Lund Ahrn, Fredrik Pedersen
  * @since 18-04-2019
  */
 

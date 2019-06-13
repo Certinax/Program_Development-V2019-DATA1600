@@ -16,6 +16,9 @@ import java.io.File;
  *
  * Controller for the options view.
  * This view is just used to set the programs filepaths for the session.
+ *
+ * @author Fredrik Pedersen
+ * @since 30-04-2019
  */
 
 public class OptionsController implements Controller {

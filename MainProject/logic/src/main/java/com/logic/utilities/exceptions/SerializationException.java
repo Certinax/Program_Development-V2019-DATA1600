@@ -5,7 +5,7 @@ package com.logic.utilities.exceptions;
  *
  * Exception to be thrown if an object can't be serialized.
  *
- * @author Candidate 511
+ * @author Mathias Lund Ahrn
  * @since 15-04-2019
  */
 

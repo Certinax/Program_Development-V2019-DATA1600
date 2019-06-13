@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
  *
  * Singleton Enum that provides an internal numbering of each object created in this program.
  *
- * @author Candidate 511
+ * @author Mathias Lund Ahrn
  * @since 22-04-19
  */
 public enum NumberManager {

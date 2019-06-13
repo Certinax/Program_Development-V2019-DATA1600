@@ -27,7 +27,7 @@ import java.util.concurrent.ExecutionException;
  *
  * Controller for showing occupied positions in a TableView
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 01-05-2019
  */
 public class TakenPositionsController implements Controller {

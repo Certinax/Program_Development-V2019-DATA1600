@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * Interface for representing the CSV and JOBJ-writers and utilize the strategy design-pattern.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 25-04-2019
  */
 

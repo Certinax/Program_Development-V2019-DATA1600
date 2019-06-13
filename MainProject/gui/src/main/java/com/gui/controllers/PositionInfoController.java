@@ -11,7 +11,7 @@ import javafx.scene.control.TextArea;
 /**
  * <h1>Position Info Controller</h1>
  *
- * @author Candidate 778
+ * @author Lise Sundrønning
  * @since 02-05-2019
  */
 public class PositionInfoController implements Controller {

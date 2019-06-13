@@ -7,7 +7,7 @@ import javafx.scene.control.Alert;
  *
  * An alert box for getting confirmations from the user.
  *
- * @author Candidate 730
+ * @author Fredrik Pedersen
  * @since 03-05-2019
  */
 
